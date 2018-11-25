@@ -1,0 +1,13 @@
+<launch>
+  <!--
+        Deploy launch command for a rotating Turtlebot with monitoring enabled.
+  -->
+
+  <!-- Bringup turtlebot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_robot.launch"/>
+  
+  <!-- Deploy rotate and monitoring system -->
+  <include file="$(find cloudwatch_robot)/launch/rotate.launch">
+    <arg name="use_sim_time" value="false" />
+  </include>
+</launch>
