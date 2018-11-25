@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>cloudwatch_robot</name>
+  <version>1.0.0</version>
+  <description>
+  AWS RoboMaker robot package that provides a sample application for integrating AWS CloudWatch with ROS.
+  </description>
+  <license>MIT</license>
+  <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
+  <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>roscpp</depend>
+
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_export_depend>message_runtime</build_export_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <!-- CloudWatch -->
+  <depend>cloudwatch_logger</depend>
+  <depend>cloudwatch_metrics_collector</depend>
+  <depend>cloudwatch_logs_common</depend>
+  <depend>cloudwatch_metrics_common</depend>
+  <depend>aws_common</depend>
+  <depend>aws_ros1_common</depend>
+
+
+  <!-- HealthMetricCollector -->
+  <depend>health_metric_collector</depend>
+
+  <!-- Turtlebot -->
+  <depend>turtlebot3</depend>
+  <depend>turtlebot3_msgs</depend>
+</package>

@@ -1,0 +1,11 @@
+# kinetic.rosinstall
+- setup-file: {local-name: /opt/ros/kinetic/setup.sh}
+
+# Amazon ROS CloudServiceIntegration package dependencies (replace with github and/or ROS <depend> packages)
+- git: {local-name: src/deps/aws-ros-utils-common, uri: 'ssh://github.com/aws-robotics/aws-ros-utils-common', version: mainline}
+- git: {local-name: src/deps/aws-ros-utils-ros1, uri: 'ssh://github.com/aws-robotics/aws-ros-utils-ros1', version: mainline}
+- git: {local-name: src/deps/cloudwatch-common, uri: 'ssh://github.com/aws-robotics/cloudwatch-common', version: mainline}
+- git: {local-name: src/deps/cloudwatchlogs-ros1, uri: 'ssh://github.com/aws-robotics/cloudwatchlogs-ros1', version: mainline}
+- git: {local-name: src/deps/cloudwatchmetrics-ros1, uri: 'ssh://github.com/aws-robotics/cloudwatchmetrics-ros1', version: mainline}
+- git: {local-name: src/deps/health-metrics-collector-ros1, uri: 'ssh://github.com/aws-robotics/health-metrics-collector-ros1', version: mainline}
+- git: {local-name: src/deps/monitoringmessages-ros1, uri: 'ssh://github.com/aws-robotics/monitoringmessages-ros1', version: mainline}
