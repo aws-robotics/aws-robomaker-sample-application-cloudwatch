@@ -11,7 +11,7 @@
 
   <!-- Optional launch ID, if specified, used for suffixing resource names -->
   <arg name="launch_id" value="$(optenv LAUNCH_ID)" doc="Used for resource name suffix if specified"/>
-
+  
   <!-- Report speed metrics to CloudWatch -->
   <node pkg="cloudwatch_robot" type="monitor_speed" name="monitor_speed" output="log"/>
 
@@ -27,18 +27,22 @@
   </include>
 
   <!-- Enable CloudWatch Metrics reporting -->
+  <arg name="metrics_node_name" value="cloudwatch_metrics_collector"/>
   <arg name="aws_metrics_namespace" default="robomaker_cloudwatch_monitoring_example"/>
   <include file="$(find cloudwatch_metrics_collector)/launch/cloudwatch_metrics_collector.launch" >
+    <arg name="node_name" value="$(arg metrics_node_name)"/>
     <arg name="config_file" value="$(find cloudwatch_robot)/config/cloudwatch_metrics_config.yaml"/>
   </include>
-  <rosparam if="$(eval aws_region != '')" param="/cloudwatch_metrics_collector/aws_client_configuration/region" subst_value="true">$(arg aws_region)</rosparam>
-  <rosparam if="$(eval launch_id != '')" param="/cloudwatch_metrics_collector/aws_metrics_namespace" subst_value="true">$(arg aws_metrics_namespace)-$(arg launch_id)</rosparam>
+  <rosparam if="$(eval aws_region != '')" param="/$(arg metrics_node_name)/aws_client_configuration/region" subst_value="true">$(arg aws_region)</rosparam>
+  <rosparam if="$(eval launch_id != '')" param="/$(arg metrics_node_name)/aws_metrics_namespace" subst_value="true">$(arg aws_metrics_namespace)-$(arg launch_id)</rosparam>
 
   <!-- Enable CloudWatch logging, send /rosout to CW Logs -->
+  <arg name="logger_node_name" value="cloudwatch_logger"/>
   <arg name="log_group_name" default="robomaker_cloudwatch_monitoring_example" />
   <include file="$(find cloudwatch_logger)/launch/cloudwatch_logger.launch">
+    <arg name="node_name" value="$(arg logger_node_name)"/>
     <arg name="config_file" value="$(find cloudwatch_robot)/config/cloudwatch_logs_config.yaml" />
   </include>
-  <rosparam if="$(eval aws_region != '')" param="/cloudwatch_logger/aws_client_configuration/region" subst_value="true">$(arg aws_region)</rosparam>
-  <rosparam if="$(eval launch_id != '')" param="/cloudwatch_logger/log_group_name" subst_value="true">$(arg log_group_name)-$(arg launch_id)</rosparam>
+  <rosparam if="$(eval aws_region != '')" param="/$(arg logger_node_name)/aws_client_configuration/region" subst_value="true">$(arg aws_region)</rosparam>
+  <rosparam if="$(eval launch_id != '')" param="/$(arg logger_node_name)/log_group_name" subst_value="true">$(arg log_group_name)-$(arg launch_id)</rosparam>
 </launch>
