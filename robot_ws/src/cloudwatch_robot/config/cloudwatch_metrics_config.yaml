@@ -63,4 +63,4 @@ aws_client_configuration:
 # regular-resolution metric, which CloudWatch stores at 1-minute resolution.
 # Currently, high resolution is available only for custom metrics. For more
 # information about high-resolution metrics, see http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html
-storage_resolution: 10
+storage_resolution: 1
