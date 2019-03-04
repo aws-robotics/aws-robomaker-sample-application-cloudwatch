@@ -23,7 +23,7 @@
   <arg name="gui" default="false"/>
 
   <!-- World and Robot -->
-  <include file="$(find aws_robomaker_simulation_bookstore)/launch/bookstore_turtlebot_navigation.launch">
+  <include file="$(find aws_robomaker_bookstore_world)/launch/bookstore_turtlebot_navigation.launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="x_pos" value="-3.5"/>
     <arg name="y_pos" value="5.5"/>
@@ -33,7 +33,7 @@
   <!-- Send navigation route goals to the robot in random order -->
   <group if="$(arg follow_route)">
     <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
-      <rosparam file="$(find aws_robomaker_simulation_bookstore)/routes/route.yaml" command="load"/> 
+      <rosparam file="$(find aws_robomaker_bookstore_world)/routes/route.yaml" command="load"/> 
     </node>
   </group>
 </launch>
