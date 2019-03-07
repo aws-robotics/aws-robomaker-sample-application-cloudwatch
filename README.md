@@ -79,6 +79,8 @@ colcon build
 
 ## Run
 
+The `TURTLEBOT3_MODEL` environment variable must be set when running your simulation. Valid values are `burger`, `waffle`, and `waffle_pi`.
+
 Launch the application with the following commands:
 
 - *Running Robot Application on a Robot*
