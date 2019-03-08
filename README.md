@@ -79,6 +79,8 @@ colcon build
 
 ## Run
 
+The `TURTLEBOT3_MODEL` environment variable must be set when running the simulation application (not needed for robot application). Valid values are `burger`, `waffle`, and `waffle_pi`.
+
 Launch the application with the following commands:
 
 - *Running Robot Application on a Robot*
@@ -99,6 +101,7 @@ Launch the application with the following commands:
 
 - *Running Simulation Application*
     ```bash
+    export TURTLEBOT3_MODEL=waffle_pi
     source simulation_ws/install/local_setup.sh
     roslaunch cloudwatch_simulation [command]
     ```
