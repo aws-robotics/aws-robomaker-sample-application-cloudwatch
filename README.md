@@ -101,6 +101,7 @@ Launch the application with the following commands:
 
 - *Running Simulation Application*
     ```bash
+    export TURTLEBOT3_MODEL=waffle_pi
     source simulation_ws/install/local_setup.sh
     roslaunch cloudwatch_simulation [command]
     ```
