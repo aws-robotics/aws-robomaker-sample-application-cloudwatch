@@ -9,7 +9,7 @@
   <arg name="gui" default="false"/>
 
   <!-- World -->
-  <include file="$(find aws_robomaker_simulation_bookstore)/launch/bookstore.launch">
+  <include file="$(find aws_robomaker_bookstore_world)/launch/bookstore.launch">
     <arg name="gui" value="$(arg gui)"/>
   </include>
 

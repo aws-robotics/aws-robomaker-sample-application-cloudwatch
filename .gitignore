@@ -1,0 +1,7 @@
+simulation_ws/src/aws-robomaker-bookstore-world
+robot_ws/build
+robot_ws/install
+robot_ws/log
+simulation_ws/build
+simulation_ws/install
+simulation_ws/log

@@ -1,3 +1,5 @@
 # kinetic.rosinstall
 - setup-file: {local-name: /opt/ros/kinetic/setup.sh}
-- git: {local-name: src/turtlebot3_simulations, uri: "https://github.com/ROBOTIS-GIT/turtlebot3_simulations", version: 1.2.0}
+
+- git: {local-name: src/aws-robomaker-bookstore-world, uri: "https://github.com/aws-robotics/aws-robomaker-bookstore-world.git", version: v0.0.1}
+- git: {local-name: src/turtlebot3_simulations, uri: "https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git", version: 1.2.0}
