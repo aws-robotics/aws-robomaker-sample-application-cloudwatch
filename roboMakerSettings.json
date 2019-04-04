@@ -43,7 +43,7 @@
          "cfg":{
             "robotApp":{
                "name":"RoboMakerCloudWatchRobot",
-               "sourceBundleFile":"./CloudWatch/robot_ws/bundle/output.tar.gz",
+               "sourceBundleFile":"./CloudWatch/robot_ws/bundle/output.tar",
                "s3Bucket":"<S3 bucket name for your robot bundle>",
                 "architecture":"X86_64",
                 "launchConfig":{
@@ -60,7 +60,7 @@
             },
             "simulationApp":{
                "name":"RoboMakerCloudWatchSimulation",
-               "sourceBundleFile":"./CloudWatch/simulation_ws/bundle/output.tar.gz",
+               "sourceBundleFile":"./CloudWatch/simulation_ws/bundle/output.tar",
                "s3Bucket":"<S3 bucket name for your simulation bundle>",
                 "architecture":"X86_64",
                 "launchConfig":{
