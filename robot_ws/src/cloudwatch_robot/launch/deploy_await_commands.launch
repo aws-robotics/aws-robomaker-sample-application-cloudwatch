@@ -1,0 +1,19 @@
+<launch>
+  <!--
+        Launch command for a physical Turtlebot to await commands with monitoring enabled.
+
+        Use this with bookstore_turtlebot_navigation for routing though 
+        the bookstore. Or use with remote steering via RQT or RViz 
+        launchers or on the terminal with turtlebot3_teleop. 
+  -->
+
+  <!-- Bringup turtlebot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_robot.launch"/>
+
+  <!-- Deploy await commands with monitoring enabled -->
+  <include file="$(find cloudwatch_robot)/launch/await_commands.launch">
+    <arg name="use_sim_time" value="false" />
+  </include>
+
+  <!-- Do nothing, await Goal Commands from simulation -->
+</launch>
