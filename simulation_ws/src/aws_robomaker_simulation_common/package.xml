@@ -1,23 +1,27 @@
-<?xml version="1.0"?>
-<package format="2">
+<?xml version='1.0' encoding='utf-8'?>
+<package format="3">
   <name>aws_robomaker_simulation_common</name>
   <version>1.0.0</version>
   <description>
     AWS RoboMaker simulation package for commonly used nodes and helpers.
   </description>
-  <license>Apache 2.0</license>
   <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
-  <buildtool_depend>catkin</buildtool_depend>
+  <license>Apache 2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo</exec_depend>
   <exec_depend>gazebo_plugins</exec_depend>
-
-  <!-- Route Manager -->
   <exec_depend>moveit_ros</exec_depend>
   <exec_depend>dwa_local_planner</exec_depend>
-
   <export>
-    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models" plugin_path="${prefix}/lib" />
+  </export>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+  <export>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
