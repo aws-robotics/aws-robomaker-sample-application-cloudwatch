@@ -5,8 +5,8 @@ import launch
 import launch_ros.actions
 
 
-def generate_launch_description():
-    ld = launch.LaunchDescription([
+def get_launch_actions():
+    launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='aws_region',
             description='AWS region override, defaults to config .yaml if unset'
@@ -47,7 +47,12 @@ def generate_launch_description():
             node_name='monitor_distance_to_goal',
             output='log'
         )
-    ])
+    ]
+    return launch_actions
+
+def generate_launch_description():
+    launch_actions = get_launch_actions()
+    ld = launch.LaunchDescription(launch_actions)
     return ld
 
 

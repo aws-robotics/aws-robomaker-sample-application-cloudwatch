@@ -10,9 +10,7 @@
   <license>MIT</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
-  <buildtool_depend>ament_cmake</buildtool_depend>
-  <build_depend>rclpy</build_depend>
-  <build_depend>rclcpp</build_depend>
+  <depend>rclpy</depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>sensor_msgs</build_depend>
   <build_depend>geometry_msgs</build_depend>
@@ -22,13 +20,11 @@
   <build_depend>cloudwatch_logs_common</build_depend>
   <build_depend>cloudwatch_metrics_common</build_depend>
   <build_depend>aws_common</build_depend>
-  <build_depend>aws_ros1_common</build_depend>
+  <build_depend>aws_ros2_common</build_depend>
   <build_depend>health_metric_collector</build_depend>
   <build_depend>turtlebot3</build_depend>
   <build_depend>turtlebot3_msgs</build_depend>
   <build_depend>builtin_interfaces</build_depend>
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>rclcpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
@@ -38,16 +34,13 @@
   <exec_depend>cloudwatch_logs_common</exec_depend>
   <exec_depend>cloudwatch_metrics_common</exec_depend>
   <exec_depend>aws_common</exec_depend>
-  <exec_depend>aws_ros1_common</exec_depend>
+  <exec_depend>aws_ros2_common</exec_depend>
   <exec_depend>health_metric_collector</exec_depend>
   <exec_depend>turtlebot3</exec_depend>
   <exec_depend>turtlebot3_msgs</exec_depend>
   <exec_depend>builtin_interfaces</exec_depend>
   <exec_depend>rosidl_default_runtime</exec_depend>
   <member_of_group>rosidl_interface_packages</member_of_group>
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
   <export>
     <build_type>ament_cmake</build_type>
   </export>
