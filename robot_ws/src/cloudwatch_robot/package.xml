@@ -8,40 +8,26 @@
   <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
   <license>MIT</license>
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
   <depend>rclpy</depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>nav_msgs</build_depend>
-  <build_depend>cloudwatch_logger</build_depend>
-  <build_depend>cloudwatch_metrics_collector</build_depend>
-  <build_depend>cloudwatch_logs_common</build_depend>
-  <build_depend>cloudwatch_metrics_common</build_depend>
-  <build_depend>aws_common</build_depend>
-  <build_depend>aws_ros2_common</build_depend>
-  <build_depend>health_metric_collector</build_depend>
-  <build_depend>turtlebot3</build_depend>
-  <build_depend>turtlebot3_msgs</build_depend>
-  <build_depend>builtin_interfaces</build_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>nav_msgs</exec_depend>
-  <exec_depend>cloudwatch_logger</exec_depend>
-  <exec_depend>cloudwatch_metrics_collector</exec_depend>
-  <exec_depend>cloudwatch_logs_common</exec_depend>
-  <exec_depend>cloudwatch_metrics_common</exec_depend>
-  <exec_depend>aws_common</exec_depend>
-  <exec_depend>aws_ros2_common</exec_depend>
-  <exec_depend>health_metric_collector</exec_depend>
-  <exec_depend>turtlebot3</exec_depend>
-  <exec_depend>turtlebot3_msgs</exec_depend>
-  <exec_depend>builtin_interfaces</exec_depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>cloudwatch_logger</depend>
+  <depend>cloudwatch_metrics_collector</depend>
+  <depend>cloudwatch_logs_common</depend>
+  <depend>cloudwatch_metrics_common</depend>
+  <depend>aws_common</depend>
+  <depend>aws_ros2_common</depend>
+  <depend>health_metric_collector_node</depend>
+  <depend>turtlebot3</depend>
+  <depend>turtlebot3_msgs</depend>
+  <depend>builtin_interfaces</depend>
   <exec_depend>rosidl_default_runtime</exec_depend>
   <member_of_group>rosidl_interface_packages</member_of_group>
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>ament_python</build_type>
   </export>
 </package>

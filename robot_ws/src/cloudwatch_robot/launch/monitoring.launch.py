@@ -9,21 +9,25 @@ def get_launch_actions():
     launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='aws_region',
-            description='AWS region override, defaults to config .yaml if unset'
+            description='AWS region override, defaults to config .yaml if unset',
+            default_value='us-west-2'
         ),
         launch.actions.DeclareLaunchArgument(
             name='launch_id',
-            description='Used for resource name suffix if specified'
+            description='Used for resource name suffix if specified',
+            default_value=''
         ),
         launch.actions.DeclareLaunchArgument(
-            name='metrics_node_name'
+            name='metrics_node_name',
+            default_value="metrics-ros2"
         ),
         launch.actions.DeclareLaunchArgument(
             name='aws_metrics_namespace',
             default_value='robomaker_cloudwatch_monitoring_example'
         ),
         launch.actions.DeclareLaunchArgument(
-            name='logger_node_name'
+            name='logger_node_name',
+            default_value='logger-ros2'
         ),
         launch.actions.DeclareLaunchArgument(
             name='log_group_name',

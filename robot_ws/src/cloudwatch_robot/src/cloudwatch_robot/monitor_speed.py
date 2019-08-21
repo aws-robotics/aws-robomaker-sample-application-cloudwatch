@@ -28,8 +28,8 @@ from nav_msgs.msg import Odometry
 class Monitor(Node):
     def __init__(self, data_topic, data_msg, metric_topic, transform):
         super().__init__('speed_monitor')
-        self.metrics_pub = rclpy.create_publisher(metric_topic, MetricList, queue_size=1)
-        self.topic_sub = rclpy.create_subscription(data_topic, data_msg, self.callback)
+        self.metrics_pub = self.create_publisher(metric_topic, MetricList, 1)
+        self.topic_sub = self.create_subscription(data_topic, data_msg, self.callback, 5)
         self.transform = transform
 
     def callback(self, message):
@@ -48,14 +48,14 @@ def odom_to_speed(odom):
                                metric_name="linear_speed",
                                unit=MetricData.UNIT_NONE,
                                value=odom.twist.twist.linear.x,
-                               time_stamp=rospy.Time.from_sec(time.time()),
+                               time_stamp=timestamp,
                                dimensions=dimensions)
 
     angular_speed = MetricData(header=header,
                                metric_name="angular_speed",
                                unit=MetricData.UNIT_NONE,
                                value=odom.twist.twist.angular.z,
-                               time_stamp=rospy.Time.from_sec(time.time()),
+                               time_stamp=timestamp,
                                dimensions=dimensions)
 
     return MetricList([linear_speed, angular_speed])

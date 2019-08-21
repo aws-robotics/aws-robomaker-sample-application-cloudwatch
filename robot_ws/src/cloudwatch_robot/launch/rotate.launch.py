@@ -3,14 +3,18 @@ import sys
 
 import launch
 import launch_ros.actions
-from monitoring.launch import get_launch_actions as get_monitoring_launch_actions
-
+from ament_index_python.packages import get_package_share_directory
 
 def get_launch_actions():
     launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='use_sim_time',
             default_value='true'
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('cloudwatch_robot'), '/launch/monitoring.launch.py']
+            )
         ),
         launch_ros.actions.Node(
             package='cloudwatch_robot',
@@ -24,15 +28,12 @@ def get_launch_actions():
             ]
         )
     ]
-    launch_actions += get_monitoring_launch_actions()
     return launch_actions
-
 
 def generate_launch_description():
     launch_actions = get_launch_actions()
     ld = launch.LaunchDescription(launch_actions)
     return ld
-
 
 if __name__ == '__main__':
     generate_launch_description()
