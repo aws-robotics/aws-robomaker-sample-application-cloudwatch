@@ -28,8 +28,8 @@ from nav_msgs.msg import Odometry
 class Monitor(Node):
     def __init__(self, data_topic, data_msg, metric_topic, transform):
         super().__init__('speed_monitor')
-        self.metrics_pub = self.create_publisher(metric_topic, MetricList, 1)
-        self.topic_sub = self.create_subscription(data_topic, data_msg, self.callback, 5)
+        self.metrics_pub = self.create_publisher(MetricList, metric_topic, 1)
+        self.topic_sub = self.create_subscription(data_msg, data_topic, self.callback, 5)
         self.transform = transform
 
     def callback(self, message):

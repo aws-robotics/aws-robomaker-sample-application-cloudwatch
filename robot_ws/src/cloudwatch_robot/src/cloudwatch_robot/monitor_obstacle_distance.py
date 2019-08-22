@@ -27,8 +27,8 @@ from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 class MonitorNearestObstacle(Node):
     def __init__(self):
         super().__init__('monitor_obstacle_distance')
-        self.scan_sub = self.create_subscription("scan", LaserScan, self.report_metric, 5)
-        self.metrics_pub = self.create_publisher("/metrics", MetricList, 1)
+        self.scan_sub = self.create_subscription(LaserScan, "scan", self.report_metric, 5)
+        self.metrics_pub = self.create_publisher(MetricList, "/metrics", 1)
 
     def filter_scan(self, msg):
         rclpy.get_logger().info('Filtering scan values in value range (%s,%s)', msg.range_min, msg.range_max)

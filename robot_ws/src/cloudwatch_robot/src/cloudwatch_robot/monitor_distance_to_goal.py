@@ -31,8 +31,8 @@ class MonitorDistanceToGoal(Node):
     def __init__(self):
         super().__init__('monitor_distance_to_goal')
 
-        self.scan_sub = self.create_subscription("/move_base/NavfnROS/plan", Path, self.report_metric, 5)
-        self.metrics_pub = self.create_publisher("/metrics", MetricList, 1)
+        self.scan_sub = self.create_subscription(Path, "/move_base/NavfnROS/plan", self.report_metric, 5)
+        self.metrics_pub = self.create_publisher(MetricList, "/metrics", 1)
 
     def calc_path_distance(self, msg):
         points = [(p.pose.position.x,p.pose.position.y) for p in msg.poses]
