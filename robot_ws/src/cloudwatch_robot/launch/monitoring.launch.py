@@ -5,7 +5,7 @@ import launch
 import launch_ros.actions
 
 
-def get_launch_actions():
+def generate_launch_description():
     launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='aws_region',
@@ -52,10 +52,6 @@ def get_launch_actions():
             output='log'
         )
     ]
-    return launch_actions
-
-def generate_launch_description():
-    launch_actions = get_launch_actions()
     ld = launch.LaunchDescription(launch_actions)
     return ld
 

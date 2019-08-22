@@ -5,7 +5,7 @@ import launch
 import launch_ros.actions
 from ament_index_python.packages import get_package_share_directory
 
-def get_launch_actions():
+def generate_launch_description():
     launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='use_sim_time',
@@ -28,10 +28,6 @@ def get_launch_actions():
             ]
         )
     ]
-    return launch_actions
-
-def generate_launch_description():
-    launch_actions = get_launch_actions()
     ld = launch.LaunchDescription(launch_actions)
     return ld
 

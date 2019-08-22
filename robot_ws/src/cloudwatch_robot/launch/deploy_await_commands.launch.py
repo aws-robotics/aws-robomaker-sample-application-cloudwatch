@@ -2,18 +2,25 @@ import os
 import sys
 
 import launch
-import launch_ros.actions
-from .await_commands.launch import get_launch_actions as get_await_commands_launch_actions
-
-
-def get_launch_actions():
-    launch_actions = []
-    launch_actions += get_await_commands_launch_actions()
-    return launch_actions
+import launch_rpos.actions
+from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
-    ld = launch.LaunchDescription(get_launch_actions())
+    launch_actions = [
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('turtlebot3_bringup'), '/launch/turtlebot3_robot.launch.py']
+            )
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('cloudwatch_robot'), '/launch/await_commands.launch.py']
+                # TODO: Pass use_sim_time arg here. 
+            )
+        ),
+    ]
+    ld = launch.LaunchDescription(launch_actions)
     return ld
 
 
