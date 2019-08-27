@@ -1,45 +1,27 @@
-<?xml version='1.0' encoding='utf-8'?>
-<package format="3">
+<?xml version="1.0"?>
+<package format="2">
   <name>cloudwatch_simulation</name>
   <version>1.2.0</version>
   <description>
     AWS RoboMaker simulation package for launching a TurtleBot3 in a empty world or a small house.
   </description>
+  <license>MIT</license>
   <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
-  <license>MIT</license>
-  <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>ament_cmake</buildtool_depend>
-  <build_depend>rclcpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>nav_msgs</build_depend>
-  <build_depend>tf</build_depend>
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>gazebo_plugins</build_depend>
-  <build_depend>turtlebot3_description</build_depend>
-  <build_depend>turtlebot3_gazebo</build_depend>
-  <build_depend>turtlebot3_navigation</build_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_plugins</depend>
+  <depend>turtlebot3_description</depend>
+  <depend>turtlebot3_gazebo</depend>
+  <depend>turtlebot3_navigation</depend>
   <exec_depend>gazebo</exec_depend>
-  <exec_depend>rclcpp</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>nav_msgs</exec_depend>
-  <exec_depend>tf</exec_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>gazebo_plugins</exec_depend>
-  <exec_depend>turtlebot3_description</exec_depend>
-  <exec_depend>turtlebot3_gazebo</exec_depend>
-  <exec_depend>turtlebot3_navigation</exec_depend>
   <export>
-    <gazebo_ros gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models:${prefix}/models/turtlebot3_autorace" plugin_path="${prefix}/lib:${prefix}/models/turtlebot3_autorace/gazebo_traffic_plugin" />
-  </export>
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
-  <export>
-    <build_type>ament_cmake</build_type>
+    <gazebo_ros plugin_path="${prefix}/lib:${prefix}/models/turtlebot3_autorace/gazebo_traffic_plugin" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models:${prefix}/models/turtlebot3_autorace"/>
   </export>
 </package>
