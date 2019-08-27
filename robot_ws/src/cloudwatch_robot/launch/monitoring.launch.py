@@ -3,6 +3,7 @@ import sys
 
 import launch
 import launch_ros.actions
+from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
@@ -19,7 +20,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='metrics_node_name',
-            default_value="metrics-ros2"
+            default_value="metrics_ros2"
         ),
         launch.actions.DeclareLaunchArgument(
             name='aws_metrics_namespace',
@@ -27,7 +28,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='logger_node_name',
-            default_value='logger-ros2'
+            default_value='logger_ros2'
         ),
         launch.actions.DeclareLaunchArgument(
             name='log_group_name',
@@ -50,7 +51,33 @@ def generate_launch_description():
             node_executable='monitor_distance_to_goal',
             node_name='monitor_distance_to_goal',
             output='log'
-        )
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('health_metric_collector_node'), '/launch/health_metric_collector.launch.py']
+            ),
+            launch_arguments={
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/health_metrics_config.yaml')
+            }.items()
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('cloudwatch_metrics_collector'), '/launch/cloudwatch_metrics_collector_launch.py']
+            ),
+            launch_arguments={
+                'node_name': launch.substitutions.LaunchConfiguration('metrics_node_name'),
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_metrics_config.yaml')
+            }.items()
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                [get_package_share_directory('cloudwatch_logger'), '/launch/cloudwatch_logger.launch.py']
+            ),
+            launch_arguments={
+                'node_name': launch.substitutions.LaunchConfiguration('logger_node_name'),
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_logs_config.yaml')
+            }.items()
+        ),
     ]
     ld = launch.LaunchDescription(launch_actions)
     return ld

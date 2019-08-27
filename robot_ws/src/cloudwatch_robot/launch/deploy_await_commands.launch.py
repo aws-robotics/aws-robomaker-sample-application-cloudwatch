@@ -16,8 +16,10 @@ def generate_launch_description():
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 [get_package_share_directory('cloudwatch_robot'), '/launch/await_commands.launch.py']
-                # TODO: Pass use_sim_time arg here. 
-            )
+            ),
+            launch_arguments={
+                'use_sim_time': 'false'
+            }.items()
         ),
     ]
     ld = launch.LaunchDescription(launch_actions)
