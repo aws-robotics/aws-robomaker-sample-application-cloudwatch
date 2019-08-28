@@ -11,16 +11,16 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             name='aws_region',
             description='AWS region override, defaults to config .yaml if unset',
-            default_value='us-west-2'
+            default_value=launch.substitutions.EnvironmentVariable('ROS_AWS_REGION')
         ),
         launch.actions.DeclareLaunchArgument(
             name='launch_id',
             description='Used for resource name suffix if specified',
-            default_value=''
+            default_value=launch.substitutions.EnvironmentVariable('LAUNCH_ID')
         ),
         launch.actions.DeclareLaunchArgument(
             name='metrics_node_name',
-            default_value="metrics_ros2"
+            default_value="cloudwatch_metrics_collector"
         ),
         launch.actions.DeclareLaunchArgument(
             name='aws_metrics_namespace',
@@ -28,7 +28,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='logger_node_name',
-            default_value='logger_ros2'
+            default_value='cloudwatch_logger'
         ),
         launch.actions.DeclareLaunchArgument(
             name='log_group_name',
@@ -66,7 +66,9 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('metrics_node_name'),
-                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_metrics_config.yaml')
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_metrics_config.yaml'),
+                'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
+                'launch_id': launch.substitutions.LaunchConfiguration('launch_id')
             }.items()
         ),
         launch.actions.IncludeLaunchDescription(
@@ -75,7 +77,9 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('logger_node_name'),
-                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_logs_config.yaml')
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_logs_config.yaml'),
+                'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
+                'launch_id': launch.substitutions.LaunchConfiguration('launch_id')
             }.items()
         ),
     ]
