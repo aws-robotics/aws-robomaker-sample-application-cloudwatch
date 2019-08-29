@@ -1,17 +1,37 @@
 import os
 import sys
+import yaml
 
 import launch
 import launch_ros.actions
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration
+from launch.substitutions import PythonExpression
 from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
+    default_metrics_config = f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_metrics_config.yaml"
+    default_logs_config = f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_logs_config.yaml"
+
+    with open(default_metrics_config, 'r') as f:
+      config_text = f.read()
+    config_yaml = yaml.safe_load(config_text)
+    default_aws_metrics_namespace = config_yaml['cloudwatch_metrics_collector']['ros__parameters']['aws_metrics_namespace']
+    default_aws_region = config_yaml['cloudwatch_metrics_collector']['ros__parameters']['aws_client_configuration']['region']
+
+    with open(default_logs_config, 'r') as f:
+      config_text = f.read()
+    config_yaml = yaml.safe_load(config_text)
+    default_log_group_name = config_yaml['cloudwatch_logger']['ros__parameters']['log_group_name']
+
+    default_aws_region = os.environ.get('ROS_AWS_REGION', default_aws_region)
+
     launch_actions = [
         launch.actions.DeclareLaunchArgument(
             name='aws_region',
             description='AWS region override, defaults to config .yaml if unset',
-            default_value=launch.substitutions.EnvironmentVariable('ROS_AWS_REGION')
+            default_value=default_aws_region
         ),
         launch.actions.DeclareLaunchArgument(
             name='launch_id',
@@ -24,7 +44,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='aws_metrics_namespace',
-            default_value='robomaker_cloudwatch_monitoring_example'
+            default_value=default_aws_metrics_namespace
         ),
         launch.actions.DeclareLaunchArgument(
             name='logger_node_name',
@@ -32,7 +52,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='log_group_name',
-            default_value='robomaker_cloudwatch_monitoring_example'
+            default_value=default_log_group_name
         ),
         launch_ros.actions.Node(
             package='cloudwatch_robot',
@@ -52,12 +72,22 @@ def generate_launch_description():
             node_name='monitor_distance_to_goal',
             output='log'
         ),
+        launch.actions.SetLaunchConfiguration(
+            name='aws_metrics_namespace',
+            value=PythonExpression(["'", LaunchConfiguration('aws_metrics_namespace'), "-", LaunchConfiguration('launch_id'), "'"]),
+            condition=IfCondition(PythonExpression(["'true' if '", LaunchConfiguration('launch_id'), "' else 'false'"]))
+        ),
+        launch.actions.SetLaunchConfiguration(
+            name='log_group_name',
+            value=PythonExpression(["'", LaunchConfiguration('log_group_name'), "-", LaunchConfiguration('launch_id'), "'"]),
+            condition=IfCondition(PythonExpression(["'true' if '", LaunchConfiguration('launch_id'), "' else 'false'"]))
+        ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 [get_package_share_directory('health_metric_collector_node'), '/launch/health_metric_collector.launch.py']
             ),
             launch_arguments={
-                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/health_metrics_config.yaml')
+                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/health_metrics_config.yaml",
             }.items()
         ),
         launch.actions.IncludeLaunchDescription(
@@ -66,9 +96,9 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('metrics_node_name'),
-                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_metrics_config.yaml'),
+                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_metrics_config.yaml",
                 'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
-                'launch_id': launch.substitutions.LaunchConfiguration('launch_id')
+                'aws_metrics_namespace': launch.substitutions.LaunchConfiguration('aws_metrics_namespace'),
             }.items()
         ),
         launch.actions.IncludeLaunchDescription(
@@ -77,9 +107,9 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('logger_node_name'),
-                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), '/config/cloudwatch_logs_config.yaml'),
+                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_logs_config.yaml",
                 'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
-                'launch_id': launch.substitutions.LaunchConfiguration('launch_id')
+                'log_group_name': launch.substitutions.LaunchConfiguration('log_group_name'),
             }.items()
         ),
     ]
