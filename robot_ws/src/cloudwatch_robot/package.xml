@@ -21,7 +21,7 @@
   <depend>cloudwatch_metrics_common</depend>
   <depend>aws_common</depend>
   <depend>aws_ros2_common</depend>
-  <depend>health_metric_collector_node</depend>
+  <depend>health_metric_collector</depend>
   <depend>turtlebot3</depend>
   <depend>turtlebot3_msgs</depend>
   <depend>builtin_interfaces</depend>
