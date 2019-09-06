@@ -9,7 +9,6 @@
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
   <license>MIT</license>
   <buildtool_depend>ament_python</buildtool_depend>
-  <buildtool_depend>rosidl_default_generators</buildtool_depend>
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>

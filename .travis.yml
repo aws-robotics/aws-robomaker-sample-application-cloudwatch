@@ -10,9 +10,8 @@ notifications:
     - ros-contributions@amazon.com
 env:
   matrix:
-  - ROS_DISTRO=kinetic ROS_VERSION=1 GAZEBO_VERSION=7
-  - ROS_DISTRO=kinetic ROS_VERSION=1 GAZEBO_VERSION=9
-  - ROS_DISTRO=melodic ROS_VERSION=1 GAZEBO_VERSION=9
+  - ROS_DISTRO=dashing ROS_VERSION=2 GAZEBO_VERSION=9 WORKSPACES="robot_ws"
+  # - ROS_DISTRO=dashing ROS_VERSION=2 GAZEBO_VERSION=9 WORKSPACES="simulation_ws"
   global:
   - secure: ZxNXZbH9Esx7NKlJeAt2UePHxxRfII7/sma6UlYwE7ouayf+8Mz2veQCgjwTX6kI2L6yCmmZ9st1o05VC5DyNxyKAGSOzadZ1zgxdR3j/qH1IwhxanCjGZwtZbwqcPc38V5AC+DQEHyVxgIdvZbwndEPFWlTeWMZiT/LI9eQB5Bh7mcJ7HsTiFimnDcsMQ1KXUi75OqBT5R7Ad3tmIP58kzzLyFxcZbIhvqcT92+UGIdTRkbGf64gcaO5b41K+hbcqqpVIaLBnIKjPeh3RPMUEE6vqixeMJb/Kwhejt0+HrDAJ0QRIQtKXH6KdPReEL1VjhdTZeb7hzTqtQgGnxud/BSUIhNIKbpIOO9VC/UsqblyQOHYARZ+iNvmUTL8fqbfKsrzx8P6AC2QeizH5ixJklr8Zh92xQnGW0KI/sZxgg1AmV3xzDvR5Ose9JMox7/9N4cum8J27VytYRR7cz/Stb0kHPOWNJxzH1oTkDkyoMNHs0igjhkNgxYg4W9pO/1lRunVlcWG+hx68Xspm4IiKr/hkVHMsE8o6HX4X/JB4ehBhkMfQGMWGkNncOeY6srAkqSJQs1fl9BWJZsb97x8p5nT7k/n8go2wBX7zaAlqkQhG6jJK5aw1VVgozozM8MAu06Nvaio+TNEMoc6IyCljPfDHV9vyeuiaOSoWYBQas=
   - secure: or0cjfpeC5owoXcpn+BhMKMrnoRpzgo7hR+ocKQYQxszExbHY2BzsZwj/9pVNH7AnXfoWYLmBkA8uACVG/dZg7B2PyMuEAqEuLkU94ZPVDM2Vhy5NZGKf6Tnm0MEFL3X38mxSQlu3uGr1nJfLMlqRYtE6umjtS9dvuoUmQgu1npuHiXoMW6VqNIpc/cpEBA00lzDo4IMWqWXG5Ql+rXu1LsNa34wyl30cASOCWhvLhJgVq6LYQRSJ3yFEuUcagNFzxna8mQWAG+ZJWduLvlg0mHEQiTr8kxgZjsrI2vBoF/TKxSKP36UMFjDyIGpVkybex85kMjhJ8PwbqchaN5+sIRQMC+QxXoArkcGZrUJdmuFdml55vL/1pWfzogCVJ1MH0Shka4+L7wsiMCnzjuz87UYa3QOLGL24/sUMFqOFftwLwN+w4xTKunF5L8oiqPNB9vTYtDE35M9Ga+O56TVxEFJQX1028gfr+oEev5YzZ6g+huv7PYnhMXf8ON8hHrso9FIXhrfCwYD6eZMjvOFGWpo5mhkLGt4eJN+zJyFeO5FMNoPZpBl6EkxqJ07ach1214x4dGmMCxSTnORzXgu73RZj+kvLP2nHX6bwH3w0cRvab47z80zzFtPPtaImh7BIp2XolI2SjQEk4s4YALCMaodk+bKgVORaOlbBKN/Nx8=
@@ -30,24 +29,8 @@ install:
 - git clone https://github.com/aws-robotics/travis-scripts.git .ros_ci
 script:
 - . .ros_ci/add_tag.sh
-- travis_wait 100 .ros_ci/ce_build.sh
+- while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
+- .ros_ci/ce_build.sh
+- kill %1
 before_deploy:
 - . .ros_ci/before_deploy.sh
-deploy:
-  - provider: s3
-    access_key_id: "$AWS_ACCESS_KEY_ID"
-    secret_access_key: "$AWS_SECRET_ACCESS_KEY"
-    bucket: "$S3_BUCKET_NAME"
-    region: "us-west-2"
-    local_dir: shared
-    skip_cleanup: true
-    wait-until-deployed: true
-    on:
-      branch: master
-    upload-dir: travis/${SA_NAME}/${ROS_DISTRO}/gazebo${GAZEBO_VERSION}
-  - provider: script
-    script: bash .ros_ci/codepipeline_deploy.sh
-    on:
-      branch: master
-after_deploy:
-- .ros_ci/post_deploy.sh
