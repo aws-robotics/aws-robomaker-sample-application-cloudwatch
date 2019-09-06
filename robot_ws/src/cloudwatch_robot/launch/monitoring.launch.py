@@ -84,7 +84,7 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(get_package_share_directory('health_metric_collector'), 'launch/health_metric_collector.launch.py')
+                os.path.join(get_package_share_directory('health_metric_collector'), 'launch', 'health_metric_collector.launch.py')
             ),
             launch_arguments={
                 'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/health_metrics_config.yaml",
@@ -92,7 +92,7 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(get_package_share_directory('cloudwatch_metrics_collector'), 'launch/cloudwatch_metrics_collector.launch.py')
+                os.path.join(get_package_share_directory('cloudwatch_metrics_collector'), 'launch', 'cloudwatch_metrics_collector.launch.py')
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('metrics_node_name'),
@@ -103,7 +103,7 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(get_package_share_directory('cloudwatch_logger'), 'launch/cloudwatch_logger.launch.py')
+                os.path.join(get_package_share_directory('cloudwatch_logger'), 'launch', 'cloudwatch_logger.launch.py')
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('logger_node_name'),

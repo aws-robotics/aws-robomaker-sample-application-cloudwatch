@@ -13,7 +13,7 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(get_package_share_directory('cloudwatch_robot'), 'launch/monitoring.launch.py')
+                os.path.join(get_package_share_directory('cloudwatch_robot'), 'launch', 'monitoring.launch.py')
             )
         ),
         launch_ros.actions.Node(
