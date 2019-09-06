@@ -9,7 +9,7 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='model',
-            default_value='$(optenv TURTLEBOT3_MODEL waffle_pi)',
+            default_value=os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi'),
             description='model type [burger, waffle, waffle_pi]'
         ),
         launch.actions.DeclareLaunchArgument(
