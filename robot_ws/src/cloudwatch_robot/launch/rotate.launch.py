@@ -1,0 +1,35 @@
+import os
+import sys
+
+import launch
+import launch_ros.actions
+from ament_index_python.packages import get_package_share_directory
+
+def generate_launch_description():
+    launch_actions = [
+        launch.actions.DeclareLaunchArgument(
+            name='use_sim_time',
+            default_value='true'
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                os.path.join(get_package_share_directory('cloudwatch_robot'), 'launch', 'monitoring.launch.py')
+            )
+        ),
+        launch_ros.actions.Node(
+            package='cloudwatch_robot',
+            node_executable='rotate',
+            node_name='rotate',
+            output='screen',
+            parameters=[
+                {
+                    'use_sim_time': launch.substitutions.LaunchConfiguration('use_sim_time')
+                }
+            ]
+        )
+    ]
+    ld = launch.LaunchDescription(launch_actions)
+    return ld
+
+if __name__ == '__main__':
+    generate_launch_description()
