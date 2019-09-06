@@ -14,12 +14,10 @@
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>nav_msgs</depend>
-  <depend>tf</depend>
+  <depend>tf2</depend>
   <depend>gazebo_ros</depend>
   <depend>gazebo_plugins</depend>
-  <depend>turtlebot3_description</depend>
-  <depend>turtlebot3_gazebo</depend>
-  <depend>turtlebot3_navigation</depend>
+  <depend>turtlebot3</depend>
   <export>
     <build_type>ament_python</build_type>
   </export>

@@ -9,13 +9,11 @@
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>turtlebot3</depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo</exec_depend>
   <exec_depend>gazebo_plugins</exec_depend>
-  <exec_depend>moveit_ros</exec_depend>
-  <exec_depend>dwa_local_planner</exec_depend>
   <export>
     <build_type>ament_cmake</build_type>
-    <gazebo_ros gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models" plugin_path="${prefix}/lib" />
   </export>
 </package>

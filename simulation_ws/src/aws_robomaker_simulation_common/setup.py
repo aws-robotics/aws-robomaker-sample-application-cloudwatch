@@ -1,13 +1,14 @@
-## ! DO NOT MANUALLY INVOKE THIS setup.py, USE CATKIN INSTEAD
-## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
+# Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+from setuptools import setup, find_packages
 
-from distutils.core import setup
-from catkin_pkg.python_setup import generate_distutils_setup
-
-# fetch values from package.xml
-setup_args = generate_distutils_setup(
-    packages=['aws_robomaker_simulation_common'],
-    package_dir={'': 'src'}
+setup(
+    name='aws_robomaker_simulation_common',
+    version='2.0.0',
+    packages=find_packages(),
+    python_requires='>=3.5.0',
+    install_requires=[
+        'rospkg==1.1.7'
+    ],
+    zip_safe=True
 )
-
-setup(**setup_args)
