@@ -11,8 +11,8 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
-    default_metrics_config = f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_metrics_config.yaml"
-    default_logs_config = f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_logs_config.yaml"
+    default_metrics_config = os.path.join(get_package_share_directory('cloudwatch_robot'), 'config', 'cloudwatch_metrics_config.yaml')
+    default_logs_config = os.path.join(get_package_share_directory('cloudwatch_robot'), 'config', 'cloudwatch_logs_config.yaml')
 
     with open(default_metrics_config, 'r') as f:
       config_text = f.read()
@@ -87,7 +87,7 @@ def generate_launch_description():
                 os.path.join(get_package_share_directory('health_metric_collector'), 'launch', 'health_metric_collector.launch.py')
             ),
             launch_arguments={
-                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/health_metrics_config.yaml",
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), 'config', 'health_metrics_config.yaml')
             }.items()
         ),
         launch.actions.IncludeLaunchDescription(
@@ -96,7 +96,7 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('metrics_node_name'),
-                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_metrics_config.yaml",
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), 'config', 'cloudwatch_metrics_config.yaml'),
                 'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
                 'aws_metrics_namespace': launch.substitutions.LaunchConfiguration('aws_metrics_namespace'),
             }.items()
@@ -107,7 +107,7 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'node_name': launch.substitutions.LaunchConfiguration('logger_node_name'),
-                'config_file': f"{get_package_share_directory('cloudwatch_robot')}/config/cloudwatch_logs_config.yaml",
+                'config_file': os.path.join(get_package_share_directory('cloudwatch_robot'), 'config', 'cloudwatch_logs_config.yaml'),
                 'aws_region': launch.substitutions.LaunchConfiguration('aws_region'),
                 'log_group_name': launch.substitutions.LaunchConfiguration('log_group_name'),
             }.items()
