@@ -15,16 +15,21 @@
 """
 
 
-import random
 import itertools
-import rospy
+import random
+import time
+import yaml
+
 import actionlib
+import rclpy
+from rclpy.node import Node
 import tf.transformations
+
 from geometry_msgs.msg import Point, Quaternion
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
 
-class RouteManager():
+class RouteManager(Node):
     '''Send goals to move_base server for the specified route. Routes forever.
 
        Loads the route from yaml. 
@@ -55,57 +60,62 @@ class RouteManager():
     }
 
     def __init__(self):
+        super().__init__('route_manager')
         self.route = []
 
         self.client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
         self.client.wait_for_server()
 
-        self.route_mode = rospy.get_param('~mode')
+        route_file = rclpy.get_param('route_file')
+        with open(route_file, 'r') as f:
+            route_file_contents = f.read()
+        route_yaml = yaml.safe_load(route_file_contents)
+
+        self.route_mode = route_yaml['mode']
         if self.route_mode not in RouteManager.route_modes:
-            rospy.logerr("Route mode '%s' unknown, exiting route manager", self.route_mode)
+            self.get_logger().error("Route mode '%s' unknown, exiting route manager", self.route_mode)
             return
 
-        poses = rospy.get_param('~poses')
+        poses = route_yaml['poses']
         if not poses:
-            rospy.loginfo("Route manager initialized no goals, unable to route")
+            self.get_logger().info("Route manager initialized no goals, unable to route")
 
         self.goals = RouteManager.route_modes[self.route_mode](poses)
-        rospy.loginfo("Route manager initialized with %s goals in %s mode", len(poses), self.route_mode)
+        self.get_logger().info("Route manager initialized with %s goals in %s mode", len(poses), self.route_mode)
 
     def to_move_goal(self, pose):
         goal = MoveBaseGoal()
-        goal.target_pose.header.stamp = rospy.Time.now()
+        goal.target_pose.header.stamp = self.get_clock().now()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.pose.position = Point(**pose['pose']['position'])
         goal.target_pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
         return goal
 
     def route_forever(self):
-        rate = rospy.Rate(1)
-        while not rospy.is_shutdown():
+        while rclpy.ok():
             try:
-                rospy.loginfo("Route mode is '%s', getting next goal", self.route_mode)
+                self.get_logger().info("Route mode is '%s', getting next goal", self.route_mode)
                 current_goal = self.to_move_goal(next(self.goals))
-                rospy.loginfo("Sending target goal: %s", current_goal)
+                self.get_logger().info("Sending target goal: %s", current_goal)
                 self.client.send_goal(current_goal)
 
                 if not self.client.wait_for_result():
-                    rospy.logerr("Move server not ready, will try again...")
+                    self.get_logger().error("Move server not ready, will try again...")
                 else:
                     if self.client.get_result():
-                        rospy.loginfo("Goal done: %s", current_goal)
-                rate.sleep()
+                        self.get_logger().info("Goal done: %s", current_goal)
+                time.sleep(1)
             except StopIteration:
-                rospy.loginfo("No goals, stopping route manager")
+                self.get_logger().info("No goals, stopping route manager")
                 return
 
 
 def main():
-    rospy.init_node('route_manager')
+    rclpy.init()
     try:
         route_manger = RouteManager()
         route_manger.route_forever()
-    except rospy.ROSInterruptException:
+    except rclpy.ROSInterruptException:
         pass
 
 if __name__ == '__main__':

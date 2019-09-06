@@ -1,26 +1,37 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(aws_robomaker_simulation_common)
 
-find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
-  turtlebot3_description
-  turtlebot3_navigation  # required for copy of .rviz file
-)
+# Add support for C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
 
-catkin_package()
-catkin_python_setup()
+find_package(ament_cmake REQUIRED)
+find_package(turtlebot3_description REQUIRED)
+find_package(turtlebot3_navigation REQUIRED)
+find_package(gazebo_ros REQUIRED)
 
-install(DIRECTORY worlds
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+set(INCLUDE_DIRS ${ament_cmake_INCLUDE_DIRS} ${gazebo_ros_INCLUDE_DIRS}
+  ${turtlebot3_description_INCLUDE_DIRS} ${turtlebot3_navigation_INCLUDE_DIRS})
 
-catkin_install_python(PROGRAMS 
-  nodes/route_manager
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+include_directories(${INCLUDE_DIRS})
 
-# Copy the rviz models for easier access in AWS RoboMaker RViz 
+set(LIBRARY_DIRS ${ament_cmake_LIBRARIES} ${gazebo_ros_LIBRARIES}
+  ${turtlebot3_description_LIBRARIES} ${turtlebot3_navigation_LIBRARIES})
+
+install(DIRECTORY worlds DESTINATION share/${PROJECT_NAME})
+
+catkin_install_python(PROGRAMS nodes/route_manager DESTINATION bin)
+
+# Copy the rviz models for easier access in AWS RoboMaker RViz
 install(FILES ${turtlebot3_navigation_DIR}/../rviz/turtlebot3_navigation.rviz
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
-  RENAME turtlebot3_navigation.rviz
-)
+  DESTINATION share/${PROJECT_NAME}/rviz
+  RENAME turtlebot3_navigation.rviz)
+
+ament_export_dependencies(ament_cmake)
+ament_export_dependencies(gazebo_ros)
+ament_export_dependencies(turtlebot3_description)
+ament_export_dependencies(turtlebot3_navigation)
+ament_export_include_directories(${INCLUDE_DIRS})
+
+ament_package()
