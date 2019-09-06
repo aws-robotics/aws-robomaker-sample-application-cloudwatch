@@ -6,5 +6,3 @@
 - git: {local-name: src/deps/cloudwatchmetrics-ros2, uri: 'https://github.com/aws-robotics/cloudwatchmetrics-ros2', version: 'master'}
 - git: {local-name: src/deps/health-metrics-collector-ros2, uri: 'https://github.com/aws-robotics/health-metrics-collector-ros2', version: 'master'}
 - git: {local-name: src/deps/monitoringmessages-ros2, uri: 'https://github.com/aws-robotics/monitoringmessages-ros2', version: 'master'}
-- git: {local-name: src/deps/turtlebot3, uri: 'https://github.com/ROBOTIS-GIT/turtlebot3.git', version: 'ros2'}
-- git: {local-name: src/deps/cartographer/cartographer_ros, uri: 'https://github.com/ROBOTIS-GIT/cartographer_ros.git', version: dashing}
