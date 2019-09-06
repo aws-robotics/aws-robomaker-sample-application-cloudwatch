@@ -26,7 +26,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_73b0d6ab4894_key -iv $encrypted_73b0d6ab4894_iv
   -in github_deploy.pem.enc -out github_deploy.pem -d
 install:
-- git clone https://github.com/aws-robotics/travis-scripts.git .ros_ci
+- git clone -b apt-testing-repo https://github.com/aws-robotics/travis-scripts.git .ros_ci
 script:
 - . .ros_ci/add_tag.sh
 - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
