@@ -36,8 +36,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'aws_robomaker_bookstore_world'), '/launch/bookstore.launch.py']
+                os.path.join(get_package_share_directory(
+                    'aws_robomaker_bookstore_world'), 'launch', 'bookstore.launch.py')
             ),
             launch_arguments={
                 'gui': launch.substitutions.LaunchConfiguration('gui')
@@ -45,8 +45,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'turtlebot3_description_reduced_mesh'), '/launch/spawn_turtlebot.launch.py']
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_description_reduced_mesh'), 'launch', 'turtlebot3_waffle_pi_and_burger.launch.py')
             ),
             launch_arguments={
                 'x_pos': launch.substitutions.LaunchConfiguration('x_pos'),
@@ -57,11 +57,11 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'cloudwatch_robot'), '/launch/turtlebot3_navigation.launch.py']
+                os.path.join(get_package_share_directory(
+                    'cloudwatch_simulation'), 'launch', 'turtlebot3_navigation.launch.py')
             ),
             launch_arguments={
-                'map_file': launch.substitutions.LaunchConfiguration('model'),
+                'map_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'maps', f"turtlebot3_{os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')}", 'map.yaml'),
                 'initial_pose_x': launch.substitutions.LaunchConfiguration('x_pos'),
                 'initial_pose_y': launch.substitutions.LaunchConfiguration('y_pos'),
                 'initial_pose_a': launch.substitutions.LaunchConfiguration('yaw'),

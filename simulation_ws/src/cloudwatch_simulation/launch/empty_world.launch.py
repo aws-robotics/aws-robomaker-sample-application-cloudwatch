@@ -14,8 +14,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'gazebo_ros'), '/launch/empty_world.launch.py']
+                os.path.join(get_package_share_directory(
+                    'gazebo_ros'), 'launch', 'empty_world.launch.py')
             ),
             launch_arguments={
                 'world_name': get_package_share_directory('cloudwatch_simulation') + '/worlds/empty.world',
@@ -29,8 +29,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'turtlebot3_description_reduced_mesh'), '/launch/spawn_turtlebot.launch.py']
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_description_reduced_mesh'), 'launch', 'spawn_turtlebot.launch.py')
             )
         )
     ])

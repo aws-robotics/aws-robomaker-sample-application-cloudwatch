@@ -16,8 +16,8 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='map_file',
-            default_value=get_package_share_directory(
-                'turtlebot3_navigation') + '/maps/map.yaml'
+            default_value=os.path.join(get_package_share_directory(
+                'turtlebot3_navigation') + 'maps', 'map.yaml')
         ),
         launch.actions.DeclareLaunchArgument(
             name='open_rviz',
@@ -38,7 +38,8 @@ def generate_launch_description():
         launch_ros.actions.Node(
             package='map_server',
             node_executable='map_server',
-            node_name='map_server'
+            node_name='map_server',
+            arguments=[launch.substitutions.LaunchConfiguration('map_file')]
         ),
         launch_ros.actions.Node(
             package='rviz',
@@ -50,8 +51,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'turtlebot3_navigation'), '/launch/amcl.launch.py']
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_navigation'), 'launch', 'amcl.launch.py')
             ),
             launch_arguments={
                 'initial_pose_x': launch.substitutions.LaunchConfiguration('initial_pose_x'),
@@ -61,8 +62,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'turtlebot3_navigation'), '/launch/move_base.launch.py']
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_navigation'), 'launch', 'move_base.launch.py')
             ),
             launch_arguments={
                 'model': launch.substitutions.LaunchConfiguration('model')

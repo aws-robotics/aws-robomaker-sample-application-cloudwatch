@@ -14,8 +14,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'aws_robomaker_bookstore_world'), '/launch/bookstore.launch.py']
+                os.path.join(get_package_share_directory(
+                    'aws_robomaker_bookstore_world'), 'launch', 'bookstore.launch.py')
             ),
             launch_arguments={
                 'gui': launch.substitutions.LaunchConfiguration('gui')
@@ -23,8 +23,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'turtlebot3_description_reduced_mesh'), '/launch/spawn_turtlebot.launch.py']
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_description_reduced_mesh'), 'launch', 'spawn_turtlebot.launch.py')
             ),
             launch_arguments={
                 'x_pos': '-3.5',

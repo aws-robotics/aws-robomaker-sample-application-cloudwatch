@@ -18,8 +18,8 @@ def generate_launch_description():
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'cloudwatch_simulation'), '/launch/bookstore_turtlebot3_navigation.launch.py']
+                os.path.join(get_package_share_directory(
+                    'cloudwatch_simulation'), 'launch', 'bookstore_turtlebot3_navigation.launch.py')
             ),
             launch_arguments={
                 'gui': launch.substitutions.LaunchConfiguration('gui'),
@@ -32,10 +32,10 @@ def generate_launch_description():
             package='aws_robomaker_simulation_common',
             node_executable='route_manager',
             node_name='route_manager',
-            screen='screen',
-            parameters={
-                'route_file': get_package_share_directory('aws_robomaker_bookstore_world') + '/routes/route.yaml'
-            }.items(),
+            output='screen',
+            parameters=[{
+                'route_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'routes', 'route.yaml')
+            }],
             condition=launch.conditions.IfCondition(
                 launch.substitutions.LaunchConfiguration('follow_route'))
         ),

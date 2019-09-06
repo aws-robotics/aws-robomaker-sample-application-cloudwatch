@@ -10,8 +10,8 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory(
-                    'cloudwatch_simulation'), '/launch/empty_world.launch.py']
+                os.path.join(get_package_share_directory(
+                    'cloudwatch_simulation'), 'launch', 'empty_world.launch.py')
             ),
             launch_arguments={
                 'gui': 'true'
