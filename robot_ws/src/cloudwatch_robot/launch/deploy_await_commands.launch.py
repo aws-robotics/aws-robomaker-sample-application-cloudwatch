@@ -10,12 +10,12 @@ def generate_launch_description():
     launch_actions = [
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory('turtlebot3_bringup'), '/launch/turtlebot3_robot.launch.py']
+                os.path.join(get_package_share_directory('turtlebot3_bringup'), 'launch/turtlebot3_robot.launch.py')
             )
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                [get_package_share_directory('cloudwatch_robot'), '/launch/await_commands.launch.py']
+                os.path.join(get_package_share_directory('cloudwatch_robot'), 'launch/await_commands.launch.py')
             ),
             launch_arguments={
                 'use_sim_time': 'false'
