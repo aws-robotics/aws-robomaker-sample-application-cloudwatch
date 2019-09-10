@@ -30,7 +30,7 @@ def generate_launch_description():
         ),
         launch_ros.actions.Node(
             package='aws_robomaker_simulation_common',
-            node_executable='route_manager',
+            node_executable='route_manager.py',
             node_name='route_manager',
             output='screen',
             parameters=[{

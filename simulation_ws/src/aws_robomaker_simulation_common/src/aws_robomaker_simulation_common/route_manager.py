@@ -20,13 +20,12 @@ import random
 import time
 import yaml
 
-import actionlib
 import rclpy
+from rclpy.action import ActionClient
 from rclpy.node import Node
-import tf.transformations
 
 from geometry_msgs.msg import Point, Quaternion
-from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from move_base_msgs.action import MoveBase
 
 
 class RouteManager(Node):
@@ -63,7 +62,7 @@ class RouteManager(Node):
         super().__init__('route_manager')
         self.route = []
 
-        self.client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
+        self.client = ActionClient(self, MoveBase, 'move_base')
         self.client.wait_for_server()
 
         route_file = rclpy.get_param('route_file')
@@ -84,7 +83,7 @@ class RouteManager(Node):
         self.get_logger().info("Route manager initialized with %s goals in %s mode", len(poses), self.route_mode)
 
     def to_move_goal(self, pose):
-        goal = MoveBaseGoal()
+        goal = MoveBase()
         goal.target_pose.header.stamp = self.get_clock().now()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.pose.position = Point(**pose['pose']['position'])

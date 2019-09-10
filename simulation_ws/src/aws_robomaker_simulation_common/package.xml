@@ -9,11 +9,10 @@
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <depend>turtlebot3</depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>gazebo</exec_depend>
-  <exec_depend>gazebo_plugins</exec_depend>
+  <depend>rclpy</depend>
+  <depend>move_base_msgs</depend>
+  <depend>python-yaml</depend>
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>ament_python</build_type>
   </export>
 </package>

@@ -17,7 +17,7 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             name='map_file',
             default_value=os.path.join(get_package_share_directory(
-                'turtlebot3_navigation') + 'maps', 'map.yaml')
+                'turtlebot3_navigation2') + 'map', 'map.yaml')
         ),
         launch.actions.DeclareLaunchArgument(
             name='open_rviz',
@@ -52,7 +52,7 @@ def generate_launch_description():
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory(
-                    'turtlebot3_navigation'), 'launch', 'amcl.launch.py')
+                    'turtlebot3_navigation2'), 'launch', 'amcl.launch.py')
             ),
             launch_arguments={
                 'initial_pose_x': launch.substitutions.LaunchConfiguration('initial_pose_x'),
