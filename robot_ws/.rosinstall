@@ -1,8 +1,1 @@
-# Amazon ROS CloudServiceIntegration package dependencies
-- git: {local-name: src/deps/utils-common, uri: 'https://github.com/aws-robotics/utils-common', version: 'release-latest'}
-- git: {local-name: src/deps/utils-ros2, uri: 'https://github.com/aws-robotics/utils-ros2', version: 'master'}
-- git: {local-name: src/deps/cloudwatch-common, uri: 'https://github.com/aws-robotics/cloudwatch-common', version: 'release-latest'}
-- git: {local-name: src/deps/cloudwatchlogs-ros2, uri: 'https://github.com/aws-robotics/cloudwatchlogs-ros2', version: 'master'}
-- git: {local-name: src/deps/cloudwatchmetrics-ros2, uri: 'https://github.com/aws-robotics/cloudwatchmetrics-ros2', version: 'master'}
-- git: {local-name: src/deps/health-metrics-collector-ros2, uri: 'https://github.com/aws-robotics/health-metrics-collector-ros2', version: 'master'}
-- git: {local-name: src/deps/monitoringmessages-ros2, uri: 'https://github.com/aws-robotics/monitoringmessages-ros2', version: 'master'}
+

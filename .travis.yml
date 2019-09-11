@@ -9,7 +9,7 @@ notifications:
 env:
   matrix:
   - ROS_DISTRO=dashing ROS_VERSION=2 GAZEBO_VERSION=9 WORKSPACES="robot_ws"
-  # - ROS_DISTRO=dashing ROS_VERSION=2 GAZEBO_VERSION=9 WORKSPACES="simulation_ws"
+  - ROS_DISTRO=dashing ROS_VERSION=2 GAZEBO_VERSION=9 WORKSPACES="simulation_ws"
   global:
   - SA_NAME=cloudwatch
   - SA_PACKAGE_NAME=cloudwatch_robot

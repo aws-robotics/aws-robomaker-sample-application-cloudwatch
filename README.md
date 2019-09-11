@@ -92,22 +92,22 @@ Launch the application with the following commands:
 - *Running Robot Application Elsewhere*
     ```bash
     source robot_ws/install/local_setup.sh
-    roslaunch cloudwatch_robot [command]
+    ros2 launch cloudwatch_robot [command]
     ```
     There are two robot launch commands:
-    - `rotate.launch` - The robot starts rotating  
-    - `await_commands.launch` - The robot is idle waiting movement commands, use this for teleop and navigation
+    - `rotate.launch.py` - The robot starts rotating  
+    - `await_commands.launch.py` - The robot is idle waiting movement commands, use this for teleop and navigation
 
 
 - *Running Simulation Application*
     ```bash
     export TURTLEBOT3_MODEL=waffle_pi
     source simulation_ws/install/local_setup.sh
-    roslaunch cloudwatch_simulation [command]
+    ros2 launch cloudwatch_simulation [command]
     ```
     There are three simulation launch commands for three different worlds:
-    - `empty_world.launch` - Empty world with some balls surrounding the turtlebot at (0,0)
-    - `bookstore_turtlebot_navigation.launch` - A retail space where the robot navigates to random goals
+    - `empty_world.launch.py` - Empty world with some balls surrounding the turtlebot at (0,0)
+    - `bookstore_turtlebot_navigation.launch.py` - A retail space where the robot navigates to random goals
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
