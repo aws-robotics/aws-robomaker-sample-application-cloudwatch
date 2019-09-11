@@ -22,8 +22,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'launch')
 
 import launch
 import tempfile
-from launch_ros import get_default_launch_description
 import launch_ros.actions
+from launch_ros import get_default_launch_description
 
 from ament_index_python.packages import get_package_share_directory
 import xacro
@@ -31,38 +31,68 @@ import lifecycle_msgs.msg
 import subprocess
 
 def generate_launch_description():
-    """Main."""
-    use_sim_time_false = launch.actions.DeclareLaunchArgument(
-        'use_sim_time',
-        default_value='true',
-        description='Use sim time',
-        )
+    turtlebot3_model = "turtlebot3_" + os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi') + ".urdf"
+    env = {
+        'GAZEBO_MODEL_PATH': ":".join([
+            os.environ.get('GAZEBO_MODEL_PATH', ''),
+            os.path.split(get_package_share_directory('turtlebot3_description_reduced_mesh'))[0]
+        ]) 
+    } 
 
-    turtlebot3_model = os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')
-    turtlebot3_location = get_package_share_directory('turtlebot3_description_reduced_mesh') \
-        + '/urdf/turtlebot3_' + turtlebot3_model + '.urdf.xacro'
-    with subprocess.Popen(['ros2', 'run', 'xacro', 'xacro', turtlebot3_location], stdout=subprocess.PIPE) as proc:
-        urdf = proc.stdout.read()
-    if urdf is 0:
-        raise 'xacro issue {} return_code={}'.format(turtlebot3_location, urdf)
-    msg = '{name: "robot", xml: "' + ''.join(urdf.decode("utf-8").splitlines()).replace('    ', '')\
-        .replace(r'"', r'\"') + '"}'
-    spawn_robot = launch.actions.ExecuteProcess(
-        cmd=['ros2', 'service', 'call', '/spawn_entity', 'gazebo_msgs/srv/SpawnEntity',
-             msg],
-        additional_env={
-            'GAZEBO_MODEL_PATH': ":".join([
-                os.environ.get('GAZEBO_MODEL_PATH', ''),
-                os.path.split(get_package_share_directory('turtlebot3_description_reduced_mesh'))[0]
-            ]) 
-        },
-        output='screen'
-    )
-
-    ld = launch.LaunchDescription(
-        [use_sim_time_false,
-         spawn_robot
-         ])
+    ld = launch.LaunchDescription([
+        launch.actions.DeclareLaunchArgument(
+            name='use_sim_time',
+            default_value='true'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='x_pos',
+            default_value='0.0'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='y_pos',
+            default_value='0.0'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='z_pos',
+            default_value='0.0'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='roll',
+            default_value='0.0'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='pitch',
+            default_value='0.0'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='yaw',
+            default_value='0.0'
+        ),
+        launch_ros.actions.Node(
+            package='gazebo_ros',
+            node_executable='spawn_entity.py',
+            additional_env=env,
+            output='screen',
+            arguments=[
+                '-entity',
+                'robot',
+                '-file', 
+                os.path.join(get_package_share_directory('turtlebot3_description_reduced_mesh'), 'urdf', turtlebot3_model),
+                '-x',
+                launch.substitutions.LaunchConfiguration('x_pos'),
+                '-y',
+                launch.substitutions.LaunchConfiguration('y_pos'),
+                '-z',
+                launch.substitutions.LaunchConfiguration('z_pos'),
+                '-R',
+                launch.substitutions.LaunchConfiguration('roll'),
+                '-P',
+                launch.substitutions.LaunchConfiguration('pitch'),
+                '-Y',
+                launch.substitutions.LaunchConfiguration('yaw')
+            ]
+        ),
+    ])
     return ld 
 
 

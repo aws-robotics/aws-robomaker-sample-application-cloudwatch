@@ -44,7 +44,8 @@ def generate_launch_description():
                     'aws_robomaker_bookstore_world'), 'launch', 'bookstore.launch.py')
             ),
             launch_arguments={
-                'gui': launch.substitutions.LaunchConfiguration('gui')
+                'gui': launch.substitutions.LaunchConfiguration('gui'),
+                'gazebo_model_path': os.path.split(get_package_share_directory('turtlebot3_description_reduced_mesh'))[0],
             }.items()
         ),
         launch.actions.IncludeLaunchDescription(
