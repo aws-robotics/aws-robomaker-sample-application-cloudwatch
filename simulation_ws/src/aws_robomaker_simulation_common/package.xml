@@ -8,7 +8,6 @@
   <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
   <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
   <license>Apache 2.0</license>
-  <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rclpy</depend>
   <depend>move_base_msgs</depend>
   <depend>python-yaml</depend>

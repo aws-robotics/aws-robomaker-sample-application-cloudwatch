@@ -20,5 +20,6 @@
   <depend>turtlebot3</depend>
   <export>
     <build_type>ament_python</build_type>
+    <gazebo_ros gazebo_media_path="${prefix}/worlds"/>
   </export>
 </package>

@@ -32,12 +32,6 @@ import subprocess
 
 def generate_launch_description():
     turtlebot3_model = "turtlebot3_" + os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi') + ".urdf"
-    env = {
-        'GAZEBO_MODEL_PATH': ":".join([
-            os.environ.get('GAZEBO_MODEL_PATH', ''),
-            os.path.split(get_package_share_directory('turtlebot3_description_reduced_mesh'))[0]
-        ]) 
-    } 
 
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
@@ -71,7 +65,6 @@ def generate_launch_description():
         launch_ros.actions.Node(
             package='gazebo_ros',
             node_executable='spawn_entity.py',
-            additional_env=env,
             output='screen',
             arguments=[
                 '-entity',
