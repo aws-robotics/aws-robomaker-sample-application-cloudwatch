@@ -1,7 +1,4 @@
 - git: {local-name: src/deps/aws-robomaker-bookstore-world, uri: "https://github.com/aws-robotics/aws-robomaker-bookstore-world", version: ros2-devel}
 - git: {local-name: src/deps/xacro, uri: "https://github.com/AAlon/xacro", version: ros2-find} 
-- git: {local-name: src/deps/turtlebot3, uri: "https://github.com/ROBOTIS-GIT/turtlebot3", version: ros2}
-- git: {local-name: src/deps/turtlebot3_simulations, uri: "https://github.com/ROBOTIS-GIT/turtlebot3_simulations", version: ros2}
-- git: {local-name: src/deps/cartographer/cartographer_ros, uri: 'https://github.com/ROBOTIS-GIT/cartographer_ros.git', version: dashing}
 - git: {local-name: src/deps/navigation_msgs, uri: 'https://github.com/ros-planning/navigation_msgs.git', version: ros2}
 

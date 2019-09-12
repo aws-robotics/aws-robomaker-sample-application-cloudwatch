@@ -34,7 +34,8 @@ def generate_launch_description():
             node_name='route_manager',
             output='screen',
             parameters=[{
-                'route_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'routes', 'route.yaml')
+                # Route file is passed as "<package_name>.<relative path in install space>" due to limitations on string parameter size.
+                'route_file': '.'.join(['aws_robomaker_bookstore_world', os.path.join('routes', 'route.yaml')])
             }],
             condition=launch.conditions.IfCondition(
                 launch.substitutions.LaunchConfiguration('follow_route'))

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
  Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
@@ -19,11 +19,13 @@ import itertools
 import random
 import time
 import yaml
+import os
+import sys
 
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
-
+from ament_index_python.packages import get_package_share_directory
 from geometry_msgs.msg import Point, Quaternion
 from move_base_msgs.action import MoveBase
 
@@ -59,20 +61,24 @@ class RouteManager(Node):
     }
 
     def __init__(self):
-        super().__init__('route_manager')
+        super().__init__('route_manager', allow_undeclared_parameters=True, automatically_declare_parameters_from_overrides=True)
         self.route = []
 
         self.client = ActionClient(self, MoveBase, 'move_base')
         self.client.wait_for_server()
 
-        route_file = rclpy.get_param('route_file')
-        with open(route_file, 'r') as f:
+        route_file_info = self.get_parameter('route_file').value
+        # route file info is in the form "<package-name>.<path from install's share directory>"
+        route_pkg_share = get_package_share_directory(route_file_info.split('.')[0])
+        route_file_path = os.path.join(route_pkg_share, '.'.join(route_file_info.split('.')[1:]))
+
+        with open(route_file_path, 'r') as f:
             route_file_contents = f.read()
         route_yaml = yaml.safe_load(route_file_contents)
 
         self.route_mode = route_yaml['mode']
         if self.route_mode not in RouteManager.route_modes:
-            self.get_logger().error("Route mode '%s' unknown, exiting route manager", self.route_mode)
+            self.get_logger().error("Route mode '%s' unknown, exiting route manager" % (self.route_mode, ))
             return
 
         poses = route_yaml['poses']
@@ -80,7 +86,7 @@ class RouteManager(Node):
             self.get_logger().info("Route manager initialized no goals, unable to route")
 
         self.goals = RouteManager.route_modes[self.route_mode](poses)
-        self.get_logger().info("Route manager initialized with %s goals in %s mode", len(poses), self.route_mode)
+        self.get_logger().info("Route manager initialized with %s goals in %s mode" % (len(poses), self.route_mode, ))
 
     def to_move_goal(self, pose):
         goal = MoveBase()
@@ -93,16 +99,16 @@ class RouteManager(Node):
     def route_forever(self):
         while rclpy.ok():
             try:
-                self.get_logger().info("Route mode is '%s', getting next goal", self.route_mode)
+                self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode, ))
                 current_goal = self.to_move_goal(next(self.goals))
-                self.get_logger().info("Sending target goal: %s", current_goal)
+                self.get_logger().info("Sending target goal: %s" % (current_goal, ))
                 self.client.send_goal(current_goal)
 
                 if not self.client.wait_for_result():
                     self.get_logger().error("Move server not ready, will try again...")
                 else:
                     if self.client.get_result():
-                        self.get_logger().info("Goal done: %s", current_goal)
+                        self.get_logger().info("Goal done: %s" % (current_goal, ))
                 time.sleep(1)
             except StopIteration:
                 self.get_logger().info("No goals, stopping route manager")
@@ -114,8 +120,13 @@ def main():
     try:
         route_manger = RouteManager()
         route_manger.route_forever()
-    except rclpy.ROSInterruptException:
+    except KeyboardInterrupt:
         pass
+    except BaseException:
+        print('Exception in route_manager:', file=sys.stderr)
+        raise
+    finally:
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
