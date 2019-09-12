@@ -63,7 +63,7 @@ def generate_launch_description():
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory(
-                    'turtlebot3_navigation2'), 'launch', 'move_base.launch.py')
+                    'turtlebot3_navigation'), 'launch', 'move_base.launch.py')
             ),
             launch_arguments={
                 'model': launch.substitutions.LaunchConfiguration('model')
