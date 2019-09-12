@@ -48,14 +48,14 @@
                 "architecture":"X86_64",
                 "launchConfig":{
                   "packageName":"cloudwatch_robot",
-                  "launchFile":"await_commands.launch",
+                  "launchFile":"await_commands.launch.py",
                   "environmentVariables":{
 
                   }
                },
                "robotSoftwareSuite":{
-                  "name":"ROS",
-                  "version":"<capitalised name of ROS distribution, e.g. Kinetic>"
+                  "name":"ROS2",
+                  "version":"<capitalised name of ROS distribution, e.g. Dashing>"
                }
             },
             "simulationApp":{
@@ -65,18 +65,18 @@
                 "architecture":"X86_64",
                 "launchConfig":{
                   "packageName":"cloudwatch_simulation",
-                  "launchFile":"bookstore_turtlebot_navigation.launch",
+                  "launchFile":"bookstore_turtlebot_navigation.launch.py",
                   "environmentVariables":{
                      "TURTLEBOT3_MODEL":"burger"
                   }
                },
                "robotSoftwareSuite":{
-                  "name":"ROS",
-                  "version":"<capitalised name of ROS distribution, e.g. Kinetic>"
+                  "name":"ROS2",
+                  "version":"<capitalised name of ROS distribution, e.g. Dashing>"
                },
                "simulationSoftwareSuite":{
                   "name":"Gazebo",
-                  "version":"<gazebo version number, e.g. 7>"
+                  "version":"<gazebo version number, e.g. 9>"
                },
                "renderingEngine":{
                   "name":"OGRE",
@@ -109,4 +109,3 @@
       }
    ]
 }
-
