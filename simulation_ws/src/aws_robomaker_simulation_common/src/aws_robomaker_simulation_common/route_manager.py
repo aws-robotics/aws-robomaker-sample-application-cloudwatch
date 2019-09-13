@@ -22,13 +22,13 @@ import yaml
 import os
 import sys
 
+import builtin_interfaces
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
 from ament_index_python.packages import get_package_share_directory
 from geometry_msgs.msg import Point, Quaternion
-from move_base_msgs.action import MoveBase
-
+from nav2_msgs.action import NavigateToPose
 
 class RouteManager(Node):
     '''Send goals to move_base server for the specified route. Routes forever.
@@ -64,7 +64,7 @@ class RouteManager(Node):
         super().__init__('route_manager', allow_undeclared_parameters=True, automatically_declare_parameters_from_overrides=True)
         self.route = []
 
-        self.client = ActionClient(self, MoveBase, 'move_base')
+        self.client = ActionClient(self, NavigateToPose, 'NavigateToPose')
         self.client.wait_for_server()
 
         route_file_info = self.get_parameter('route_file').value
@@ -89,11 +89,11 @@ class RouteManager(Node):
         self.get_logger().info("Route manager initialized with %s goals in %s mode" % (len(poses), self.route_mode, ))
 
     def to_move_goal(self, pose):
-        goal = MoveBase()
-        goal.target_pose.header.stamp = self.get_clock().now()
-        goal.target_pose.header.frame_id = "map"
-        goal.target_pose.pose.position = Point(**pose['pose']['position'])
-        goal.target_pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
+        goal = NavigateToPose.Goal()
+        goal.pose.header.stamp = self.get_clock().now().to_msg()
+        goal.pose.header.frame_id = "map"
+        goal.pose.pose.position = Point(**pose['pose']['position'])
+        goal.pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
         return goal
 
     def route_forever(self):
