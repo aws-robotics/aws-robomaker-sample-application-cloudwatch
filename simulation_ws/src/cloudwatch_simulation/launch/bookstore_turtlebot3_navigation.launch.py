@@ -68,19 +68,19 @@ def generate_launch_description():
                 'use_sim_time': launch.substitutions.LaunchConfiguration('use_sim_time'),
             }.items()
         ),
-        # launch.actions.IncludeLaunchDescription(
-        #     launch.launch_description_sources.PythonLaunchDescriptionSource(
-        #         os.path.join(get_package_share_directory(
-        #             'cloudwatch_simulation'), 'launch', 'turtlebot3_navigation.launch.py')
-        #     ),
-        #     launch_arguments={
-        #         'map_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'maps', f"turtlebot3_{os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')}", 'map.yaml'),
-        #         'initial_pose_x': launch.substitutions.LaunchConfiguration('x_pos'),
-        #         'initial_pose_y': launch.substitutions.LaunchConfiguration('y_pos'),
-        #         'initial_pose_a': launch.substitutions.LaunchConfiguration('yaw'),
-        #         'open_rviz': 'false'
-        #     }.items()
-        # )
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                os.path.join(get_package_share_directory(
+                    'cloudwatch_simulation'), 'launch', 'turtlebot3_navigation.launch.py')
+            ),
+            launch_arguments={
+                'map_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'maps', f"turtlebot3_{os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')}", 'map.yaml'),
+                'initial_pose_x': launch.substitutions.LaunchConfiguration('x_pos'),
+                'initial_pose_y': launch.substitutions.LaunchConfiguration('y_pos'),
+                'initial_pose_a': launch.substitutions.LaunchConfiguration('yaw'),
+                'open_rviz': 'false'
+            }.items()
+        )
     ])
     return ld
 
