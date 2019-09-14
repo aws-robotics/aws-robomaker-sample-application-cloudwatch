@@ -65,7 +65,9 @@ class RouteManager(Node):
         self.route = []
 
         self.client = ActionClient(self, NavigateToPose, 'NavigateToPose')
+        time.sleep(5)
         self.client.wait_for_server()
+        time.sleep(5)
 
         route_file_info = self.get_parameter('route_file').value
         # route file info is in the form "<package-name>.<path from install's share directory>"
@@ -96,30 +98,42 @@ class RouteManager(Node):
         goal.pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
         return goal
 
+    def goal_response_callback(self, future):
+        goal_handle = future.result()
+        if not goal_handle.accepted:
+            self.get_logger().info('Goal rejected :(')
+            return
+        self.get_logger().info('Goal accepted :)')
+        self._get_result_future = goal_handle.get_result_async()
+        self._get_result_future.add_done_callback(self.get_result_callback)
+
     def route_forever(self):
-        while rclpy.ok():
-            try:
-                self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode, ))
-                current_goal = self.to_move_goal(next(self.goals))
-                self.get_logger().info("Sending target goal: %s" % (current_goal, ))
-                self.client.send_goal(current_goal)
+        try:
+            self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode, ))
+            current_goal = self.to_move_goal(next(self.goals))
+            self.get_logger().info("Sending target goal: %s" % (current_goal, ))
+            self._send_goal_future = self.client.send_goal_async(current_goal, feedback_callback=self.feedback_callback)
+            self._send_goal_future.add_done_callback(self.goal_response_callback)
+        except StopIteration:
+            self.get_logger().info("No goals, stopping route manager")
+            return
 
-                if not self.client.wait_for_result():
-                    self.get_logger().error("Move server not ready, will try again...")
-                else:
-                    if self.client.get_result():
-                        self.get_logger().info("Goal done: %s" % (current_goal, ))
-                time.sleep(1)
-            except StopIteration:
-                self.get_logger().info("No goals, stopping route manager")
-                return
+    def get_result_callback(self, future):
+        result = future.result().result
+        # Expecting empty result (std_msgs::Empty) for NavigateToPose
+        self.get_logger().info('Result: {0}'.format(result.result))
+        self.route_forever()
 
+    def feedback_callback(self, feedback_msg):
+        # NavigateToPose should have no feedback
+        self.get_logger().warn('Received feedback')
 
 def main():
     rclpy.init()
     try:
-        route_manger = RouteManager()
-        route_manger.route_forever()
+        route_manager = RouteManager()
+        route_manager.route_forever()
+        rclpy.spin(route_manager)
     except KeyboardInterrupt:
         pass
     except BaseException:
