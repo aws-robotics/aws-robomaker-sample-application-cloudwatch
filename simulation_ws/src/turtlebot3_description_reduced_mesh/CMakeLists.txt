@@ -5,7 +5,7 @@ project(turtlebot3_description_reduced_mesh)
 find_package(ament_cmake_ros REQUIRED)
 find_package(gazebo_ros REQUIRED)
 
-install(DIRECTORY launch meshes urdf
+install(DIRECTORY launch meshes urdf worlds map
   DESTINATION share/${PROJECT_NAME}
 )
 
