@@ -14,7 +14,6 @@
  permissions and limitations under the License.
 """
 
-
 import itertools
 import random
 import time
@@ -30,38 +29,40 @@ from ament_index_python.packages import get_package_share_directory
 from geometry_msgs.msg import Point, Quaternion
 from nav2_msgs.action import NavigateToPose
 
+
 class RouteManager(Node):
     '''Send goals to move_base server for the specified route. Routes forever.
 
-       Loads the route from yaml. 
-       Use RViz to record 2D nav goals. 
+       Loads the route from yaml.
+       Use RViz to record 2D nav goals.
        Echo the input goal on topic /move_base_simpl/goal
 
-       Format: 
+       Format:
 
             order: inorder
-            poses: 
-                - pose: 
-                      position: 
+            poses:
+                - pose:
+                      position:
                         x: -5.41667556763
                         y: -3.14395284653
                         z: 0.0
-                      orientation: 
+                      orientation:
                         x: 0.0
                         y: 0.0
                         z: 0.785181432231
                         w: 0.619265789851
-    
+
     '''
 
     # return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
-        'random' : lambda goals: (random.choice(goals) for i in itertools.count()),
+        'random': lambda goals: (random.choice(goals) for i in itertools.count()),
     }
 
     def __init__(self):
-        super().__init__('route_manager', allow_undeclared_parameters=True, automatically_declare_parameters_from_overrides=True)
+        super().__init__('route_manager', allow_undeclared_parameters=True,
+                         automatically_declare_parameters_from_overrides=True)
         self.route = []
 
         self.client = ActionClient(self, NavigateToPose, 'NavigateToPose')
@@ -80,7 +81,8 @@ class RouteManager(Node):
 
         self.route_mode = route_yaml['mode']
         if self.route_mode not in RouteManager.route_modes:
-            self.get_logger().error("Route mode '%s' unknown, exiting route manager" % (self.route_mode, ))
+            self.get_logger().error(
+                "Route mode '%s' unknown, exiting route manager" % (self.route_mode,))
             return
 
         poses = route_yaml['poses']
@@ -88,7 +90,8 @@ class RouteManager(Node):
             self.get_logger().info("Route manager initialized no goals, unable to route")
 
         self.goals = RouteManager.route_modes[self.route_mode](poses)
-        self.get_logger().info("Route manager initialized with %s goals in %s mode" % (len(poses), self.route_mode, ))
+        self.get_logger().info(
+            "Route manager initialized with %s goals in %s mode" % (len(poses), self.route_mode,))
 
     def to_move_goal(self, pose):
         goal = NavigateToPose.Goal()
@@ -109,10 +112,11 @@ class RouteManager(Node):
 
     def route_forever(self):
         try:
-            self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode, ))
+            self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode,))
             current_goal = self.to_move_goal(next(self.goals))
-            self.get_logger().info("Sending target goal: %s" % (current_goal, ))
-            self._send_goal_future = self.client.send_goal_async(current_goal, feedback_callback=self.feedback_callback)
+            self.get_logger().info("Sending target goal: %s" % (current_goal,))
+            self._send_goal_future = self.client.send_goal_async(current_goal,
+                                                                 feedback_callback=self.feedback_callback)
             self._send_goal_future.add_done_callback(self.goal_response_callback)
         except StopIteration:
             self.get_logger().info("No goals, stopping route manager")
@@ -128,6 +132,7 @@ class RouteManager(Node):
         # NavigateToPose should have no feedback
         self.get_logger().warn('Received feedback')
 
+
 def main():
     rclpy.init()
     try:
@@ -141,6 +146,7 @@ def main():
         raise
     finally:
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
