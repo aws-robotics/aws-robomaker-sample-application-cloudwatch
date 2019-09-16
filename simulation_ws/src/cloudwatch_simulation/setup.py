@@ -1,12 +1,10 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 package_name = 'cloudwatch_simulation'
 
 setup(
     name=package_name,
     version='2.0.0',
-    package_dir={'': 'src'},
-    packages=find_packages(where='src'),
     data_files=[
         ('share/' + package_name + '/launch', ['launch/bookstore_turtlebot_navigation.launch.py']),
         ('share/' + package_name + '/launch', ['launch/bookstore_turtlebot3_navigation.launch.py']),
@@ -14,6 +12,7 @@ setup(
         ('share/' + package_name + '/launch', ['launch/empty_world.launch.py']),
         ('share/' + package_name + '/launch', ['launch/turtlebot3_navigation.launch.py']),
         ('share/' + package_name + '/launch', ['launch/view_empty_world.launch.py']),
+        ('share/' + package_name + '/launch', ['launch/turtlebot3_nav2.launch.py']),
         ('share/' + package_name + '/worlds', ['worlds/empty.world']),
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
@@ -34,6 +33,6 @@ setup(
     description=(
         'AWS RoboMaker robot package that sends robot metrics to CloudWatch'
     ),
-    license='Apache License, Version 2.0'
+    license='Apache License, Version 2.0',
 )
 
