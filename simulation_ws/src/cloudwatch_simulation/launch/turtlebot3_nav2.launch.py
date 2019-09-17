@@ -20,12 +20,14 @@ def generate_launch_description():
         get_package_share_directory('turtlebot3_description_reduced_mesh'),
         'urdf',
         urdf_file_name)
+    print('URDF File: {}'.format(urdf))
 
     world_file_name = TURTLEBOT3_MODEL + '.model'
     world = os.path.join(
         get_package_share_directory('turtlebot3_description_reduced_mesh'),
         'worlds',
         world_file_name)
+    print('World File: {}'.format(world))
 
     use_gazebo_gui = LaunchConfiguration('gui', default='true')
 
@@ -36,6 +38,7 @@ def generate_launch_description():
         'map',
         'map.yaml')
     map_dir = LaunchConfiguration('map', default=default_map_dir)
+    print('Map File: {}'.format(default_map_dir))
 
     param_file_name = TURTLEBOT3_MODEL + '.yaml'
     default_param_dir = os.path.join(
@@ -43,8 +46,7 @@ def generate_launch_description():
         'param',
         param_file_name)
     param_dir = LaunchConfiguration('params', default=default_param_dir)
-
-    gazebo_launch_dir = os.path.join(get_package_share_directory('gazebo_ros'), 'launch')
+    print('Param File: {}'.format(default_param_dir))
 
     nav2_launch_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
 
@@ -52,6 +54,7 @@ def generate_launch_description():
         get_package_share_directory('nav2_bringup'),
         'launch',
         'nav2_default_view.rviz')
+    print('Rviz config: {}'.format(rviz_config_dir))
 
     # Launch arguments
     declare_map_yaml_cmd = DeclareLaunchArgument(
@@ -62,7 +65,7 @@ def generate_launch_description():
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time',
-        default_value='false',
+        default_value='true',
         description='Use simulation (Gazebo) clock if true'
     )
 
@@ -73,11 +76,6 @@ def generate_launch_description():
     )
 
     # Nodes and launch files
-    start_gazebo_server_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(gazebo_launch_dir, 'gzserver.launch.py')),
-        launch_arguments={'world': world}.items()
-    )
-
     start_gazebo_server_cmd = ExecuteProcess(
         cmd=['gzserver', '--verbose', world, '-s', 'libgazebo_ros_init.so'],
         output='screen',
@@ -85,7 +83,7 @@ def generate_launch_description():
     )
 
     start_gazebo_client_cmd = ExecuteProcess(
-        cmd=[['gzclient']],
+        cmd=['gzclient'],
         output='screen',
         shell=True,
         condition=IfCondition(use_gazebo_gui)

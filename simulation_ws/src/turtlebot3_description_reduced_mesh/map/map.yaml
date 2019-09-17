@@ -1,4 +1,4 @@
-image: /home/ANT.AMAZON.COM/allabana/map.pgm
+image: map.pgm
 resolution: 0.050000
 origin: [-1.803580, -2.517250, 0.000000]
 negate: 0
