@@ -124,7 +124,7 @@ class RouteManager(Node):
     def get_result_callback(self, future: NavigateToPose.Result):
         result = future.result().result
         # Expecting empty result (std_msgs::Empty) for NavigateToPose
-        self.get_logger().info('Result: {0}'.format(result.result))
+        self.get_logger().debug('Result: {0}'.format(result.result))
         self.route_forever()
 
     def feedback_callback(self, feedback_msg: NavigateToPose.Feedback):
