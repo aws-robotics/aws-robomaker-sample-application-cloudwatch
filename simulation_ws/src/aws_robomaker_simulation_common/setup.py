@@ -8,6 +8,7 @@ setup(
     name=package_name,
     version='2.0.0',
     python_requires='>=3.5.0',
+    packages=[package_name],
     data_files=[
         ('lib/' + package_name, ['src/' + package_name + '/route_manager.py']),
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),

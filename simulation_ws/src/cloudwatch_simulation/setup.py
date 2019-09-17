@@ -7,6 +7,7 @@ package_name = 'cloudwatch_simulation'
 setup(
     name=package_name,
     version='2.0.0',
+    packages=[package_name],
     data_files=[
 <<<<<<< HEAD
         ('share/' + package_name + '/launch', ['launch/bookstore_turtlebot_navigation.launch.py']),
