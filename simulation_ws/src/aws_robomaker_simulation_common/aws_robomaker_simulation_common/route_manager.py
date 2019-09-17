@@ -16,12 +16,10 @@
 
 import itertools
 import random
-import time
 import yaml
 import os
 import sys
 
-import builtin_interfaces
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
@@ -31,30 +29,31 @@ from nav2_msgs.action import NavigateToPose
 
 
 class RouteManager(Node):
-    '''Send goals to move_base server for the specified route. Routes forever.
+    """
+    Send goals to the navigation2 stack for the specified route. Routes forever.
 
-       Loads the route from yaml.
-       Use RViz to record 2D nav goals.
-       Echo the input goal on topic /move_base_simpl/goal
+   Loads the route from yaml.
+   Use RViz to record 2D nav goals.
+   Echo the input goal on topic /move_base_simple/goal
 
-       Format:
+   Format:
 
-            order: inorder
-            poses:
-                - pose:
-                      position:
-                        x: -5.41667556763
-                        y: -3.14395284653
-                        z: 0.0
-                      orientation:
-                        x: 0.0
-                        y: 0.0
-                        z: 0.785181432231
-                        w: 0.619265789851
+        order: inorder
+        poses:
+            - pose:
+                  position:
+                    x: -5.41667556763
+                    y: -3.14395284653
+                    z: 0.0
+                  orientation:
+                    x: 0.0
+                    y: 0.0
+                    z: 0.785181432231
+                    w: 0.619265789851
 
-    '''
+    """
 
-    # return an iterator over the goals
+    # Return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
         'random': lambda goals: (random.choice(goals) for i in itertools.count()),
@@ -64,11 +63,10 @@ class RouteManager(Node):
         super().__init__('route_manager', allow_undeclared_parameters=True,
                          automatically_declare_parameters_from_overrides=True)
         self.route = []
+        self.current_goal = NavigateToPose.Goal()
 
         self.client = ActionClient(self, NavigateToPose, 'NavigateToPose')
-        time.sleep(5)
         self.client.wait_for_server()
-        time.sleep(5)
 
         route_file_info = self.get_parameter('route_file').value
         # route file info is in the form "<package-name>.<path from install's share directory>"
@@ -104,7 +102,7 @@ class RouteManager(Node):
     def goal_response_callback(self, future):
         goal_handle = future.result()
         if not goal_handle.accepted:
-            self.get_logger().info('Goal rejected :(')
+            self.get_logger().warning('Goal rejected :(')
             return
         self.get_logger().info('Goal accepted :)')
         self._get_result_future = goal_handle.get_result_async()
@@ -115,22 +113,23 @@ class RouteManager(Node):
             self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode,))
             current_goal = self.to_move_goal(next(self.goals))
             self.get_logger().info("Sending target goal: %s" % (current_goal,))
-            self._send_goal_future = self.client.send_goal_async(current_goal,
-                                                                 feedback_callback=self.feedback_callback)
+            self._send_goal_future = self.client.send_goal_async(
+                current_goal,
+                feedback_callback=self.feedback_callback)
             self._send_goal_future.add_done_callback(self.goal_response_callback)
         except StopIteration:
-            self.get_logger().info("No goals, stopping route manager")
+            self.get_logger().info("No goals, stopping route manager.")
             return
 
-    def get_result_callback(self, future):
+    def get_result_callback(self, future: NavigateToPose.Result):
         result = future.result().result
         # Expecting empty result (std_msgs::Empty) for NavigateToPose
         self.get_logger().info('Result: {0}'.format(result.result))
         self.route_forever()
 
-    def feedback_callback(self, feedback_msg):
+    def feedback_callback(self, feedback_msg: NavigateToPose.Feedback):
         # NavigateToPose should have no feedback
-        self.get_logger().warn('Received feedback')
+        self.get_logger().debug('Received feedback')
 
 
 def main():
