@@ -71,7 +71,7 @@ def generate_launch_description():
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory(
-                    'cloudwatch_simulation'), 'launch', 'turtlebot3_navigation.launch.py')
+                    'cloudwatch_simulation'), 'launch', 'turtlebot3_nav2.launch.py')
             ),
             launch_arguments={
                 'map_file': os.path.join(get_package_share_directory('aws_robomaker_bookstore_world'), 'maps', f"turtlebot3_{os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')}", 'map.yaml'),

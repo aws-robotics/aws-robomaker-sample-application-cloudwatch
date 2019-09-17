@@ -75,20 +75,6 @@ def generate_launch_description():
         description='Full path to param file to load'
     )
 
-    # Nodes and launch files
-    start_gazebo_server_cmd = ExecuteProcess(
-        cmd=['gzserver', '--verbose', world, '-s', 'libgazebo_ros_init.so'],
-        output='screen',
-        shell=True
-    )
-
-    start_gazebo_client_cmd = ExecuteProcess(
-        cmd=['gzclient'],
-        output='screen',
-        shell=True,
-        condition=IfCondition(use_gazebo_gui)
-    )
-
     start_robot_state_publisher = Node(
         package='robot_state_publisher',
         node_executable='robot_state_publisher',
@@ -122,8 +108,6 @@ def generate_launch_description():
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_params_file_cmd)
 
-    ld.add_action(start_gazebo_server_cmd)
-    ld.add_action(start_gazebo_client_cmd)
     ld.add_action(start_robot_state_publisher)
     ld.add_action(start_nav2_cmd)
     ld.add_action(start_rviz_cmd)
