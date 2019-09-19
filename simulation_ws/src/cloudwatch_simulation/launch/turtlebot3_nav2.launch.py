@@ -3,9 +3,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.actions import ExecuteProcess
 from launch.actions import IncludeLaunchDescription
-from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -15,27 +13,11 @@ TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'burger')
 
 def generate_launch_description():
     # Launch configurations
-    urdf_file_name = 'turtlebot3_' + TURTLEBOT3_MODEL + '.urdf'
-    urdf = os.path.join(
-        get_package_share_directory('turtlebot3_description_reduced_mesh'),
-        'urdf',
-        urdf_file_name)
-    print('URDF File: {}'.format(urdf))
-
-    world_file_name = TURTLEBOT3_MODEL + '.model'
-    world = os.path.join(
-        get_package_share_directory('turtlebot3_description_reduced_mesh'),
-        'worlds',
-        world_file_name)
-    print('World File: {}'.format(world))
-
-    use_gazebo_gui = LaunchConfiguration('gui', default='true')
-
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     default_map_dir = os.path.join(
-        get_package_share_directory('turtlebot3_description_reduced_mesh'),
-        'map',
+        get_package_share_directory('cloudwatch_simulation'),
+        'maps',
         'map.yaml')
     map_dir = LaunchConfiguration('map', default=default_map_dir)
     print('Map File: {}'.format(default_map_dir))
@@ -75,15 +57,6 @@ def generate_launch_description():
         description='Full path to param file to load'
     )
 
-    start_robot_state_publisher = Node(
-        package='robot_state_publisher',
-        node_executable='robot_state_publisher',
-        node_name='robot_state_publisher',
-        output='screen',
-        parameters=[{'use_sim_time': use_sim_time}],
-        arguments=[urdf]
-    )
-
     start_nav2_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_launch_dir, 'nav2_bringup_launch.py')),
         launch_arguments={
@@ -108,7 +81,6 @@ def generate_launch_description():
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_params_file_cmd)
 
-    ld.add_action(start_robot_state_publisher)
     ld.add_action(start_nav2_cmd)
     ld.add_action(start_rviz_cmd)
 
