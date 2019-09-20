@@ -7,6 +7,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.conditions import IfCondition
 
 TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'burger')
 
@@ -15,20 +16,20 @@ def generate_launch_description():
     # Launch configurations
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
-    default_map_dir = os.path.join(
+    default_map_file = os.path.join(
         get_package_share_directory('cloudwatch_simulation'),
         'maps',
         'map.yaml')
-    map_dir = LaunchConfiguration('map', default=default_map_dir)
-    print('Map File: {}'.format(default_map_dir))
+    map_file = LaunchConfiguration('map_file', default=default_map_file)
+    print('Map File: {}'.format(map_file))
 
-    param_file_name = TURTLEBOT3_MODEL + '.yaml'
-    default_param_dir = os.path.join(
+    params_file_name = TURTLEBOT3_MODEL + '.yaml'
+    default_params_file = os.path.join(
         get_package_share_directory('cloudwatch_simulation'),
         'param',
-        param_file_name)
-    param_dir = LaunchConfiguration('params', default=default_param_dir)
-    print('Param File: {}'.format(default_param_dir))
+        params_file_name)
+    params_file = LaunchConfiguration('params_file', default=default_params_file)
+    print('Param File: {}'.format(params_file))
 
     nav2_launch_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
 
@@ -39,30 +40,37 @@ def generate_launch_description():
     print('Rviz config: {}'.format(rviz_config_dir))
 
     # Launch arguments
-    declare_map_yaml_cmd = DeclareLaunchArgument(
-        'map',
-        default_value=map_dir,
+    declare_map_file_arg = DeclareLaunchArgument(
+        name='map_file',
+        default_value=default_map_file,
         description='Full path to map file to load'
     )
 
-    declare_use_sim_time_cmd = DeclareLaunchArgument(
-        'use_sim_time',
+    declare_use_sim_time_arg = DeclareLaunchArgument(
+        name='use_sim_time',
         default_value='true',
         description='Use simulation (Gazebo) clock if true'
     )
 
-    declare_params_file_cmd = DeclareLaunchArgument(
-        'params',
-        default_value=param_dir,
-        description='Full path to param file to load'
+    declare_params_file_arg = DeclareLaunchArgument(
+        name='params_file',
+        default_value=default_params_file,
+        description='Full path to params file to load'
+    )
+
+    declare_open_rviz_arg = DeclareLaunchArgument(
+        name='open_rviz',
+        default_value='true',
+        description='Open rviz on launch if true'
     )
 
     start_nav2_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(nav2_launch_dir, 'nav2_bringup_launch.py')),
         launch_arguments={
-            'map': map_dir,
-            'use_sim_time': use_sim_time,
-            'params': param_dir}.items(),
+            'map': LaunchConfiguration('map_file'),
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'params': LaunchConfiguration('params_file')
+        }.items(),
     )
 
     start_rviz_cmd = Node(
@@ -70,16 +78,20 @@ def generate_launch_description():
         node_executable='rviz2',
         node_name='rviz2',
         arguments=['-d', rviz_config_dir],
-        parameters=[{'use_sim_time': use_sim_time}],
-        output='screen'
+        parameters=[{
+            'use_sim_time': LaunchConfiguration('use_sim_time')
+        }],
+        output='screen',
+        condition=IfCondition(LaunchConfiguration('open_rviz'))
     )
 
     # Create the launch description and populate
     ld = LaunchDescription()
 
-    ld.add_action(declare_map_yaml_cmd)
-    ld.add_action(declare_use_sim_time_cmd)
-    ld.add_action(declare_params_file_cmd)
+    ld.add_action(declare_map_file_arg)
+    ld.add_action(declare_use_sim_time_arg)
+    ld.add_action(declare_params_file_arg)
+    ld.add_action(declare_open_rviz_arg)
 
     ld.add_action(start_nav2_cmd)
     ld.add_action(start_rviz_cmd)

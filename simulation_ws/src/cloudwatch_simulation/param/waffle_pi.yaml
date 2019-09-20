@@ -12,6 +12,10 @@ amcl:
     beam_skip_threshold: 0.3
     do_beamskip: false
     global_frame_id: "map"
+    initial_pose.x: -3.5
+    initial_pose.y: 5.5
+    initial_pose.z: 0.3
+    initial_pose.yaw: 0.0
     lambda_short: 0.1
     laser_likelihood_max_dist: 2.0
     laser_max_range: 100.0
@@ -28,6 +32,7 @@ amcl:
     resample_interval: 1
     robot_model_type: "differential"
     save_pose_rate: 0.5
+    set_initial_pose: true
     sigma_hit: 0.2
     tf_broadcast: true
     transform_tolerance: 1.0

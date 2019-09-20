@@ -19,6 +19,7 @@ import random
 import yaml
 import os
 import sys
+import time
 
 import rclpy
 from rclpy.action import ActionClient
@@ -67,6 +68,7 @@ class RouteManager(Node):
 
         self.client = ActionClient(self, NavigateToPose, 'NavigateToPose')
         self.client.wait_for_server()
+        time.sleep(10)
 
         route_file_info = self.get_parameter('route_file').value
         # route file info is in the form "<package-name>.<path from install's share directory>"

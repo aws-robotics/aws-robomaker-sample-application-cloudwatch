@@ -15,7 +15,7 @@ setup(
     ],
     install_requires=[
         'setuptools',
-        'rospkg==1.1.7',
+        'rospkg',
         'pyyaml'
     ],
     zip_safe=True,
