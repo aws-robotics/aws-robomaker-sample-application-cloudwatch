@@ -15,6 +15,7 @@ setup(
         ('share/' + package_name + '/config', ['config/cloudwatch_logs_config.yaml']),
         ('share/' + package_name + '/config', ['config/cloudwatch_metrics_config.yaml']),
         ('share/' + package_name + '/config', ['config/health_metrics_config.yaml']),
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=['setuptools'],

@@ -12,6 +12,7 @@ setup(
     python_requires='>=3.5.0',
     data_files=[
         ('lib/' + package_name, ['src/' + package_name + '/route_manager.py']),
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=[
