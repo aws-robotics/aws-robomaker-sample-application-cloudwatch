@@ -70,7 +70,7 @@ def generate_launch_description():
                 os.path.join(
                     get_package_share_directory('cloudwatch_simulation'), 
                     'launch', 
-                    'turtlebot3_nav2.launch.py'
+                    'turtlebot3_navigation.launch.py'
                 )
             ),
             launch_arguments={

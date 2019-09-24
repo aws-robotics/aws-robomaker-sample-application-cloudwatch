@@ -10,13 +10,11 @@ setup(
     python_requires='>=3.5.0',
     packages=[package_name],
     data_files=[
-        ('lib/' + package_name, ['src/' + package_name + '/route_manager.py']),
+        ('share/' + package_name, ['package.xml']),
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
     ],
     install_requires=[
         'setuptools',
-        'rospkg',
-        'pyyaml'
     ],
     zip_safe=True,
     author='AWS RoboMaker',
