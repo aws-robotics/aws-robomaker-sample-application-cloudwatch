@@ -9,7 +9,7 @@ _RoboMaker sample applications include third-party software licensed under open-
 
 ## Requirements
 
-- [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu) / [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) - Other versions may work, however they have not been tested
+- [ROS2 Dashing](https://index.ros.org//doc/ros2/Installation/Dashing) - Other versions of ROS2 may work, however they have not been tested
 - [Colcon](https://colcon.readthedocs.io/en/released/user/installation.html) - Used for building and bundling the application. 
 
 ## AWS Setup
@@ -60,8 +60,6 @@ rosdep update
 ### Robot
 
 ```bash
-sudo apt-get update
-rosdep update
 cd robot_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
@@ -86,7 +84,7 @@ Launch the application with the following commands:
 - *Running Robot Application on a Robot*
     ```bash
     source robot_ws/install/local_setup.sh
-    roslaunch cloudwatch_robot deploy_rotate.launch
+    ros2 launch cloudwatch_robot deploy_rotate.launch.py
     ```
 
 - *Running Robot Application Elsewhere*
@@ -112,10 +110,10 @@ Launch the application with the following commands:
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
 ### Monitoring with CloudWatch Logs
-Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
+Robot logs from ROS2 nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
 
 ### Monitoring with CloudWatch Metrics
-Robot metrics from ROS nodes are reported into CloudWatch Metrics `robomaker_cloudwatch_monitoring_example`. Metric resolution is configured at 10 seconds. See `cloudwatch_robot/config/cloudwatch_metrics_config.yaml`.
+Robot metrics from ROS2 nodes are reported into CloudWatch Metrics `robomaker_cloudwatch_monitoring_example`. Metric resolution is configured at 10 seconds. See `cloudwatch_robot/config/cloudwatch_metrics_config.yaml`.
 
 Operational metrics include:
 - linear speed
@@ -152,19 +150,19 @@ colcon bundle
 This produces the artifacts `robot_ws/bundle/output.tar` and `simulation_ws/bundle/output.tar` respectively. 
 
 You'll need to upload these to an s3 bucket, then you can use these files to 
-[create a robot application](https://docs.aws.amazon.com/robomaker/create-robot-application.html),  
-[create a simulation application](https://docs.aws.amazon.com/robomaker/create-simulation-application.html), 
-and [create a simulation job](https://docs.aws.amazon.com/robomaker/create-simulation-job.html) in RoboMaker.
+[create a robot application](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application.html),  
+[create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html), 
+and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 ## AWS ROS Packages used by this Sample
 
-- RoboMakerUtils-Common
-- RoboMakerUtils-ROS1
-- CloudWatch-Common
-- CloudWatchLogs-ROS1
-- CloudWatchMetrics-ROS1
-- HealthMetricsCollector-ROS1
-- MonitoringMessages-ROS1
+- [utils-common](https://github.com/aws-robotics/utils-common)
+- [utils-ros2](https://github.com/aws-robotics/utils-ros2)
+- [cloudwatch-common](https://github.com/aws-robotics/cloudwatch-common)
+- [cloudwatchlogs-ros2](https://github.com/aws-robotics/cloudwatchlogs-ros2)
+- [cloudwatchmetrics-ros2](https://github.com/aws-robotics/cloudwatchmetrics-ros2)
+- [health-metrics-collector-ros2](https://github.com/aws-robotics/health-metrics-collector-ros2)
+- [monitoringmessages-ros2](https://github.com/aws-robotics/monitoringmessages-ros2)
 
 ## License
 
