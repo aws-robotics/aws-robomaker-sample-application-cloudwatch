@@ -84,7 +84,7 @@ Launch the application with the following commands:
 - *Running Robot Application on a Robot*
     ```bash
     source robot_ws/install/local_setup.sh
-    ros2 launch cloudwatch_robot deploy_rotate.launch
+    ros2 launch cloudwatch_robot deploy_rotate.launch.py
     ```
 
 - *Running Robot Application Elsewhere*
