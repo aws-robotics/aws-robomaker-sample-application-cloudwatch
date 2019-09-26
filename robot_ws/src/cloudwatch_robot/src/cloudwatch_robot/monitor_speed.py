@@ -20,52 +20,50 @@ import math
 import time
 import rclpy
 from rclpy.node import Node
+from rclpy.clock import Clock
 from std_msgs.msg import Header
 from geometry_msgs.msg import Twist
 from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 from nav_msgs.msg import Odometry
 
 class Monitor(Node):
-    def __init__(self, data_topic, data_msg, metric_topic, transform):
+    def __init__(self, data_topic, data_msg, metric_topic):
         super().__init__('speed_monitor')
         self.metrics_pub = self.create_publisher(MetricList, metric_topic, 1)
         self.topic_sub = self.create_subscription(data_msg, data_topic, self.callback, 5)
-        self.transform = transform
 
     def callback(self, message):
-        self.metrics_pub.publish(self.transform(message))
+        self.metrics_pub.publish(self.odom_to_speed(message))
     
+    def odom_to_speed(self, odom):
+        header = Header()
+        timestamp = self.get_clock().now().to_msg()
+        header.stamp = timestamp
+        
+        dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
+                    MetricDimension(name="category", value="RobotOperations")]
 
-def odom_to_speed(odom):
-    header = Header()
-    timestamp, _ = rclpy.Clock().now().seconds_nanoseconds()
-    header.stamp = timestamp
-    
-    dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
-                 MetricDimension(name="category", value="RobotOperations")]
+        linear_speed = MetricData(header=header,
+                                metric_name="linear_speed",
+                                unit=MetricData.UNIT_NONE,
+                                value=odom.twist.twist.linear.x,
+                                time_stamp=timestamp,
+                                dimensions=dimensions)
 
-    linear_speed = MetricData(header=header,
-                               metric_name="linear_speed",
-                               unit=MetricData.UNIT_NONE,
-                               value=odom.twist.twist.linear.x,
-                               time_stamp=timestamp,
-                               dimensions=dimensions)
+        angular_speed = MetricData(header=header,
+                                metric_name="angular_speed",
+                                unit=MetricData.UNIT_NONE,
+                                value=odom.twist.twist.angular.z,
+                                time_stamp=timestamp,
+                                dimensions=dimensions)
 
-    angular_speed = MetricData(header=header,
-                               metric_name="angular_speed",
-                               unit=MetricData.UNIT_NONE,
-                               value=odom.twist.twist.angular.z,
-                               time_stamp=timestamp,
-                               dimensions=dimensions)
-
-    return MetricList([linear_speed, angular_speed])
+        return MetricList(metrics=[linear_speed, angular_speed])
 
 def main():
     rclpy.init()
     monitor = Monitor(data_topic="/odom",
                       data_msg=Odometry,
-                      metric_topic="/metrics",
-                      transform=odom_to_speed)
+                      metric_topic="/metrics")
     rclpy.spin(monitor)
 
 if __name__ == '__main__':
