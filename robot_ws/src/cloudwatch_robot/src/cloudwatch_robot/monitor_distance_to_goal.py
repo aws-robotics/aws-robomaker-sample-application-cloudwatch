@@ -21,6 +21,7 @@ import time
 import numpy as np
 import rclpy
 from rclpy.node import Node
+from rclpy.clock import Clock
 from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Path
@@ -31,7 +32,7 @@ class MonitorDistanceToGoal(Node):
     def __init__(self):
         super().__init__('monitor_distance_to_goal')
 
-        self.scan_sub = self.create_subscription(Path, "/move_base/NavfnROS/plan", self.report_metric, 5)
+        self.scan_sub = self.create_subscription(Path, "/plan", self.report_metric, 5)
         self.metrics_pub = self.create_publisher(MetricList, "/metrics", 1)
 
     def calc_path_distance(self, msg):
@@ -45,20 +46,22 @@ class MonitorDistanceToGoal(Node):
             return
 
         distance = self.calc_path_distance(msg)
-        self.get_logger().debug('Distance to goal: %s', distance)
+        self.get_logger().debug(f"Distance to goal: {distance}")
+
+        timestamp = self.get_clock().now().to_msg()
         
         header = Header()
-        header.stamp = rclpy.Time.now()
+        header.stamp = timestamp
 
         dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
                       MetricDimension(name="category", value="RobotOperations")]
         metric = MetricData(header=header, metric_name="distance_to_goal",
                             unit=MetricData.UNIT_NONE,
                             value=distance,
-                            time_stamp=rclpy.Time.now(),
+                            time_stamp=timestamp,
                             dimensions=dimensions)
 
-        self.metrics_pub.publish(MetricList([metric]))
+        self.metrics_pub.publish(MetricList(metrics=[metric]))
 
 
 def main():

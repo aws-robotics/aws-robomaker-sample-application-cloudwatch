@@ -24,42 +24,44 @@ from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
 from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 
-class MonitorNearestObstacle(Node):
+class MonitorObstacleDistance(Node):
     def __init__(self):
         super().__init__('monitor_obstacle_distance')
-        self.scan_sub = self.create_subscription(LaserScan, "scan", self.report_metric, 5)
+        self.scan_sub = self.create_subscription(LaserScan, "/scan", self.report_metric, 5)
         self.metrics_pub = self.create_publisher(MetricList, "/metrics", 1)
 
     def filter_scan(self, msg):
-        rclpy.get_logger().info('Filtering scan values in value range (%s,%s)', msg.range_min, msg.range_max)
+        self.get_logger().info(f"Filtering scan values in value range ({msg.range_min}, {msg.range_max})")
         return [msg.ranges[i] for i in range(360) if msg.ranges[i] >= msg.range_min and msg.ranges[i] <= msg.range_max]
 
     def report_metric(self, msg):
         filtered_scan = self.filter_scan(msg)
         if not filtered_scan:
-            rclpy.get_logger().info('No obstacles with scan range (%s,%s)', msg.range_min, msg.range_max)
+            self.get_logger().info(f"No obstacles with scan range ({msg.range_min}, {msg.range_max})")
             return
 
         min_distance = min(filtered_scan)
-        rclpy.get_logger.info('Nearest obstacle: %s', min_distance)
+        self.get_logger().info(f"Nearest obstacle: {min_distance}")
+
+        timestamp = self.get_clock().now().to_msg()
 
         header = Header()
-        header.stamp = rclpy.Time.now()
+        header.stamp = timestamp
 
         dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
                       MetricDimension(name="category", value="RobotOperations")]
         metric = MetricData(header=header, metric_name="nearest_obstacle_distance",
                             unit=MetricData.UNIT_NONE,
                             value=min_distance,
-                            time_stamp=rclpy.Time.now(),
+                            time_stamp=timestamp,
                             dimensions=dimensions)
 
-        self.metrics_pub.publish(MetricList([metric]))
+        self.metrics_pub.publish(MetricList(metrics=[metric]))
 
 
 def main():
     rclpy.init()
-    monitor = MonitorNearestObstacle()
+    monitor = MonitorObstacleDistance()
     rclpy.spin(monitor)
 
 if __name__ == '__main__':
