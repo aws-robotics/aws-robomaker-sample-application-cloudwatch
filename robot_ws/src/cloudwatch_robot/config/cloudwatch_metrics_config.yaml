@@ -3,7 +3,7 @@ cloudwatch_metrics_collector:
     # An optional metric namespace parameter. If provided it will set the namespace for all metrics provided by this node to
     # the provided value. If the node is running on a AWS RoboMaker system then the provided launch file will ignore this parameter in
     # favor of the namespace specified by the RoboMaker ecosystem
-    aws_metrics_namespace: "beep_boop"
+    aws_metrics_namespace: "robomaker_cloudwatch_monitoring_example"
 
     # An optional list of topics to listen to. If not provided or is empty the node will just listen on the global "metrics"
     # topic. If this list is not empty then the node will not subscribe to the "metrics" topic and will only subscribe to the
