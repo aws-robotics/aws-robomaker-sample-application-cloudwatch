@@ -118,7 +118,7 @@ Robot metrics from ROS2 nodes are reported into CloudWatch Metrics `robomaker_cl
 Operational metrics include:
 - linear speed
 - angular speed
-- distance to nearest obstacle (closest lidar scan return)
+- ~~distance to nearest obstacle (closest lidar scan return)~~ *Currently not working. See known issues below*
 - distance to planned goal (bookstore only, requires its navigation system)
 
 Health metrics include CPU and RAM usage.
@@ -153,6 +153,10 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 [create a robot application](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application.html),  
 [create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html), 
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
+
+## Known Issues
+
+There is currently an issue with the LaserScan messages emitted from the [gazebo lidar plugin](https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration:-Ray-sensors) not being received by the `monitor_obstacle_distance` node. We're still investigating why this is occuring. 
 
 ## AWS ROS Packages used by this Sample
 
