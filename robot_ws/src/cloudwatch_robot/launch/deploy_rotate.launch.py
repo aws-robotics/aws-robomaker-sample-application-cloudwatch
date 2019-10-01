@@ -10,7 +10,7 @@ def generate_launch_description():
     launch_actions = [
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(get_package_share_directory('turtlebot3_bringup'), 'launch', 'turtlebot3_robot.launch.py')
+                os.path.join(get_package_share_directory('turtlebot3_bringup'), 'launch', 'robot.launch.py')
             )
         ),
         launch.actions.IncludeLaunchDescription(
