@@ -7,9 +7,10 @@
 # Wait all monitoring nodes starts.
 sleep 30
 # ping and verify nodes started
-rosnode ping -c 3 monitor_speed
-rosnode ping -c 3 monitor_obstacle_distance
-rosnode ping -c 3 monitor_distance_to_goal
-rosnode ping -c 3 cloudwatch_logger
-rosnode ping -c 3 cloudwatch_metrics_collector
-rosnode ping -c 3 health_metric_collector
+set -e
+ros2 node info /monitor_speed
+ros2 node info /monitor_obstacle_distance
+ros2 node info /monitor_distance_to_goal
+ros2 node info /cloudwatch_logger
+ros2 node info /cloudwatch_metrics_collector
+ros2 node info /health_metric_collector
