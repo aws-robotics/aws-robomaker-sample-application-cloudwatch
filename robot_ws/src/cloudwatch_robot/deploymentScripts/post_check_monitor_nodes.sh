@@ -7,6 +7,7 @@
 # Wait all monitoring nodes starts.
 sleep 30
 # ping and verify nodes started
+set -e
 rosnode ping -c 3 monitor_speed
 rosnode ping -c 3 monitor_obstacle_distance
 rosnode ping -c 3 monitor_distance_to_goal
