@@ -1,6 +1,6 @@
 # AWS RoboMaker Sample Application - CloudWatch Monitoring
 
-Monitor health and operational metrics for a fleet of robots in a simulated home using AWS CloudWatch Metrics and AWS CloudWatch Logs. Streamed metrics include speed, distance to nearest obstacle, distance to current goal, robot CPU utilization, and RAM usage.  
+Monitor health and operational metrics for a fleet of robots in a simulated home using AWS CloudWatch Metrics and AWS CloudWatch Logs. Streamed metrics include speed, distance to nearest obstacle, distance to current goal, robot CPU utilization, and RAM usage.
 
 It demonstrates how to emit metrics and logs to AWS CloudWatch to monitor your robots.
 
@@ -10,7 +10,7 @@ _RoboMaker sample applications include third-party software licensed under open-
 ## Requirements
 
 - [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu) / [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) - Other versions may work, however they have not been tested
-- [Colcon](https://colcon.readthedocs.io/en/released/user/installation.html) - Used for building and bundling the application. 
+- [Colcon](https://colcon.readthedocs.io/en/released/user/installation.html) - Used for building and bundling the application.
 
 ## AWS Setup
 
@@ -21,11 +21,11 @@ You will need to create an AWS Account and configure the credentials to be able 
 To run this application you will need an IAM user with the following permissions:
 ```
    logs:PutLogEvents
-   logs:DescribeLogStreams 
-   logs:CreateLogStream 
+   logs:DescribeLogStreams
+   logs:CreateLogStream
    logs:CreateLogGroup
 ```
-  
+
 You can find instructions for creating a new IAM Policy [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start). In the JSON tab paste the following policy document:
 
 ```
@@ -95,7 +95,7 @@ Launch the application with the following commands:
     roslaunch cloudwatch_robot [command]
     ```
     There are two robot launch commands:
-    - `rotate.launch` - The robot starts rotating  
+    - `rotate.launch` - The robot starts rotating
     - `await_commands.launch` - The robot is idle waiting movement commands, use this for teleop and navigation
 
 
@@ -129,7 +129,7 @@ Health metrics include CPU and RAM usage.
 
 ## Using this sample with RoboMaker
 
-You first need to install colcon-ros-bundle. Python 3.5 or above is required. 
+You first need to install colcon-ros-bundle. Python 3.5 or above is required.
 
 ```bash
 pip3 install colcon-ros-bundle
@@ -149,12 +149,12 @@ source install/local_setup.sh
 colcon bundle
 ```
 
-This produces the artifacts `robot_ws/bundle/output.tar` and `simulation_ws/bundle/output.tar` respectively. 
+This produces the artifacts `robot_ws/bundle/output.tar` and `simulation_ws/bundle/output.tar` respectively.
 
-You'll need to upload these to an s3 bucket, then you can use these files to 
-[create a robot application](https://docs.aws.amazon.com/robomaker/create-robot-application.html),  
-[create a simulation application](https://docs.aws.amazon.com/robomaker/create-simulation-application.html), 
-and [create a simulation job](https://docs.aws.amazon.com/robomaker/create-simulation-job.html) in RoboMaker.
+You'll need to upload these to an s3 bucket, then you can use these files to
+[create a robot application](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application.html),
+[create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html),
+and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 ## AWS ROS Packages used by this Sample
 
@@ -168,10 +168,8 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/create-simul
 
 ## License
 
-MIT-0 - See LICENSE.txt for further information
+MIT-0 - See LICENSE for further information
 
 ## How to Contribute
 
 Create issues and pull requests against this Repository on Github
-
-
