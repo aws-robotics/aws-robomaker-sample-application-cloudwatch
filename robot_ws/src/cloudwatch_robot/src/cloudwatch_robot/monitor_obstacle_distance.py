@@ -20,6 +20,7 @@ import time
 
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import QoSPresetProfiles
 from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
 from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
@@ -27,7 +28,8 @@ from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 class MonitorObstacleDistance(Node):
     def __init__(self):
         super().__init__('monitor_obstacle_distance')
-        self.scan_sub = self.create_subscription(LaserScan, "/scan", self.report_metric, 5)
+        qos_profile = QoSPresetProfiles.SENSOR_DATA.value
+        self.scan_sub = self.create_subscription(LaserScan, "/scan", self.report_metric, qos_profile)
         self.metrics_pub = self.create_publisher(MetricList, "/metrics", 1)
 
     def filter_scan(self, msg):
