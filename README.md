@@ -50,6 +50,9 @@ You can find instructions for creating a new IAM Policy [here](https://docs.aws.
 
 ## Build
 
+### Install requirements
+Follow links above for instructions on installing required software.
+
 ### Pre-build commands
 
 ```bash
