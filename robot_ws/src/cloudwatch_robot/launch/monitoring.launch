@@ -30,6 +30,7 @@
   <arg name="metrics_node_name" value="cloudwatch_metrics_collector"/>
   <arg name="aws_metrics_namespace" default="robomaker_cloudwatch_monitoring_example"/>
   <include file="$(find cloudwatch_metrics_collector)/launch/cloudwatch_metrics_collector.launch" >
+    <arg name="output" value="screen"/>
     <arg name="node_name" value="$(arg metrics_node_name)"/>
     <arg name="config_file" value="$(find cloudwatch_robot)/config/cloudwatch_metrics_config.yaml"/>
   </include>
@@ -40,6 +41,7 @@
   <arg name="logger_node_name" value="cloudwatch_logger"/>
   <arg name="log_group_name" default="robomaker_cloudwatch_monitoring_example" />
   <include file="$(find cloudwatch_logger)/launch/cloudwatch_logger.launch">
+    <arg name="output" value="screen"/>
     <arg name="node_name" value="$(arg logger_node_name)"/>
     <arg name="config_file" value="$(find cloudwatch_robot)/config/cloudwatch_logs_config.yaml" />
   </include>
