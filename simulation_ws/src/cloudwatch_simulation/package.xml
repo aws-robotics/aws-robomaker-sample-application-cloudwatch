@@ -18,7 +18,6 @@
   <depend>gazebo_ros</depend>
   <depend>gazebo_plugins</depend>
   <depend>turtlebot3_description</depend>
-  <depend>turtlebot3_gazebo</depend>
   <depend>turtlebot3_navigation</depend>
   <exec_depend>gazebo</exec_depend>
   <export>
