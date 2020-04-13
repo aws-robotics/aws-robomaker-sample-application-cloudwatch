@@ -1,0 +1,12 @@
+name: 'aws-robomaker-sample-application-ci'
+description: 'Build and Bundle an AWS RoboMaker Sample Application Package'
+inputs:
+  ros-distro:
+    description: 'Distribution of ROS you are using [kinetic|melodic|dashing]'
+    required: true
+  workspace-dir:
+    description: 'Path to the workspace folder that contains your package/s'
+    default: './'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
