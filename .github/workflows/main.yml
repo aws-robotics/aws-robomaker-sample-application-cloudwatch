@@ -1,4 +1,4 @@
-name: build-test
+name: build-and-bundle
 on: 
   pull_request:
   push:
@@ -13,9 +13,9 @@ jobs:
       matrix:
         distro: ['kinetic', 'melodic']
     runs-on: ubuntu-latest
-    name: 'Build + Test'
+    name: 'Build and Bundle robot_ws'
     container:
-      image: ros:${{ matrix.distro}}-ros-core
+      image: ros:${{ matrix.distro }}-ros-core
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -25,7 +25,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
-    - name: Build
+    - name: Build and Bundle
       uses: ./.github/actions/aws-robomaker-sample-application-ci/
       with:
         ros-distro: ${{ matrix.distro }}
@@ -34,16 +34,46 @@ jobs:
       uses: ./.github/actions/cw-build-status/
       with:
         status: 'failure'
-        namespace: 'TravisCI' # To be consistent with metrics for existing aws-robotics packages built with TravisCI
+        namespace: 'GitHubActionsCI'
       if: failure() && github.ref == 'refs/heads/master'
     - name: Log Build Success
       uses: ./.github/actions/cw-build-status/
       with:
         status: 'success'
-        namespace: 'TravisCI' # To be consistent with metrics for existing aws-robotics packages built with TravisCI
+        namespace: 'GitHubActionsCI'
       if: success() && github.ref == 'refs/heads/master'
-    - name: Upload Coverage
-      uses: actions/upload-artifact@v1
+
+  build_and_bundle_simulation_ws:
+    strategy:
+      matrix:
+        distro: ['kinetic', 'melodic']
+    runs-on: ubuntu-latest
+    name: 'Build and Bundle simulation_ws'
+    container:
+      image: ros:${{ matrix.distro }}-ros-core
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        name: coverage
-        path: coverage/
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+    - name: Build and Bundle
+      uses: ./.github/actions/aws-robomaker-sample-application-ci/
+      with:
+        ros-distro: ${{ matrix.distro }}
+        workspace-dir: simulation_ws
+    - name: Log Build Failure
+      uses: ./.github/actions/cw-build-status/
+      with:
+        status: 'failure'
+        namespace: 'GitHubActionsCI'
+      if: failure() && github.ref == 'refs/heads/master'
+    - name: Log Build Success
+      uses: ./.github/actions/cw-build-status/
+      with:
+        status: 'success'
+        namespace: 'GitHubActionsCI'
+      if: success() && github.ref == 'refs/heads/master'
