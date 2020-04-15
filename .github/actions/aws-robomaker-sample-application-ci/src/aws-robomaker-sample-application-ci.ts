@@ -5,8 +5,10 @@ import { ExecOptions } from '@actions/exec/lib/interfaces';
 
 const fs = require('fs');
 
-const ROS_ENV_VARIABLES: any = {};
 const ROS_DISTRO = core.getInput('ros-distro', {required: true});
+const GAZEBO_VERSION = core.getInput('gazebo-version');
+const WORKSPACE_DIRECTORY = core.getInput('workspace-dir');
+const ROS_ENV_VARIABLES: any = {};
 let PACKAGES = "none"
 
 async function loadROSEnvVariables() {
@@ -31,9 +33,8 @@ async function loadROSEnvVariables() {
 
 function getExecOptions(listenerBuffers?): ExecOptions {
   var listenerBuffers = listenerBuffers || {};
-  const workspaceDir = core.getInput('workspace-dir');
   const execOptions: ExecOptions = {
-    cwd: workspaceDir,
+    cwd: WORKSPACE_DIRECTORY,
     env: Object.assign({}, process.env, ROS_ENV_VARIABLES)
   };
   if (listenerBuffers) {
@@ -55,7 +56,7 @@ async function fetchRosinstallDependencies(): Promise<string[]> {
   let packages: string[] = [];
   // Download dependencies not in apt if .rosinstall exists
   try {
-    if (fs.existsSync(path.join(core.getInput('workspace-dir'), '.rosinstall'))) {
+    if (fs.existsSync(path.join(WORKSPACE_DIRECTORY, '.rosinstall'))) {
       await exec.exec("rosws", ["update"], getExecOptions());
       await exec.exec("colcon", ["list", "--names-only"], getExecOptions(colconListAfter));
       const packagesAfter = colconListAfter.stdout.split("\n");
@@ -106,11 +107,33 @@ async function setup() {
   }
 }
 
+async function setup_gazebo9() {
+  try {
+    const gazebo9_apt_file = "/etc/apt/sources.list.d/gazebo-stable.list";
+    await exec.exec("sudo", ["rm", "-f", gazebo9_apt_file]);
+    await exec.exec("bash", ["-c", `echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \`lsb_release -cs\` main" >> ${gazebo9_apt_file}`]);
+    await exec.exec("sudo", ["apt-get", "update"]);
+
+    if (ROS_DISTRO == "kinetic") {
+      const gazebo9_rosdep_file = "/etc/ros/rosdep/sources.list.d/00-gazebo9.list";
+      await exec.exec("sudo", ["rm", "-f", gazebo9_rosdep_file]);
+      await exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/gazebo.yaml" >> ${gazebo9_rosdep_file}`);
+      await exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/indigo.yaml indigo" >> ${gazebo9_rosdep_file}`);
+      await exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/jade.yaml jade" >> ${gazebo9_rosdep_file}`);
+      await exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/kinetic.yaml kinetic" >> ${gazebo9_rosdep_file}`);
+      await exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/lunar.yaml lunar" >> ${gazebo9_rosdep_file}`);
+      await exec.exec("rosdep", ["update"]);
+    }
+   } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
 async function build() {
   try {
     await exec.exec("rosdep", ["install", "--from-paths", ".", "--ignore-src", "-r", "-y", "--rosdistro", ROS_DISTRO], getExecOptions());
 
-    console.log(`Build step | packages: ${PACKAGES}`);
+    console.log(`Building the following packages: ${PACKAGES}`);
     await exec.exec("colcon", ["build", "--build-base", "build", "--install-base", "install"], getExecOptions());
   } catch (error) {
     core.setFailed(error.message);
@@ -126,7 +149,21 @@ async function bundle() {
 }
 
 async function run() {
+  console.log(`ROS_DISTRO: ${ROS_DISTRO}`);
+  console.log(`GAZEBO_VERSION: ${GAZEBO_VERSION}`);
+  console.log(`WORKSPACE_DIRECTORY: ${WORKSPACE_DIRECTORY}`);
   await setup();
+  if (ROS_DISTRO == "kinetic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "7")) {
+    // pass
+  } else if (ROS_DISTRO == "kinetic" && GAZEBO_VERSION == "9") {
+    await setup_gazebo9();
+  } else if (ROS_DISTRO == "melodic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
+    await setup_gazebo9();
+  } else if (ROS_DISTRO == "dashing" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
+    await setup_gazebo9();
+  } else {
+    core.setFailed(`Invalid ROS and Gazebo combination`);
+  }
   await build();
   await bundle();
 }
