@@ -1,0 +1,22 @@
+name: 'aws-robomaker-sample-application-ci'
+description: 'Build and Bundle an AWS RoboMaker Sample Application Package'
+inputs:
+  ros-distro:
+    description: 'Distribution of ROS to use [kinetic|melodic|dashing]'
+    required: true
+  gazebo-version:
+    description: 'Version of Gazebo to use [unspecified|7|9]'
+    default: ''
+  workspace-dir:
+    description: 'Path to the workspace folder that contains your packages [robot_ws|simulation_ws]'
+    default: './'
+outputs:
+  ros-distro:
+    description: 'Distribution of ROS to use [kinetic|melodic|dashing]'
+  gazebo-version:
+    description: 'Version of Gazebo to use [gazebo7|gazebo9]'
+  sample-app-version:
+    description: 'Version of the sample application that was built (from the package.xml)'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
