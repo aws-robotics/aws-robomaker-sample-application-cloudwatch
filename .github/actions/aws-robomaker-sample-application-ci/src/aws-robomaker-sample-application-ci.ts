@@ -69,8 +69,12 @@ async function fetchRosinstallDependencies(): Promise<string[]> {
   let packages: string[] = [];
   // Download dependencies not in apt if .rosinstall exists
   try {
+    for (let workspace of ["robot_ws", "simulation_ws"]) {
+      if (fs.existsSync(path.join(workspace, '.rosinstall'))) {
+        await exec.exec("rosws", ["update", "-t", workspace]);
+      }
+    }
     if (fs.existsSync(path.join(WORKSPACE_DIRECTORY, '.rosinstall'))) {
-      await exec.exec("rosws", ["update"], getExecOptions());
       await exec.exec("colcon", ["list", "--names-only"], getExecOptions(colconListAfter));
       const packagesAfter = colconListAfter.stdout.split("\n");
       packagesAfter.forEach(packageName => {
