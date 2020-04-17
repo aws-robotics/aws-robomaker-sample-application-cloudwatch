@@ -26,6 +26,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     - name: Build and Bundle
+      id: build
       uses: ./.github/actions/aws-robomaker-sample-application-ci/
       with:
         ros-distro: ${{ matrix.distro }}
@@ -42,6 +43,12 @@ jobs:
         status: 'success'
         namespace: 'GitHubActionsCI'
       if: success() && github.ref == 'refs/heads/master'
+    - name: Upload to S3
+      run: |
+        echo ROS_DISTRO: ${{ steps.build.outputs.ros-distro }}
+        echo GAZEBO_VERSION: ${{ steps.build.outputs.gazebo-version }}
+        echo SAMPLE_APP_VERSION: ${{ steps.build.outputs.sample-app-version }}
+        echo BUILD_VERSION: ${{ github.run_id }} ${{ github.run_number }}
 
   build_and_bundle_simulation_ws:
     strategy:
@@ -61,6 +68,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     - name: Build and Bundle
+      id: build
       uses: ./.github/actions/aws-robomaker-sample-application-ci/
       with:
         ros-distro: ${{ matrix.distro }}
@@ -77,6 +85,12 @@ jobs:
         status: 'success'
         namespace: 'GitHubActionsCI'
       if: success() && github.ref == 'refs/heads/master'
+    - name: Upload to S3
+      run: |
+        echo ROS_DISTRO: ${{ steps.build.outputs.ros-distro }}
+        echo GAZEBO_VERSION: ${{ steps.build.outputs.gazebo-version }}
+        echo SAMPLE_APP_VERSION: ${{ steps.build.outputs.sample-app-version }}
+        echo BUILD_VERSION: ${{ github.run_id }} ${{ github.run_number }}
 
   build_and_bundle_simulation_ws_kinetc_gazebo9:
     runs-on: ubuntu-latest
@@ -93,6 +107,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     - name: Build and Bundle
+      id: build
       uses: ./.github/actions/aws-robomaker-sample-application-ci/
       with:
         ros-distro: kinetic
@@ -110,3 +125,9 @@ jobs:
         status: 'success'
         namespace: 'GitHubActionsCI'
       if: success() && github.ref == 'refs/heads/master'
+    - name: Upload to S3
+      run: |
+        echo ROS_DISTRO: ${{ steps.build.outputs.ros-distro }}
+        echo GAZEBO_VERSION: ${{ steps.build.outputs.gazebo-version }}
+        echo SAMPLE_APP_VERSION: ${{ steps.build.outputs.sample-app-version }}
+        echo BUILD_VERSION: ${{ github.run_id }} ${{ github.run_number }}
