@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>cloudwatch_robot</name>
-  <version>1.1.1</version>
+  <version>1.2.0</version>
   <description>
   AWS RoboMaker robot package that provides a sample application for integrating AWS CloudWatch with ROS.
   </description>
