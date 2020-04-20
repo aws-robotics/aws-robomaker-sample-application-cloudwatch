@@ -34,7 +34,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(866);
+/******/ 		return __webpack_require__(134);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -638,6 +638,255 @@ module.exports = require("child_process");
 
 /***/ }),
 
+/***/ 134:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const path = __importStar(__webpack_require__(622));
+const core = __importStar(__webpack_require__(470));
+const exec = __importStar(__webpack_require__(986));
+const fs = __webpack_require__(747);
+const ROS_DISTRO = core.getInput('ros-distro', { required: true });
+let GAZEBO_VERSION = core.getInput('gazebo-version');
+let SAMPLE_APP_VERSION = '';
+const WORKSPACE_DIRECTORY = core.getInput('workspace-dir');
+let PACKAGES = "none";
+const ROS_ENV_VARIABLES = {};
+function loadROSEnvVariables() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const options = {
+            listeners: {
+                stdout: (data) => {
+                    const lines = data.toString().split("\n");
+                    lines.forEach(line => {
+                        if (line.trim().length === 0)
+                            return;
+                        const contents = line.trim().split("=");
+                        ROS_ENV_VARIABLES[contents[0]] = contents.slice(1).join("=");
+                    });
+                }
+            }
+        };
+        yield exec.exec("bash", ["-c", `source /opt/ros/${ROS_DISTRO}/setup.bash && printenv`], options);
+    });
+}
+function getExecOptions(listenerBuffers) {
+    var listenerBuffers = listenerBuffers || {};
+    const execOptions = {
+        cwd: WORKSPACE_DIRECTORY,
+        env: Object.assign({}, process.env, ROS_ENV_VARIABLES)
+    };
+    if (listenerBuffers) {
+        execOptions.listeners = {
+            stdout: (data) => {
+                listenerBuffers.stdout += data.toString();
+            },
+            stderr: (data) => {
+                listenerBuffers.stderr += data.toString();
+            }
+        };
+    }
+    return execOptions;
+}
+function getSampleAppVersion() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let grepAfter = { stdout: '', stderr: '' };
+        let version = '';
+        try {
+            yield exec.exec("bash", [
+                "-c",
+                "find ../robot_ws -name package.xml -exec grep -Po '(?<=<version>)[^\\s<>]*(?=</version>)' {} +"
+            ], getExecOptions(grepAfter));
+            version = grepAfter.stdout.trim();
+        }
+        catch (err) {
+            console.error(err);
+        }
+        return Promise.resolve(version);
+    });
+}
+// If .rosinstall exists, run 'rosws update' and return a list of names of the packages that were added.
+function fetchRosinstallDependencies() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let colconListAfter = { stdout: '', stderr: '' };
+        let packages = [];
+        // Download dependencies not in apt if .rosinstall exists
+        try {
+            for (let workspace of ["robot_ws", "simulation_ws"]) {
+                if (fs.existsSync(path.join(workspace, '.rosinstall'))) {
+                    yield exec.exec("rosws", ["update", "-t", workspace]);
+                }
+            }
+            if (fs.existsSync(path.join(WORKSPACE_DIRECTORY, '.rosinstall'))) {
+                yield exec.exec("colcon", ["list", "--names-only"], getExecOptions(colconListAfter));
+                const packagesAfter = colconListAfter.stdout.split("\n");
+                packagesAfter.forEach(packageName => {
+                    packages.push(packageName.trim());
+                });
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+        return Promise.resolve(packages);
+    });
+}
+function setup() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield exec.exec("apt-key", ["adv", "--fetch-keys", "http://packages.osrfoundation.org/gazebo.key"]);
+            const aptPackages = [
+                "zip",
+                "cmake",
+                "lcov",
+                "libgtest-dev",
+                "python-pip",
+                "python-rosinstall",
+                "python3-colcon-common-extensions",
+                "python3-pip",
+                "python3-apt"
+            ];
+            const python3Packages = [
+                "setuptools",
+                "colcon-bundle",
+                "colcon-ros-bundle"
+            ];
+            yield exec.exec("sudo", ["apt-get", "update"]);
+            yield exec.exec("sudo", ["apt-get", "install", "-y"].concat(aptPackages));
+            yield exec.exec("sudo", ["pip3", "install", "-U"].concat(python3Packages));
+            yield exec.exec("rosdep", ["update"]);
+            yield loadROSEnvVariables();
+            SAMPLE_APP_VERSION = yield getSampleAppVersion();
+            console.log(`Sample App version found to be: ${SAMPLE_APP_VERSION}`);
+            // Update PACKAGES_TO_SKIP_TESTS with the new packages added by 'rosws update'.
+            let packages = yield fetchRosinstallDependencies();
+            PACKAGES = packages.join(" ");
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+function setup_gazebo9() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const gazebo9_apt_file = "/etc/apt/sources.list.d/gazebo-stable.list";
+            yield exec.exec("sudo", ["rm", "-f", gazebo9_apt_file]);
+            yield exec.exec("bash", ["-c", `echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \`lsb_release -cs\` main" >> ${gazebo9_apt_file}`]);
+            yield exec.exec("sudo", ["apt-get", "update"]);
+            if (ROS_DISTRO == "kinetic") {
+                const gazebo9_rosdep_file = "/etc/ros/rosdep/sources.list.d/00-gazebo9.list";
+                yield exec.exec("sudo", ["rm", "-f", gazebo9_rosdep_file]);
+                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/gazebo.yaml" >> ${gazebo9_rosdep_file}`]);
+                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/indigo.yaml indigo" >> ${gazebo9_rosdep_file}`]);
+                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/jade.yaml jade" >> ${gazebo9_rosdep_file}`]);
+                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/kinetic.yaml kinetic" >> ${gazebo9_rosdep_file}`]);
+                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/lunar.yaml lunar" >> ${gazebo9_rosdep_file}`]);
+                yield exec.exec("rosdep", ["update"]);
+            }
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+function prepare_sources() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const sourceIncludes = [
+                "robot_ws",
+                "simulation_ws",
+                "LICENSE*",
+                "NOTICE*",
+                "README*",
+                "roboMakerSettings.json"
+            ];
+            const sourceIncludesStr = sourceIncludes.join(" ");
+            yield exec.exec("bash", ["-c", `zip -r sources.zip ${sourceIncludesStr}`]);
+            yield exec.exec("bash", ["-c", `tar cvzf sources.tar.gz ${sourceIncludesStr}`]);
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+function build() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield exec.exec("rosdep", ["install", "--from-paths", ".", "--ignore-src", "-r", "-y", "--rosdistro", ROS_DISTRO], getExecOptions());
+            console.log(`Building the following packages: ${PACKAGES}`);
+            yield exec.exec("colcon", ["build", "--build-base", "build", "--install-base", "install"], getExecOptions());
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+function bundle() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield exec.exec("colcon", ["bundle", "--build-base", "build", "--install-base", "install", "--bundle-base", "bundle"], getExecOptions());
+            yield exec.exec("mv", ["bundle/output.tar", `../${WORKSPACE_DIRECTORY}.tar`], getExecOptions());
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+function run() {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log(`ROS_DISTRO: ${ROS_DISTRO}`);
+        console.log(`GAZEBO_VERSION: ${GAZEBO_VERSION}`);
+        console.log(`WORKSPACE_DIRECTORY: ${WORKSPACE_DIRECTORY}`);
+        yield setup();
+        if (ROS_DISTRO == "kinetic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "7")) {
+            GAZEBO_VERSION = "7";
+        }
+        else if (ROS_DISTRO == "kinetic" && GAZEBO_VERSION == "9") {
+            yield setup_gazebo9();
+        }
+        else if (ROS_DISTRO == "melodic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
+            GAZEBO_VERSION = "9";
+            yield setup_gazebo9();
+        }
+        else if (ROS_DISTRO == "dashing" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
+            GAZEBO_VERSION = "9";
+            yield setup_gazebo9();
+        }
+        else {
+            core.setFailed(`Invalid ROS and Gazebo combination`);
+        }
+        yield prepare_sources();
+        yield build();
+        yield bundle();
+        core.setOutput('ros-distro', ROS_DISTRO);
+        core.setOutput('gazebo-version', "gazebo" + GAZEBO_VERSION);
+        core.setOutput('sample-app-version', SAMPLE_APP_VERSION);
+    });
+}
+run();
+
+
+/***/ }),
+
 /***/ 431:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -932,253 +1181,6 @@ module.exports = require("path");
 
 module.exports = require("fs");
 
-/***/ }),
-
-/***/ 866:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const path = __importStar(__webpack_require__(622));
-const core = __importStar(__webpack_require__(470));
-const exec = __importStar(__webpack_require__(986));
-const fs = __webpack_require__(747);
-const ROS_DISTRO = core.getInput('ros-distro', { required: true });
-let GAZEBO_VERSION = core.getInput('gazebo-version');
-let SAMPLE_APP_VERSION = '';
-const WORKSPACE_DIRECTORY = core.getInput('workspace-dir');
-let PACKAGES = "none";
-const ROS_ENV_VARIABLES = {};
-function loadROSEnvVariables() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const options = {
-            listeners: {
-                stdout: (data) => {
-                    const lines = data.toString().split("\n");
-                    lines.forEach(line => {
-                        if (line.trim().length === 0)
-                            return;
-                        const contents = line.trim().split("=");
-                        ROS_ENV_VARIABLES[contents[0]] = contents.slice(1).join("=");
-                    });
-                }
-            }
-        };
-        yield exec.exec("bash", ["-c", `source /opt/ros/${ROS_DISTRO}/setup.bash && printenv`], options);
-    });
-}
-function getExecOptions(listenerBuffers) {
-    var listenerBuffers = listenerBuffers || {};
-    const execOptions = {
-        cwd: WORKSPACE_DIRECTORY,
-        env: Object.assign({}, process.env, ROS_ENV_VARIABLES)
-    };
-    if (listenerBuffers) {
-        execOptions.listeners = {
-            stdout: (data) => {
-                listenerBuffers.stdout += data.toString();
-            },
-            stderr: (data) => {
-                listenerBuffers.stderr += data.toString();
-            }
-        };
-    }
-    return execOptions;
-}
-function getSampleAppVersion() {
-    return __awaiter(this, void 0, void 0, function* () {
-        let grepAfter = { stdout: '', stderr: '' };
-        let version = '';
-        try {
-            yield exec.exec("bash", [
-                "-c",
-                "find ../robot_ws -name package.xml -exec grep -Po '(?<=<version>)[^\\s<>]*(?=</version>)' {} +"
-            ], getExecOptions(grepAfter));
-            version = grepAfter.stdout.trim();
-        }
-        catch (err) {
-            console.error(err);
-        }
-        return Promise.resolve(version);
-    });
-}
-// If .rosinstall exists, run 'rosws update' and return a list of names of the packages that were added.
-function fetchRosinstallDependencies() {
-    return __awaiter(this, void 0, void 0, function* () {
-        let colconListAfter = { stdout: '', stderr: '' };
-        let packages = [];
-        // Download dependencies not in apt if .rosinstall exists
-        try {
-            for (let workspace of ["robot_ws", "simulation_ws"]) {
-                if (fs.existsSync(path.join(workspace, '.rosinstall'))) {
-                    yield exec.exec("rosws", ["update", "-t", workspace]);
-                }
-            }
-            if (fs.existsSync(path.join(WORKSPACE_DIRECTORY, '.rosinstall'))) {
-                yield exec.exec("colcon", ["list", "--names-only"], getExecOptions(colconListAfter));
-                const packagesAfter = colconListAfter.stdout.split("\n");
-                packagesAfter.forEach(packageName => {
-                    packages.push(packageName.trim());
-                });
-            }
-        }
-        catch (err) {
-            console.error(err);
-        }
-        return Promise.resolve(packages);
-    });
-}
-function setup() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield exec.exec("apt-key", ["adv", "--fetch-keys", "http://packages.osrfoundation.org/gazebo.key"]);
-            const aptPackages = [
-                "zip",
-                "cmake",
-                "lcov",
-                "libgtest-dev",
-                "python-pip",
-                "python-rosinstall",
-                "python3-colcon-common-extensions",
-                "python3-pip",
-                "python3-apt"
-            ];
-            const python3Packages = [
-                "setuptools",
-                "colcon-bundle",
-                "colcon-ros-bundle"
-            ];
-            yield exec.exec("sudo", ["apt-get", "update"]);
-            yield exec.exec("sudo", ["apt-get", "install", "-y"].concat(aptPackages));
-            yield exec.exec("sudo", ["pip3", "install", "-U"].concat(python3Packages));
-            yield exec.exec("rosdep", ["update"]);
-            yield loadROSEnvVariables();
-            SAMPLE_APP_VERSION = yield getSampleAppVersion();
-            console.log(`Sample App version found to be: ${SAMPLE_APP_VERSION}`);
-            // Update PACKAGES_TO_SKIP_TESTS with the new packages added by 'rosws update'.
-            let packages = yield fetchRosinstallDependencies();
-            PACKAGES = packages.join(" ");
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-function setup_gazebo9() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const gazebo9_apt_file = "/etc/apt/sources.list.d/gazebo-stable.list";
-            yield exec.exec("sudo", ["rm", "-f", gazebo9_apt_file]);
-            yield exec.exec("bash", ["-c", `echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \`lsb_release -cs\` main" >> ${gazebo9_apt_file}`]);
-            yield exec.exec("sudo", ["apt-get", "update"]);
-            if (ROS_DISTRO == "kinetic") {
-                const gazebo9_rosdep_file = "/etc/ros/rosdep/sources.list.d/00-gazebo9.list";
-                yield exec.exec("sudo", ["rm", "-f", gazebo9_rosdep_file]);
-                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/gazebo.yaml" >> ${gazebo9_rosdep_file}`]);
-                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/indigo.yaml indigo" >> ${gazebo9_rosdep_file}`]);
-                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/jade.yaml jade" >> ${gazebo9_rosdep_file}`]);
-                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/kinetic.yaml kinetic" >> ${gazebo9_rosdep_file}`]);
-                yield exec.exec("bash", ["-c", `echo "yaml https://github.com/osrf/osrf-rosdep/raw/master/gazebo9/releases/lunar.yaml lunar" >> ${gazebo9_rosdep_file}`]);
-                yield exec.exec("rosdep", ["update"]);
-            }
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-function prepare_sources() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const sourceIncludes = [
-                "robot_ws",
-                "simulation_ws",
-                "LICENSE*",
-                "NOTICE*",
-                "README*",
-                "roboMakerSettings.json"
-            ];
-            const sourceIncludesStr = sourceIncludes.join(" ");
-            yield exec.exec("bash", ["-c", `zip -r sources.zip ${sourceIncludesStr}`]);
-            yield exec.exec("bash", ["-c", `tar cvzf sources.tar.gz ${sourceIncludesStr}`]);
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-function build() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield exec.exec("rosdep", ["install", "--from-paths", ".", "--ignore-src", "-r", "-y", "--rosdistro", ROS_DISTRO], getExecOptions());
-            console.log(`Building the following packages: ${PACKAGES}`);
-            yield exec.exec("colcon", ["build", "--build-base", "build", "--install-base", "install"], getExecOptions());
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-function bundle() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield exec.exec("colcon", ["bundle", "--build-base", "build", "--install-base", "install", "--bundle-base", "bundle"], getExecOptions());
-            yield exec.exec("mv", ["bundle/output.tar", `../${WORKSPACE_DIRECTORY}.tar`], getExecOptions());
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        console.log(`ROS_DISTRO: ${ROS_DISTRO}`);
-        console.log(`GAZEBO_VERSION: ${GAZEBO_VERSION}`);
-        console.log(`WORKSPACE_DIRECTORY: ${WORKSPACE_DIRECTORY}`);
-        yield setup();
-        if (ROS_DISTRO == "kinetic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "7")) {
-            GAZEBO_VERSION = "7";
-        }
-        else if (ROS_DISTRO == "kinetic" && GAZEBO_VERSION == "9") {
-            yield setup_gazebo9();
-        }
-        else if (ROS_DISTRO == "melodic" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
-            GAZEBO_VERSION = "9";
-            yield setup_gazebo9();
-        }
-        else if (ROS_DISTRO == "dashing" && (GAZEBO_VERSION == "" || GAZEBO_VERSION == "9")) {
-            GAZEBO_VERSION = "9";
-            yield setup_gazebo9();
-        }
-        else {
-            core.setFailed(`Invalid ROS and Gazebo combination`);
-        }
-        yield prepare_sources();
-        yield build();
-        yield bundle();
-        core.setOutput('ros-distro', ROS_DISTRO);
-        core.setOutput('gazebo-version', "gazebo" + GAZEBO_VERSION);
-        core.setOutput('sample-app-version', SAMPLE_APP_VERSION);
-    });
-}
-run();
 /***/ }),
 
 /***/ 986:

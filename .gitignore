@@ -8,3 +8,4 @@ simulation_ws/bundle
 simulation_ws/install
 simulation_ws/log
 simulation_ws/src/deps
+node_modules/
