@@ -8,3 +8,4 @@ simulation_ws/log
 deps/
 
 .idea/
+node_modules
