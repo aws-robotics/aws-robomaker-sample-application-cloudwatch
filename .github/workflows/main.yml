@@ -25,6 +25,12 @@ jobs:
       with:
         ros-distro: ${{ matrix.distro }}
         workspace-dir: robot_ws
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
     - name: Log Build Failure
       uses: ./.github/actions/cw-build-status/
       with:
@@ -40,13 +46,13 @@ jobs:
     - name: Upload to S3
       uses: ./.github/actions/s3-cp/
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS1 }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS1 }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS1 }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_REGION: 'us-west-2'
         FILES: 'sources.zip sources.tar.gz robot_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule'
+      if: github.event_name == 'push'
 
   build_and_bundle_simulation_ws:
     strategy:
@@ -65,6 +71,12 @@ jobs:
       with:
         ros-distro: ${{ matrix.distro }}
         workspace-dir: simulation_ws
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
     - name: Log Build Failure
       uses: ./.github/actions/cw-build-status/
       with:
@@ -80,13 +92,13 @@ jobs:
     - name: Upload to S3
       uses: ./.github/actions/s3-cp/
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS1 }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS1 }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS1 }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_REGION: 'us-west-2'
         FILES: 'simulation_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule'
+      if: github.event_name == 'push'
 
   build_and_bundle_simulation_ws_kinetc_gazebo9:
     runs-on: ubuntu-latest
@@ -103,6 +115,12 @@ jobs:
         ros-distro: kinetic
         gazebo-version: 9
         workspace-dir: simulation_ws
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
     - name: Log Build Failure
       uses: ./.github/actions/cw-build-status/
       with:
@@ -118,10 +136,10 @@ jobs:
     - name: Upload to S3
       uses: ./.github/actions/s3-cp/
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS1 }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS1 }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS1 }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_REGION: 'us-west-2'
         FILES: 'simulation_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule'
+      if: github.event_name == 'push'
