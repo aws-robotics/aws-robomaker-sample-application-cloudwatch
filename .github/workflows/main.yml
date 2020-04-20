@@ -52,7 +52,7 @@ jobs:
         AWS_REGION: 'us-west-2'
         FILES: 'sources.zip sources.tar.gz robot_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      # if: github.event_name == 'schedule'
+      if: github.event_name == 'push'
 
   build_and_bundle_simulation_ws:
     strategy:
@@ -98,4 +98,4 @@ jobs:
         AWS_REGION: 'us-west-2'
         FILES: 'simulation_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      # if: github.event_name == 'schedule'
+      if: github.event_name == 'push'
