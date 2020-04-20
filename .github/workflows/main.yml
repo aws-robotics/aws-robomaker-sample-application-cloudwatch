@@ -36,18 +36,22 @@ jobs:
       with:
         status: 'failure'
         namespace: 'GitHubActionsCI'
-      if: failure() # && github.ref == 'refs/heads/ros2'
+      if: failure() && github.ref == 'refs/heads/ros2'
     - name: Log Build Success
       uses: ./.github/actions/cw-build-status/
       with:
         status: 'success'
         namespace: 'GitHubActionsCI'
-      if: success() # && github.ref == 'refs/heads/ros2'
+      if: success() && github.ref == 'refs/heads/ros2'
     - name: Upload to S3
-      run: |
-        aws s3 cp sources.zip 's3://${{ secrets.AWS_S3_BUCKET }}/travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-        aws s3 cp sources.tar.gz 's3://${{ secrets.AWS_S3_BUCKET }}/travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-        aws s3 cp robot_ws.tar 's3://${{ secrets.AWS_S3_BUCKET }}/travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
+      uses: ./.github/actions/s3-cp/
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
+        AWS_REGION: 'us-west-2'
+        FILES: 'sources.zip sources.tar.gz robot_ws.tar'
+        DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
       # if: github.event_name == 'schedule'
 
   build_and_bundle_simulation_ws:
@@ -78,14 +82,20 @@ jobs:
       with:
         status: 'failure'
         namespace: 'GitHubActionsCI'
-      if: failure() # && github.ref == 'refs/heads/ros2'
+      if: failure() && github.ref == 'refs/heads/ros2'
     - name: Log Build Success
       uses: ./.github/actions/cw-build-status/
       with:
         status: 'success'
         namespace: 'GitHubActionsCI'
-      if: success() # && github.ref == 'refs/heads/ros2'
+      if: success() && github.ref == 'refs/heads/ros2'
     - name: Upload to S3
-      run: |
-        aws s3 cp simulation_ws.tar 's3://${{ secrets.AWS_S3_BUCKET }}/travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
+      uses: ./.github/actions/s3-cp/
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
+        AWS_REGION: 'us-west-2'
+        FILES: 'simulation_ws.tar'
+        DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
       # if: github.event_name == 'schedule'
