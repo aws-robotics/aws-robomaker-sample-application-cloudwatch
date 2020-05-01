@@ -4,72 +4,35 @@ on:
   push:
     branches:
       - ros2
-  schedule:
+  schedule: # (?) this will currently never trigger, since this workflow yaml file is not the default branch
     - cron: '0 14 * * *'  # run at 2 pm everyday
 
 jobs:
-  build_and_bundle_robot_ws:
+  build_and_bundle_ros2:
     strategy:
       matrix:
         distro: ['dashing']
+        gazebo: [9]
     runs-on: ubuntu-latest
-    name: 'Build and Bundle robot_ws'
+    name: 'Build and Bundle (ROS2)'
     container:
       image: ros:${{ matrix.distro }}-ros-core
     steps:
-    - name: Checkout
+    - name: Checkout Branch
       uses: actions/checkout@v1
-    - name: Build and Bundle
+    - name: Build and Bundle Robot Workspace
       id: build
-      uses: ./.github/actions/aws-robomaker-sample-application-ci/
+      uses: mm318/aws-robomaker-sample-application-ci@master
       with:
         ros-distro: ${{ matrix.distro }}
+        gazebo-version: ${{ matrix.gazebo }}
         workspace-dir: robot_ws
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
-        aws-region: us-west-2
-    - name: Log Build Failure
-      uses: ./.github/actions/cw-build-status/
-      with:
-        status: 'failure'
-        namespace: 'GitHubActionsCI'
-      if: failure() && github.ref == 'refs/heads/ros2'
-    - name: Log Build Success
-      uses: ./.github/actions/cw-build-status/
-      with:
-        status: 'success'
-        namespace: 'GitHubActionsCI'
-      if: success() && github.ref == 'refs/heads/ros2'
-    - name: Upload to S3
-      uses: ./.github/actions/s3-cp/
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
-        AWS_REGION: 'us-west-2'
-        FILES: 'sources.zip sources.tar.gz robot_ws.tar'
-        DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule'
-
-  build_and_bundle_simulation_ws:
-    strategy:
-      matrix:
-        distro: ['dashing']
-    runs-on: ubuntu-latest
-    name: 'Build and Bundle simulation_ws'
-    container:
-      image: ros:${{ matrix.distro }}-ros-core
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Build and Bundle
-      id: build
-      uses: ./.github/actions/aws-robomaker-sample-application-ci/
+        generate-sources: true
+    - name: Build and Bundle Simulation Workspace
+      uses: mm318/aws-robomaker-sample-application-ci@master
       with:
         ros-distro: ${{ matrix.distro }}
+        gazebo-version: ${{ matrix.gazebo }}
         workspace-dir: simulation_ws
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -77,25 +40,17 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
         aws-region: us-west-2
-    - name: Log Build Failure
-      uses: ./.github/actions/cw-build-status/
+      if: always() && github.ref == 'refs/heads/ros2' # always log "push" and "schedule" (?) build status
+    - name: Log Build Status
+      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
       with:
-        status: 'failure'
         namespace: 'GitHubActionsCI'
-      if: failure() && github.ref == 'refs/heads/ros2'
-    - name: Log Build Success
-      uses: ./.github/actions/cw-build-status/
-      with:
-        status: 'success'
-        namespace: 'GitHubActionsCI'
-      if: success() && github.ref == 'refs/heads/ros2'
+      if: always() && github.ref == 'refs/heads/ros2' # always log "push" and "schedule" (?) build status
     - name: Upload to S3
-      uses: ./.github/actions/s3-cp/
+      uses: mm318/s3-cp-action@v0.3.0
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
         AWS_REGION: 'us-west-2'
-        FILES: 'simulation_ws.tar'
+        FILES: 'sources.zip sources.tar.gz robot_ws.tar simulation_ws.tar'
         DEST: 'travis/cloudwatch/${{ steps.build.outputs.ros-distro }}/${{ steps.build.outputs.gazebo-version }}/${{ steps.build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule'
+      if: github.event_name == 'schedule' # upload to S3 on "schedule" (?) build
