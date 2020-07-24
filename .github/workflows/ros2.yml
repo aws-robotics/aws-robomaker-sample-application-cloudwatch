@@ -24,7 +24,7 @@ jobs:
     outputs:
       robot_ws_build_result: ${{ steps.robot_ws_build.outcome }}
       simulation_ws_build_result: ${{ steps.simulation_ws_build.outcome }}
-      upload_result: ${{ steps.upload.outcome }}
+      # upload_result: ${{ steps.upload.outcome }}
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v1
@@ -54,15 +54,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
         aws-region: ${{ secrets.AWS_REGION }}
       if: always() && github.ref == 'refs/heads/ros2' # always for "push" and "schedule" (?) build status
-    - id: upload
-      name: Upload to S3
-      uses: mm318/s3-cp-action@v0.3.0
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
-        FILES: 'sources.zip sources.tar.gz robot_ws.tar simulation_ws.tar'
-        DEST: 'travis/cloudwatch/${{ steps.robot_ws_build.outputs.ros-distro }}/${{ steps.robot_ws_build.outputs.gazebo-version }}/${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}/'
-      if: github.event_name == 'schedule' # upload to S3 on "schedule" (?) build
+    # - id: upload
+    #   name: Upload to S3
+    #   uses: mm318/s3-cp-action@v0.3.0
+    #   env:
+    #     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
+    #     AWS_REGION: ${{ secrets.AWS_REGION }}
+    #     FILES: 'sources.zip sources.tar.gz robot_ws.tar simulation_ws.tar'
+    #     DEST: 'travis/cloudwatch/${{ steps.robot_ws_build.outputs.ros-distro }}/${{ steps.robot_ws_build.outputs.gazebo-version }}/${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}/'
+    #   if: github.event_name == 'schedule' # upload to S3 on "schedule" (?) build
 
   log_workflow_status_to_cloudwatch:
     runs-on: ubuntu-latest
@@ -94,8 +94,8 @@ jobs:
       with:
         namespace: SimulationWorkspaceBuild
         metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.simulation_ws_build_result, 'failure') }}
-    - name: Log Upload Status
-      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
-      with:
-        namespace: UploadToS3
-        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
+    # - name: Log Upload Status
+    #   uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+    #   with:
+    #     namespace: UploadToS3
+    #     metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
