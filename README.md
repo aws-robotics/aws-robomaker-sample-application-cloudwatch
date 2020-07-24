@@ -162,10 +162,10 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-You need ruby and nokogiri installed locally (see Windows and MACOS see https://nokogiri.org/tutorials/installing_nokogiri.html)
+You need ruby and nokogiri installed locally (for Windows and MACOS see https://nokogiri.org/tutorials/installing_nokogiri.html)
 
 ```bash
-# Installing ruby-dev and nokogiri parser gem
+# Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
 sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
 gem install nokogiri
 ```
@@ -181,7 +181,7 @@ cd ../
 ruby add_map_plugin.rb <world-name>
 
 ```
-<world-name> can be:
+world-name can be:
     - `bookstore` referencing to AWS Bookstore world
     - `smallhouse` referencing to AWS Small-house world
 
