@@ -193,6 +193,8 @@ source install/local_setup.sh
 
 # Generate map
 rosservice call /gazebo_2Dmap_plugin/generate_map
+
+# Save map
 rosrun map_server map_saver -f <file-name> /map:=/map2d
 ```
 
