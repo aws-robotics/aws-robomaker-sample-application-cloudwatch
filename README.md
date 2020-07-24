@@ -159,6 +159,43 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 [create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html),
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
+
+## Generate map for your world
+
+You need ruby and nokogiri installed locally (see Windows and MACOS see https://nokogiri.org/tutorials/installing_nokogiri.html)
+
+```bash
+# Installing ruby-dev and nokogiri parser gem
+sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+gem install nokogiri
+```
+
+```bash
+# Fetch and install ROS dependencies
+cd simulation_ws
+rosws update
+rosdep install --from-paths src --ignore-src -r -y
+
+# Add map generation plugin to the world
+cd ../
+ruby add_map_plugin.rb <world-name>
+
+```
+<world-name> can be:
+    - `bookstore` referencing to AWS Bookstore world
+    - `smallhouse` referencing to AWS Small-house world
+
+```bash
+# Build again with plugin added
+cd simulation_ws
+colcon build
+source install/local_setup.sh
+
+# Generate map
+rosservice call /gazebo_2Dmap_plugin/generate_map
+rosrun map_server map_saver -f <file-name> /map:=/map2d
+```
+
 ## AWS ROS Packages used by this Sample
 
 - RoboMakerUtils-Common
