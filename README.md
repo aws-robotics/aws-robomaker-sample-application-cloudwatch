@@ -181,9 +181,9 @@ cd ../
 ruby add_map_plugin.rb <world-name>
 
 ```
-world-name can be:
-    - `bookstore` referencing to AWS Bookstore world
-    - `smallhouse` referencing to AWS Small-house world
+world-name can be:  
+    - `bookstore` referencing to AWS Bookstore world  
+    - `smallhouse` referencing to AWS Small-house world  
 
 ```bash
 # Build again with plugin added
