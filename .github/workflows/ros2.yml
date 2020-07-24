@@ -1,0 +1,122 @@
+name: build-and-bundle
+on: 
+  pull_request:
+  push:
+    branches:
+      - ros2
+  schedule:
+    - cron: '0 14 * * *'  # run at 2 pm everyday
+
+jobs:
+  build_and_bundle_ros2:
+    strategy:
+      matrix:
+        distro: ['dashing']
+        gazebo: [9]
+        include:
+        - distro: dashing
+          gazebo: 9
+          ubuntu_distro: bionic
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.ref == 'refs/heads/ros2'
+    name: 'Build and Bundle (ROS2)'
+    container:
+      image: rostooling/setup-ros-docker:ubuntu-${{ matrix.ubuntu_distro }}-ros-${{ matrix.distro }}-ros-base-latest
+    outputs:
+      robot_ws_build_result: ${{ steps.robot_ws_build.outcome }}
+      simulation_ws_build_result: ${{ steps.simulation_ws_build.outcome }}
+      upload_result: ${{ steps.upload.outcome }}
+    steps:
+    - name: Checkout Branch
+      uses: actions/checkout@v1
+      with:
+        ref: 'ros2'
+    - name: Setup Permissions
+      run: |
+        # TODO(setup-ros-docker#7): calling chown is necessary for now
+        sudo chown -R rosbuild:rosbuild "$HOME" .
+    - id: robot_ws_build
+      name: Build and Bundle Robot Workspace
+      uses: mm318/aws-robomaker-sample-application-ci@1.0.0
+      with:
+        ros-distro: ${{ matrix.distro }}
+        gazebo-version: ${{ matrix.gazebo }}
+        workspace-dir: robot_ws
+        generate-sources: true
+    - id: simulation_ws_build
+      name: Build and Bundle Simulation Workspace
+      uses: mm318/aws-robomaker-sample-application-ci@1.0.0
+      with:
+        ros-distro: ${{ matrix.distro }}
+        gazebo-version: ${{ matrix.gazebo }}
+        workspace-dir: simulation_ws
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
+        aws-region: ${{ secrets.AWS_REGION }}
+      if: always()   # always log "push" and "schedule" build failures
+    - id: upload
+      name: Upload to S3
+      uses: mm318/s3-cp-action@v0.3.0
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        FILES: 'sources.zip sources.tar.gz robot_ws.tar simulation_ws.tar'
+        DEST: 'travis/cloudwatch/${{ steps.robot_ws_build.outputs.ros-distro }}/${{ steps.robot_ws_build.outputs.gazebo-version }}/${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}/'
+      if: github.event_name == 'schedule' # upload to S3 on "schedule" build
+
+  log_workflow_status_to_cloudwatch:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:bionic
+    needs:
+    - build_and_bundle_ros2
+    if: always()  # run even if the dependent jobs have failed to log failures
+    # Allow build reports to fail on pull requests.
+    # When a contribution is made on a fork, the secrets will not be available,
+    # and this step will be failing. This is acceptable.
+    # On the other end, we want to be notified if this happens on merge, or
+    # on schedule.
+    continue-on-error: ${{ github.event_name == 'pull_request'}}
+    steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
+        aws-region: ${{ secrets.AWS_REGION }}
+    - name: Log Robot Workspace Build Status
+      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      with:
+        metric-dimensions: >-
+          [
+            { "Name": "github.event_name", "Value": "${{ github.event_name }}" },
+            { "Name": "github.ref", "Value": "refs/heads/ros2" },
+            { "Name": "github.repository", "Value": "${{ github.repository }}" }
+          ]
+        namespace: RobotWorkspaceBuild
+        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.robot_ws_build_result, 'failure') }}
+    - name: Log Simulation Workspace Build Status
+      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      with:
+        metric-dimensions: >-
+          [
+            { "Name": "github.event_name", "Value": "${{ github.event_name }}" },
+            { "Name": "github.ref", "Value": "refs/heads/ros2" },
+            { "Name": "github.repository", "Value": "${{ github.repository }}" }
+          ]
+        namespace: SimulationWorkspaceBuild
+        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.simulation_ws_build_result, 'failure') }}
+    - name: Log Upload Status
+      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      with:
+        metric-dimensions: >-
+          [
+            { "Name": "github.event_name", "Value": "${{ github.event_name }}" },
+            { "Name": "github.ref", "Value": "refs/heads/ros2" },
+            { "Name": "github.repository", "Value": "${{ github.repository }}" }
+          ]
+        namespace: UploadToS3
+        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
