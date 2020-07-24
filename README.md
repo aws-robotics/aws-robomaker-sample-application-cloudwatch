@@ -92,7 +92,7 @@ Launch the application with the following commands:
     roslaunch cloudwatch_robot deploy_rotate.launch
     ```
 
-- *Running Robot Application Elsewhere*
+- *Running Robot Application in a Simulation*
     ```bash
     source robot_ws/install/local_setup.sh
     roslaunch cloudwatch_robot [command]
@@ -118,7 +118,40 @@ Launch the application with the following commands:
     roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
 
+For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
+
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
+
+## Run with a WorldForge world
+
+After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+
+```bash
+unzip exported_world.zip
+mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+```
+
+Build it again
+
+```bash
+cd simulation_ws
+colcon build
+```
+
+Launch the application with the following commands:
+
+```bash
+source simulation_ws/install/local_setup.sh
+roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
+```
+
+By default, WorldForge packages will load the exported world. To override, specify the environment variable `WORLD_ID`. 
+
+```bash
+# use worldId found in "src/aws_robomaker_worldforge_worlds/worlds"
+# e.g, generation_05wq8sybdcn2_world_1
+export WORLD_ID=<worldId>  
+```
 
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
@@ -166,13 +199,46 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 
-## Generate map for your world
+## Generate Occupancy Map via map generation plugin
 
 Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in your world. 
 
 Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above.
 
-### Pre-build
+
+### Script for default worlds/config
+
+Currently the following worlds are supported:
+- [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
+- [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
+- [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+- [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+- worldforge
+
+
+To generate a map, simply run
+```bash
+./scripts/genmap_script.sh <world_name>
+```
+where `<world_name>` can be any value in the list above. Extra steps below are needed for `worldforge`.
+
+
+#### Generating map for WorldForge worlds
+
+After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+
+```bash
+unzip exported_world.zip
+mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+
+#For worldforge worlds, set WORLD_ID to the name of your WF exported world (eg: generation_40r67s111n9x_world_3),
+export WORLD_ID=<worldforge-world-name>
+
+# Run map generation script
+./scripts/genmap_script.sh worldforge
+```
+
+### Custom worlds/config
 
 ```bash
 # Install dependencies (Ubuntu >18.04)
@@ -187,20 +253,8 @@ rosdep install --from-paths src -r -y
 cd ..
 ```
 
-### Generate Occupancy Map via map generation plugin
-
 ```bash
-# Add map generation plugin to a robomaker world
-python scripts/add_map_plugin.py default --world_name <world_name>
-```
-world_name can be:  
-    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
-    - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
-    - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-
-```bash
-# Alternatively for your custom world/config,
+# Run plugin with custom world/config,
 python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
 
