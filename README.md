@@ -195,7 +195,7 @@ colcon build
 source install/local_setup.sh
 
 # Start map service
-roslaunch cloudwatch_simulation start_map_service
+roslaunch cloudwatch_simulation start_map_service.launch
 
 # Generate map
 rosservice call /gazebo_2Dmap_plugin/generate_map
