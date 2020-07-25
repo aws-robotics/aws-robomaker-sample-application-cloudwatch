@@ -164,7 +164,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 Currently works only for ROS Melodic.
 
-You need ruby and nokogiri installed locally (for Windows and MACOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
+You need ruby and nokogiri installed locally (for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 
 ```bash
 # Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
@@ -197,7 +197,7 @@ source install/local_setup.sh
 # Start map service
 roslaunch cloudwatch_simulation start_map_service.launch
 
-# Generate map
+# Generate map (in a different terminal)
 rosservice call /gazebo_2Dmap_plugin/generate_map
 
 # Save map
