@@ -4,9 +4,10 @@
        Use gui:=true on roslaunch command-line to run with a gui.
   -->
   <arg name="gui" default="false"/>
+  <arg name="world" default="$(optenv WORLD_ID aws_robomaker_bookstore_world)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find aws_robomaker_small_house_world)/worlds/small_house_map_plugin.world"/>
+    <arg name="world_name" value="$(eval find(world) + '/worlds/map_plugin.world')"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" default="$(arg gui)"/>

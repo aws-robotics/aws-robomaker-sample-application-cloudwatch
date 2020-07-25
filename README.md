@@ -179,19 +179,23 @@ rosws update
 rosdep install --from-paths src --ignore-src -r -y
 
 # Add map generation plugin to the world
+export WORLD_ID=<worldID>
 cd ../
-ruby add_map_plugin.rb <world-name>
+ruby add_map_plugin.rb
 
 ```
-world-name can be:  
-    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
-    - [`smallhouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+worldID can be:  
+    - [`aws_robomaker_bookstore_world`](default)(https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
+    - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
 
 ```bash
 # Build again with plugin added
 cd simulation_ws
 colcon build
 source install/local_setup.sh
+
+# Start map service
+roslaunch cloudwatch_simulation start_map_service
 
 # Generate map
 rosservice call /gazebo_2Dmap_plugin/generate_map

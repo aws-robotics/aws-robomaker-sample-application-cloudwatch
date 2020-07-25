@@ -2,21 +2,20 @@
 
 require 'nokogiri'
 
-if ARGV.empty?
-  puts "Please provide a world name, eg: ruby add_map_plugin.rb bookstore"
-  exit
-end
-
-world_ID = ARGV[0]
 robot_init_x = 0.0
 robot_init_y = 0.0
 
-if world_ID=="bookstore"
-	world_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/bookstore.world")
-elsif world_ID=="smallhouse"
-	world_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/small_house.world")
-	robot_init_x = 3.0
-	robot_init_y = 3.0
+world = ENV['WORLD_ID'] || "aws_robomaker_bookstore_world"
+
+if world=="aws_robomaker_bookstore_world"
+  world_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/bookstore.world")
+elsif world=="aws_robomaker_small_house_world"
+  world_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/small_house.world")
+  robot_init_x = 3.0
+  robot_init_y = 3.0
+else
+  puts "Please set a VALID world name, eg: export WORLD_ID=aws_robomaker_small_house_world"
+  exit
 end
 
 doc = File.open(world_file) { |f| Nokogiri::XML(f) }
@@ -34,10 +33,10 @@ plugin_doc = Nokogiri::XML("<plugin name='gazebo_occupancy_map' filename='libgaz
 
 _world_ptr.add_child(plugin_doc.at('plugin'))
 
-if world_ID=="bookstore"
-	dump_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/bookstore_map_plugin.world") 
-elsif world_ID=="smallhouse"
-	dump_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/small_house_map_plugin.world") 
+if world=="aws_robomaker_bookstore_world"
+  dump_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/map_plugin.world") 
+elsif world=="aws_robomaker_small_house_world"
+  dump_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/map_plugin.world") 
 end
 
 File.write(dump_file, doc.to_xml)
