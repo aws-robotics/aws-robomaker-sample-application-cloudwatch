@@ -5,7 +5,7 @@ require 'nokogiri'
 robot_init_x = 0.0
 robot_init_y = 0.0
 
-world = ENV['WORLD_ID'] || "aws_robomaker_bookstore_world"
+world = ENV['WORLD_ID'] ? ENV['WORLD_ID'] : "aws_robomaker_bookstore_world"
 
 if world=="aws_robomaker_bookstore_world"
   world_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/bookstore.world")
