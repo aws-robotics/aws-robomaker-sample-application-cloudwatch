@@ -185,7 +185,7 @@ ruby add_map_plugin.rb
 
 ```
 worldID can be:  
-    - [`aws_robomaker_bookstore_world`](default)(https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
+    - [`aws_robomaker_bookstore_world`](https://github.com/aws-robotics/aws-robomaker-bookstore-world) (default)  
     - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
 
 ```bash
