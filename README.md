@@ -162,7 +162,9 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-You need ruby and nokogiri installed locally (for Windows and MACOS see https://nokogiri.org/tutorials/installing_nokogiri.html)
+Currently works only for ROS Melodic.
+
+You need ruby and nokogiri installed locally (for Windows and MACOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 
 ```bash
 # Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
