@@ -162,9 +162,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Currently works only for ROS Melodic.
-
-You need ruby and nokogiri installed locally (for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
+Currently works only for ROS Melodic + Gazebo9. Also requires ruby and nokogiri installed locally (for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 
 ```bash
 # Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
@@ -173,7 +171,7 @@ gem install nokogiri
 ```
 
 ```bash
-# Fetch and install ROS dependencies
+# Fetch and install ROS dependencies (do this only once)
 cd simulation_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
@@ -189,7 +187,7 @@ worldID can be:
     - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
 
 ```bash
-# Build again with plugin added
+# Build with plugin added
 cd simulation_ws
 colcon build
 source install/local_setup.sh
