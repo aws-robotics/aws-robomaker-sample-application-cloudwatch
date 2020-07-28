@@ -166,12 +166,12 @@ Requires Gazebo9.
 
 ### Pre-build
 
+(for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 ```bash
 # Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
 sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
 gem install nokogiri
 ```
-(for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 
 
 ```bash
