@@ -172,10 +172,18 @@ gem install nokogiri
 
 ```bash
 # Fetch and install ROS dependencies (do this only once)
-cd simulation_ws
+cd robot_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
 
+cd ../simulation_ws
+rosws update
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+### Generate Maps
+
+```bash
 # Add map generation plugin to the world
 export WORLD_ID=<worldID>
 cd ../
