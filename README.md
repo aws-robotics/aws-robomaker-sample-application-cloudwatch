@@ -164,6 +164,8 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 Currently works only for ROS Melodic + Gazebo9. Also requires ruby and nokogiri installed locally (for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 
+### Pre-build
+
 ```bash
 # Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
 sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
@@ -171,7 +173,7 @@ gem install nokogiri
 ```
 
 ```bash
-# Fetch and install ROS dependencies (do this only once)
+# Fetch and install ROS dependencies
 cd robot_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
@@ -181,7 +183,7 @@ rosws update
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-### Generate Maps
+### Generate Occupancy Map
 
 ```bash
 # Add map generation plugin to the world
@@ -192,7 +194,7 @@ ruby add_map_plugin.rb
 ```
 worldID can be:  
     - [`aws_robomaker_bookstore_world`](https://github.com/aws-robotics/aws-robomaker-bookstore-world) (default)  
-    - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-house-world)
+    - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
     - [`aws_robomaker_small_warehouse_world`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
 
 ```bash

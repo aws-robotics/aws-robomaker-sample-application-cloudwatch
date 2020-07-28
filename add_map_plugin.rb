@@ -13,7 +13,7 @@ elsif world=="aws_robomaker_small_house_world"
   world_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/small_house.world")
   robot_init_x = 3.0
   robot_init_y = 3.0
-elsif world=="aws_robomaker_small_houseware_world"
+elsif world=="aws_robomaker_small_warehouse_world"
   world_file = String.new("simulation_ws/src/deps/aws-robomaker-small-warehouse-world/worlds/small_warehouse.world")
 else
   puts "Please set a VALID world name, eg: export WORLD_ID=aws_robomaker_small_house_world"
@@ -39,8 +39,8 @@ if world=="aws_robomaker_bookstore_world"
   dump_file = String.new("simulation_ws/src/deps/aws-robomaker-bookstore-world/worlds/map_plugin.world") 
 elsif world=="aws_robomaker_small_house_world"
   dump_file = String.new("simulation_ws/src/deps/aws-robomaker-small-house-world/worlds/map_plugin.world") 
-elsif world=="aws_robomaker_small_houseware_world"
-  world_file = String.new("simulation_ws/src/deps/aws-robomaker-small-warehouse-world/worlds/map_plugin.world")
+elsif world=="aws_robomaker_small_warehouse_world"
+  dump_file = String.new("simulation_ws/src/deps/aws-robomaker-small-warehouse-world/worlds/map_plugin.world")
 end
 
 File.write(dump_file, doc.to_xml)
