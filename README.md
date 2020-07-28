@@ -166,11 +166,10 @@ Requires ROS-Melodic + Gazebo9.
 
 ### Pre-build
 
-Install ruby and nokogiri (for Windows and MacOS see [ref](https://nokogiri.org/tutorials/installing_nokogiri.html))
 ```bash
-# Installing ruby-dev and nokogiri parser gem (Ubuntu >18.04)
-sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
-gem install nokogiri
+# Install dependencies (Ubuntu >18.04)
+sudo apt-get install libxml-xpath-perl libxml2-utils
+chmod +x genmap.sh
 ```
 
 ```bash
@@ -182,21 +181,20 @@ rosdep install --from-paths src --ignore-src -r -y
 cd ../simulation_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
+cd ..
 ```
 
 ### Generate Occupancy Map
 
 ```bash
 # Add map generation plugin to the world
-export WORLD_ID=<worldID>
-cd ../
-ruby add_map_plugin.rb
-
+./genmap.sh <world_name>.rb <world_name>
 ```
-worldID can be:  
-    - [`aws_robomaker_bookstore_world`](https://github.com/aws-robotics/aws-robomaker-bookstore-world) (default)  
-    - [`aws_robomaker_small_house_world`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
-    - [`aws_robomaker_small_warehouse_world`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+world_name can be:  
+    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)
+    - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
+    - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
 
 ```bash
 # Build with plugin added
