@@ -162,7 +162,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Requires Gazebo9.
+Requires ROS-Melodic + Gazebo9.
 
 ### Pre-build
 
