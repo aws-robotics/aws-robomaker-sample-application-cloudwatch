@@ -169,7 +169,6 @@ Requires ROS-Melodic + Gazebo9.
 ```bash
 # Install dependencies (Ubuntu >18.04)
 sudo apt-get install libxml-xpath-perl libxml2-utils
-chmod +x genmap.sh
 ```
 
 ```bash
