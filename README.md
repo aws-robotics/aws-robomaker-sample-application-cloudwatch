@@ -187,7 +187,7 @@ cd ..
 
 ```bash
 # Add map generation plugin to a robomaker world
-.python add_map_plugin.py <world_name>
+python add_map_plugin.py <world_name>
 ```
 world_name can be:  
     - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
