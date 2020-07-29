@@ -186,14 +186,19 @@ cd ..
 ### Generate Occupancy Map
 
 ```bash
-# Add map generation plugin to the world
-./genmap.sh <world_name>.rb <world_name>
+# Add map generation plugin to a robomaker world
+.python add_map_plugin.py <world_name>
 ```
 world_name can be:  
-    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)
+    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
     - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
     - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
     - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+
+```bash
+# Alternatively for your custom world/config,
+python add_map_plugin.py <path-to-config> <path-to-world> <output-path>
+```
 
 ```bash
 # Build with plugin added
@@ -201,7 +206,7 @@ cd simulation_ws
 colcon build
 source install/local_setup.sh
 
-# Start map service
+# Start map service (for custom worlds, relocate your world file with the added plugin to src/cloudwatch_simulation/worlds/map_plugin.world before running this)
 roslaunch cloudwatch_simulation start_map_service.launch
 
 # Generate map (in a different terminal)

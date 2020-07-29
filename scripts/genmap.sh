@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
-worldfile=$(python map_config/get_pkg_path.py $2)
-config=`basename $1`
+# Adds map generation plugin to the input world and plugin config parameters
+
+# Input args:
+#   <path-to-config>  [required] 
+#   <path-to-world-file>  [required]
+#   <path-to-output-file>  [required]
+
+if [ $# -ne 3 ]; then
+    echo "expects 3 arguments"
+    exit 2
+fi
+
+worldfile=$2
+config=$1
 worldbody=`xpath -q -e '/sdf/world/*' $worldfile`
 template="""
 <%
@@ -20,4 +32,4 @@ template="""
  </world>
 </sdf>
 """
-echo $template | erb -r "./map_config/$config"  | xmllint --format - > "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
+echo $template | erb -r "$config"  | xmllint --format - > $3
