@@ -162,7 +162,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Procedurally generate an occupancy map for any gazebo world. This world can then be plugged into your navigation stack to navigate a robot in your world. 
+Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in your world. 
 
 Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above. (requires ROS-Melodic + Gazebo9)
 
