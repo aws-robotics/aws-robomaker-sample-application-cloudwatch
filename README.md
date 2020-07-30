@@ -211,7 +211,7 @@ source install/local_setup.sh
 # Start map service (for custom worlds, relocate your world file with the added plugin to src/cloudwatch_simulation/worlds/map_plugin.world before running this)
 roslaunch cloudwatch_simulation start_map_service.launch
 
-# Generate map (in a different terminal)
+# Generate map (start in a different terminal AFTER you see "[INFO] [*] occupancy map plugin started" message in previous terminal)
 rosservice call /gazebo_2Dmap_plugin/generate_map
 
 # Save map
