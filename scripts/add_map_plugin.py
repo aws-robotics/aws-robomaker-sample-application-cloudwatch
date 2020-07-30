@@ -31,7 +31,8 @@ def get_args():
 
 def main():
 	args = get_args()
-	cmd = './scripts/genmap.sh '+' '.join(args)
+	plugin_tool_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "genmap.sh")
+	cmd = ' '.join([plugin_tool_path] + args)
 	try:
 		out = subprocess.check_output(cmd, shell=True)
 	except subprocess.CalledProcessError:

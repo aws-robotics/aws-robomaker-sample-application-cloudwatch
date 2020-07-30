@@ -162,7 +162,9 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Requires ROS-Melodic + Gazebo9.
+Procedurally generate an occupancy map for any gazebo world. This world can then be plugged into your navigation stack to navigate a robot in your world. 
+
+Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above. (requires ROS-Melodic + Gazebo9)
 
 ### Pre-build
 
@@ -183,11 +185,11 @@ rosdep install --from-paths src --ignore-src -r -y
 cd ..
 ```
 
-### Generate Occupancy Map
+### Generate Occupancy Map via map generation plugin
 
 ```bash
 # Add map generation plugin to a robomaker world
-python add_map_plugin.py <world_name>
+python scripts/add_map_plugin.py <world_name>
 ```
 world_name can be:  
     - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
@@ -197,7 +199,7 @@ world_name can be:
 
 ```bash
 # Alternatively for your custom world/config,
-python add_map_plugin.py <path-to-config> <path-to-world> <output-path>
+python scripts/add_map_plugin.py <path-to-config> <path-to-world> <output-path>
 ```
 
 ```bash
