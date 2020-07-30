@@ -189,7 +189,7 @@ cd ..
 
 ```bash
 # Add map generation plugin to a robomaker world
-python scripts/add_map_plugin.py <world_name>
+python scripts/add_map_plugin.py --world_name <world_name>
 ```
 world_name can be:  
     - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
@@ -199,7 +199,7 @@ world_name can be:
 
 ```bash
 # Alternatively for your custom world/config,
-python scripts/add_map_plugin.py <path-to-config> <path-to-world> <output-path>
+python scripts/add_map_plugin.py -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
 
 ```bash

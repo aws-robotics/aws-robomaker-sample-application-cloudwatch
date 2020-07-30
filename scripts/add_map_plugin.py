@@ -52,7 +52,7 @@ def main():
 
 	parser = argparse.ArgumentParser(description="Arguments for default/custom usage of map_plugin tool.")
 
-	parser.add_argument("-w_name", "--world_name", help="takes a default world_name, each referring to an existing aws-robotics worlds", choices=list(default_args.keys()), type=str)
+	parser.add_argument("--world_name", help="takes a default world_name, each referring to an existing aws-robotics worlds", choices=list(default_args.keys()), type=str)
 	parser.add_argument("-c", "--config_file", help="config file (.rb) for the map plugin parameters", type=str)
 	parser.add_argument("-w", "--world_file", help="path to the original world file", type=str)
 	parser.add_argument("-o", "--output_file", help="output path of the new world file", type=str)
