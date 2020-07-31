@@ -25,6 +25,8 @@
 #   <path-to-world-file>  [required]
 #   <path-to-output-file>  [required]
 
+set -e
+
 if [ $# -ne 3 ]; then
     echo "expects 3 arguments"
     exit 2
