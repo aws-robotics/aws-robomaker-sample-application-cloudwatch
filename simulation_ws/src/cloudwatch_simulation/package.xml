@@ -18,6 +18,10 @@
   <depend>gazebo_ros</depend>
   <depend>gazebo_plugins</depend>
   <depend>turtlebot3_description</depend>
+<<<<<<< HEAD
+=======
+  <depend>turtlebot3_navigation</depend>
+>>>>>>> Remove unnecessary dependencies
   <exec_depend>gazebo</exec_depend>
   <export>
     <gazebo_ros plugin_path="${prefix}/lib:${prefix}/models/turtlebot3_autorace/gazebo_traffic_plugin" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models:${prefix}/models/turtlebot3_autorace"/>
