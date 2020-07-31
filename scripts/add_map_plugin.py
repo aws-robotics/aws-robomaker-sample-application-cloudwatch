@@ -67,9 +67,12 @@ def main():
 	plugin_tool_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "genmap.sh")
 	cmd = ' '.join([plugin_tool_path] + args)
 	try:
-		out = subprocess.check_output(cmd, shell=True)
-	except subprocess.CalledProcessError:
-		sys.exit(2)
+		out = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
+	except subprocess.CalledProcessError as e:
+		print("Execution failed with exitcode {0}\n\n{1}".format(e.returncode, e.output))
+		sys.exit(e.returncode)
+	else:
+		print("{}\n".format(out))
 
 if __name__=="__main__":
 	main()
