@@ -58,7 +58,7 @@ def main():
 	parser.add_argument("-o", "--output_file", help="output path of the new world file", type=str)
 
 	if len(sys.argv)==1:
-		print("Either provide [--world_name] OR [-c, -w and -o arguments].\n")
+		print("Either provide [--world_name] OR [-c, -w and -o] arguments.\n")
 		parser.print_help()
 		parser.exit()
 
