@@ -20,5 +20,4 @@
     <arg name="y_pos" default="5.5"/>
     <arg name="z_pos" default="0.3"/>
   </include>
- <include file="$(find cloudwatch_simulation)/launch/spawn_balls.launch"/>
 </launch>
