@@ -170,7 +170,7 @@ Note: This is an OPTIONAL functionality and is NOT required for using any functi
 
 ```bash
 # Install dependencies (Ubuntu >18.04)
-sudo apt-get install libxml-xpath-perl libxml2-utils
+sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
 ```
 
 ```bash
