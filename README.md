@@ -175,13 +175,9 @@ sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
 
 ```bash
 # Fetch and install ROS dependencies
-cd robot_ws
+cd simulation_ws
 rosws update
-rosdep install --from-paths src --ignore-src -r -y
-
-cd ../simulation_ws
-rosws update
-rosdep install --from-paths src --ignore-src -r -y
+rosdep install --from-paths src -r -y
 cd ..
 ```
 
