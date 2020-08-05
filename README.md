@@ -202,12 +202,12 @@ world_name can be:
 
 ```bash
 # Alternatively for Worldforge exported worlds,
-python scripts/add_map_plugin.py custom -w <path-to-worldforge-world>
+python scripts/add_map_plugin.py worldforge -w <path-to-worldforge-world>
 ```
 
 ```bash
 # Alternatively for your custom world/config,
-python scripts/add_map_plugin.py worldforge -c <path-to-config> -w <path-to-world> -o <output-path>
+python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
 
 ```bash
