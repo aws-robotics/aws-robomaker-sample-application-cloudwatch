@@ -201,6 +201,11 @@ world_name can be:
     - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
 
 ```bash
+# Alternatively for Worldforge exported worlds,
+python scripts/add_map_plugin.py custom -w <path-to-worldforge-world>
+```
+
+```bash
 # Alternatively for your custom world/config,
 python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
