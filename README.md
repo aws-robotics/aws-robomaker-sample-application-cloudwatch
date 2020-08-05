@@ -159,6 +159,61 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 [create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html),
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
+
+## Generate map for your world
+
+Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in your world. 
+
+Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above.
+
+### Pre-build
+
+```bash
+# Install dependencies (Ubuntu >18.04)
+sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
+```
+
+```bash
+# Fetch and install ROS dependencies
+cd simulation_ws
+rosws update
+rosdep install --from-paths src -r -y
+cd ..
+```
+
+### Generate Occupancy Map via map generation plugin
+
+```bash
+# Add map generation plugin to a robomaker world
+python scripts/add_map_plugin.py default --world_name <world_name>
+```
+world_name can be:  
+    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
+    - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
+    - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+
+```bash
+# Alternatively for your custom world/config,
+python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
+```
+
+```bash
+# Build with plugin added
+cd simulation_ws
+colcon build
+source install/local_setup.sh
+
+# Start map service (for custom worlds, relocate your world file with the added plugin to src/cloudwatch_simulation/worlds/map_plugin.world before running this)
+roslaunch cloudwatch_simulation start_map_service.launch
+
+# Generate map (start in a different terminal AFTER you see "[INFO] [*] occupancy map plugin started" message in previous terminal)
+rosservice call /gazebo_2Dmap_plugin/generate_map
+
+# Save map
+rosrun map_server map_saver -f <file-name> /map:=/map2d
+```
+
 ## AWS ROS Packages used by this Sample
 
 - RoboMakerUtils-Common
