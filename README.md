@@ -181,6 +181,13 @@ rosdep install --from-paths src -r -y
 cd ..
 ```
 
+For Worldforge worlds,
+```bash
+# Extract and copy Worldforge exported worlds
+unzip exported_world.zip
+cp -r ros_ws/src/aws_robomaker_worldforge_* simulation_ws/src/
+```
+
 ### Generate Occupancy Map via map generation plugin
 
 ```bash
