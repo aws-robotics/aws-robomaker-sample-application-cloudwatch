@@ -36,9 +36,15 @@ def process_args(args, default_args):
         output_file = "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
 
     #custom config file, world file, output file
-    else:
+    elif hasattr(args, 'config_file'):
         config_file, world_file, output_file = args.config_file, args.world_file, args.output_file
     
+    #worldforge arguments
+    else:
+        config_file = "./map_config/worldforge.rb"
+        world_file = args.world_file
+        output_file = "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
+        
     p_args = [os.path.abspath(x) for x in [config_file, world_file, output_file]]
     
     return p_args
@@ -58,6 +64,10 @@ def main():
     default_parser = subparsers.add_parser("default")
     default_parser.add_argument("--world_name", required=True, help="takes a default world_name, each referring to an existing aws-robotics worlds", choices=list(default_args.keys()), type=str)
     
+    # tool usage for worldforge
+    wf_parser = subparsers.add_parser("wf")
+    wf_parser.add_argument("-w", "--world_file", required=True, help="path to the worldforge world file", type=str)
+
     # custom tool usage
     custom_parser = subparsers.add_parser("custom")
     custom_parser.add_argument("-c", "--config_file", required=True, help="config file (.rb) for the map plugin parameters", type=str)
