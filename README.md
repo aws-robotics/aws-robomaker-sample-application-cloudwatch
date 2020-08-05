@@ -181,6 +181,13 @@ rosdep install --from-paths src -r -y
 cd ..
 ```
 
+For Worldforge worlds,
+```bash
+# Extract and copy Worldforge exported worlds
+unzip exported_world.zip
+cp -r ros_ws/src/aws_robomaker_worldforge_* simulation_ws/src/
+```
+
 ### Generate Occupancy Map via map generation plugin
 
 ```bash
@@ -194,8 +201,13 @@ world_name can be:
     - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
 
 ```bash
+# Alternatively for Worldforge exported worlds,
+python scripts/add_map_plugin.py custom -w <path-to-worldforge-world>
+```
+
+```bash
 # Alternatively for your custom world/config,
-python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
+python scripts/add_map_plugin.py worldforge -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
 
 ```bash
