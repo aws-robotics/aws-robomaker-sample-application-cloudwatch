@@ -202,7 +202,9 @@ world_name can be:
 
 ```bash
 # Alternatively for Worldforge exported worlds,
-python scripts/add_map_plugin.py worldforge -w <path-to-worldforge-world>
+python scripts/add_map_plugin.py worldforge -w <path-to-worldforge-world-file>
+
+# Note: -w expects path to the [*.world] world file
 ```
 
 ```bash
