@@ -32,11 +32,9 @@ class GoalGenerator():
         # rospy.init_node('listener', anonymous=True)
         self.meta_data = rospy.wait_for_message("map_metadata", MapMetaData)
         self.occupancy_data = rospy.wait_for_message("map", OccupancyGrid)
-        # self.resize_map()
 
 
     def unravel_index(self, x, y):
-        # return (self.meta_data.height-1-y)*self.meta_data.width + x
         return x*(self.meta_data.width) + y
 
 
@@ -80,7 +78,6 @@ class GoalGenerator():
             for _y in range(t_bound, b_bound):
                 _row_id = self.unravel_index(_y, _x)
                 if self.occupancy_data.data[_row_id]!=0:
-                # if self._map[_y][_x]!=255:
                     return False
 
         return True
@@ -96,7 +93,7 @@ class GoalGenerator():
         while iteration<timeout_iter:
           _x, _y = random.randint(0,self.meta_data.width-1), random.randint(0,self.meta_data.height-1)
           _row_id = self.unravel_index(_y, _x)
-          if self.occupancy_data.data[_row_id]==0 and self.check_noise(_x, _y, row_id=_row_id): #self._map[_y][_x]==255 and self.check_noise(_x, _y, row_id=_row_id):# 
+          if self.occupancy_data.data[_row_id]==0 and self.check_noise(_x, _y, row_id=_row_id): 
             x_world, y_world  = self.grid_to_world(_x, _y)
             rospy.loginfo("Valid goal found!")
             return self._create_pos(x_world, y_world, z_world_floor, *euler_orientation)
@@ -104,19 +101,6 @@ class GoalGenerator():
         # TODO: add more to error description if possible? (what could be the causes for this?)
         rospy.logerr("Could not find a valid goal in the world.")
         return None
-
-
-    def resize_map(self):
-        self._map = np.empty((self.meta_data.height, self.meta_data.width))
-        for i in range(self.meta_data.height):
-            for j in range(self.meta_data.width):
-                _row_id = self.unravel_index(i, j)
-                if self.occupancy_data.data[_row_id]==0:
-                    self._map[i][j] = 255
-                elif self.occupancy_data.data[_row_id]==100:
-                    self._map[i][j] = 0
-                else:
-                    self._map[i][j] = 0
 
 
 class RouteManager():
