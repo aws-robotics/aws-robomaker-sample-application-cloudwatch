@@ -13,15 +13,110 @@
  express or implied. See the License for the specific language governing
  permissions and limitations under the License.
 """
-
-
 import random
 import itertools
 import rospy
 import actionlib
-import tf.transformations
+import tf.transformations as tf
 from geometry_msgs.msg import Point, Quaternion
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+
+from nav_msgs.msg import MapMetaData, OccupancyGrid
+from geometry_msgs.msg import Pose
+from math import cos, sin
+import numpy as np
+
+class GoalGenerator():
+
+    def __init__(self):
+        # rospy.init_node('listener', anonymous=True)
+        self.meta_data = rospy.wait_for_message("map_metadata", MapMetaData)
+        self.occupancy_data = rospy.wait_for_message("map", OccupancyGrid)
+        # self.resize_map()
+
+
+    def unravel_index(self, x, y):
+        # return (self.meta_data.height-1-y)*self.meta_data.width + x
+        return x*(self.meta_data.width) + y
+
+
+    def grid_to_world(self, x, y):
+        theta = self.meta_data.origin.position.z #(in rad) 
+        res = self.meta_data.resolution
+        x0 = self.meta_data.origin.position.x
+        y0 = self.meta_data.origin.position.y
+        x_world = x0 + (cos(-theta)*(res*x) - sin(-theta)*(res*y))
+        y_world = y0 + (sin(-theta)*(res*x) + cos(-theta)*(res*y))
+
+        return [x_world, y_world]
+
+
+    def _create_pos(self, x_world, y_world, z_world, euler_orientation_x, euler_orientation_y, euler_orientation_z):
+        p = Pose()
+        p.position.x = x_world
+        p.position.y = y_world
+        p.position.z = z_world
+
+        # Make sure the quaternion is valid and normalized
+        quaternion_orientation = tf.quaternion_from_euler(euler_orientation_x, euler_orientation_y, euler_orientation_z)
+        p.orientation.x = quaternion_orientation[0]
+        p.orientation.y = quaternion_orientation[1]
+        p.orientation.z = quaternion_orientation[2]
+        p.orientation.w = quaternion_orientation[3]
+
+        return p
+
+
+    def check_noise(self, x, y, row_id=None):
+        #in grid coordinates
+        #returns false if noise, else true
+        delta_x=max(2,self.meta_data.width//50) #to make it depend on resolution
+        delta_y=max(2,self.meta_data.height//50)
+
+        l_bound, r_bound = max(0, x-delta_x), min(self.meta_data.width-1, x+delta_x)
+        t_bound, b_bound = max(0, y-delta_y), min(self.meta_data.height-1, y+delta_y)
+
+        for _x in range(l_bound, r_bound):
+            for _y in range(t_bound, b_bound):
+                _row_id = self.unravel_index(_y, _x)
+                if self.occupancy_data.data[_row_id]!=0:
+                # if self._map[_y][_x]!=255:
+                    return False
+
+        return True
+
+
+    def get_valid_random_world_pos(self):
+        z_world_floor = 0.
+        euler_orientation = [0.,0.,0.]
+
+        rospy.loginfo("Searching for a valid goal")
+        timeout_iter = 100
+        iteration = 0
+        while iteration<timeout_iter:
+          _x, _y = random.randint(0,self.meta_data.width-1), random.randint(0,self.meta_data.height-1)
+          _row_id = self.unravel_index(_y, _x)
+          if self.occupancy_data.data[_row_id]==0 and self.check_noise(_x, _y, row_id=_row_id): #self._map[_y][_x]==255 and self.check_noise(_x, _y, row_id=_row_id):# 
+            x_world, y_world  = self.grid_to_world(_x, _y)
+            rospy.loginfo("Valid goal found!")
+            return self._create_pos(x_world, y_world, z_world_floor, *euler_orientation)
+
+        # TODO: add more to error description if possible? (what could be the causes for this?)
+        rospy.logerr("Could not find a valid goal in the world.")
+        return None
+
+
+    def resize_map(self):
+        self._map = np.empty((self.meta_data.height, self.meta_data.width))
+        for i in range(self.meta_data.height):
+            for j in range(self.meta_data.width):
+                _row_id = self.unravel_index(i, j)
+                if self.occupancy_data.data[_row_id]==0:
+                    self._map[i][j] = 255
+                elif self.occupancy_data.data[_row_id]==100:
+                    self._map[i][j] = 0
+                else:
+                    self._map[i][j] = 0
 
 
 class RouteManager():
@@ -48,44 +143,34 @@ class RouteManager():
     
     '''
 
-    # return an iterator over the goals
-    route_modes = {
-        'inorder': lambda goals: itertools.cycle(goals),
-        'random' : lambda goals: (random.choice(goals) for i in itertools.count()),
-    }
-
     def __init__(self):
         self.route = []
 
         self.client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
         self.client.wait_for_server()
 
-        self.route_mode = rospy.get_param('~mode')
-        if self.route_mode not in RouteManager.route_modes:
-            rospy.logerr("Route mode '%s' unknown, exiting route manager", self.route_mode)
-            return
+        self.map = GoalGenerator()
+        rospy.loginfo("Route manager initialized with random goal generator")
 
-        poses = rospy.get_param('~poses')
-        if not poses:
-            rospy.loginfo("Route manager initialized no goals, unable to route")
-
-        self.goals = RouteManager.route_modes[self.route_mode](poses)
-        rospy.loginfo("Route manager initialized with %s goals in %s mode", len(poses), self.route_mode)
 
     def to_move_goal(self, pose):
+        if pose is None:
+            raise ValueError("Goal position cannot be NULL")
+
         goal = MoveBaseGoal()
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.header.frame_id = "map"
-        goal.target_pose.pose.position = Point(**pose['pose']['position'])
-        goal.target_pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
+        goal.target_pose.pose.position = pose.position
+        goal.target_pose.pose.orientation = pose.orientation
         return goal
+
 
     def route_forever(self):
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():
             try:
-                rospy.loginfo("Route mode is '%s', getting next goal", self.route_mode)
-                current_goal = self.to_move_goal(next(self.goals))
+                rospy.loginfo("Quering goal generator for the next goal")
+                current_goal = self.to_move_goal(self.map.get_valid_random_world_pos())
                 rospy.loginfo("Sending target goal: %s", current_goal)
                 self.client.send_goal(current_goal)
 
@@ -95,8 +180,8 @@ class RouteManager():
                     if self.client.get_result():
                         rospy.loginfo("Goal done: %s", current_goal)
                 rate.sleep()
-            except StopIteration:
-                rospy.loginfo("No goals, stopping route manager")
+            except ValueError:
+                rospy.loginfo("No valid goal found in the map, stopping route manager")
                 return
 
 
