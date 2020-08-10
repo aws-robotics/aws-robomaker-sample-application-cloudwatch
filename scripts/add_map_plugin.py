@@ -32,19 +32,17 @@ def process_args(args, default_args):
     if hasattr(args, 'world_name'):
         world_name = args.world_name
         config_file = default_args[world_name][0]
-        world_file = "simulation_ws/src/deps/{0}/worlds/{1}.world".format(default_args[world_name][1], world_name)
+        try:
+            world_file = "simulation_ws/src/deps/{0}/worlds/{1}.world".format(default_args[world_name][1], world_name) if world_name!="worldforge" \
+                else os.path.join(default_args[world_name][1], os.environ['WORLD_ID'])
+        except KeyError:
+            raise KeyError("Please set WORLD_ID to your worldforge world as per the README instructions")
         output_file = "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
 
     #custom config file, world file, output file
-    elif hasattr(args, 'config_file'):
+    else:
         config_file, world_file, output_file = args.config_file, args.world_file, args.output_file
     
-    #worldforge arguments
-    else:
-        config_file = "./map_config/worldforge.rb"
-        world_file = args.world_file
-        output_file = "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
-
     p_args = [os.path.abspath(x) for x in [config_file, world_file, output_file]]
     
     return p_args
@@ -64,10 +62,6 @@ def main():
     default_parser = subparsers.add_parser("default")
     default_parser.add_argument("--world_name", required=True, help="takes a default world_name, each referring to an existing aws-robotics worlds", choices=list(default_args.keys()), type=str)
     
-    # tool usage for worldforge
-    wf_parser = subparsers.add_parser("worldforge")
-    wf_parser.add_argument("-w", "--world_file", required=True, help="path to the worldforge world file", type=str)
-
     # custom tool usage
     custom_parser = subparsers.add_parser("custom")
     custom_parser.add_argument("-c", "--config_file", required=True, help="config file (.rb) for the map plugin parameters", type=str)
