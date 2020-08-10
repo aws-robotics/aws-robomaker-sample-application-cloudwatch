@@ -191,6 +191,9 @@ cp -r ros_ws/src/aws_robomaker_worldforge_* simulation_ws/src/
 ### Generate Occupancy Map via map generation plugin
 
 ```bash
+#For worldforge worlds, set WORLD_ID to the name of your WF exported world,
+export WORLD_ID=<worldforge-world-name>  #eg: generation_40r67s111n9x_world_3
+
 # Add map generation plugin to a robomaker world
 python scripts/add_map_plugin.py default --world_name <world_name>
 ```
@@ -198,14 +201,8 @@ world_name can be:
     - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
     - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
     - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-
-```bash
-# Alternatively for Worldforge exported worlds,
-python scripts/add_map_plugin.py worldforge -w <path-to-worldforge-world-file>
-
-# Note: -w expects path to the [*.world] world file
-```
+    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+    - worldforge
 
 ```bash
 # Alternatively for your custom world/config,
