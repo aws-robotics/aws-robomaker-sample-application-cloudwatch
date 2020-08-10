@@ -172,7 +172,7 @@ class GoalGenerator():
             rospy.loginfo("Valid goal found!")
             return self._create_pos(x_world, y_world, z_world_floor, *euler_orientation)
 
-        rospy.logerr("Could not find a valid goal in the world. Check that your occupancy map has "Trinary" value representation and is not visually noisy/incorrect")
+        rospy.logerr("Could not find a valid goal in the world. Check that your occupancy map has 'Trinary' value representation and is not visually noisy/incorrect")
         return None
 
 
