@@ -86,7 +86,17 @@ class GoalGenerator():
         - input: 
             - x, y, z (in world coordinates)
             - orientation_x, orientation_y, orientation_z (in radians)
-        - output: Pose
+        - output:  
+                - Pose: 
+                      position: 
+                        x: double
+                        y: double
+                        z: double
+                      orientation:
+                        x: double
+                        y: double
+                        z: double
+                        w: double
         '''
         p = Pose()
         p.position.x = x_world
@@ -136,7 +146,17 @@ class GoalGenerator():
             Scans the map for a valid goal. 
             Converts to world coordinates and wraps as a Pose to be consumed by route manager.
         - input: 
-        - output: Pose
+        - output:  
+                - Pose: 
+                      position: 
+                        x: double
+                        y: double
+                        z: double
+                      orientation: 
+                        x: double
+                        y: double
+                        z: double
+                        w: double
         '''
         z_world_floor = 0.
         euler_orientation = [0.,0.,0.]
