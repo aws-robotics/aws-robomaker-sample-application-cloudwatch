@@ -63,6 +63,16 @@ class GoalGenerator():
 
 
     def grid_to_world_2d(self, x, y):
+        '''
+        - description:
+            transform x-y planar grid coordinates to world coordinates
+            adheres to the assumption that grid-world transform is only x-y translation and yaw rotation   
+        - input: 
+            - int, int
+                - x, y (in grid coordinates)
+        - output: [int, int]
+                x_world, y_world (in world coordinates)
+        '''
         x_world = self.map_origin_x0 + (cos(-self.map_yaw)*(self.resolution*x) - sin(-self.map_yaw)*(self.resolution*y))
         y_world = self.map_origin_y0 + (sin(-self.map_yaw)*(self.resolution*x) + cos(-self.map_yaw)*(self.resolution*y))
 
