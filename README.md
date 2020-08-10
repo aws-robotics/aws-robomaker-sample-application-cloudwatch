@@ -191,8 +191,8 @@ cp -r ros_ws/src/aws_robomaker_worldforge_* simulation_ws/src/
 ### Generate Occupancy Map via map generation plugin
 
 ```bash
-#For worldforge worlds, set WORLD_ID to the name of your WF exported world,
-export WORLD_ID=<worldforge-world-name>  #eg: generation_40r67s111n9x_world_3
+#For worldforge worlds, set WORLD_ID to the name of your WF exported world (eg: generation_40r67s111n9x_world_3),
+export WORLD_ID=<worldforge-world-name>
 
 # Add map generation plugin to a robomaker world
 python scripts/add_map_plugin.py default --world_name <world_name>
