@@ -27,7 +27,6 @@
 
   <!-- Send navigation route goals to the robot in random order -->
   <group if="$(arg follow_route)">
-    <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
-    </node>
+    <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen"/>
   </group>
 </launch>
