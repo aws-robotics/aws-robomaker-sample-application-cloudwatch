@@ -73,8 +73,8 @@ class GoalGenerator():
         - output: [int, int]
                 x_world, y_world (in world coordinates)
         '''
-        x_world = self.map_origin_x0 + (cos(-self.map_yaw)*(self.resolution*x) - sin(-self.map_yaw)*(self.resolution*y))
-        y_world = self.map_origin_y0 + (sin(-self.map_yaw)*(self.resolution*x) + cos(-self.map_yaw)*(self.resolution*y))
+        x_world = self.map_origin_x0 + (cos(self.map_yaw)*(self.resolution*x) - sin(self.map_yaw)*(self.resolution*y))
+        y_world = self.map_origin_y0 + (sin(self.map_yaw)*(self.resolution*x) + cos(self.map_yaw)*(self.resolution*y))
 
         return [x_world, y_world]
 
