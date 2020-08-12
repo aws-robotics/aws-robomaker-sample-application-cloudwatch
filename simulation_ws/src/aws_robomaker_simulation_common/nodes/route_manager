@@ -86,29 +86,41 @@ class GoalGenerator():
         - input: 
             - x, y, z (in world coordinates)
             - orientation_x, orientation_y, orientation_z (in radians)
-        - output:  
-                - Pose: 
-                      position: 
-                        x: double
-                        y: double
-                        z: double
-                      orientation:
-                        x: double
-                        y: double
-                        z: double
-                        w: double
+        - output: 
+                format 
+                    - pose: 
+                          position: 
+                            x: double
+                            y: double
+                            z: double
+                          orientation:
+                            x: double
+                            y: double
+                            z: double
+                            w: double
         '''
-        p = Pose()
-        p.position.x = x_world
-        p.position.y = y_world
-        p.position.z = z_world
-
+        position = {
+                    'x':x_world,
+                    'y':y_world,
+                    'z':z_world
+                    }
+        
         # Make sure the quaternion is valid and normalized
         quaternion_orientation = transform.quaternion_from_euler(euler_orientation_x, euler_orientation_y, euler_orientation_z)
-        p.orientation.x = quaternion_orientation[0]
-        p.orientation.y = quaternion_orientation[1]
-        p.orientation.z = quaternion_orientation[2]
-        p.orientation.w = quaternion_orientation[3]
+        orientation = {
+                        'x':quaternion_orientation[0],
+                        'y':quaternion_orientation[1],
+                        'z':quaternion_orientation[2],
+                        'w':quaternion_orientation[3]
+                      }
+
+        p = {
+                'pose':
+                    {
+                        'position':position,
+                        'orientation':orientation
+                    }
+            }
 
         return p
 
@@ -245,8 +257,8 @@ class RouteManager():
         goal = MoveBaseGoal()
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.header.frame_id = "map"
-        goal.target_pose.pose.position = pose.position
-        goal.target_pose.pose.orientation = pose.orientation
+        goal.target_pose.pose.position = Point(**pose['pose']['position'])
+        goal.target_pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
         return goal
 
 
