@@ -139,8 +139,19 @@ class GoalGenerator():
 
         return True
 
+    def __iter__(self):
+        return self
 
-    def get_valid_random_world_pos(self):
+
+    def next(self):
+        '''
+        - description
+            for python 2.x support
+        '''
+        return self.__next__()
+
+
+    def __next__(self):
         '''
         - description:
             Scans the map for a valid goal. 
@@ -199,6 +210,12 @@ class RouteManager():
                         w: 0.619265789851
     
     '''
+ # return an iterator over the goals
+    route_modes = {
+        'inorder': lambda goals: itertools.cycle(goals),
+        'random' : lambda goals: (random.choice(goals) for i in itertools.count()),
+        'dynamic': lambda goals: GoalGenerator()
+    }
 
     def __init__(self):
         self.route = []
@@ -206,10 +223,20 @@ class RouteManager():
         self.client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
         self.client.wait_for_server()
 
-        self.map = GoalGenerator()
-        rospy.loginfo("Route manager initialized with random goal generator")
+        self.route_mode = rospy.get_param('~mode')
+        if self.route_mode not in RouteManager.route_modes:
+            rospy.logerr("Route mode '%s' unknown, exiting route manager", self.route_mode)
+            return
+
+        poses = rospy.get_param('~poses', [])
+        if not poses and self.route_mode!='dynamic':
+            rospy.loginfo("Route manager initialized no goals, unable to route")
+        
+        self.goals = RouteManager.route_modes[self.route_mode](poses)
+        rospy.loginfo("Route manager initialized in %s mode", self.route_mode)
 
         self.bad_goal_counter = 0
+
 
     def to_move_goal(self, pose):
         if pose is None:
@@ -230,8 +257,8 @@ class RouteManager():
                 if self.bad_goal_counter > 10:
                     raise ValueError("Bad goal limit exceeded")
 
-                rospy.loginfo("Quering goal generator for the next goal")
-                current_goal = self.to_move_goal(self.map.get_valid_random_world_pos())
+                rospy.loginfo("Route mode is '%s', getting next goal", self.route_mode)
+                current_goal = self.to_move_goal(next(self.goals))
                 rospy.loginfo("Sending target goal: %s", current_goal)
                 self.client.send_goal(current_goal)
                 
@@ -250,8 +277,8 @@ class RouteManager():
                 
                 rate.sleep()
             
-            except ValueError:
-                rospy.loginfo("No valid goal was found in the map, stopping route manager")
+            except ValueError as e:
+                rospy.loginfo("No valid goal was found in the map, stopping route manager due to following exception,\n{0}".format(str(e)))
                 return
 
 
