@@ -111,6 +111,12 @@ Launch the application with the following commands:
     There are three simulation launch commands for three different worlds:
     - `empty_world.launch` - Empty world with some balls surrounding the turtlebot at (0,0)
     - `bookstore_turtlebot_navigation.launch` - A retail space where the robot navigates to random goals
+    - `small_house_turtlebot_navigation.launch` - A retail space where the robot navigates to random goals
+
+    Alternatively, to run turtlebot navigation to follow dynamic goals,
+    ```bash
+    roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
+    ``` 
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
