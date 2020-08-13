@@ -158,7 +158,7 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 ## Generate Occupancy Map via map generation plugin
-Note: Procedural map generation is not currently supported in ROS2 (Dashing).
+Note: Procedural map generation is currently not supported in ROS2 (Dashing).
 
 ## AWS ROS Packages used by this Sample
 
