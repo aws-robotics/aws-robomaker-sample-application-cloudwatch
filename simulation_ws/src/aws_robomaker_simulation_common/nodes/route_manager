@@ -269,30 +269,29 @@ class RouteManager():
                 rospy.loginfo("Stopping route manager due to too many bad goals. Check that your occupancy map has 'Trinary' value representation and is not visually noisy/incorrect")
                 return
             else:
-            	try:
-	                rospy.loginfo("Route mode is '%s', getting next goal", self.route_mode)
-	                current_goal = self.to_move_goal(next(self.goals))
-	                rospy.loginfo("Sending target goal: %s", current_goal)
-	                self.client.send_goal(current_goal)
-	                
-	                try:
-	                    #wait 5sec for global plan to be published. If not, scan for a new goal..
-	                    rospy.wait_for_message("/move_base/DWAPlannerROS/global_plan", Path, timeout=5)
-	                    
-	                    if not self.client.wait_for_result():
-	                        rospy.logerr("Move server not ready, will try again...")
-	                    else:
-	                        if self.client.get_result():
-	                            rospy.loginfo("Goal done: %s", current_goal)
-	                except rospy.exceptions.ROSException:
-	                    self.bad_goal_counter += 1
-	                    rospy.logwarn("No plan found for goal. Scanning for a new goal...")
-	                
-	                rate.sleep()
-	            
-	            except ValueError as e:
-	                rospy.loginfo("No valid goal was found in the map, stopping route manager due to following exception,\n{0}".format(str(e)))
-	                return
+                try:
+                    rospy.loginfo("Route mode is '%s', getting next goal", self.route_mode)
+                    current_goal = self.to_move_goal(next(self.goals))
+                    rospy.loginfo("Sending target goal: %s", current_goal)
+                    self.client.send_goal(current_goal)
+                    try:
+                        #wait 5sec for global plan to be published. If not, scan for a new goal..
+                        rospy.wait_for_message("/move_base/DWAPlannerROS/global_plan", Path, timeout=5)
+                        
+                        if not self.client.wait_for_result():
+                            rospy.logerr("Move server not ready, will try again...")
+                        else:
+                            if self.client.get_result():
+                                rospy.loginfo("Goal done: %s", current_goal)
+                    except rospy.exceptions.ROSException:
+                        self.bad_goal_counter += 1
+                        rospy.logwarn("No plan found for goal. Scanning for a new goal...")
+
+                    rate.sleep()
+
+                except ValueError as e:
+                    rospy.loginfo("No valid goal was found in the map, stopping route manager due to following exception,\n{0}".format(str(e)))
+                    return
 
 
 def main():
