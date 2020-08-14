@@ -42,6 +42,6 @@
     <arg name="initial_pose_x" value="$(arg x_pos)"/>
     <arg name="initial_pose_y" default="$(arg y_pos)"/>
     <arg name="initial_pose_a" default="$(arg yaw)"/>
-    <arg name="open_rviz" value="$(arg gui)"/>
+    <arg name="open_rviz" value="false"/>
   </include>
 </launch>
