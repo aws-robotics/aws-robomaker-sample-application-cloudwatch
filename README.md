@@ -120,7 +120,7 @@ Launch the application with the following commands:
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
-## Run with a AWS Robomaker WorldForge world
+### Run with a AWS Robomaker WorldForge world
 
 Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-your-world).
 
@@ -138,6 +138,7 @@ colcon build
 
 Launch the navigation application with the following commands:
 ```bash
+export TURTLEBOT3_MODEL=waffle_pi
 source simulation_ws/install/local_setup.sh
 roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
 ```
