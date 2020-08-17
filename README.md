@@ -120,6 +120,48 @@ Launch the application with the following commands:
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
+## Run with a WorldForge world
+
+After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+
+```bash
+unzip exported_world.zip
+mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+```
+
+Build it again
+
+```bash
+cd simulation_ws
+colcon build
+```
+
+Launch the application with the following commands:
+
+```bash
+source simulation_ws/install/local_setup.sh
+roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
+```
+
+By default, WorldForge packages will load the exported world. To override, specify the environment variable `WORLD_ID`. 
+
+```bash
+# use worldId found in "src/aws_robomaker_worldforge_worlds/worlds"
+# e.g, generation_05wq8sybdcn2_world_1
+export WORLD_ID=<worldId>  
+```
+
+### Navigation in a WorldForge world
+
+First generate a map following [this](#generate-occupancy-map-via-map-generation-plugin).
+
+Move and rename the generated map file as `simulation_ws/src/cloudwatch_simulation/maps/map.yaml`.
+
+```bash
+mkdir -p simulation_ws/src/cloudwatch_simulation/maps
+mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
+```
+
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
 
