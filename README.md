@@ -231,9 +231,9 @@ cd ..
 
 For Worldforge worlds,
 ```bash
-# Extract and copy Worldforge exported worlds
+# Extract and move Worldforge exported worlds
 unzip exported_world.zip
-cp -r ros_ws/src/aws_robomaker_worldforge_* simulation_ws/src/
+mv aws_robomaker_worldforge_pkgs simulation_ws/src/
 ```
 
 ### Generate Occupancy Map via map generation plugin
