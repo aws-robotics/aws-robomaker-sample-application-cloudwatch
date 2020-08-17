@@ -120,46 +120,26 @@ Launch the application with the following commands:
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
-## Run with a WorldForge world
+## Run with a AWS Robomaker WorldForge world
 
-After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-your-world).
 
+Move the generated map file to cloudwatch_simulation package,
 ```bash
-unzip exported_world.zip
-mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+mkdir -p simulation_ws/src/cloudwatch_simulation/maps
+mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
 
-Build it again
-
+Build your workspace to reference the newly generated maps,
 ```bash
 cd simulation_ws
 colcon build
 ```
 
-Launch the application with the following commands:
-
+Launch the navigation application with the following commands:
 ```bash
 source simulation_ws/install/local_setup.sh
 roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
-```
-
-By default, WorldForge packages will load the exported world. To override, specify the environment variable `WORLD_ID`. 
-
-```bash
-# use worldId found in "src/aws_robomaker_worldforge_worlds/worlds"
-# e.g, generation_05wq8sybdcn2_world_1
-export WORLD_ID=<worldId>  
-```
-
-### Navigation in a WorldForge world
-
-First generate a map following [this](#generate-occupancy-map-via-map-generation-plugin).
-
-Move and rename the generated map file as `simulation_ws/src/cloudwatch_simulation/maps/map.yaml`.
-
-```bash
-mkdir -p simulation_ws/src/cloudwatch_simulation/maps
-mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
 
 ### Monitoring with CloudWatch Logs
@@ -210,9 +190,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in your world. 
-
-Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above.
+Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this functionality is currently optional. 
 
 ### Pre-build
 
@@ -239,7 +217,7 @@ mv aws_robomaker_worldforge_pkgs simulation_ws/src/
 ### Generate Occupancy Map via map generation plugin
 
 ```bash
-#For worldforge worlds, set WORLD_ID to the name of your WF exported world (eg: generation_40r67s111n9x_world_3),
+#For worldforge worlds, set WORLD_ID to the name of your WF exported world (e.g, generation_05wq8sybdcn2_world_1)
 export WORLD_ID=<worldforge-world-name>
 
 # Add map generation plugin to a robomaker world
