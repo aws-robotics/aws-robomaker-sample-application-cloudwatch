@@ -8,8 +8,11 @@
         the real robot. 
   -->
 
-  <!-- If true, will follow a pre-defined route forever -->
+  <!-- If true, will follow a pre-defined route forever [DEFAULT] -->
   <arg name="follow_route" default="true"/>
+
+  <!-- If true and "follow_route" is false, will follow a dynamic route forever -->
+  <arg name="dynamic_route" default="false"/>
 
   <!-- 
        Always set GUI to false for AWS RoboMaker Simulation
@@ -31,4 +34,12 @@
       <rosparam file="$(find aws_robomaker_small_house_world)/routes/route.yaml" command="load"/> 
     </node>
   </group>
+
+  <!-- Send dynamically generated navigation route goals to the robot -->
+  <group if="$(arg dynamic_route)">
+    <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
+       <param name="~mode"  type="str" value="dynamic"/>  
+    </node>
+  </group>
+
 </launch>

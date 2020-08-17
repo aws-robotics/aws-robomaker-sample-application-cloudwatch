@@ -34,6 +34,5 @@
   <depend>health_metric_collector</depend>
 
   <!-- Turtlebot -->
-  <depend>turtlebot3</depend>
   <depend>turtlebot3_msgs</depend>
 </package>
