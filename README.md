@@ -118,29 +118,27 @@ Launch the application with the following commands:
     roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
 
-For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
-
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
-## Run with a WorldForge world
+### Run with a AWS Robomaker WorldForge world
 
-After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-your-world).
 
+Move the generated map file to cloudwatch_simulation package,
 ```bash
-unzip exported_world.zip
-mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+mkdir -p simulation_ws/src/cloudwatch_simulation/maps
+mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
 
-Build it again
-
+Build your workspace to reference the newly generated maps,
 ```bash
 cd simulation_ws
 colcon build
 ```
 
-Launch the application with the following commands:
-
+Launch the navigation application with the following commands:
 ```bash
+export TURTLEBOT3_MODEL=waffle_pi
 source simulation_ws/install/local_setup.sh
 roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
 ```
@@ -199,12 +197,9 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 
-## Generate Occupancy Map via map generation plugin
+## Generate map for your world
 
-Procedurally generate an occupancy map for any gazebo world. This map can then be plugged into your navigation stack to navigate a robot in your world. 
-
-Note: This is an OPTIONAL functionality and is NOT required for using any functionalities listed above.
-
+Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
 
 ### Script for default worlds/config
 
