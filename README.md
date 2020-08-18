@@ -191,7 +191,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate map for your world
 
-Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this functionality is optional for the use-cases mentioned in this README. 
+Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
 
 ### Pre-build
 
