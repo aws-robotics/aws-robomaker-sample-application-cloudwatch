@@ -6,3 +6,4 @@
 - git: {local-name: src/deps/cloudwatchmetrics-ros1, uri: 'https://github.com/aws-robotics/cloudwatchmetrics-ros1', version: 'master'}
 - git: {local-name: src/deps/health-metrics-collector-ros1, uri: 'https://github.com/aws-robotics/health-metrics-collector-ros1', version: 'release-latest'}
 - git: {local-name: src/deps/monitoringmessages-ros1, uri: 'https://github.com/aws-robotics/monitoringmessages-ros1', version: 'release-latest'}
+- git: {local-name: src/deps/turtlebot3-description-reduced-mesh, uri: "https://github.com/aws-robotics/turtlebot3-description-reduced-mesh.git", version: "ros1"}

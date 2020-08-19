@@ -35,5 +35,6 @@
 
   <!-- Turtlebot -->
   <depend>turtlebot3_msgs</depend>
+  <!-- Required to install .rviz model-->
   <depend>turtlebot3_description</depend>
 </package>
