@@ -65,7 +65,13 @@ cd ..
 map_output_path=$(dirname $(dirname $world_source_path))/maps/map
 
 roslaunch cloudwatch_simulation start_map_service.launch &
-sleep 10
+
+python << END
+import rospy
+
+rospy.wait_for_service('/gazebo_2Dmap_plugin/generate_map')
+END
+
 rosservice call /gazebo_2Dmap_plugin/generate_map
 rosrun map_server map_saver -f $map_output_path /map:=/map2d
 

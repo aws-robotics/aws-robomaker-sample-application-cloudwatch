@@ -118,11 +118,13 @@ Launch the application with the following commands:
     roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
 
+For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
+
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
 ### Run with a AWS Robomaker WorldForge world
 
-Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-your-world).
+Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-a-worldforge-world-with-default-config).
 
 Move the generated map file to cloudwatch_simulation package,
 ```bash
@@ -141,14 +143,6 @@ Launch the navigation application with the following commands:
 export TURTLEBOT3_MODEL=waffle_pi
 source simulation_ws/install/local_setup.sh
 roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
-```
-
-By default, WorldForge packages will load the exported world. To override, specify the environment variable `WORLD_ID`. 
-
-```bash
-# use worldId found in "src/aws_robomaker_worldforge_worlds/worlds"
-# e.g, generation_05wq8sybdcn2_world_1
-export WORLD_ID=<worldId>  
 ```
 
 ### Monitoring with CloudWatch Logs
@@ -197,30 +191,28 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 
-## Generate map for your world
+## Generate Occupancy Map via map generation plugin
 
 Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
 
-### Script for default worlds/config
 
-Currently the following worlds are supported:
+### Generate map for a aws-robotics world with default config
+
+Currently, the following aws-robotics worlds are supported,
 - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
 - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
 - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
 - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
-- worldforge
 
 
 To generate a map, simply run
 ```bash
 ./scripts/genmap_script.sh <world_name>
 ```
-where `<world_name>` can be any value in the list above. Extra steps below are needed for `worldforge`.
 
+### Generate map for a WorldForge world with default config
 
-#### Generating map for WorldForge worlds
-
-After exporting a world from WorldForge, we can unzip the content and move under simulation_ws package:
+After exporting a world from WorldForge, unzip and move the contents under simulation_ws workspace
 
 ```bash
 unzip exported_world.zip
@@ -233,7 +225,7 @@ export WORLD_ID=<worldforge-world-name>
 ./scripts/genmap_script.sh worldforge
 ```
 
-### Custom worlds/config
+### Generate map for a custom world with custom config
 
 ```bash
 # Install dependencies (Ubuntu >18.04)
