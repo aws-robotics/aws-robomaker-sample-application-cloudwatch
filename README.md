@@ -210,6 +210,8 @@ To generate a map, simply run
 ./scripts/genmap_script.sh <world_name>
 ```
 
+where `<world_name>` can be any value in the list above.
+
 ### Generate map for a WorldForge world with default config
 
 After exporting a world from WorldForge, unzip and move the contents under simulation_ws workspace
