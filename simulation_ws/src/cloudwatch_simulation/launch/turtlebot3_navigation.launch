@@ -17,6 +17,7 @@
       <arg name="initial_pose_y" default="$(arg initial_pose_y)"/>
       <arg name="initial_pose_a" default="$(arg initial_pose_a)"/>
   </include>
+
   <!-- move_base -->
   <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
     <arg name="model" value="$(arg model)" />

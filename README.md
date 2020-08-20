@@ -203,12 +203,15 @@ Currently, the following aws-robotics worlds are supported,
 - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
 - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
 - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+- worldforge
 
 
 To generate a map, simply run
 ```bash
 ./scripts/genmap_script.sh <world_name>
 ```
+where `<world_name>` can be any value in the list above. Extra steps below are needed for `worldforge`.
+
 
 ### Generate map for a WorldForge world with default config
 
