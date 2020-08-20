@@ -44,7 +44,7 @@ jobs:
         sudo chown -R rosbuild:rosbuild "$HOME" .
     - id: robot_ws_build
       name: Build and Bundle Robot Workspace
-      uses: mm318/aws-robomaker-sample-application-ci@1.0.0
+      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@2.0.0
       with:
         ros-distro: ${{ matrix.distro }}
         gazebo-version: ${{ matrix.gazebo }}
@@ -52,7 +52,7 @@ jobs:
         generate-sources: true
     - id: simulation_ws_build
       name: Build and Bundle Simulation Workspace
-      uses: mm318/aws-robomaker-sample-application-ci@1.0.0
+      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@2.0.0
       with:
         ros-distro: ${{ matrix.distro }}
         gazebo-version: ${{ matrix.gazebo }}
@@ -66,7 +66,7 @@ jobs:
       if: always() && github.ref == 'refs/heads/ros1' # always log "push" and "schedule" build status
     # - id: upload
     #   name: Upload to S3
-    #   uses: mm318/s3-cp-action@v0.3.0
+    #   uses: aws-robotics/aws-robomaker-github-actions/s3-cp-action@2.0.0
     #   env:
     #     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS1 }}
     #     AWS_REGION: ${{ secrets.AWS_REGION }}
