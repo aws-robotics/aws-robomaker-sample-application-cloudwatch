@@ -126,12 +126,6 @@ For navigation, you can generate a map with map generation plugin. See [this](#g
 
 Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-a-worldforge-world-with-default-config).
 
-Move the generated map file to cloudwatch_simulation package,
-```bash
-mkdir -p simulation_ws/src/cloudwatch_simulation/maps
-mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
-```
-
 Build your workspace to reference the newly generated maps,
 ```bash
 cd simulation_ws
@@ -260,7 +254,12 @@ roslaunch cloudwatch_simulation start_map_service.launch
 rosservice call /gazebo_2Dmap_plugin/generate_map
 
 # Save map
-rosrun map_server map_saver -f <file-name> /map:=/map2d
+rosrun map_server map_saver -f <path-to-file> /map:=/map2d
+```
+
+```bash
+# Move the generated map file to cloudwatch_simulation simulation workspace map directory
+mv <path-to-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
 
 ## AWS ROS Packages used by this Sample
