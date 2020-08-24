@@ -17,7 +17,9 @@
   <depend>tf</depend>
   <depend>gazebo_ros</depend>
   <depend>gazebo_plugins</depend>
-  <!-- Required for copy of .rviz file -->
+  <!-- Required to install .rviz model-->
+  <depend>turtlebot3_description</depend>
+  <!-- Navigation stack -->
   <depend>turtlebot3_navigation</depend>
   <exec_depend>gazebo</exec_depend>
   <export>
