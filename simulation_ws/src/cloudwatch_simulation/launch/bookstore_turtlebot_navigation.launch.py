@@ -76,7 +76,7 @@ def generate_launch_description():
             launch_arguments={
                 'map_file': os.path.join(get_package_share_directory('cloudwatch_simulation'), 'maps', 'map.yaml'),
                 'params_file': os.path.join(get_package_share_directory('cloudwatch_simulation'), 'param', TURTLEBOT3_MODEL + ".yaml"),
-                'open_rviz': launch.substitutions.LaunchConfiguration('gui'),
+                'open_rviz': 'false',
                 'use_sim_time': launch.substitutions.LaunchConfiguration('use_sim_time')
             }.items()
         ),
