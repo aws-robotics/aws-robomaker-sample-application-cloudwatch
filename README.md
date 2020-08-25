@@ -106,11 +106,15 @@ Launch the application with the following commands:
     source simulation_ws/install/local_setup.sh
     ros2 launch cloudwatch_simulation [command]
     ```
-    There are three simulation launch commands for three different worlds:
+    There are two simulation launch commands for two different worlds:
     - `empty_world.launch.py` - Empty world with some balls surrounding the turtlebot at (0,0)
     - `bookstore_turtlebot_navigation.launch.py` - A retail space where the robot navigates to random goals
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
+
+Note that when running robot applications on a robot, `use_sim_time` should be set to `false` (which is the default value in `deploy_rotate.launch.py` and `deploy_await_commands.launch.py`). When running robot applications along with simulation applications, `use_sim_time` should be set to `true` for both applications (which is the default value in `rotate.launch.py`, `await_commands.launch.py` and all the launch files in simulation workspace).
+
+When running simulation applications, run command with `gui:=true` to run gazebo client for visualization.
 
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS2 nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
