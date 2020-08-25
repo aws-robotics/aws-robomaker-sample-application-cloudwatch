@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - ros2
-  schedule: # (?) this will currently never trigger, since this workflow yaml file is not the default branch
+  # this will currently never trigger on the non-default branch, but leaving it here for completeness
+  schedule:
     - cron: '0 14 * * *'  # run at 2 pm everyday
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
     outputs:
       robot_ws_build_result: ${{ steps.robot_ws_build.outcome }}
       simulation_ws_build_result: ${{ steps.simulation_ws_build.outcome }}
-      # upload_result: ${{ steps.upload.outcome }}
+      upload_result: ${{ steps.upload.outcome }}
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v1
@@ -53,16 +54,17 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS2 }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
         aws-region: ${{ secrets.AWS_REGION }}
-      if: always() && github.ref == 'refs/heads/ros2' # always for "push" and "schedule" (?) build status
-    # - id: upload
-    #   name: Upload to S3
-    #   uses: aws-robotics/aws-robomaker-github-actions/s3-cp-action@2.0.0
-    #   env:
-    #     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_ROS2 }}
-    #     AWS_REGION: ${{ secrets.AWS_REGION }}
-    #     FILES: 'sources.zip sources.tar.gz robot_ws.tar simulation_ws.tar'
-    #     DEST: 'travis/cloudwatch/${{ steps.robot_ws_build.outputs.ros-distro }}/${{ steps.robot_ws_build.outputs.gazebo-version }}/${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}/'
-    #   if: github.event_name == 'schedule' # upload to S3 on "schedule" (?) build
+      if: always() && github.ref == 'refs/heads/ros2' # always for "push" and "schedule" build status
+    - id: upload
+      name: Upload Bundles and Sources
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        name: robot-simulation-bundles
+        path: |
+          sources.zip
+          sources.tar.gz
+          robot_ws.tar
+          simulation_ws.tar
 
   log_workflow_status_to_cloudwatch:
     runs-on: ubuntu-latest
@@ -70,13 +72,7 @@ jobs:
       image: ubuntu:bionic
     needs:
     - build_and_bundle_ros2
-    if: always()  # run even if the dependent jobs have failed to log failures
-    # Allow build reports to fail on pull requests.
-    # When a contribution is made on a fork, the secrets will not be available,
-    # and this step will be failing. This is acceptable.
-    # On the other end, we want to be notified if this happens on merge, or
-    # on schedule.
-    continue-on-error: ${{ github.event_name == 'pull_request'}}
+    if: ${{ always() && github.event_name != 'pull_request' }}
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -94,8 +90,8 @@ jobs:
       with:
         namespace: SimulationWorkspaceBuild
         metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.simulation_ws_build_result, 'failure') }}
-    # - name: Log Upload Status
-    #   uses: ros-tooling/action-cloudwatch-metrics@0.0.4
-    #   with:
-    #     namespace: UploadToS3
-    #     metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
+    - name: Log Upload Status
+      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      with:
+        namespace: BundleUpload
+        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
