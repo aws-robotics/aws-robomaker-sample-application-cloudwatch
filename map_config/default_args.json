@@ -1,1 +1,22 @@
-{"worldforge": ["./map_config/worldforge.rb", "./simulation_ws/src/aws_robomaker_worldforge_worlds/worlds"], "no_roof_small_warehouse": ["./map_config/no_roof_small_warehouse.rb", "aws-robomaker-small-warehouse-world"], "bookstore": ["./map_config/bookstore.rb", "aws-robomaker-bookstore-world"], "small_warehouse": ["./map_config/small_warehouse.rb", "aws-robomaker-small-warehouse-world"], "small_house": ["./map_config/small_house.rb", "aws-robomaker-small-house-world"]}
+{
+    "no_roof_small_warehouse": [
+        "./map_config/no_roof_small_warehouse.rb",
+        "aws-robomaker-small-warehouse-world"
+    ],
+    "bookstore": [
+        "./map_config/bookstore.rb",
+        "aws-robomaker-bookstore-world"
+    ],
+    "small_warehouse": [
+        "./map_config/small_warehouse.rb",
+        "aws-robomaker-small-warehouse-world"
+    ],
+    "small_house": [
+        "./map_config/small_house.rb",
+        "aws-robomaker-small-house-world"
+    ],
+    "worldforge": [
+        "./map_config/worldforge.rb",
+        "./simulation_ws/src/aws_robomaker_worldforge_pkgs/aws_robomaker_worldforge_worlds/worlds"
+    ]
+}

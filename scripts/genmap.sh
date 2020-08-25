@@ -53,4 +53,4 @@ template="""
 </sdf>
 """
 echo $template | erb -r "$config"  | xmllint --format - > $3
-echo "World w/ plugin saved at $3"
+echo $3

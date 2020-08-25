@@ -92,7 +92,7 @@ Launch the application with the following commands:
     roslaunch cloudwatch_robot deploy_rotate.launch
     ```
 
-- *Running Robot Application Elsewhere*
+- *Running Robot Application in a Simulation*
     ```bash
     source robot_ws/install/local_setup.sh
     roslaunch cloudwatch_robot [command]
@@ -118,17 +118,13 @@ Launch the application with the following commands:
     roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
 
+For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
+
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
 ### Run with a AWS Robomaker WorldForge world
 
-Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-your-world).
-
-Move the generated map file to cloudwatch_simulation package,
-```bash
-mkdir -p simulation_ws/src/cloudwatch_simulation/maps
-mv <map-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
-```
+Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-a-worldforge-world-with-default-config).
 
 Build your workspace to reference the newly generated maps,
 ```bash
@@ -189,11 +185,43 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
 
-## Generate map for your world
+## Generate Occupancy Map via map generation plugin
 
 Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
 
-### Pre-build
+
+### Generate map for a aws-robotics world with default config
+
+Currently, the following aws-robotics worlds are supported,
+- [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
+- [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
+- [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
+- [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
+
+
+To generate a map, simply run
+```bash
+./scripts/genmap_script.sh <world_name>
+```
+
+where `<world_name>` can be any value in the list above.
+
+### Generate map for a WorldForge world with default config
+
+After exporting a world from WorldForge, unzip and move the contents under simulation_ws workspace
+
+```bash
+unzip exported_world.zip
+mv aws_robomaker_worldforge_pkgs simulation_ws/src/
+
+#For worldforge worlds, set WORLD_ID to the name of your WF exported world (eg: generation_40r67s111n9x_world_3),
+export WORLD_ID=<worldforge-world-name>
+
+# Run map generation script
+./scripts/genmap_script.sh worldforge
+```
+
+### Generate map for a custom world with custom config
 
 ```bash
 # Install dependencies (Ubuntu >18.04)
@@ -208,31 +236,8 @@ rosdep install --from-paths src -r -y
 cd ..
 ```
 
-For Worldforge worlds,
 ```bash
-# Extract and move Worldforge exported worlds
-unzip exported_world.zip
-mv aws_robomaker_worldforge_pkgs simulation_ws/src/
-```
-
-### Generate Occupancy Map via map generation plugin
-
-```bash
-#For worldforge worlds, set WORLD_ID to the name of your WF exported world (e.g, generation_05wq8sybdcn2_world_1)
-export WORLD_ID=<worldforge-world-name>
-
-# Add map generation plugin to a robomaker world
-python scripts/add_map_plugin.py default --world_name <world_name>
-```
-world_name can be:  
-    - [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
-    - [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
-    - [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-    - [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
-    - worldforge
-
-```bash
-# Alternatively for your custom world/config,
+# Run plugin with custom world/config,
 python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
 ```
 
@@ -249,7 +254,12 @@ roslaunch cloudwatch_simulation start_map_service.launch
 rosservice call /gazebo_2Dmap_plugin/generate_map
 
 # Save map
-rosrun map_server map_saver -f <file-name> /map:=/map2d
+rosrun map_server map_saver -f <path-to-file> /map:=/map2d
+```
+
+```bash
+# Move the generated map file to cloudwatch_simulation simulation workspace map directory
+mv <path-to-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
 
 ## AWS ROS Packages used by this Sample

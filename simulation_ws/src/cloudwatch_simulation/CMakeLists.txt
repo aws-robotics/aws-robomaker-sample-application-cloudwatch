@@ -8,11 +8,11 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package()
 
-install(DIRECTORY launch worlds
+install(DIRECTORY launch worlds maps
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-# Copy the rviz model for easier access in AWS RoboMaker RViz 
+# Copy the rviz model for easier access in RoboMaker RViz
 install(FILES ${turtlebot3_description_DIR}/../rviz/model.rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
   RENAME turtlebot3_model.rviz
