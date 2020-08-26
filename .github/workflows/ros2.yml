@@ -25,7 +25,6 @@ jobs:
     outputs:
       robot_ws_build_result: ${{ steps.robot_ws_build.outcome }}
       simulation_ws_build_result: ${{ steps.simulation_ws_build.outcome }}
-      upload_result: ${{ steps.upload.outcome }}
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v1
@@ -55,16 +54,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS2 }}
         aws-region: ${{ secrets.AWS_REGION }}
       if: always() && github.ref == 'refs/heads/ros2' # always for "push" and "schedule" build status
-    - id: upload
-      name: Upload Bundles and Sources
-      uses: actions/upload-artifact@v2.1.4
-      with:
-        name: robot-simulation-bundles
-        path: |
-          sources.zip
-          sources.tar.gz
-          robot_ws.tar
-          simulation_ws.tar
 
   log_workflow_status_to_cloudwatch:
     runs-on: ubuntu-latest
@@ -90,8 +79,3 @@ jobs:
       with:
         namespace: SimulationWorkspaceBuild
         metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.simulation_ws_build_result, 'failure') }}
-    - name: Log Upload Status
-      uses: ros-tooling/action-cloudwatch-metrics@0.0.4
-      with:
-        namespace: BundleUpload
-        metric-value: ${{ ! contains(needs.build_and_bundle_ros2.outputs.upload_result, 'failure') }}
