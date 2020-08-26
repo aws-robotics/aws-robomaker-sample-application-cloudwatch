@@ -63,8 +63,6 @@ rosdep update
 ### Robot
 
 ```bash
-sudo apt-get update
-rosdep update
 cd robot_ws
 rosws update
 rosdep install --from-paths src --ignore-src -r -y
@@ -117,6 +115,10 @@ Launch the application with the following commands:
     ```bash
     roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
+
+Note that when running robot applications on a robot, `use_sim_time` should be set to `false` (which is the default value in `deploy_rotate.launch` and `deploy_await_commands.launch`). When running robot applications along with simulation applications, `use_sim_time` should be set to `true` for both applications (which is the default value in `rotate.launch`, `await_commands.launch` and all the launch files in simulation workspace).
+   		  
+When running simulation applications, run command with `gui:=true` to run gazebo client for visualization.
 
 For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
 
