@@ -26,5 +26,8 @@
   <!-- Enable Monitoring -->
   <include file="$(find cloudwatch_robot)/launch/monitoring.launch"/>
 
+  <!-- Publisher robot state for robot transforms -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
+
   <!-- Do nothing, await Goal Commands from simulation -->
 </launch>
