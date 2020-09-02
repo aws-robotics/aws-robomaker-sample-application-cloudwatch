@@ -29,12 +29,13 @@
   <depend>aws_common</depend>
   <depend>aws_ros1_common</depend>
 
-
   <!-- HealthMetricCollector -->
   <depend>health_metric_collector</depend>
 
   <!-- Turtlebot -->
   <depend>turtlebot3_msgs</depend>
+  <depend>robot_state_publisher</depend>
+
   <!-- Required to install .rviz model-->
   <depend>turtlebot3_description</depend>
 
