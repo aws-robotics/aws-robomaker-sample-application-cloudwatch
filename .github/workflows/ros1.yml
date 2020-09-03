@@ -39,7 +39,7 @@ jobs:
       uses: actions/checkout@v1
     - name: Setup Permissions
       run: |
-        # TODO(setup-ros-docker#7): calling chown is necessary for now
+        # TODO(ros-tooling/setup-ros-docker#7): calling chown is necessary for now
         sudo chown -R rosbuild:rosbuild "$HOME" .
     - id: robot_ws_build
       name: Build and Bundle Robot Workspace
@@ -56,13 +56,6 @@ jobs:
         ros-distro: ${{ matrix.distro }}
         gazebo-version: ${{ matrix.gazebo }}
         workspace-dir: simulation_ws
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ROS1 }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ROS1 }}
-        aws-region: ${{ secrets.AWS_REGION }}
-      if: always() && github.ref == 'refs/heads/ros1' # always log "push" and "schedule" build status
 
   log_workflow_status_to_cloudwatch:
     runs-on: ubuntu-latest
