@@ -5,7 +5,7 @@ import launch
 import launch_ros.actions
 from ament_index_python.packages import get_package_share_directory
 
-TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'burger')
+TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')
 
 def generate_launch_description():
     turtlebot_urdf_file_name = 'turtlebot3_' + TURTLEBOT3_MODEL + '.urdf'
