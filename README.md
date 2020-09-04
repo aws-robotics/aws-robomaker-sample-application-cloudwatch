@@ -106,6 +106,7 @@ Launch the application with the following commands:
 
 - *Running Simulation Application*
     ```bash
+    source /usr/share/gazebo/setup.sh
     source simulation_ws/install/local_setup.sh
     ros2 launch cloudwatch_simulation [command]
     ```
