@@ -64,7 +64,7 @@ rosdep update
 
 ```bash
 cd robot_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
@@ -73,7 +73,7 @@ colcon build
 
 ```bash
 cd simulation_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
@@ -233,7 +233,7 @@ sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
 ```bash
 # Fetch and install ROS dependencies
 cd simulation_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src -r -y
 cd ..
 ```
