@@ -64,7 +64,7 @@ rosdep update
 
 ```bash
 cd robot_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
@@ -73,14 +73,18 @@ colcon build
 
 ```bash
 cd simulation_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
 
 ## Run
 
-The `TURTLEBOT3_MODEL` environment variable must be set when running the simulation application (not needed for robot application). Valid values are `burger`, `waffle`, and `waffle_pi`.
+The `TURTLEBOT3_MODEL` environment variable must be set when running both robot and simulation application. Valid values are `burger`, `waffle`, and `waffle_pi`. Set it by
+
+```bash
+export TURTLEBOT3_MODEL=<robot-model>
+```
 
 Launch the application with the following commands:
 
@@ -102,7 +106,6 @@ Launch the application with the following commands:
 
 - *Running Simulation Application*
     ```bash
-    export TURTLEBOT3_MODEL=waffle_pi
     source simulation_ws/install/local_setup.sh
     roslaunch cloudwatch_simulation [command]
     ```
@@ -233,7 +236,7 @@ sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
 ```bash
 # Fetch and install ROS dependencies
 cd simulation_ws
-rosws update
+vcs import < .rosinstall
 rosdep install --from-paths src -r -y
 cd ..
 ```
