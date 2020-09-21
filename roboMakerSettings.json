@@ -50,7 +50,7 @@
                   "packageName":"cloudwatch_robot",
                   "launchFile":"await_commands.launch",
                   "environmentVariables":{
-
+                     "TURTLEBOT3_MODEL":"waffle_pi"
                   }
                },
                "robotSoftwareSuite":{
@@ -67,7 +67,7 @@
                   "packageName":"cloudwatch_simulation",
                   "launchFile":"bookstore_turtlebot_navigation.launch",
                   "environmentVariables":{
-                     "TURTLEBOT3_MODEL":"burger"
+                     "TURTLEBOT3_MODEL":"waffle_pi"
                   }
                },
                "robotSoftwareSuite":{
