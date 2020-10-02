@@ -12,6 +12,7 @@ setup(
         ('share/' + package_name + '/launch', ['launch/deploy_rotate.launch.py']),
         ('share/' + package_name + '/launch', ['launch/monitoring.launch.py']),
         ('share/' + package_name + '/launch', ['launch/rotate.launch.py']),
+        ('share/' + package_name + '/launch', ['launch/deploy_await_commands.launch.py']),
         ('share/' + package_name + '/config', ['config/cloudwatch_logs_config.yaml']),
         ('share/' + package_name + '/config', ['config/cloudwatch_metrics_config.yaml']),
         ('share/' + package_name + '/config', ['config/health_metrics_config.yaml']),
