@@ -1,11 +1,11 @@
 <launch>
-  <!-- 
-        A small house with a Turtlebot navigating to pre-determined 
+  <!--
+        A small house with a Turtlebot navigating to pre-determined
         goals in a random order endlessly.
 
-        Note that navigation nodes are in the simulation application 
-        as it uses a virtual map and should not be deployed to 
-        the real robot. 
+        Note that navigation nodes are in the simulation application
+        as it uses a virtual map and should not be deployed to
+        the real robot.
   -->
 
   <!-- If true, will follow a pre-defined route forever [DEFAULT] -->
@@ -14,31 +14,57 @@
   <!-- If true and "follow_route" is false, will follow a dynamic route forever -->
   <arg name="dynamic_route" default="false"/>
 
-  <!-- 
+  <!--
        Always set GUI to false for AWS RoboMaker Simulation
        Use gui:=true on roslaunch command-line to run with a gui.
   -->
   <arg name="gui" default="false"/>
 
   <!-- World and Robot -->
-  <include file="$(find aws_robomaker_small_house_world)/launch/small_house_turtlebot_navigation.launch">
+  <!-- Turtlebot robot model -->
+  <arg name="model" default="$(optenv TURTLEBOT3_MODEL waffle_pi)" doc="model type [burger, waffle, waffle_pi]"/>
+
+  <!--
+      Only allow users to set (x,y,yaw), otherwise initial
+      2D pose estimates will be wrong
+  -->
+  <arg name="x_pos" default="3.5"/>
+  <arg name="y_pos" default="1.0"/>
+  <arg name="yaw" default="0.0"/>
+
+  <!-- Load the small house world into Gazebo -->
+  <include file="$(find aws_robomaker_small_house_world)/launch/small_house.launch">
     <arg name="gui" value="$(arg gui)"/>
-    <arg name="x_pos" value="3.5"/>
-    <arg name="y_pos" value="1.0"/>
-    <arg name="yaw"   value="0.0"/>
+  </include>
+
+  <!-- Spawn the robot into Gazebo with the turtlebot description -->
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" default="$(arg x_pos)"/>
+    <arg name="y_pos" default="$(arg y_pos)"/>
+    <arg name="yaw" default="$(arg yaw)"/>
+  </include>
+
+  <!-- Enable navigation system -->
+  <include file="$(find cloudwatch_simulation)/launch/turtlebot3_navigation.launch">
+    <arg name="map_file" value="$(find aws_robomaker_small_house_world)/maps/turtlebot3_$(arg model)/map.yaml"/>
+    <!-- Initial pose must match the starting position of the robot for an aligned map -->
+    <arg name="initial_pose_x" value="$(arg x_pos)"/>
+    <arg name="initial_pose_y" default="$(arg y_pos)"/>
+    <arg name="initial_pose_a" default="$(arg yaw)"/>
+    <arg name="open_rviz" value="false"/>
   </include>
 
   <!-- Send navigation route goals to the robot in random order -->
   <group if="$(arg follow_route)">
     <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
-      <rosparam file="$(find aws_robomaker_small_house_world)/routes/route.yaml" command="load"/> 
+      <rosparam file="$(find aws_robomaker_small_house_world)/routes/route.yaml" command="load"/>
     </node>
   </group>
 
   <!-- Send dynamically generated navigation route goals to the robot -->
   <group if="$(arg dynamic_route)">
     <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
-       <param name="~mode"  type="str" value="dynamic"/>  
+       <param name="~mode"  type="str" value="dynamic"/>
     </node>
   </group>
 
