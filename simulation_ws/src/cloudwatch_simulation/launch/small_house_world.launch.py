@@ -10,27 +10,35 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='x_pos',
-            default_value='-3.5'
+            default_value='3.3'
         ),
         launch.actions.DeclareLaunchArgument(
             name='y_pos',
-            default_value='5.5'
+            default_value='-1.7'
         ),
         launch.actions.DeclareLaunchArgument(
             name='z_pos',
-            default_value='0.30'
+            default_value='0.3'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='gui',
+            default_value='false'
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
-                os.path.join(
-                    get_package_share_directory('cloudwatch_simulation'),
-                    'launch',
-                    'world_turtlebot_navigation.launch.py'
-                )
+                os.path.join(get_package_share_directory(
+                    'aws_robomaker_small_house_world'), 'launch', 'small_house.launch.py')
             ),
             launch_arguments={
-                'world_launch_file': 'bookstore.launch.py',
-                'world_package': 'aws_robomaker_bookstore_world',
+                'gui': launch.substitutions.LaunchConfiguration('gui')
+            }.items()
+        ),
+        launch.actions.IncludeLaunchDescription(
+            launch.launch_description_sources.PythonLaunchDescriptionSource(
+                os.path.join(get_package_share_directory(
+                    'turtlebot3_description_reduced_mesh'), 'launch', 'spawn_turtlebot.launch.py')
+            ),
+            launch_arguments={
                 'x_pos': launch.substitutions.LaunchConfiguration('x_pos'),
                 'y_pos': launch.substitutions.LaunchConfiguration('y_pos'),
                 'z_pos': launch.substitutions.LaunchConfiguration('z_pos')

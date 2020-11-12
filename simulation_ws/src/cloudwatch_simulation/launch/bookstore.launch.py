@@ -9,6 +9,18 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
+            name='x_pos',
+            default_value='-3.5'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='y_pos',
+            default_value='5.5'
+        ),
+        launch.actions.DeclareLaunchArgument(
+            name='z_pos',
+            default_value='0.30'
+        ),
+        launch.actions.DeclareLaunchArgument(
             name='gui',
             default_value='false'
         ),
@@ -27,9 +39,9 @@ def generate_launch_description():
                     'turtlebot3_description_reduced_mesh'), 'launch', 'spawn_turtlebot.launch.py')
             ),
             launch_arguments={
-                'x_pos': '-3.5',
-                'y_pos': '5.5',
-                'z_pos': '0.3'
+                'x_pos': launch.substitutions.LaunchConfiguration('x_pos'),
+                'y_pos': launch.substitutions.LaunchConfiguration('y_pos'),
+                'z_pos': launch.substitutions.LaunchConfiguration('z_pos')
             }.items()
         )
     ])

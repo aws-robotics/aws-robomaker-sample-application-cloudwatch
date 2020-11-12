@@ -10,11 +10,11 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='x_pos',
-            default_value='-3.5'
+            default_value='3.3'
         ),
         launch.actions.DeclareLaunchArgument(
             name='y_pos',
-            default_value='5.5'
+            default_value='-1.7'
         ),
         launch.actions.DeclareLaunchArgument(
             name='z_pos',
@@ -29,8 +29,8 @@ def generate_launch_description():
                 )
             ),
             launch_arguments={
-                'world_launch_file': 'bookstore.launch.py',
-                'world_package': 'aws_robomaker_bookstore_world',
+                'world_launch_file': 'small_house_world.launch.py',
+                'world_package': 'aws_robomaker_small_house_world',
                 'x_pos': launch.substitutions.LaunchConfiguration('x_pos'),
                 'y_pos': launch.substitutions.LaunchConfiguration('y_pos'),
                 'z_pos': launch.substitutions.LaunchConfiguration('z_pos')
