@@ -25,7 +25,7 @@ def generate_launch_description():
                 os.path.join(
                     get_package_share_directory('cloudwatch_simulation'),
                     'launch',
-                    'world_turtlebot_navigation.launch.py'
+                    'sample_world_turtlebot_navigation.launch.py'
                 )
             ),
             launch_arguments={

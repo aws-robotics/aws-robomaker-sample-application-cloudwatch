@@ -1,8 +1,11 @@
 # *******************************************************************************/
 # This launch file serves as a template for navigation launch files.
-# It takes two key argument:
-# - world_launch_file, which specifies the world launch file name
-# - world_package, which specifies the actual package name that stores the world
+# It takes five non-optional arguments:
+# - x_pos            : The x coordinate of the robot initial pose
+# - y_pos            : The y coordinate of the robot initial pose
+# - z_pos            : The z coordinate of the robot initial pose
+# - world_launch_file: It specifies the world launch file name
+# - world_package    : It specifies the actual package name that stores the world
 # *******************************************************************************/
 import os
 import sys
@@ -17,15 +20,15 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='x_pos',
-            default_value='-3.5'
+            description='The x coordinate of the robot initial pose'
         ),
         launch.actions.DeclareLaunchArgument(
             name='y_pos',
-            default_value='5.5'
+            description='The y coordinate of the robot initial pose'
         ),
         launch.actions.DeclareLaunchArgument(
             name='z_pos',
-            default_value='0.30'
+            description='The z coordinate of the robot initial pose'
         ),
         launch.actions.DeclareLaunchArgument(
             name='yaw',
@@ -45,11 +48,11 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='world_launch_file',
-            default_value='bookstore.launch.py'
+            description='The world launch file'
         ),
         launch.actions.DeclareLaunchArgument(
             name='world_package',
-            default_value='aws_robomaker_bookstore_world'
+            description='The package that stores the world launch file'
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
