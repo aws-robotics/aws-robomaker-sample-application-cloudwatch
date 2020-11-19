@@ -10,15 +10,15 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='x_pos',
-            default_value='-3.5'
+            default_value='3.3'
         ),
         launch.actions.DeclareLaunchArgument(
             name='y_pos',
-            default_value='5.5'
+            default_value='-1.7'
         ),
         launch.actions.DeclareLaunchArgument(
             name='z_pos',
-            default_value='0.30'
+            default_value='0.3'
         ),
         launch.actions.DeclareLaunchArgument(
             name='gui',
@@ -27,7 +27,7 @@ def generate_launch_description():
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory(
-                    'aws_robomaker_bookstore_world'), 'launch', 'bookstore.launch.py')
+                    'aws_robomaker_small_house_world'), 'launch', 'small_house.launch.py')
             ),
             launch_arguments={
                 'gui': launch.substitutions.LaunchConfiguration('gui')
