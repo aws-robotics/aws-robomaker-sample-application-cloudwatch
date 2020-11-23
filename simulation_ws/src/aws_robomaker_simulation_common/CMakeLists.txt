@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(aws_robomaker_simulation_common)
 
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
+  # gazebo_ros
   turtlebot3_navigation  # required for copy of .rviz file
 )
 

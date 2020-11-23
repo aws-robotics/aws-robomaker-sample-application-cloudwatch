@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(cloudwatch_simulation)
 
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
+  # gazebo_ros
   turtlebot3_description    # required to install .rviz model
 )
 
