@@ -1,6 +1,0 @@
-- git: {local-name: src/deps/aws-robomaker-bookstore-world, uri: "https://github.com/aws-robotics/aws-robomaker-bookstore-world", version: ros1}
-- git: {local-name: src/deps/aws-robomaker-small-house-world, uri: "https://github.com/aws-robotics/aws-robomaker-small-house-world", version: ros1}
-- git: {local-name: src/deps/aws-robomaker-small-warehouse-world, uri: "https://github.com/aws-robotics/aws-robomaker-small-warehouse-world", version: master}
-- git: {local-name: src/deps/aws-robomaker-simulation-ros-pkgs, uri: 'https://github.com/aws-robotics/aws-robomaker-simulation-ros-pkgs.git', version: master}
-- git: {local-name: src/deps/map_generation_plugin, uri: 'https://github.com/marinaKollmitz/gazebo_ros_2Dmap_plugin', version: 0820610f46235cd7ce1458ea030ef83b1616da37}
-- git: {local-name: src/deps/turtlebot3-description-reduced-mesh, uri: "https://github.com/aws-robotics/turtlebot3-description-reduced-mesh.git", version: "ros1"}

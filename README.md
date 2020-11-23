@@ -1,5 +1,7 @@
 # AWS RoboMaker Sample Application - CloudWatch Monitoring
 
+### WIP: Ignition Port
+
 Monitor health and operational metrics for a fleet of robots in a simulated home using AWS CloudWatch Metrics and AWS CloudWatch Logs. Streamed metrics include speed, distance to nearest obstacle, distance to current goal, robot CPU utilization, and RAM usage.
 
 It demonstrates how to emit metrics and logs to AWS CloudWatch to monitor your robots.
@@ -64,7 +66,6 @@ rosdep update
 
 ```bash
 cd robot_ws
-vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
@@ -73,7 +74,6 @@ colcon build
 
 ```bash
 cd simulation_ws
-vcs import < .rosinstall
 rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
@@ -120,8 +120,6 @@ Launch the application with the following commands:
     ``` 
 
 Note that when running robot applications on a robot, `use_sim_time` should be set to `false` (which is the default value in `deploy_rotate.launch` and `deploy_await_commands.launch`). When running robot applications along with simulation applications, `use_sim_time` should be set to `true` for both applications (which is the default value in `rotate.launch`, `await_commands.launch` and all the launch files in simulation workspace).
-   		  
-When running simulation applications, run command with `gui:=true` to run gazebo client for visualization.
 
 For navigation, you can generate a map with map generation plugin. See [this](#generate-occupancy-map-via-map-generation-plugin) for instructions.
 
@@ -192,7 +190,7 @@ and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/cr
 
 ## Generate Occupancy Map via map generation plugin
 
-Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
+Procedurally generate an occupancy map for any Gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
 
 
 ### Generate map for a aws-robotics world with default config
