@@ -8,4 +8,10 @@
     <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find aws_robomaker_bookstore_world)/models/:$(find turtlebot3_description_reduced_mesh)" />
     <arg name="ign_args" value="-r -v 3 $(find aws_robomaker_bookstore_world)/worlds/bookstore.world"/>
   </include>
+
+  <!-- rosrun ros_ign_bridge parameter_bridge /clock@rosgraph_msgs/Clock[ignition.msgs.Clock -->
+  <!--
+  <node pkg="ros_ign_bridge" type="parameter_bridge" name="bridge"
+    args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock" />
+  -->
 </launch>

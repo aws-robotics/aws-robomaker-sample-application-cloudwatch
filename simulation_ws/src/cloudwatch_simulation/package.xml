@@ -21,6 +21,7 @@
   <!-- <exec_depend>gazebo</exec_depend> -->
   <!-- <depend>gazebo_ros</depend> -->
   <!-- <depend>gazebo_plugins</depend> -->
+  <exec_depend>ros_ign_bridge</exec_depend>
 
   <!-- Required to install .rviz model-->
   <depend>turtlebot3_description</depend>

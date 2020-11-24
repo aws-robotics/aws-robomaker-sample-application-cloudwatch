@@ -19,7 +19,4 @@
           -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)">
     <!-- <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find aws_robomaker_bookstore_world)/models/:$(find turtlebot3_description_reduced_mesh)" /> -->
   </node>
-
-  <!-- Publish joint states -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 </launch>
