@@ -20,8 +20,4 @@
   <!-- Route Manager -->
   <exec_depend>moveit_ros</exec_depend>
   <exec_depend>dwa_local_planner</exec_depend>
-
-  <export>
-    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models"/>
-  </export>
 </package>
