@@ -21,7 +21,7 @@ from geometry_msgs.msg import Twist
 
 class Rotator():
     def __init__(self):
-        self._cmd_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+        self._cmd_pub = rospy.Publisher('/model/turtlebot3_waffle_pi/cmd_vel', Twist, queue_size=1)
 
     def rotate_forever(self):
         self.twist = Twist()
