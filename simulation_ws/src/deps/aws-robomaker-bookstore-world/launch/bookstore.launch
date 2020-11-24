@@ -5,7 +5,7 @@
   <arg name="gui" default="false"/>
 
   <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
-    <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find aws_robomaker_bookstore_world)/models/" />
+    <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find aws_robomaker_bookstore_world)/models/:$(find turtlebot3_description_reduced_mesh)" />
     <arg name="ign_args" value="-r -v 3 $(find aws_robomaker_bookstore_world)/worlds/bookstore.world"/>
   </include>
 </launch>

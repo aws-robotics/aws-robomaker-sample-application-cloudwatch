@@ -9,3 +9,6 @@ install(DIRECTORY launch meshes urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
+install(DIRECTORY meshes
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/turtlebot3_description_reduced_mesh
+)

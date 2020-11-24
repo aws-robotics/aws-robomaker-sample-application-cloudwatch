@@ -20,7 +20,7 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description_reduced_mesh)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
   <!-- Enable Monitoring -->
-  <include file="$(find cloudwatch_robot)/launch/monitoring.launch"/>
+  <!-- <include file="$(find cloudwatch_robot)/launch/monitoring.launch"/> -->
 
   <!-- Publisher robot state for robot transforms -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>

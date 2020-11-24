@@ -58,6 +58,7 @@
     <material>Gazebo/Grey</material>
   </gazebo>
 
+  <!--
   <gazebo>
     <plugin name="turtlebot3_waffle_pi_controller" filename="libgazebo_ros_diff_drive.so">
       <commandTopic>cmd_vel</commandTopic>
@@ -143,7 +144,6 @@
     </sensor>
   </gazebo>
 
-<!--link : https://www.raspberrypi.org/documentation/hardware/camera/-->
   <gazebo reference="camera_rgb_frame">
     <sensor type="camera" name="Pi Camera">
       <always_on>true</always_on>
@@ -176,5 +176,6 @@
       </plugin>
     </sensor>
   </gazebo>
+  -->
 
 </robot>
