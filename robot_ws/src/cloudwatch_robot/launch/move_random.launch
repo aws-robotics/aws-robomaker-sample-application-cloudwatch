@@ -15,16 +15,6 @@
   <arg name="use_sim_time" default="true"/>
   <param name="use_sim_time" value="$(arg use_sim_time)"/>
 
-  <!-- Optional environment variable, default is "waffle_pi". Note that "burger" does not have a camera -->
-  <arg name="model" default="$(optenv TURTLEBOT3_MODEL waffle_pi)" doc="model type [burger, waffle, waffle_pi]"/>
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description_reduced_mesh)/urdf/turtlebot3_$(arg model).urdf.xacro" />
-
-  <!-- Publisher robot state for robot transforms -->
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
-
-  <!-- Publish joint states -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-
   <!-- Move robot -->
   <node pkg="cloudwatch_robot" type="move_random" name="move_random" output="screen"></node>
 </launch>
