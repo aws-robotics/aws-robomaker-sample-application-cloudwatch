@@ -44,20 +44,86 @@
     <arg name="gui" value="$(arg gui)"/>
   </include>
 
+  <!-- Spawn the robots into Gazebo with the turtlebot description -->
+
   <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
-    <arg name="x_pos" value="-3.0"/>
-    <arg name="y_pos" value="5.5"/>
+    <arg name="x_pos" value="0.0"/>
+    <arg name="y_pos" value="6.0"/>
     <arg name="z_pos" value="$(arg z_pos)"/>
     <arg name="yaw"   value="$(arg yaw)"/>
     <arg name="val" value="1"/>
   </include>
 
-  <!-- Spawn the robot into Gazebo with the turtlebot description -->
   <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
-    <arg name="x_pos" value="-4.0"/>
-    <arg name="y_pos" value="5.5"/>
+    <arg name="x_pos" value="-0.5"/>
+    <arg name="y_pos" value="6.0"/>
     <arg name="z_pos" value="$(arg z_pos)"/>
     <arg name="yaw"   value="$(arg yaw)"/>
     <arg name="val" value="2"/>
   </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-1.0"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="3"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-1.5"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="4"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-2.0"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="5"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-2.5"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="6"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-3.0"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="7"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-3.5"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="8"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-4.0"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="9"/>
+  </include>
+
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <arg name="x_pos" value="-4.5"/>
+    <arg name="y_pos" value="6.0"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="val" value="10"/>
+  </include>
+
 </launch>

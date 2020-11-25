@@ -15,6 +15,6 @@
   <arg name="use_sim_time" default="true"/>
   <param name="use_sim_time" value="$(arg use_sim_time)"/>
 
-  <!-- Move robot -->
-  <node pkg="cloudwatch_robot" type="move_random" name="move_random" output="screen"></node>
+  <!-- Move 10 robots -->
+  <node pkg="cloudwatch_robot" type="move_random" name="move_random" output="screen" args="10"></node>
 </launch>

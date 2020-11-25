@@ -12,7 +12,7 @@
   <arg name="yaw" default="0.0"/>
 
   <!-- Spawn the robot into Gazebo with the turtlebot description -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description_reduced_mesh)/urdf/turtlebot3_$(arg model).urdf.xacro val:=$(arg val)" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description_reduced_mesh)/urdf/turtlebot3_$(arg model).urdf.xacro val:=$(arg val)" />
 
   <node name="spawn_urdf_$(arg val)" pkg="ros_ign_gazebo" type="create"
     args="-world default -param robot_description -name turtlebot3_$(arg model)_$(arg val)

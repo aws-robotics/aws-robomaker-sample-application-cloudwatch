@@ -16,31 +16,44 @@
  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
+import sys
 import random
+
 import rospy
 from geometry_msgs.msg import Twist
 
 class Mover():
-    def __init__(self):
-        self._cmd_pub = rospy.Publisher('/model/turtlebot3_waffle_pi_1/cmd_vel', Twist, queue_size=1)
+    def __init__(self, num_robots):
+        self._cmd_pubs = list()
+        for i in range(num_robots):
+            self._cmd_pubs.append(rospy.Publisher('/model/turtlebot3_waffle_pi_%d/cmd_vel' % (i+1), Twist, queue_size=1))
 
     def move_random(self):
         self.twist = Twist()
 
-        direction = random.uniform(0.0, 100.0)
-        angular_speed = random.uniform(0.0, 100.0)
         r = rospy.Rate(1)
         while not rospy.is_shutdown():
-            self.twist.angular.z = direction * angular_speed
-            self.twist.linear.x = direction
-            self._cmd_pub.publish(self.twist)
-            rospy.loginfo("Moving Robot: %s", self.twist)
+            i = 1
+            for cmd_pub in self._cmd_pubs:
+                direction = random.uniform(-10.0, 10.0)
+                angular_speed = random.uniform(-10.0, 10.0)
+                self.twist.angular.z = angular_speed
+                self.twist.linear.x = direction
+                cmd_pub.publish(self.twist)
+                rospy.loginfo("Moving Robot #%d:\n%s", i, self.twist)
+                i += 1
             r.sleep()
 
 def main():
     rospy.init_node('move_random')
+
+    num_robots = 1
+    my_argv = rospy.myargv(argv=sys.argv)
+    if (len(my_argv) >= 2):
+        num_robots = int(my_argv[1])
+    rospy.loginfo('Moving %d Robots', num_robots);
     try:
-        rotator = Mover()
+        rotator = Mover(num_robots)
         rotator.move_random()
     except rospy.ROSInterruptException:
         pass
