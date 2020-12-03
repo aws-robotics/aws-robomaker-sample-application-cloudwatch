@@ -21,6 +21,7 @@ You will need to create an AWS Account and configure the credentials to be able 
 To run this application you will need an IAM user with the following permissions:
 ```
    logs:PutLogEvents
+   logs:DescribeLogGroups
    logs:DescribeLogStreams
    logs:CreateLogStream
    logs:CreateLogGroup
@@ -38,6 +39,7 @@ You can find instructions for creating a new IAM Policy [here](https://docs.aws.
       "Action": [
         "cloudwatch:PutMetricData",
         "logs:PutLogEvents",
+        "logs:DescribeLogGroups",
         "logs:DescribeLogStreams",
         "logs:CreateLogStream",
         "logs:CreateLogGroup"
