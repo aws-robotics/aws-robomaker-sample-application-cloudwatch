@@ -30,7 +30,7 @@ def generate_launch_description():
             ),
             launch_arguments={
                 'world_launch_file': 'bookstore.launch.py',
-                'world_package': 'aws_robomaker_bookstore_world',
+                'world_package': get_package_share_directory('aws_robomaker_bookstore_world'),
                 'x_pos': launch.substitutions.LaunchConfiguration('x_pos'),
                 'y_pos': launch.substitutions.LaunchConfiguration('y_pos'),
                 'z_pos': launch.substitutions.LaunchConfiguration('z_pos')

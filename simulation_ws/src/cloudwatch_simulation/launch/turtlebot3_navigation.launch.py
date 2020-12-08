@@ -1,3 +1,8 @@
+# *******************************************************************************/
+# This launch file takes two non-optional arguments:
+# - map_file            : Full path to map file to load
+# - params_file         : Full path to params file to load
+# *******************************************************************************/
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -9,26 +14,14 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch.conditions import IfCondition
 
-TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')
-
 
 def generate_launch_description():
     # Launch configurations
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-
-    default_map_file = os.path.join(
-        get_package_share_directory('cloudwatch_simulation'),
-        'maps',
-        'map.yaml')
-    map_file = LaunchConfiguration('map_file', default=default_map_file)
+    map_file = LaunchConfiguration('map_file')
     print('Map File: {}'.format(map_file))
 
-    params_file_name = TURTLEBOT3_MODEL + '.yaml'
-    default_params_file = os.path.join(
-        get_package_share_directory('cloudwatch_simulation'),
-        'param',
-        params_file_name)
-    params_file = LaunchConfiguration('params_file', default=default_params_file)
+    params_file = LaunchConfiguration('params_file')
     print('Param File: {}'.format(params_file))
 
     nav2_launch_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
@@ -42,7 +35,6 @@ def generate_launch_description():
     # Launch arguments
     declare_map_file_arg = DeclareLaunchArgument(
         name='map_file',
-        default_value=default_map_file,
         description='Full path to map file to load'
     )
 
@@ -54,7 +46,6 @@ def generate_launch_description():
 
     declare_params_file_arg = DeclareLaunchArgument(
         name='params_file',
-        default_value=default_params_file,
         description='Full path to params file to load'
     )
 

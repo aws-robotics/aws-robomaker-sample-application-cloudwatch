@@ -5,7 +5,7 @@
 # - y_pos            : The y coordinate of the robot initial pose
 # - z_pos            : The z coordinate of the robot initial pose
 # - world_launch_file: It specifies the world launch file name
-# - world_package    : It specifies the actual package name that stores the world
+# - world_package    : It specifies the absolute path of the package that stores the world
 # *******************************************************************************/
 import os
 import sys
@@ -52,7 +52,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='world_package',
-            description='The package that stores the world launch file'
+            description='The absolute path of the package that stores the world launch file'
         ),
         launch.actions.IncludeLaunchDescription(
             launch.launch_description_sources.PythonLaunchDescriptionSource(
@@ -76,8 +76,8 @@ def generate_launch_description():
                 )
             ),
             launch_arguments={
-                'map_file': os.path.join(get_package_share_directory('cloudwatch_simulation'), 'maps', 'map.yaml'),
-                'params_file': os.path.join(get_package_share_directory('cloudwatch_simulation'), 'param', TURTLEBOT3_MODEL + ".yaml"),
+                'map_file': [launch.substitutions.LaunchConfiguration('world_package'), '/maps', '/turtlebot3_', TURTLEBOT3_MODEL, '/map.yaml'],
+                'params_file': [launch.substitutions.LaunchConfiguration('world_package'), '/param/', TURTLEBOT3_MODEL + ".yaml"],
                 'open_rviz': 'false',
                 'use_sim_time': launch.substitutions.LaunchConfiguration('use_sim_time')
             }.items()
