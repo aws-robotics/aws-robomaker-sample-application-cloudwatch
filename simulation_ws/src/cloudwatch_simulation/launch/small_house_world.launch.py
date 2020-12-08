@@ -10,15 +10,15 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='x_pos',
-            default_value='3.3'
+            default_value='3.5'
         ),
         launch.actions.DeclareLaunchArgument(
             name='y_pos',
-            default_value='-1.7'
+            default_value='1.0'
         ),
         launch.actions.DeclareLaunchArgument(
             name='z_pos',
-            default_value='0.3'
+            default_value='0.0'
         ),
         launch.actions.DeclareLaunchArgument(
             name='gui',

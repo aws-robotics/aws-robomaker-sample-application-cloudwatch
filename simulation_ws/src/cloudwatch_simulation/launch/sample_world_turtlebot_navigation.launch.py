@@ -6,6 +6,9 @@
 # - z_pos            : The z coordinate of the robot initial pose
 # - world_launch_file: It specifies the world launch file name
 # - world_package    : It specifies the absolute path of the package that stores the world
+#
+# To start with a different initial pose, besides the x_pos, y_pos and z_pos in this launch file,
+# also modify the param.yaml file in the world repo accordingly.
 # *******************************************************************************/
 import os
 import sys
