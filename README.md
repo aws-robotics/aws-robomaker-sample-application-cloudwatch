@@ -119,7 +119,11 @@ Launch the application with the following commands:
 
 Note that when running robot applications on a robot, `use_sim_time` should be set to `false` (which is the default value in `deploy_rotate.launch.py` and `deploy_await_commands.launch.py`). When running robot applications along with simulation applications, `use_sim_time` should be set to `true` for both applications (which is the default value in `rotate.launch.py`, `await_commands.launch.py` and all the launch files in simulation workspace).
 
+#### Visualization
 When running simulation applications, run command with `gui:=true` to run gazebo client for visualization.
+
+#### Initial pose for navigation
+Besides setting the `x_pos`, `y_pos` and `z_pos` in the navigation launch files, you also need to modify the `param.yaml` inside the world repo (e.g. [small_house_world param.yaml](https://github.com/aws-robotics/aws-robomaker-small-house-world/blob/ros2/param/waffle_pi.yaml#L4)).
 
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS2 nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.

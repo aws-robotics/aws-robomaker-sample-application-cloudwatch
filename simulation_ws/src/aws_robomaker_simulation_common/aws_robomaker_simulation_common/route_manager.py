@@ -71,8 +71,8 @@ class RouteManager(Node):
         time.sleep(10)
 
         route_file_info = self.get_parameter('route_file').value
-        # route file info is in the form "<package-name>.<path from install's share directory>"
-        route_pkg_share = get_package_share_directory(route_file_info.split('.')[0])
+        # route file info is in the form "<full path to the package>.<path from install's share directory>"
+        route_pkg_share = route_file_info.split('.')[0]
         route_file_path = os.path.join(route_pkg_share, '.'.join(route_file_info.split('.')[1:]))
 
         with open(route_file_path, 'r') as f:
