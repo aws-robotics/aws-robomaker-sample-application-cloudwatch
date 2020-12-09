@@ -80,10 +80,10 @@ colcon build
 
 ## Run
 
-The `TURTLEBOT3_MODEL` environment variable is optional when running both robot and simulation application. Default value is `waffle_pi`. Valid values are `burger`, `waffle`, and `waffle_pi`. Set it by
+The `TURTLEBOT3_MODEL` environment variable is optional when running both robot and simulation application. Currently only `waffle_pi` is supported. Set it by
 
 ```bash
-export TURTLEBOT3_MODEL=<robot-model>
+export TURTLEBOT3_MODEL=waffle_pi
 ```
 
 Launch the application with the following commands:
