@@ -16,7 +16,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ros-tooling/action-ros-lint@v0.1
         with:
-          distribution: dashing
           linter: ${{ matrix.linter }}
           package-name: |
             aws_robomaker_simulation_common
