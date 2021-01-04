@@ -1,0 +1,11 @@
+fail_fast: false # set to true to have pre-commit stop running hooks after the first failure.
+default_stages: [commit, push]
+
+repos:
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.8.3
+  hooks:
+    - id: flake8
+      additional_dependencies: [
+          'flake8-quotes==2.1.1'
+      ]

@@ -1,4 +1,4 @@
-name: "Lint cloudwatch-sample-application-ros1"
+name: "Lint cloudwatch-sample-application-ros2"
 on:
   pull_request:
 
