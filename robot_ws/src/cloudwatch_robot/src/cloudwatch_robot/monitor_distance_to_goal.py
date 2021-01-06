@@ -18,11 +18,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from nav_msgs.msg import Path
 import numpy as np
 import rclpy
 from rclpy.node import Node
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
-from nav_msgs.msg import Path
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 from std_msgs.msg import Header
 
 

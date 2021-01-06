@@ -15,18 +15,17 @@ permissions and limitations under the License.
 """
 
 import itertools
-import random
 import os
+import random
 import sys
 import time
-
-import yaml
 
 from geometry_msgs.msg import Point, Quaternion
 from nav2_msgs.action import NavigateToPose
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
+import yaml
 
 
 class RouteManager(Node):

@@ -21,7 +21,7 @@ SOFTWARE.
 from nav_msgs.msg import Odometry
 import rclpy
 from rclpy.node import Node
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 from std_msgs.msg import Header
 
 

@@ -20,9 +20,9 @@ SOFTWARE.
 
 import os
 
+from ament_index_python.packages import get_package_share_directory
 import launch
 import launch_ros.actions
-from ament_index_python.packages import get_package_share_directory
 
 TURTLEBOT3_MODEL = os.environ.get('TURTLEBOT3_MODEL', 'waffle_pi')
 

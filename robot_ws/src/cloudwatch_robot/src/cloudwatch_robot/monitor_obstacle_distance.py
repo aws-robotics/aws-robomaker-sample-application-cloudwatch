@@ -21,7 +21,7 @@ SOFTWARE.
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSPresetProfiles
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Header
 
