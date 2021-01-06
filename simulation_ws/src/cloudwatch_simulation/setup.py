@@ -1,5 +1,6 @@
-import os
 from glob import glob
+import os
+
 from setuptools import setup
 
 package_name = 'cloudwatch_simulation'
