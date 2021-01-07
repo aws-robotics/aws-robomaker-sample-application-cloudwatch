@@ -71,10 +71,10 @@ include_directories(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS 
-  nodes/rotate
-  nodes/monitor_speed
-  nodes/monitor_obstacle_distance
-  nodes/monitor_distance_to_goal
+  nodes/rotate.py
+  nodes/monitor_speed.py
+  nodes/monitor_obstacle_distance.py
+  nodes/monitor_distance_to_goal.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

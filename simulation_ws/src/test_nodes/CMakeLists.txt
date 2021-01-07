@@ -44,7 +44,7 @@ catkin_package(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS
-  nodes/navigation_test
+  nodes/navigation_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
