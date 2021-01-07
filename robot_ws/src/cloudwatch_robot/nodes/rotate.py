@@ -19,13 +19,14 @@
 import rospy
 from geometry_msgs.msg import Twist
 
+
 class Rotator():
     def __init__(self):
         self._cmd_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
 
     def rotate_forever(self):
         self.twist = Twist()
-        
+
         direction = 1
         angular_speed = 0.2
         r = rospy.Rate(0.1)
@@ -43,6 +44,7 @@ def main():
         rotator.rotate_forever()
     except rospy.ROSInterruptException:
         pass
+
 
 if __name__ == '__main__':
     main()

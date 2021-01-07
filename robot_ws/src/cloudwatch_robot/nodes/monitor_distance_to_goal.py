@@ -28,13 +28,16 @@ from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 
 class MonitorDistanceToGoal():
     def __init__(self):
-        self.scan_sub = rospy.Subscriber("/move_base/NavfnROS/plan", Path, callback=self.report_metric)
-        self.metrics_pub = rospy.Publisher("/metrics", MetricList, queue_size=1)
+        self.scan_sub = rospy.Subscriber(
+            "/move_base/NavfnROS/plan", Path, callback=self.report_metric)
+        self.metrics_pub = rospy.Publisher(
+            "/metrics", MetricList, queue_size=1)
 
     def calc_path_distance(self, msg):
-        points = [(p.pose.position.x,p.pose.position.y) for p in msg.poses]
-        array = np.array(points, dtype=np.dtype('f8','f8'))
-        return sum((np.linalg.norm(p0-p1) for p0,p1 in izip(array[:-2],array[1:])))
+        points = [(p.pose.position.x, p.pose.position.y) for p in msg.poses]
+        array = np.array(points, dtype=np.dtype('f8', 'f8'))
+        return sum((np.linalg.norm(p0 - p1)
+                    for p0, p1 in izip(array[:-2], array[1:])))
 
     def report_metric(self, msg):
         if not msg.poses:
@@ -43,12 +46,17 @@ class MonitorDistanceToGoal():
 
         distance = self.calc_path_distance(msg)
         rospy.logdebug('Distance to goal: %s', distance)
-        
+
         header = Header()
         header.stamp = rospy.Time.from_sec(time.time())
 
-        dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
-                      MetricDimension(name="category", value="RobotOperations")]
+        dimensions = [
+            MetricDimension(
+                name="robot_id",
+                value="Turtlebot3"),
+            MetricDimension(
+                name="category",
+                value="RobotOperations")]
         metric = MetricData(header=header, metric_name="distance_to_goal",
                             unit=MetricData.UNIT_NONE,
                             value=distance,
@@ -65,6 +73,7 @@ def main():
         rospy.spin()
     except rospy.ROSInterruptException:
         pass
+
 
 if __name__ == '__main__':
     main()
