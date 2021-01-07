@@ -13,13 +13,13 @@
   <arg name="launch_id" value="$(optenv LAUNCH_ID)" doc="Used for resource name suffix if specified"/>
   
   <!-- Report speed metrics to CloudWatch -->
-  <node pkg="cloudwatch_robot" type="monitor_speed" name="monitor_speed" output="log"/>
+  <node pkg="cloudwatch_robot" type="monitor_speed.py" name="monitor_speed" output="log"/>
 
   <!-- Report distance to nearest obstacle metric to CloudWatch -->
-  <node pkg="cloudwatch_robot" type="monitor_obstacle_distance" name="monitor_obstacle_distance" output="log"/>
+  <node pkg="cloudwatch_robot" type="monitor_obstacle_distance.py" name="monitor_obstacle_distance" output="log"/>
 
   <!-- Report distance to goal metric to CloudWatch (does nothing if there isn't a planned goal) -->
-  <node pkg="cloudwatch_robot" type="monitor_distance_to_goal" name="monitor_distance_to_goal" output="log"/>
+  <node pkg="cloudwatch_robot" type="monitor_distance_to_goal.py" name="monitor_distance_to_goal" output="log"/>
 
   <!-- Report health Metrics -->
   <include file="$(find health_metric_collector)/launch/health_metric_collector.launch" >

@@ -25,10 +25,9 @@ from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 from nav_msgs.msg import Odometry
 
 
-class Monitor():
+class Monitor:
     def __init__(self, data_topic, data_msg, metric_topic, transform):
-        self.metrics_pub = rospy.Publisher(
-            metric_topic, MetricList, queue_size=1)
+        self.metrics_pub = rospy.Publisher(metric_topic, MetricList, queue_size=1)
         self.topic_sub = rospy.Subscriber(data_topic, data_msg, self.callback)
         self.transform = transform
 
@@ -40,34 +39,42 @@ def odom_to_speed(odom):
     header = Header()
     header.stamp = rospy.Time.from_sec(time.time())
 
-    dimensions = [MetricDimension(name="robot_id", value="Turtlebot3"),
-                  MetricDimension(name="category", value="RobotOperations")]
+    dimensions = [
+        MetricDimension(name="robot_id", value="Turtlebot3"),
+        MetricDimension(name="category", value="RobotOperations"),
+    ]
 
-    linear_speed = MetricData(header=header,
-                              metric_name="linear_speed",
-                              unit=MetricData.UNIT_NONE,
-                              value=odom.twist.twist.linear.x,
-                              time_stamp=rospy.Time.from_sec(time.time()),
-                              dimensions=dimensions)
+    linear_speed = MetricData(
+        header=header,
+        metric_name="linear_speed",
+        unit=MetricData.UNIT_NONE,
+        value=odom.twist.twist.linear.x,
+        time_stamp=rospy.Time.from_sec(time.time()),
+        dimensions=dimensions,
+    )
 
-    angular_speed = MetricData(header=header,
-                               metric_name="angular_speed",
-                               unit=MetricData.UNIT_NONE,
-                               value=odom.twist.twist.angular.z,
-                               time_stamp=rospy.Time.from_sec(time.time()),
-                               dimensions=dimensions)
+    angular_speed = MetricData(
+        header=header,
+        metric_name="angular_speed",
+        unit=MetricData.UNIT_NONE,
+        value=odom.twist.twist.angular.z,
+        time_stamp=rospy.Time.from_sec(time.time()),
+        dimensions=dimensions,
+    )
 
     return MetricList([linear_speed, angular_speed])
 
 
 def main():
-    rospy.init_node('speed_monitor')
-    monitor = Monitor(data_topic="/odom",
-                      data_msg=Odometry,
-                      metric_topic="/metrics",
-                      transform=odom_to_speed)
+    rospy.init_node("speed_monitor")
+    monitor = Monitor(
+        data_topic="/odom",
+        data_msg=Odometry,
+        metric_topic="/metrics",
+        transform=odom_to_speed,
+    )
     rospy.spin()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

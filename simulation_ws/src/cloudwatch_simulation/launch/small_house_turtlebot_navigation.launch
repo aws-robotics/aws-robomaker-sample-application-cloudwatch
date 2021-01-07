@@ -56,14 +56,14 @@
 
   <!-- Send navigation route goals to the robot in random order -->
   <group if="$(arg follow_route)">
-    <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
+    <node pkg="aws_robomaker_simulation_common" type="route_manager.py" name="route_manager" output="screen">
       <rosparam file="$(find aws_robomaker_small_house_world)/routes/route.yaml" command="load"/>
     </node>
   </group>
 
   <!-- Send dynamically generated navigation route goals to the robot -->
   <group if="$(arg dynamic_route)">
-    <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
+    <node pkg="aws_robomaker_simulation_common" type="route_manager.py" name="route_manager" output="screen">
        <param name="~mode"  type="str" value="dynamic"/>
     </node>
   </group>

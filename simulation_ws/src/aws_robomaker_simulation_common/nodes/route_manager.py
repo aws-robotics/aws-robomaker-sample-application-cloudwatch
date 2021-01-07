@@ -2,17 +2,18 @@
 """
  Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
- Licensed under the Apache License, Version 2.0 (the "License").
+ Licensed under the Apache License, Version 2.0 (the 'License').
  You may not use this file except in compliance with the License.
  A copy of the License is located at
 
   http://aws.amazon.com/apache2.0
 
- or in the "license" file accompanying this file. This file is distributed
- on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ or in the 'license' file accompanying this file. This file is distributed
+ on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  express or implied. See the License for the specific language governing
  permissions and limitations under the License.
 """
+
 import random
 import itertools
 import rospy
@@ -28,18 +29,20 @@ import time
 
 
 class GoalGenerator():
-    '''
-    Reads map data published on /map and /map_metadata topics and provides valid random goal poses in the map.
+    """
+    Reads map data published on /map and /map_metadata topics
+    and provides valid random goal poses in the map.
 
-    Assumes that the map is held static after node initialisation and is not updated while the node is running.
-    '''
+    Assumes that the map is held static after node initialisation
+    and is not updated while the node is running.
+    """
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
         # is running. If not, this must be refreshed at regular intervals or on
         # some callbacks.
-        self.meta_data = rospy.wait_for_message("map_metadata", MapMetaData)
-        self.occupancy_data = rospy.wait_for_message("map", OccupancyGrid)
+        self.meta_data = rospy.wait_for_message('map_metadata', MapMetaData)
+        self.occupancy_data = rospy.wait_for_message('map', OccupancyGrid)
 
         # map.yaml only specifies x,y and yaw transforms of the origin wrt
         # world frame
@@ -55,31 +58,34 @@ class GoalGenerator():
         self.resolution = self.meta_data.resolution
 
     def ravel_index(self, x, y):
-        '''
+        """
         - description:
             ravel 2d grid coordinates in row-major order
         - input:
             - ints
                 - x, y (in grid coordinates)
         - output: int
-        '''
+        """
         return y * (self.meta_data.width) + x
 
     def grid_to_world_2d(self, x, y):
-        '''
+        """
         - description:
-            transform x-y planar grid coordinates to world coordinates
-            adheres to the assumption that grid-world transform is only x-y translation and yaw rotation
+            - transform x-y planar grid coordinates to world coordinates
+            - adheres to the assumption that grid-world transform is only
+                x-y translation and yaw rotation
         - input:
             - int, int
                 - x, y (in grid coordinates)
         - output: [int, int]
                 x_world, y_world (in world coordinates)
-        '''
+        """
         x_world = self.map_origin_x0 + \
-            (cos(self.map_yaw) * (self.resolution * x) - sin(self.map_yaw) * (self.resolution * y))
+            (cos(self.map_yaw) * (self.resolution * x) \
+            - sin(self.map_yaw) * (self.resolution * y))
         y_world = self.map_origin_y0 + \
-            (sin(self.map_yaw) * (self.resolution * x) + cos(self.map_yaw) * (self.resolution * y))
+            (sin(self.map_yaw) * (self.resolution * x) + \
+             cos(self.map_yaw) * (self.resolution * y))
 
         return [x_world, y_world]
 
@@ -91,7 +97,7 @@ class GoalGenerator():
             euler_orientation_x,
             euler_orientation_y,
             euler_orientation_z):
-        '''
+        """
         - description:
             wrap 3D euler location and orientation input to a Pose
         - input:
@@ -109,7 +115,7 @@ class GoalGenerator():
                             y: double
                             z: double
                             w: double
-        '''
+        """
         position = {
             'x': x_world,
             'y': y_world,
@@ -139,8 +145,10 @@ class GoalGenerator():
     def check_noise(self, x, y, row_id=None):
         '''
         - description:
-            Low resolution/ noisy sensor data might lead to noisy patches in the map.
-            This function checks if the random valid point is not a noisy bleap on the map by looking for its neighbor consistency.
+            - Low resolution/ noisy sensor data might 
+                lead to noisy patches in the map.
+            - This function checks if the random valid point is not a noisy 
+                bleap on the map by looking for its neighbor consistency.
         - input:
             - x (in grid coordinates)
             - y (in grid coordinates)
@@ -178,8 +186,9 @@ class GoalGenerator():
     def __next__(self):
         '''
         - description:
-            Scans the map for a valid goal.
-            Converts to world coordinates and wraps as a Pose to be consumed by route manager.
+            - Scans the map for a valid goal.
+            - Converts to world coordinates and wraps as a Pose 
+                to be consumed by route manager.
         - input:
         - output:
                 - Pose:
@@ -196,7 +205,7 @@ class GoalGenerator():
         z_world_floor = 0.
         euler_orientation = [0., 0., 0.]
 
-        rospy.loginfo("Searching for a valid goal")
+        rospy.loginfo('Searching for a valid goal')
         timeout_iter = 100
         iteration = 0
         while iteration < timeout_iter:
@@ -206,16 +215,19 @@ class GoalGenerator():
             if self.occupancy_data.data[_row_id] == 0 and self.check_noise(
                     _x, _y, row_id=_row_id):
                 x_world, y_world = self.grid_to_world_2d(_x, _y)
-                rospy.loginfo("Valid goal found!")
+                rospy.loginfo('Valid goal found!')
                 return self._create_pos(
                     x_world, y_world, z_world_floor, *euler_orientation)
 
-        rospy.logerr("Could not find a valid goal in the world. Check that your occupancy map has 'Trinary' value representation and is not visually noisy/incorrect")
+        rospy.logerr('Could not find a valid goal in the world. Check that \
+            your occupancy map has Trinary value representation and is not \
+            visually noisy/incorrect')
         return None
 
 
 class RouteManager():
-    '''Send goals to move_base server for the specified route. Routes forever.
+    """
+    Send goals to move_base server for the specified route. Routes forever.
 
        Loads the route from yaml.
        Use RViz to record 2D nav goals.
@@ -236,7 +248,7 @@ class RouteManager():
                         z: 0.785181432231
                         w: 0.619265789851
 
-    '''
+    """
  # return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
@@ -253,27 +265,27 @@ class RouteManager():
         self.route_mode = rospy.get_param('~mode')
         if self.route_mode not in RouteManager.route_modes:
             rospy.logerr(
-                "Route mode '%s' unknown, exiting route manager",
+                'Route mode %s unknown, exiting route manager',
                 self.route_mode)
             return
 
         poses = rospy.get_param('~poses', [])
         if not poses and self.route_mode != 'dynamic':
             rospy.loginfo(
-                "Route manager initialized no goals, unable to route")
+                'Route manager initialized no goals, unable to route')
 
         self.goals = RouteManager.route_modes[self.route_mode](poses)
-        rospy.loginfo("Route manager initialized in %s mode", self.route_mode)
+        rospy.loginfo('Route manager initialized in %s mode', self.route_mode)
 
         self.bad_goal_counter = 0
 
     def to_move_goal(self, pose):
         if pose is None:
-            raise ValueError("Goal position cannot be NULL")
+            raise ValueError('Goal position cannot be NULL')
 
         goal = MoveBaseGoal()
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.header.frame_id = "map"
+        goal.target_pose.header.frame_id = 'map'
         goal.target_pose.pose.position = Point(**pose['pose']['position'])
         goal.target_pose.pose.orientation = Quaternion(
             **pose['pose']['orientation'])
@@ -284,41 +296,43 @@ class RouteManager():
         while not rospy.is_shutdown():
             if self.bad_goal_counter > 10:
                 rospy.loginfo(
-                    "Stopping route manager due to too many bad goals. Check that your occupancy map has 'Trinary' value representation and is not visually noisy/incorrect")
+                    'Stopping route manager due to too many bad goals. Check that your\
+                        occupancy map has Trinary value representation and is not\
+                        visually noisy/incorrect')
                 return
             else:
                 rospy.loginfo(
-                    "Route mode is '%s', getting next goal",
+                    'Route mode is %s, getting next goal',
                     self.route_mode)
                 try:
                     current_goal = self.to_move_goal(next(self.goals))
                 except ValueError as e:
                     rospy.loginfo(
-                        "No valid goal was found in the map, stopping route manager due to following exception,\n{0}".format(
-                            str(e)))
+                        'No valid goal was found in the map, stopping route manager\
+                            due to following exception,\n{0}'.format(str(e)))
                     return
 
-                rospy.loginfo("Sending target goal: %s", current_goal)
+                rospy.loginfo('Sending target goal: %s', current_goal)
                 self.client.send_goal(current_goal)
 
                 try:
                     # wait 5sec for global plan to be published. If not, scan
                     # for a new goal..
                     rospy.wait_for_message(
-                        "/move_base/DWAPlannerROS/global_plan", Path, timeout=5)
+                        '/move_base/DWAPlannerROS/global_plan', Path, timeout=5)
 
                     if not self.client.wait_for_result():
                         rospy.logerr(
-                            "Move server not ready, will try again...")
+                            'Move server not ready, will try again...')
                     elif self.client.get_result():
-                        rospy.loginfo("Goal done: %s", current_goal)
+                        rospy.loginfo('Goal done: %s', current_goal)
 
                     rate.sleep()
 
                 except rospy.exceptions.ROSException:
                     self.bad_goal_counter += 1
                     rospy.logwarn(
-                        "No plan found for goal. Scanning for a new goal...")
+                        'No plan found for goal. Scanning for a new goal...')
 
 
 def main():
