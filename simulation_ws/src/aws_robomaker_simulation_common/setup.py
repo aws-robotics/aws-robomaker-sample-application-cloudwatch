@@ -11,11 +11,10 @@ setup(
     packages=[package_name],
     data_files=[
         ('share/' + package_name, ['package.xml']),
-        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/ament_index/resource_index/packages',
+         ['resource/' + package_name]),
     ],
-    install_requires=[
-        'setuptools',
-    ],
+    install_requires=['setuptools'],
     zip_safe=True,
     author='AWS RoboMaker',
     author_email='ros-contributions@amazon.com',
@@ -24,7 +23,8 @@ setup(
     keywords=['ROS'],
     entry_points={
         'console_scripts': [
-            'route_manager = aws_robomaker_simulation_common.route_manager:main'
-        ],
+            'route_manager = '
+            'aws_robomaker_simulation_common.route_manager:main'
+        ]
     },
 )
