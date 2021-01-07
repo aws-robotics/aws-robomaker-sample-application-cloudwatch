@@ -1,20 +1,20 @@
 #!/usr/bin/env python
-"""
- Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+'''
+Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
- Permission is hereby granted, free of charge, to any person obtaining a copy of this
- software and associated documentation files (the "Software"), to deal in the Software
- without restriction, including without limitation the rights to use, copy, modify,
- merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
- permit persons to whom the Software is furnished to do so.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the 'Software'), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-"""
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+'''
 
 import math
 import time
@@ -40,13 +40,13 @@ def odom_to_speed(odom):
     header.stamp = rospy.Time.from_sec(time.time())
 
     dimensions = [
-        MetricDimension(name="robot_id", value="Turtlebot3"),
-        MetricDimension(name="category", value="RobotOperations"),
+        MetricDimension(name='robot_id', value='Turtlebot3'),
+        MetricDimension(name='category', value='RobotOperations'),
     ]
 
     linear_speed = MetricData(
         header=header,
-        metric_name="linear_speed",
+        metric_name='linear_speed',
         unit=MetricData.UNIT_NONE,
         value=odom.twist.twist.linear.x,
         time_stamp=rospy.Time.from_sec(time.time()),
@@ -55,7 +55,7 @@ def odom_to_speed(odom):
 
     angular_speed = MetricData(
         header=header,
-        metric_name="angular_speed",
+        metric_name='angular_speed',
         unit=MetricData.UNIT_NONE,
         value=odom.twist.twist.angular.z,
         time_stamp=rospy.Time.from_sec(time.time()),
@@ -66,15 +66,15 @@ def odom_to_speed(odom):
 
 
 def main():
-    rospy.init_node("speed_monitor")
+    rospy.init_node('speed_monitor')
     monitor = Monitor(
-        data_topic="/odom",
+        data_topic='/odom',
         data_msg=Odometry,
-        metric_topic="/metrics",
+        metric_topic='/metrics',
         transform=odom_to_speed,
     )
     rospy.spin()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

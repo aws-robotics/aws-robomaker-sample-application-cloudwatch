@@ -1,18 +1,18 @@
 #!/usr/bin/env python
-"""
- Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+'''
+Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
- Licensed under the Apache License, Version 2.0 (the 'License').
- You may not use this file except in compliance with the License.
- A copy of the License is located at
+Licensed under the Apache License, Version 2.0 (the 'License').
+You may not use this file except in compliance with the License.
+A copy of the License is located at
 
-  http://aws.amazon.com/apache2.0
+http://aws.amazon.com/apache2.0
 
- or in the 'license' file accompanying this file. This file is distributed
- on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- express or implied. See the License for the specific language governing
- permissions and limitations under the License.
-"""
+or in the 'license' file accompanying this file. This file is distributed
+on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+'''
 
 import random
 import itertools
@@ -29,13 +29,13 @@ import time
 
 
 class GoalGenerator():
-    """
+    '''
     Reads map data published on /map and /map_metadata topics
     and provides valid random goal poses in the map.
 
     Assumes that the map is held static after node initialisation
     and is not updated while the node is running.
-    """
+    '''
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
@@ -58,18 +58,18 @@ class GoalGenerator():
         self.resolution = self.meta_data.resolution
 
     def ravel_index(self, x, y):
-        """
+        '''
         - description:
             ravel 2d grid coordinates in row-major order
         - input:
             - ints
                 - x, y (in grid coordinates)
         - output: int
-        """
+        '''
         return y * (self.meta_data.width) + x
 
     def grid_to_world_2d(self, x, y):
-        """
+        '''
         - description:
             - transform x-y planar grid coordinates to world coordinates
             - adheres to the assumption that grid-world transform is only
@@ -79,7 +79,7 @@ class GoalGenerator():
                 - x, y (in grid coordinates)
         - output: [int, int]
                 x_world, y_world (in world coordinates)
-        """
+        '''
         x_world = self.map_origin_x0 + \
             (cos(self.map_yaw) * (self.resolution * x) \
             - sin(self.map_yaw) * (self.resolution * y))
@@ -97,7 +97,7 @@ class GoalGenerator():
             euler_orientation_x,
             euler_orientation_y,
             euler_orientation_z):
-        """
+        '''
         - description:
             wrap 3D euler location and orientation input to a Pose
         - input:
@@ -115,7 +115,7 @@ class GoalGenerator():
                             y: double
                             z: double
                             w: double
-        """
+        '''
         position = {
             'x': x_world,
             'y': y_world,
@@ -226,7 +226,7 @@ class GoalGenerator():
 
 
 class RouteManager():
-    """
+    '''
     Send goals to move_base server for the specified route. Routes forever.
 
        Loads the route from yaml.
@@ -248,7 +248,7 @@ class RouteManager():
                         z: 0.785181432231
                         w: 0.619265789851
 
-    """
+    '''
  # return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
