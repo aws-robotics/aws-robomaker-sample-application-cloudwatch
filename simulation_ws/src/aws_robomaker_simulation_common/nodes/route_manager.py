@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''
+"""
 Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the 'License').
@@ -12,7 +12,7 @@ or in the 'license' file accompanying this file. This file is distributed
 on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
 express or implied. See the License for the specific language governing
 permissions and limitations under the License.
-'''
+"""
 
 import random
 import itertools
@@ -29,13 +29,13 @@ import time
 
 
 class GoalGenerator():
-    '''
+    """
     Reads map data published on /map and /map_metadata topics
     and provides valid random goal poses in the map.
 
     Assumes that the map is held static after node initialisation
     and is not updated while the node is running.
-    '''
+    """
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
@@ -58,28 +58,29 @@ class GoalGenerator():
         self.resolution = self.meta_data.resolution
 
     def ravel_index(self, x, y):
-        '''
-        - description:
-            ravel 2d grid coordinates in row-major order
-        - input:
+        """
+        Ravel 2d grid coordinates in row-major order
+        input:
             - ints
                 - x, y (in grid coordinates)
-        - output: int
-        '''
+        output: int
+        """
+        
         return y * (self.meta_data.width) + x
 
     def grid_to_world_2d(self, x, y):
-        '''
-        - description:
-            - transform x-y planar grid coordinates to world coordinates
-            - adheres to the assumption that grid-world transform is only
-                x-y translation and yaw rotation
-        - input:
+        """
+        Transform x-y planar grid coordinates to world coordinates.
+        Adheres to the assumption that grid-world transform is only
+            x-y translation and yaw rotation.
+        
+        input:
             - int, int
                 - x, y (in grid coordinates)
-        - output: [int, int]
+        output: [int, int]
                 x_world, y_world (in world coordinates)
-        '''
+        """
+        
         x_world = self.map_origin_x0 + \
             (cos(self.map_yaw) * (self.resolution * x) \
             - sin(self.map_yaw) * (self.resolution * y))
@@ -97,25 +98,16 @@ class GoalGenerator():
             euler_orientation_x,
             euler_orientation_y,
             euler_orientation_z):
-        '''
-        - description:
-            wrap 3D euler location and orientation input to a Pose
-        - input:
+        """
+        Wrap 3D euler location and orientation input to a Pose.
+        
+        input:
             - x, y, z (in world coordinates)
             - orientation_x, orientation_y, orientation_z (in radians)
-        - output:
-                format
-                    - pose:
-                          position:
-                            x: double
-                            y: double
-                            z: double
-                          orientation:
-                            x: double
-                            y: double
-                            z: double
-                            w: double
-        '''
+        output: 
+            - pose
+        """
+
         position = {
             'x': x_world,
             'y': y_world,
@@ -143,18 +135,17 @@ class GoalGenerator():
         return p
 
     def check_noise(self, x, y, row_id=None):
-        '''
-        - description:
-            - Low resolution/ noisy sensor data might 
-                lead to noisy patches in the map.
-            - This function checks if the random valid point is not a noisy 
-                bleap on the map by looking for its neighbor consistency.
-        - input:
+        """
+        Low resolution/ noisy sensor data might lead to noisy patches in the map.
+        This function checks if the random valid point is not a noisy / 
+            bleap on the map by looking for its neighbor consistency.
+        
+        input:
             - x (in grid coordinates)
             - y (in grid coordinates)
-        - output: bool
+        output: bool
             - false if noise, else true
-        '''
+        """
 
         # to make it depend on resolution
         delta_x = max(2, self.meta_data.width // 50)
@@ -177,31 +168,22 @@ class GoalGenerator():
         return self
 
     def next(self):
-        '''
-        - description
-            for python 2.x support
-        '''
+        """
+        For python 2.x support.
+        """
+        
         return self.__next__()
 
     def __next__(self):
-        '''
-        - description:
-            - Scans the map for a valid goal.
-            - Converts to world coordinates and wraps as a Pose 
-                to be consumed by route manager.
-        - input:
-        - output:
-                - Pose:
-                      position:
-                        x: double
-                        y: double
-                        z: double
-                      orientation:
-                        x: double
-                        y: double
-                        z: double
-                        w: double
-        '''
+        """
+        Scans the map for a valid goal.
+        Converts to world coordinates and wraps as a Pose 
+            to be consumed by route manager.
+        
+        input:
+        output: Pose
+        """
+
         z_world_floor = 0.
         euler_orientation = [0., 0., 0.]
 
@@ -226,30 +208,14 @@ class GoalGenerator():
 
 
 class RouteManager():
-    '''
+    """
     Send goals to move_base server for the specified route. Routes forever.
 
-       Loads the route from yaml.
-       Use RViz to record 2D nav goals.
-       Echo the input goal on topic /move_base_simple/goal
+    Loads the route from yaml.
+    Use RViz to record 2D nav goals.
+    Echo the input goal on topic /move_base_simple/goal
+    """
 
-       Format:
-
-            order: inorder
-            poses:
-                - pose:
-                      position:
-                        x: -5.41667556763
-                        y: -3.14395284653
-                        z: 0.0
-                      orientation:
-                        x: 0.0
-                        y: 0.0
-                        z: 0.785181432231
-                        w: 0.619265789851
-
-    '''
- # return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
         'random': lambda goals: (
