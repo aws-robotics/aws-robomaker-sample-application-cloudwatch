@@ -52,15 +52,15 @@ class GoalGenerator():
         """
         Ravel 2d grid coordinates in row-major order.
 
-        Args:
+        Args
         ----
             x(int): in grid coordinates
             y(int): in grid coordinates
 
-        Returns:
+        Returns
         -------
             int
-            
+
         """
         return y * (self.meta_data.width) + x
 
@@ -71,15 +71,15 @@ class GoalGenerator():
         The function adheres to the assumption that
             grid-world transform is only x-y translation and yaw rotation.
 
-        Args:
+        Args
         ----
             x(int): in grid coordinates
             x(int): in grid coordinates
 
-        Returns:
+        Returns
         -------
             List(int): in world coordinates
-        
+
         """
         x_world = self.map_origin_x0 + \
             (cos(self.map_yaw) * (self.resolution * x)
@@ -101,7 +101,7 @@ class GoalGenerator():
         """
         Wrap 3D euler location and orientation input to a Pose.
 
-        Args:
+        Args
         ----
             x(float): in world coordinates
             y(float): in world coordinates
@@ -110,7 +110,7 @@ class GoalGenerator():
             orientation_y(float): in world coordinates
             orientation_z(float): in world coordinates
 
-        Returns:
+        Returns
         -------
             Pose
 
@@ -145,12 +145,12 @@ class GoalGenerator():
         """
         Check if the point in the world is not a map consistency.
 
-        Args:
+        Args
         ----
             x (int): in grid coordinates
             y (int): in grid coordinates
 
-        Returns:
+        Returns
         -------
             bool. False if noise, else True
 
@@ -187,10 +187,10 @@ class GoalGenerator():
         Convert to world coordinates and wraps as a Pose
          to be consumed by route manager.
 
-        Args:
+        Args
         ----
 
-        Returns:
+        Returns
         -------
             Pose: Pose of the next goal.
 
@@ -283,12 +283,12 @@ class RouteManager():
                 rospy.loginfo(
                     'Route mode is %s, getting next goal',
                     self.route_mode)
-                try: 
-                    if self.route_mode=='dynamic':
-                        #TODO: flake8 linting standard does not allow over-riding
+                try:
+                    if self.route_mode == 'dynamic':
+                        # TODO: flake8 linting standard does not allow over-riding
                         # the built-in python method next() which is required to
                         # make 'self.goals' a iterator.
-                        current_goal = self.to_move_goal(self.goals.get_next()) 
+                        current_goal = self.to_move_goal(self.goals.get_next())
                     else:
                         current_goal = self.to_move_goal(next(self.goals))
                 except ValueError as e:
