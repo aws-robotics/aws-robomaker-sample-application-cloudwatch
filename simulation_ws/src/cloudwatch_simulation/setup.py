@@ -1,5 +1,6 @@
-import os
 from glob import glob
+import os
+
 from setuptools import setup
 
 package_name = 'cloudwatch_simulation'
@@ -9,9 +10,11 @@ setup(
     version='2.0.0',
     packages=[package_name],
     data_files=[
-        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/ament_index/resource_index/packages',
+         ['resource/' + package_name]),
         (os.path.join('share', package_name), ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'launch'),
+            glob('launch/*.launch.py')),
         (os.path.join('share', package_name, 'param'), glob('param/*.yaml')),
         (os.path.join('share', package_name, 'maps'), glob('maps/*')),
     ],
@@ -29,7 +32,6 @@ setup(
         'Topic :: Software Development',
     ],
     description=(
-        'AWS RoboMaker robot package that sends robot metrics to CloudWatch'
-    ),
+        'AWS RoboMaker robot package that sends robot metrics to CloudWatch'),
     license='Apache License, Version 2.0',
 )

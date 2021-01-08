@@ -1,43 +1,44 @@
 #!/usr/bin/env python3
 """
- Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
- Licensed under the Apache License, Version 2.0 (the "License").
- You may not use this file except in compliance with the License.
- A copy of the License is located at
+Licensed under the Apache License, Version 2.0 (the "License").
+You may not use this file except in compliance with the License.
+A copy of the License is located at
 
-  http://aws.amazon.com/apache2.0
+http://aws.amazon.com/apache2.0
 
- or in the "license" file accompanying this file. This file is distributed
- on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- express or implied. See the License for the specific language governing
- permissions and limitations under the License.
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
 """
 
 import itertools
-import random
-import yaml
 import os
+import random
 import sys
 import time
 
+from geometry_msgs.msg import Point, Quaternion
+from nav2_msgs.action import NavigateToPose
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
-from ament_index_python.packages import get_package_share_directory
-from geometry_msgs.msg import Point, Quaternion
-from nav2_msgs.action import NavigateToPose
+import yaml
 
 
 class RouteManager(Node):
     """
-    Send goals to the navigation2 stack for the specified route. Routes forever.
+    Send goals to the navigation2 stack for the specified route.
 
-   Loads the route from yaml.
-   Use RViz to record 2D nav goals.
-   Echo the input goal on topic /move_base_simple/goal
+    Routes forever.
 
-   Format:
+    Loads the route from yaml.
+    Use RViz to record 2D nav goals.
+    Echo the input goal on topic /move_base_simple/goal
+
+    Format:
 
         order: inorder
         poses:
@@ -57,12 +58,16 @@ class RouteManager(Node):
     # Return an iterator over the goals
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
-        'random': lambda goals: (random.choice(goals) for i in itertools.count()),
+        'random': lambda goals: (
+            random.choice(goals) for i in itertools.count()),
     }
 
     def __init__(self):
-        super().__init__('route_manager', allow_undeclared_parameters=True,
-                         automatically_declare_parameters_from_overrides=True)
+        super().__init__(
+            'route_manager',
+            allow_undeclared_parameters=True,
+            automatically_declare_parameters_from_overrides=True,
+        )
         self.route = []
         self.current_goal = NavigateToPose.Goal()
 
@@ -71,9 +76,12 @@ class RouteManager(Node):
         time.sleep(10)
 
         route_file_info = self.get_parameter('route_file').value
-        # route file info is in the form "<full path to the package>.<path from install's share directory>"
+        # route file info is in the form "<full path to the package>.<path from
+        # install's share directory>"
         route_pkg_share = route_file_info.split('.')[0]
-        route_file_path = os.path.join(route_pkg_share, '.'.join(route_file_info.split('.')[1:]))
+        route_file_path = os.path.join(
+            route_pkg_share, '.'.join(route_file_info.split('.')[1:])
+        )
 
         with open(route_file_path, 'r') as f:
             route_file_contents = f.read()
@@ -82,21 +90,27 @@ class RouteManager(Node):
         self.route_mode = route_yaml['mode']
         if self.route_mode not in RouteManager.route_modes:
             self.get_logger().error(
-                "Route mode '%s' unknown, exiting route manager" % (self.route_mode,))
+                'Route mode "%s" unknown, exiting route manager' % (
+                    self.route_mode,)
+            )
             return
 
         poses = route_yaml['poses']
         if not poses:
-            self.get_logger().info("Route manager initialized no goals, unable to route")
+            self.get_logger().info(
+                'Route manager initialized no goals, unable to route'
+            )
 
         self.goals = RouteManager.route_modes[self.route_mode](poses)
         self.get_logger().info(
-            "Route manager initialized with %s goals in %s mode" % (len(poses), self.route_mode,))
+            'Route manager initialized with %s goals in %s mode'
+            % (len(poses), self.route_mode)
+        )
 
     def to_move_goal(self, pose):
         goal = NavigateToPose.Goal()
         goal.pose.header.stamp = self.get_clock().now().to_msg()
-        goal.pose.header.frame_id = "map"
+        goal.pose.header.frame_id = 'map'
         goal.pose.pose.position = Point(**pose['pose']['position'])
         goal.pose.pose.orientation = Quaternion(**pose['pose']['orientation'])
         return goal
@@ -112,15 +126,18 @@ class RouteManager(Node):
 
     def route_forever(self):
         try:
-            self.get_logger().info("Route mode is '%s', getting next goal" % (self.route_mode,))
+            self.get_logger().info(
+                'Route mode is "%s", getting next goal' % (self.route_mode,)
+            )
             current_goal = self.to_move_goal(next(self.goals))
-            self.get_logger().info("Sending target goal: %s" % (current_goal,))
+            self.get_logger().info('Sending target goal: %s' % (current_goal,))
             self._send_goal_future = self.client.send_goal_async(
-                current_goal,
-                feedback_callback=self.feedback_callback)
-            self._send_goal_future.add_done_callback(self.goal_response_callback)
+                current_goal, feedback_callback=self.feedback_callback
+            )
+            self._send_goal_future.add_done_callback(
+                self.goal_response_callback)
         except StopIteration:
-            self.get_logger().info("No goals, stopping route manager.")
+            self.get_logger().info('No goals, stopping route manager.')
             return
 
     def get_result_callback(self, future: NavigateToPose.Result):
