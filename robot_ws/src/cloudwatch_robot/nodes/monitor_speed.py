@@ -16,13 +16,11 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import math
 import time
 
-from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
-import rospy
 from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
+import rospy
 from std_msgs.msg import Header
 
 

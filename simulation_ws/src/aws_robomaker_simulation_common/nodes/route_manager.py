@@ -13,14 +13,15 @@ on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
 express or implied. See the License for the specific language governing
 permissions and limitations under the License.
 """
-from math import cos, sin
+
 import itertools
+from math import cos, sin
+import random
 
 import actionlib
 from geometry_msgs.msg import Point, Quaternion
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from nav_msgs.msg import MapMetaData, OccupancyGrid, Path
-import random
 import rospy
 import tf.transformations as transform
 
@@ -163,9 +164,7 @@ class GoalGenerator():
         return self
 
     def next(self):
-        """
-        For python 2.x support.
-        """
+        """For python 2.x support."""
         return self.__next__()
 
     def __next__(self):
@@ -212,6 +211,7 @@ class RouteManager():
     Use RViz to record 2D nav goals.
     Echo the input goal on topic /move_base_simple/goal
     """
+    
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
         'random': lambda goals: (

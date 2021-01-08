@@ -18,8 +18,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import time
 
-import rospy
 from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
+import rospy
 from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
 

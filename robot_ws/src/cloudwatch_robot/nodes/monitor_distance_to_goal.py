@@ -16,18 +16,18 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import time
 from itertools import izip
+import time
 
 from nav_msgs.msg import Path
 import numpy as np
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
-from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Header
 
 
 class MonitorDistanceToGoal:
+
     def __init__(self):
         self.scan_sub = rospy.Subscriber(
             '/move_base/NavfnROS/plan', Path, callback=self.report_metric
