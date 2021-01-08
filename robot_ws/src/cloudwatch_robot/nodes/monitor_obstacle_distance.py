@@ -20,8 +20,8 @@ import time
 
 from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
-from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
+from std_msgs.msg import Header
 
 
 class MonitorNearestObstacle:

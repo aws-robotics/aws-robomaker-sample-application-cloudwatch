@@ -18,7 +18,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import time
 
-from nav_msgs.msg import Odometry
 from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
 from std_msgs.msg import Header
