@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''
+"""
 Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -14,18 +14,20 @@ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIG
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-'''
+"""
 
 import math
 import time
-import rospy
-from std_msgs.msg import Header
+
 from geometry_msgs.msg import Twist
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 from nav_msgs.msg import Odometry
+import rospy
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
+from std_msgs.msg import Header
 
 
 class Monitor:
+
     def __init__(self, data_topic, data_msg, metric_topic, transform):
         self.metrics_pub = rospy.Publisher(metric_topic, MetricList, queue_size=1)
         self.topic_sub = rospy.Subscriber(data_topic, data_msg, self.callback)
@@ -67,12 +69,6 @@ def odom_to_speed(odom):
 
 def main():
     rospy.init_node('speed_monitor')
-    monitor = Monitor(
-        data_topic='/odom',
-        data_msg=Odometry,
-        metric_topic='/metrics',
-        transform=odom_to_speed,
-    )
     rospy.spin()
 
 

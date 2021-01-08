@@ -13,26 +13,19 @@ on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
 express or implied. See the License for the specific language governing
 permissions and limitations under the License.
 """
-
-import random
+from math import cos, sin
 import itertools
-import rospy
+
 import actionlib
-import tf.transformations as transform
 from geometry_msgs.msg import Point, Quaternion
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from nav_msgs.msg import MapMetaData, OccupancyGrid, Path
-from math import cos, sin
+import random
+import rospy
+import tf.transformations as transform
 
 
 class GoalGenerator():
-    """
-    Read map data published on /map and /map_metadata topics
-    and provides valid random goal poses in the map.
-
-    Assumes that the map is held static after node initialisation
-    and is not updated while the node is running.
-    """
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
@@ -65,7 +58,6 @@ class GoalGenerator():
         Returns:
             int
         """
-
         return y * (self.meta_data.width) + x
 
     def grid_to_world_2d(self, x, y):
@@ -82,7 +74,6 @@ class GoalGenerator():
         Returns:
             List(int): in world coordinates
         """
-
         x_world = self.map_origin_x0 + \
             (cos(self.map_yaw) * (self.resolution * x)
                 - sin(self.map_yaw) * (self.resolution * y))
@@ -114,7 +105,6 @@ class GoalGenerator():
         Returns:
             Pose
         """
-
         position = {
             'x': x_world,
             'y': y_world,
@@ -143,8 +133,7 @@ class GoalGenerator():
 
     def check_noise(self, x, y, row_id=None):
         """
-        Check if the point in the world is not a noisy /
-            bleap on the map by looking for its neighbor consistency.
+        Check if the point in the world is not a map consistency.
 
         Args:
             x (int): in grid coordinates
@@ -153,7 +142,6 @@ class GoalGenerator():
         Returns:
             bool. False if noise, else True
         """
-
         # to make it depend on resolution
         delta_x = max(2, self.meta_data.width // 50)
         delta_y = max(2, self.meta_data.height // 50)
@@ -178,7 +166,6 @@ class GoalGenerator():
         """
         For python 2.x support.
         """
-
         return self.__next__()
 
     def __next__(self):
@@ -194,7 +181,6 @@ class GoalGenerator():
         Returns:
             Pose: Pose of the next goal.
         """
-
         z_world_floor = 0.
         euler_orientation = [0., 0., 0.]
 
@@ -226,7 +212,6 @@ class RouteManager():
     Use RViz to record 2D nav goals.
     Echo the input goal on topic /move_base_simple/goal
     """
-
     route_modes = {
         'inorder': lambda goals: itertools.cycle(goals),
         'random': lambda goals: (
