@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''
+"""
 Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -14,16 +14,17 @@ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIG
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-'''
+"""
 
 import time
-import rospy
-import numpy as np
 from itertools import izip
-from std_msgs.msg import Header
-from sensor_msgs.msg import LaserScan
+
 from nav_msgs.msg import Path
+import numpy as np
+import rospy
 from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
+from sensor_msgs.msg import LaserScan
+from std_msgs.msg import Header
 
 
 class MonitorDistanceToGoal:
@@ -68,7 +69,6 @@ class MonitorDistanceToGoal:
 def main():
     rospy.init_node('monitor_goal_to_distance')
     try:
-        monitor = MonitorDistanceToGoal()
         rospy.spin()
     except rospy.ROSInterruptException:
         pass

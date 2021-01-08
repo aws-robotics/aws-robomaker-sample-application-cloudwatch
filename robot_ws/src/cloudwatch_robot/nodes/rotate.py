@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''
+"""
 Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -14,13 +14,15 @@ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIG
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-'''
+"""
+
+from geometry_msgs.msg import Twist
 
 import rospy
-from geometry_msgs.msg import Twist
 
 
 class Rotator:
+
     def __init__(self):
         self._cmd_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
 

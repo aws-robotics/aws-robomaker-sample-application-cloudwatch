@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''
+"""
 Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -14,16 +14,18 @@ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIG
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-'''
+"""
 
 import time
+
 import rospy
+from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 from std_msgs.msg import Header
 from sensor_msgs.msg import LaserScan
-from ros_monitoring_msgs.msg import MetricList, MetricData, MetricDimension
 
 
 class MonitorNearestObstacle:
+
     def __init__(self):
         self.scan_sub = rospy.Subscriber('scan', LaserScan, callback=self.report_metric)
         self.metrics_pub = rospy.Publisher('/metrics', MetricList, queue_size=1)
@@ -71,7 +73,6 @@ class MonitorNearestObstacle:
 def main():
     rospy.init_node('monitor_obstacle_distance')
     try:
-        monitor = MonitorNearestObstacle()
         rospy.spin()
     except rospy.ROSInterruptException:
         pass
