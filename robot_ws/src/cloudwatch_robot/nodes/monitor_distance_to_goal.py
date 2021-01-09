@@ -69,7 +69,9 @@ class MonitorDistanceToGoal:
 def main():
     rospy.init_node('monitor_goal_to_distance')
     try:
-        rospy.spin()
+        monitor = MonitorDistanceToGoal()
+        if (monitor):
+            rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

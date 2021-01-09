@@ -73,7 +73,9 @@ class MonitorNearestObstacle:
 def main():
     rospy.init_node('monitor_obstacle_distance')
     try:
-        rospy.spin()
+        monitor = MonitorNearestObstacle()
+        if (monitor):
+            rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

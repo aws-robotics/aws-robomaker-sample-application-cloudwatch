@@ -18,6 +18,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import time
 
+from nav_msgs.msg import Odometry
 from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
 from std_msgs.msg import Header
@@ -66,7 +67,12 @@ def odom_to_speed(odom):
 
 def main():
     rospy.init_node('speed_monitor')
-    rospy.spin()
+    monitor = Monitor(data_topic="/odom",
+                      data_msg=Odometry,
+                      metric_topic="/metrics",
+                      transform=odom_to_speed)
+    if (monitor):
+        rospy.spin()
 
 
 if __name__ == '__main__':

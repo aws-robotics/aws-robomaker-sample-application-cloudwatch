@@ -27,6 +27,17 @@ import tf.transformations as transform
 
 
 class GoalGenerator():
+    '''
+    Generate new goals for robot.
+
+    - Description
+    -------------
+        Reads map data published on /map and /map_metadata topics
+        and provides valid random goal poses in the map.
+
+        Assumes that the map is held static after node
+        initialisation and is not updated while the node is running.
+    '''
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
@@ -145,6 +156,11 @@ class GoalGenerator():
         """
         Check if the point in the world is not a map consistency.
 
+        - Low resolution/ noisy sensor data might lead to 
+            noisy patches in the map.
+        - This function checks if the random valid point is not a noisy
+            bleap on the map by looking for its neighbor consistency.
+        
         Args
         ----
             x (int): in grid coordinates
@@ -171,13 +187,6 @@ class GoalGenerator():
                     return False
 
         return True
-
-    # def __iter__(self):
-    #     return self
-
-    # def next(self):
-    #     """For python 2.x support."""
-    #     return self.__next__()
 
     def get_next(self):
         """
