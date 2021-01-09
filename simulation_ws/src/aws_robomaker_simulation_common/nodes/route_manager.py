@@ -228,6 +228,7 @@ class GoalGenerator():
                         'w': double
                     }
                 }
+
         """
         z_world_floor = 0.
         euler_orientation = [0., 0., 0.]
