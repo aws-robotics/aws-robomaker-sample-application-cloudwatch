@@ -27,7 +27,7 @@ import tf.transformations as transform
 
 
 class GoalGenerator():
-    '''
+    """
     Generate new goals for robot.
 
     - Description
@@ -37,7 +37,7 @@ class GoalGenerator():
 
         Assumes that the map is held static after node
         initialisation and is not updated while the node is running.
-    '''
+    """
 
     def __init__(self):
         # Assuming map is static after node init and not updated while the node
@@ -123,7 +123,20 @@ class GoalGenerator():
 
         Returns
         -------
-            Pose
+            Pose:
+                {
+                    'position': {
+                        'x': double
+                        'y': double
+                        'z': double
+                    }
+                    'orientation': {
+                        'x': double
+                        'y': double
+                        'z': double
+                        'w': double
+                    }
+                }
 
         """
         position = {
@@ -156,11 +169,11 @@ class GoalGenerator():
         """
         Check if the point in the world is not a map consistency.
 
-        - Low resolution/ noisy sensor data might lead to 
+        - Low resolution/ noisy sensor data might lead to
             noisy patches in the map.
         - This function checks if the random valid point is not a noisy
             bleap on the map by looking for its neighbor consistency.
-        
+
         Args
         ----
             x (int): in grid coordinates
@@ -201,8 +214,20 @@ class GoalGenerator():
 
         Returns
         -------
-            Pose: Pose of the next goal.
-
+            Pose:
+                {
+                    'position': {
+                        'x': double
+                        'y': double
+                        'z': double
+                    }
+                    'orientation': {
+                        'x': double
+                        'y': double
+                        'z': double
+                        'w': double
+                    }
+                }
         """
         z_world_floor = 0.
         euler_orientation = [0., 0., 0.]

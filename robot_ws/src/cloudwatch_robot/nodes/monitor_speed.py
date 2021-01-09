@@ -67,9 +67,9 @@ def odom_to_speed(odom):
 
 def main():
     rospy.init_node('speed_monitor')
-    monitor = Monitor(data_topic="/odom",
+    monitor = Monitor(data_topic='/odom',
                       data_msg=Odometry,
-                      metric_topic="/metrics",
+                      metric_topic='/metrics',
                       transform=odom_to_speed)
     if (monitor):
         rospy.spin()
