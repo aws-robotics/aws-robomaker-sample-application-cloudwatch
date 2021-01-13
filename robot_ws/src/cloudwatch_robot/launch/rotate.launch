@@ -26,5 +26,5 @@
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
 
   <!-- Rotate robot -->
-  <node pkg="cloudwatch_robot" type="rotate" name="rotate" output="screen"></node>
+  <node pkg="cloudwatch_robot" type="rotate.py" name="rotate" output="screen"></node>
 </launch>

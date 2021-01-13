@@ -29,7 +29,7 @@
     <arg name="yaw"   value="$(arg yaw)"/>
   </include>
 
-  <node pkg="aws_robomaker_simulation_common" type="route_manager" name="route_manager" output="screen">
+  <node pkg="aws_robomaker_simulation_common" type="route_manager.py" name="route_manager" output="screen">
     <param name="~mode"  type="str" value="dynamic"/> 
   </node>
 
