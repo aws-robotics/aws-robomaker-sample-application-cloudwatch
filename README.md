@@ -123,9 +123,6 @@ For navigation, you can generate a map with map generation plugin. See [this](#g
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
-## Debugging cloudwatch_logger (dev-only)
-In `robot_ws/src` you will find the `cloudwatch-common` github repository pulled in. You can make local changes to all the ROS packages within this directory. Once you have finished your debugging changes, follow the same instrcutions to re-build the `robot_ws` workspace. (i.e. `colcon build` followed by source `install/setup.bash`). Now when you run the sample application again, you will see your local changes to `cloudwatch-common` reflected. 
-
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
 
@@ -141,6 +138,9 @@ Operational metrics include:
 Health metrics include CPU and RAM usage.
 
 ![CloudWatchMetrics01.png](docs/images/CloudWatchMetrics01.png)
+
+## Debugging cloudwatch_logger (dev-only)
+In `robot_ws/src` you will find the `cloudwatch-common` github repository pulled in. You can make local changes to all the ROS packages within this directory. Once you have finished your debugging changes, follow the same instrcutions to re-build the `robot_ws` workspace. (i.e. `colcon build` followed by source `install/setup.bash`). Now when you run the sample application again, you will see your local changes to `cloudwatch-common` reflected. 
 
 ## Using this sample with RoboMaker
 
