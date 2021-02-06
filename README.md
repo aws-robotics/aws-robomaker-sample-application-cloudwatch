@@ -90,12 +90,6 @@ export TURTLEBOT3_MODEL=waffle_pi
 
 Launch the application with the following commands:
 
-- *Running Robot Application on a Robot*
-    ```bash
-    source robot_ws/install/local_setup.sh
-    roslaunch cloudwatch_robot deploy_rotate.launch
-    ```
-
 - *Running Robot Application in a Simulation*
     ```bash
     source robot_ws/install/local_setup.sh
@@ -129,22 +123,8 @@ For navigation, you can generate a map with map generation plugin. See [this](#g
 
 ![CloudWatchMetrics01.png](docs/images/BookstoreRVizPlan01.png)
 
-### Run with a AWS Robomaker WorldForge world
-
-Pre-requisite: Generate a map for your worldforge exported world following these [instructions](#generate-map-for-a-worldforge-world-with-default-config).
-
-Build your workspace to reference the newly generated maps,
-```bash
-cd simulation_ws
-colcon build
-```
-
-Launch the navigation application with the following commands:
-```bash
-export TURTLEBOT3_MODEL=waffle_pi
-source simulation_ws/install/local_setup.sh
-roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
-```
+## Debugging cloudwatch_logger (dev-only)
+In `robot_ws/src` you will find the `cloudwatch-common` github repository pulled in. You can make local changes to all the ROS packages within this directory. Once you have finished your debugging changes, follow the same instrcutions to re-build the `robot_ws` workspace. (i.e. `colcon build` followed by source `install/setup.bash`). Now when you run the sample application again, you will see your local changes to `cloudwatch-common` reflected. 
 
 ### Monitoring with CloudWatch Logs
 Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
@@ -191,83 +171,6 @@ You'll need to upload these to an s3 bucket, then you can use these files to
 [create a simulation application](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-application.html),
 and [create a simulation job](https://docs.aws.amazon.com/robomaker/latest/dg/create-simulation-job.html) in RoboMaker.
 
-
-## Generate Occupancy Map via map generation plugin
-
-Procedurally generate an occupancy map for any gazebo world. This map can then be plugged in to navigate a robot in Worldforge worlds. For other aws-robotics worlds, this procedure is optional for the use-cases mentioned in this README. 
-
-
-### Generate map for a aws-robotics world with default config
-
-Currently, the following aws-robotics worlds are supported,
-- [`bookstore`](https://github.com/aws-robotics/aws-robomaker-bookstore-world)  
-- [`small_house`](https://github.com/aws-robotics/aws-robomaker-small-house-world)  
-- [`small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)  
-- [`no_roof_small_warehouse`](https://github.com/aws-robotics/aws-robomaker-small-warehouse-world)
-
-
-To generate a map, simply run
-```bash
-./scripts/genmap_script.sh <world_name>
-```
-
-where `<world_name>` can be any value in the list above.
-
-### Generate map for a WorldForge world with default config
-
-After exporting a world from WorldForge, unzip and move the contents under simulation_ws workspace
-
-```bash
-unzip exported_world.zip
-mv aws_robomaker_worldforge_pkgs simulation_ws/src/
-
-#For worldforge worlds, set WORLD_ID to the name of your WF exported world (eg: generation_40r67s111n9x_world_3),
-export WORLD_ID=<worldforge-world-name>
-
-# Run map generation script
-./scripts/genmap_script.sh worldforge
-```
-
-### Generate map for a custom world with custom config
-
-```bash
-# Install dependencies (Ubuntu >18.04)
-sudo apt-get install ruby-dev libxml-xpath-perl libxml2-utils
-```
-
-```bash
-# Fetch and install ROS dependencies
-cd simulation_ws
-vcs import < .rosinstall
-rosdep install --from-paths src -r -y
-cd ..
-```
-
-```bash
-# Run plugin with custom world/config,
-python scripts/add_map_plugin.py custom -c <path-to-config> -w <path-to-world> -o <output-path>
-```
-
-```bash
-# Build with plugin added
-cd simulation_ws
-colcon build
-source install/local_setup.sh
-
-# Start map service (for custom worlds, relocate your world file with the added plugin to src/cloudwatch_simulation/worlds/map_plugin.world before running this)
-roslaunch cloudwatch_simulation start_map_service.launch
-
-# Generate map (start in a different terminal AFTER you see "[INFO] [*] occupancy map plugin started" message in previous terminal)
-rosservice call /gazebo_2Dmap_plugin/generate_map
-
-# Save map
-rosrun map_server map_saver -f <path-to-file> /map:=/map2d
-```
-
-```bash
-# Move the generated map file to cloudwatch_simulation simulation workspace map directory
-mv <path-to-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
-```
 
 ## AWS ROS Packages used by this Sample
 

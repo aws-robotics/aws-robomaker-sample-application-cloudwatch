@@ -24,8 +24,6 @@
   <!-- CloudWatch -->
   <depend>cloudwatch_logger</depend>
   <depend>cloudwatch_metrics_collector</depend>
-  <depend>cloudwatch_logs_common</depend>
-  <depend>cloudwatch_metrics_common</depend>
   <depend>aws_common</depend>
   <depend>aws_ros1_common</depend>
   <depend>ros_monitoring_msgs</depend>
