@@ -1,7 +1,7 @@
 version: 0.2 
 env:
   variables:
-    S3_BUCKET: codepipeline-us-east-2-373397269978
+    S3_BUCKET: pipelinetestsource
     APP_NAME: cicd
     CACHE_DIR: cache
     ROBOT_WS: robot_ws
