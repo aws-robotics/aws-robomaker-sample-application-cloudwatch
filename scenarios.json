@@ -30,26 +30,26 @@
 	             ],
 		"params": {
 			"failureBehavior": "Fail",
-			"iamRole": "<IAM_ROLE>",
+			"iamRole": "arn:aws:iam::116476964151:role/robomaker-simulation-role-batch-us-east-2",
 			"maxJobDurationInSeconds": 600,
 			"outputLocation": {
-				"s3Bucket": "<S3_BUCKET>",
-				"s3Prefix": "<S3_PREFIX>"
+				"s3Bucket": "cicd-s3bucket-v3upo3rbmzp",
+				"s3Prefix": "output"
 			},
 			"robotApplications": [{
 				"application": "<ROBOT_APP_ARN>",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
-					  "packageName": "cloudwatch_robot",
-            "launchFile": "await_commands.launch"
+					"packageName": "cloudwatch_robot",
+            				"launchFile": "await_commands.launch"
 				}
 			}],
 			"simulationApplications": [{
 				"application": "<SIMULATION_APP_ARN>",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
-                    "packageName": "cloudwatch_simulation",
-                    "launchFile": "test_world.launch"
+                   			 "packageName": "cloudwatch_simulation",
+                   			 "launchFile": "test_world.launch"
 				}
 			}],
 			"vpcConfig": {
