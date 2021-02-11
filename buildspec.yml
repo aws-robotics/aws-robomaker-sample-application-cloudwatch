@@ -1,0 +1,46 @@
+version: 0.2 
+env:
+  variables:
+    S3_BUCKET: <YOUR_S3_BUCKET>
+    APP_NAME: cicd
+    CACHE_DIR: cache
+    ROBOT_WS: robot_ws
+    SIMULATION_WS: simulation_ws
+    ROS_VERSION: kinetic
+phases: 
+  install: 
+    commands: 
+       - apt-get update
+       - apt-get install -y python3-pip python3-apt apt-transport-https ca-certificates wget
+       - wget http://packages.osrfoundation.org/gazebo.key 
+       - apt-key add gazebo.key
+       - echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
+       - apt-get update
+       - pip3 install -U setuptools pip
+       - pip3 install colcon-ros-bundle
+       - pip3 install awscli
+  pre_build:
+    commands:
+      - . /opt/ros/$ROS_VERSION/setup.sh
+      - rosdep update
+      - sudo rosdep fix-permissions
+      - rosws update --target-workspace ./$ROBOT_WS
+      - rosdep install --from-paths ./$ROBOT_WS/src --ignore-src -r -y
+      - rosws update --target-workspace ./$SIMULATION_WS
+      - rosdep install --from-paths ./$SIMULATION_WS/src --ignore-src -r -y
+  build: 
+    commands: 
+      - COLCON_LOG_PATH="$CACHE_DIR/$ROBOT_WS/logs" colcon build --base-paths "./$ROBOT_WS" --build-base "$CACHE_DIR/$ROBOT_WS/build" --install-base "$CACHE_DIR/$ROBOT_WS/install"
+      - COLCON_LOG_PATH="$CACHE_DIR/$SIMULATION_WS/logs" colcon build --base-paths "./$SIMULATION_WS" --build-base "$CACHE_DIR/$SIMULATION_WS/build" --install-base "$CACHE_DIR/$SIMULATION_WS/install"
+  post_build: 
+    commands: 
+      - COLCON_LOG_PATH="$CACHE_DIR/$ROBOT_WS/logs" colcon bundle --base-paths "./$ROBOT_WS" --build-base "$CACHE_DIR/$ROBOT_WS/build" --install-base "$CACHE_DIR/$ROBOT_WS/install" --bundle-base "$CACHE_DIR/$ROBOT_WS/bundle"
+      - COLCON_LOG_PATH="$CACHE_DIR/$SIMULATION_WS/logs" colcon bundle --base-paths "./$SIMULATION_WS" --build-base "$CACHE_DIR/$SIMULATION_WS/build" --install-base "$CACHE_DIR/$SIMULATION_WS/install" --bundle-base "$CACHE_DIR/$SIMULATION_WS/bundle"
+      - aws s3 cp $CACHE_DIR/$ROBOT_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/robotApp.tar 
+      - aws s3 cp $CACHE_DIR/$SIMULATION_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/simulationApp.tar
+cache:
+  paths:
+    - '$CACHE_DIR/**/*'
+    - '$ROBOT_WS/src/deps/**/*'
+    - '$SIMULATION_WS/src/deps/**/*'
+    
