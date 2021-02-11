@@ -36,8 +36,8 @@ phases:
     commands: 
       - COLCON_LOG_PATH="$CACHE_DIR/$ROBOT_WS/logs" colcon bundle --base-paths "./$ROBOT_WS" --build-base "$CACHE_DIR/$ROBOT_WS/build" --install-base "$CACHE_DIR/$ROBOT_WS/install" --bundle-base "$CACHE_DIR/$ROBOT_WS/bundle"
       - COLCON_LOG_PATH="$CACHE_DIR/$SIMULATION_WS/logs" colcon bundle --base-paths "./$SIMULATION_WS" --build-base "$CACHE_DIR/$SIMULATION_WS/build" --install-base "$CACHE_DIR/$SIMULATION_WS/install" --bundle-base "$CACHE_DIR/$SIMULATION_WS/bundle"
-      - aws s3 cp $CACHE_DIR/$ROBOT_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/robotApp.tar --sse aws:kms --sse-kms-key-id JCarosellaKey
-      - aws s3 cp $CACHE_DIR/$SIMULATION_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/simulationApp.tar --sse aws:kms --sse-kms-key-id JCarosellaKey
+      - aws s3 cp $CACHE_DIR/$ROBOT_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/robotApp.tar --sse aws:kms --sse-kms-key-id ba99c43a-5e77-4df6-a82f-ff2047a3c277
+      - aws s3 cp $CACHE_DIR/$SIMULATION_WS/bundle/output.tar s3://$S3_BUCKET/bundles/x86/simulationApp.tar --sse aws:kms --sse-kms-key-id ba99c43a-5e77-4df6-a82f-ff2047a3c277
 cache:
   paths:
     - '$CACHE_DIR/**/*'
