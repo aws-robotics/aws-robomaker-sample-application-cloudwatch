@@ -34,10 +34,10 @@
 			"maxJobDurationInSeconds": 600,
 			"outputLocation": {
 				"s3Bucket": "cicd-s3bucket-v3upo3rbmzp",
-				"s3Prefix": "output"
+				"s3Prefix": "sim-job-outputs"
 			},
 			"robotApplications": [{
-				"application": "<ROBOT_APP_ARN>",
+				"application": "arn:aws:robomaker:us-east-2:116476964151:robot-application/RobotApplication-cicd/1613059288519",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					"packageName": "cloudwatch_robot",
@@ -45,7 +45,7 @@
 				}
 			}],
 			"simulationApplications": [{
-				"application": "<SIMULATION_APP_ARN>",
+				"application": "arn:aws:robomaker:us-east-2:116476964151:simulation-application/SimulationApplication-cicd/1613059341570",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
                    			 "packageName": "cloudwatch_simulation",
@@ -54,8 +54,8 @@
 			}],
 			"vpcConfig": {
 				"assignPublicIp": true,
-				"subnets": [ "<SUBNET_1>", "<SUBNET_2>" ],
-            	                "securityGroups": [ "<SECURITY_GROUP>" ]
+				"subnets": [ "subnet-026e65843cadce25b", "subnet-0225e9e4c42416e14" ],
+            	                "securityGroups": [ "sg-063ba9da2d024706a" ]
 			}
 		}
 	}]
