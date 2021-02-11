@@ -1,7 +1,7 @@
 version: 0.2 
 env:
   variables:
-    S3_BUCKET: pipelinetestsource
+    S3_BUCKET: cicd-s3bucket-v3upo3rbmzp
     APP_NAME: cicd
     CACHE_DIR: cache
     ROBOT_WS: robot_ws
