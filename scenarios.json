@@ -7,7 +7,7 @@
 	      "simEnvironmentVariables": {
 	        "ROS_AWS_REGION": "us-east-2",
 	        "TURTLEBOT3_MODEL": "waffle_pi",
-	        "NAVIGATION_SUCCESS_COUNT": "1",
+	        "NAVIGATION_SUCCESS_COUNT": "2",
 	        "SIMULATION_WORLD": "bookstore"
 	      }
 	    },
