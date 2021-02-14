@@ -1,12 +1,12 @@
 version: 0.2 
 env:
   variables:
-    S3_BUCKET: <YOUR_S3_BUCKET>
+    S3_BUCKET: cogniteam-test
     APP_NAME: cicd
     CACHE_DIR: cache
     ROBOT_WS: robot_ws
     SIMULATION_WS: simulation_ws
-    ROS_VERSION: kinetic
+    ROS_VERSION: melodic
 phases: 
   install: 
     commands: 
