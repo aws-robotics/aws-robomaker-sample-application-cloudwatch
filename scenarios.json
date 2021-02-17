@@ -30,7 +30,7 @@
 	             ],
 		"params": {
 			"failureBehavior": "Fail",
-			"iamRole": "853714891814",
+			"iamRole": "arn:aws:iam::853714891814:role/robomaker-cicd",
 			"maxJobDurationInSeconds": 600,
 			"outputLocation": {
 				"s3Bucket": "cogniteam-test",
