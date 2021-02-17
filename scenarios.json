@@ -34,7 +34,7 @@
 			"maxJobDurationInSeconds": 600,
 			"outputLocation": {
 				"s3Bucket": "cogniteam-test",
-				"s3Prefix": "<S3_PREFIX>"
+				"s3Prefix": "test"
 			},
 			"robotApplications": [{
 				"application": "arn:aws:robomaker:eu-west-1:853714891814:robot-application/RobotApplication-zyUL606zIQGK/1613309892525",
@@ -51,12 +51,8 @@
                     "packageName": "cloudwatch_simulation",
                     "launchFile": "worlds.launch"
 				}
-			}],
-			"vpcConfig": {
-				"assignPublicIp": true,
-				"subnets": [ "<SUBNET_1>", "<SUBNET_2>" ],
-            	                "securityGroups": [ "<SECURITY_GROUP>" ]
-			}
+			}]
+			
 		}
 	}]
 }
