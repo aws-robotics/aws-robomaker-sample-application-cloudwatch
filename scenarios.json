@@ -30,14 +30,14 @@
 	             ],
 		"params": {
 			"failureBehavior": "Fail",
-			"iamRole": "<IAM_ROLE>",
+			"iamRole": "853714891814",
 			"maxJobDurationInSeconds": 600,
 			"outputLocation": {
-				"s3Bucket": "<S3_BUCKET>",
+				"s3Bucket": "cogniteam-test",
 				"s3Prefix": "<S3_PREFIX>"
 			},
 			"robotApplications": [{
-				"application": "<ROBOT_APP_ARN>",
+				"application": "arn:aws:robomaker:eu-west-1:853714891814:robot-application/RobotApplication-zyUL606zIQGK/1613309892525",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					"launchFile": "await_commands.launch",
@@ -45,7 +45,7 @@
 				}
 			}],
 			"simulationApplications": [{
-				"application": "<SIMULATION_APP_ARN>",
+				"application": "arn:aws:robomaker:eu-west-1:853714891814:simulation-application/SimulationApplication-j5ROibzelK6A/1613309892486",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
                     "packageName": "cloudwatch_simulation",
