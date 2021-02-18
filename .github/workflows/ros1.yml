@@ -1,5 +1,5 @@
 name: build-and-bundle
-on: 
+on:
   pull_request:
   push:
     branches:
@@ -11,21 +11,12 @@ jobs:
   build_and_bundle_ros1:
     strategy:
       matrix:
-        distro: ['kinetic', 'melodic']
-        gazebo: [7, 9]
+        distro: ['melodic']
+        gazebo: [9]
         include:
-        - distro: kinetic
-          gazebo: 7
-          ubuntu_distro: xenial
-        - distro: kinetic
-          gazebo: 9
-          ubuntu_distro: xenial
         - distro: melodic
           gazebo: 9
           ubuntu_distro: bionic
-        exclude:
-        - distro: 'melodic'
-          gazebo: 7
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/ros2' }}
     name: 'Build and Bundle (ROS1)'
@@ -78,18 +69,6 @@ jobs:
       id: time
       run: echo "::set-output name=timestamp::$(date +%s)"
       if: ${{ github.event_name == 'schedule' && contains(steps.robot_ws_build.outcome, 'success') && contains(steps.simulation_ws_build.outcome, 'success') }}
-    - name: Update App-manifest version number
-      id: update-app-manifest
-      uses: aws-robotics/aws-robomaker-github-actions/codecommit-put-file-action@2.4.1
-      env:
-        AWS_CODECOMMIT_REPO_NAME: '${{ secrets.AWS_CODECOMMIT_REPO_NAME_PREFIX_CLOUDWATCH }}-${{ matrix.distro }}-gazebo${{ matrix.gazebo }}'
-        AWS_CODECOMMIT_BRANCH_NAME: ${{ secrets.AWS_CODECOMMIT_BRANCH_NAME_CLOUDWATCH }}
-        DEST_FILE_CONTENT: '{"application_version": "${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}", "timestamp":"${{ steps.time.outputs.timestamp }}"}'
-        DEST_FILE_PATH: '/version.json'
-        COMMIT_MSG: 'Updating to version ${{ steps.robot_ws_build.outputs.sample-app-version }}.${{ github.run_number }}. Commit for this version bump: ${{ github.sha }}.'
-        USER_EMAIL: 'ros-contributions@amazon.com'
-        USER_NAME: 'ros-contributions'
-      if: ${{ github.event_name == 'schedule' && contains(steps.robot_ws_build.outcome, 'success') && contains(steps.simulation_ws_build.outcome, 'success') }} # Update app-manifest version number if the build was successful
 
   log_workflow_status_to_cloudwatch:
     runs-on: ubuntu-latest
