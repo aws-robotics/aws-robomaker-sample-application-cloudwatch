@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>aws_robomaker_test_framework</name>
+  <version>1.0.0</version>
+  <description>
+    AWS RoboMaker simulation test framework.
+  </description>
+  <license>MIT</license>
+  <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
+  <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>rosgraph_msgs</depend>
+  <depend>aws_robomaker_simulation_ros_pkgs</depend>
+  <depend>rosbag-uploader-ros1</depend>
+  <depend>ros_monitoring_msgs</depend>
+</package>
