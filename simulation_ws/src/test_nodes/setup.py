@@ -6,7 +6,7 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=['sample_py'],
+    packages=['test_nodes'],
     package_dir={'': 'src'}
 )
 

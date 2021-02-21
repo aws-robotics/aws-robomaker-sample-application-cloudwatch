@@ -1,0 +1,12 @@
+<launch>
+
+  <!-- Spawn simulation world based on environment variable, SIMULATION_WORLD.-->
+ <include file="$(find cloudwatch_simulation)/launch/$(optenv SIMULATION_WORLD bookstore)_turtlebot_navigation.launch">
+ </include>
+
+ <!-- Test node -->
+ <param name="SIM_TIMEOUT_SECONDS" type="int" value="$(optenv SIM_TIMEOUT_SECONDS 300)" />
+ <param name="NAVIGATION_SUCCESS_COUNT" type="int" value="$(optenv NAVIGATION_SUCCESS_COUNT 1)" />
+ <node pkg="test_nodes" type="navigation_test.py" name="navigation_test" output="screen" required="true" />
+
+</launch>
