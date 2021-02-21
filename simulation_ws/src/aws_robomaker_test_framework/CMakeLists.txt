@@ -2,7 +2,7 @@
 # Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 2.8.3)
-project(test_nodes)
+project(aws_robomaker_test_framework)
 
 ################################################################################
 # Find catkin packages and libraries for catkin and system dependencies
@@ -44,11 +44,11 @@ catkin_package(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS
-  nodes/navigation_test.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+  examples/simple_test.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-install(DIRECTORY launch
+
+install(DIRECTORY launch config
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
