@@ -1,0 +1,45 @@
+[0.036s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node -- -j2 -l2
+[0.078s] -- Using CATKIN_DEVEL_PREFIX: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node/devel
+[0.079s] -- Using CMAKE_PREFIX_PATH: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_uploader_ros1_integration_tests;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/opt/ros/melodic
+[0.080s] -- This workspace overlays: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_uploader_ros1_integration_tests;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/opt/ros/melodic
+[0.103s] -- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+[0.103s] -- Using PYTHON_EXECUTABLE: /usr/bin/python2
+[0.103s] -- Using Debian Python package layout
+[0.104s] -- Using empy: /usr/bin/empy
+[0.335s] -- Using CATKIN_ENABLE_TESTING: ON
+[0.337s] -- Call enable_testing()
+[0.337s] -- Using CATKIN_TEST_RESULTS_DIR: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node/test_results
+[0.368s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[0.368s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[0.394s] -- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+[0.403s] -- Using Python nosetests: /usr/bin/nosetests-2.7
+[0.479s] -- catkin 0.7.26
+[0.479s] -- BUILD_SHARED_LIBS is on
+[1.373s] -- Configuring done
+[1.389s] -- Generating done
+[1.393s] -- Build files have been written to: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node
+[1.429s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node -- -j2 -l2
+[1.550s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node --target tests -- -j2 -l2
+[1.662s] Built target tests
+[1.685s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node --target tests -- -j2 -l2
+[1.782s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node --target install -- -j2 -l2
+[1.889s] [36mInstall the project...[0m
+[1.906s] -- Install configuration: ""
+[1.909s] + cd /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/sample_node
+[1.909s] + mkdir -p /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/python2.7/dist-packages
+[1.912s] + /usr/bin/env PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:/opt/ros/melodic/lib/python2.7/dist-packages CATKIN_BINARY_DIR=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node /usr/bin/python2 /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/sample_node/setup.py build --build-base /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node install --root=/ --install-layout=deb --prefix=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node --install-scripts=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/bin
+[1.970s] running build
+[1.971s] running build_py
+[1.972s] package init file 'src/utild/__init__.py' not found (or not a regular file)
+[1.972s] package init file 'src/utild/__init__.py' not found (or not a regular file)
+[1.972s] running install
+[1.973s] running install_lib
+[1.973s] running install_egg_info
+[1.974s] Removing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/python2.7/dist-packages/sample_node-1.0.0.egg-info
+[1.974s] Writing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/python2.7/dist-packages/sample_node-1.0.0.egg-info
+[1.981s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/pkgconfig/sample_node.pc
+[1.981s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/share/sample_node/cmake/sample_nodeConfig.cmake
+[1.981s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/share/sample_node/cmake/sample_nodeConfig-version.cmake
+[1.982s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/share/sample_node/package.xml
+[1.992s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/sample_node/lib/sample_node/example_node.py
+[1.993s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/sample_node --target install -- -j2 -l2

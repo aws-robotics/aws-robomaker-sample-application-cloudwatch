@@ -1,0 +1,334 @@
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test R-Wno-long-long
+-- Performing Test R-Wno-long-long - Success
+-- Performing Test R-Wall
+-- Performing Test R-Wall - Success
+-- Performing Test R-Wextra
+-- Performing Test R-Wextra - Success
+-- Performing Test R-Wcast-align
+-- Performing Test R-Wcast-align - Success
+-- Performing Test R-Wformat
+-- Performing Test R-Wformat - Success
+-- Performing Test R-Wwrite-strings
+-- Performing Test R-Wwrite-strings - Success
+-- Performing Test R-Wno-error=unused-result
+-- Performing Test R-Wno-error=unused-result - Success
+-- Using CATKIN_DEVEL_PREFIX: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders/devel
+-- Using CMAKE_PREFIX_PATH: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- This workspace overlays: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python2
+-- Using Debian Python package layout
+-- Using empy: /usr/bin/empy
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders/test_results
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests-2.7
+-- catkin 0.7.26
+-- BUILD_SHARED_LIBS is on
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- TARGET_ARCH not specified; inferring host OS to be platform compilation target
+-- Building AWS libraries as shared objects
+-- Generating linux build config
+-- Building project version: 1.6.53
+-- Found AWS SDK for C++, Version: 1.6.53, Install Root:/opt/ros/melodic, Platform Prefix:, Platform Dependent Libraries: pthread;crypto;ssl;z;curl
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   date_time
+--   regex
+--   program_options
+--   filesystem
+--   system
+-- Found BZip2: /usr/lib/x86_64-linux-gnu/libbz2.so (found version "1.0.6") 
+-- Looking for BZ2_bzCompressInit
+-- Looking for BZ2_bzCompressInit - found
+-- Building tests using catkin
+-- Building tests using catkin
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_py[0m
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target topic_tools_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target _catkin_empty_exported_target[0m
+[  0%] Built target _catkin_empty_exported_target
+[  0%] Built target topic_tools_generate_messages_cpp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_cpp
+[35m[1mScanning dependencies of target actionlib_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_eus[0m
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target actionlib_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_nodejs[0m
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_nodejs
+[35m[1mScanning dependencies of target topic_tools_generate_messages_nodejs[0m
+[  0%] Built target topic_tools_generate_messages_nodejs
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_py
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target recorder_msgs_generate_messages_lisp[0m
+[  0%] Built target recorder_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target recorder_msgs_generate_messages_cpp[0m
+[  0%] Built target recorder_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target recorder_msgs_generate_messages_nodejs[0m
+[  0%] Built target recorder_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target topic_tools_generate_messages_eus[0m
+[35m[1mScanning dependencies of target recorder_msgs_generate_messages_py[0m
+[  0%] Built target recorder_msgs_generate_messages_py
+[35m[1mScanning dependencies of target topic_tools_generate_messages_lisp[0m
+[  0%] Built target topic_tools_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_lisp
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[35m[1mScanning dependencies of target topic_tools_generate_messages_py[0m
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_py
+[35m[1mScanning dependencies of target actionlib_generate_messages_cpp[0m
+[  0%] Built target actionlib_generate_messages_cpp
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target recorder_msgs_generate_messages_eus[0m
+[  0%] Built target recorder_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target rosbag_cloud_recorders_lib[0m
+[  9%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/duration_recorder/duration_recorder.cpp.o[0m
+[ 18%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/rolling_recorder/rolling_recorder.cpp.o[0m
+[ 27%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/utils/file_utils.cpp.o[0m
+[ 36%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/utils/periodic_file_deleter.cpp.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/utils/recorder.cpp.o[0m
+[ 54%] [32mBuilding CXX object CMakeFiles/rosbag_cloud_recorders_lib.dir/src/utils/s3_client_utils.cpp.o[0m
+[ 63%] [32m[1mLinking CXX shared library devel/lib/librosbag_cloud_recorders_lib.so[0m
+[ 63%] Built target rosbag_cloud_recorders_lib
+[35m[1mScanning dependencies of target duration_recorder[0m
+[ 72%] [32mBuilding CXX object CMakeFiles/duration_recorder.dir/src/duration_recorder/main.cpp.o[0m
+[ 81%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/duration_recorder[0m
+[ 81%] Built target duration_recorder
+[35m[1mScanning dependencies of target rolling_recorder[0m
+[ 90%] [32mBuilding CXX object CMakeFiles/rolling_recorder.dir/src/rolling_recorder/main.cpp.o[0m
+[100%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/rolling_recorder[0m
+[100%] Built target rolling_recorder
+[35m[1mScanning dependencies of target gmock[0m
+[  3%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o[0m
+[  6%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[ 10%] [32m[1mLinking CXX shared library libgmock.so[0m
+[ 10%] Built target gmock
+[35m[1mScanning dependencies of target gtest[0m
+[ 13%] [32mBuilding CXX object gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[ 17%] [32m[1mLinking CXX shared library libgtest.so[0m
+[ 17%] Built target gtest
+[ 17%] Built target file_uploader_msgs_generate_messages_py
+[ 17%] Built target file_uploader_msgs_generate_messages_eus
+[ 17%] Built target actionlib_msgs_generate_messages_py
+[ 17%] Built target roscpp_generate_messages_lisp
+[ 17%] Built target topic_tools_generate_messages_cpp
+[ 17%] Built target _catkin_empty_exported_target
+[ 17%] Built target file_uploader_msgs_generate_messages_lisp
+[ 17%] Built target std_msgs_generate_messages_py
+[ 17%] Built target std_msgs_generate_messages_nodejs
+[ 17%] Built target roscpp_generate_messages_nodejs
+[ 17%] Built target std_msgs_generate_messages_lisp
+[ 17%] Built target rosgraph_msgs_generate_messages_lisp
+[ 17%] Built target roscpp_generate_messages_cpp
+[ 17%] Built target std_msgs_generate_messages_cpp
+[ 17%] Built target actionlib_generate_messages_eus
+[ 17%] Built target actionlib_generate_messages_lisp
+[ 17%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 17%] Built target actionlib_generate_messages_nodejs
+[ 17%] Built target actionlib_generate_messages_py
+[ 17%] Built target topic_tools_generate_messages_nodejs
+[ 17%] Built target rosgraph_msgs_generate_messages_eus
+[ 17%] Built target actionlib_msgs_generate_messages_cpp
+[ 17%] Built target roscpp_generate_messages_eus
+[ 17%] Built target rosgraph_msgs_generate_messages_py
+[ 17%] Built target actionlib_msgs_generate_messages_eus
+[ 17%] Built target actionlib_msgs_generate_messages_lisp
+[ 17%] Built target recorder_msgs_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_lisp
+[ 17%] Built target recorder_msgs_generate_messages_nodejs
+[ 17%] Built target rosgraph_msgs_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_py
+[ 17%] Built target topic_tools_generate_messages_eus
+[ 17%] Built target topic_tools_generate_messages_lisp
+[ 17%] Built target actionlib_msgs_generate_messages_nodejs
+[ 17%] Built target topic_tools_generate_messages_py
+[ 17%] Built target roscpp_generate_messages_py
+[ 17%] Built target actionlib_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_eus
+[ 17%] Built target file_uploader_msgs_generate_messages_cpp
+[ 17%] Built target std_msgs_generate_messages_eus
+[ 17%] Built target file_uploader_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target gmock_main[0m
+[ 20%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o[0m
+[ 24%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock-all.cc.o[0m
+[ 27%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[ 31%] [32m[1mLinking CXX shared library libgmock_main.so[0m
+[ 31%] Built target gmock_main
+[ 55%] Built target rosbag_cloud_recorders_lib
+[35m[1mScanning dependencies of target test_rolling_recorder_action_server_handler[0m
+[35m[1mScanning dependencies of target test_utils[0m
+[ 58%] [32mBuilding CXX object CMakeFiles/test_utils.dir/test/utils/utils_test.cpp.o[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/test_rolling_recorder_action_server_handler.dir/test/rolling_recorder_action_server_handler_test.cpp.o[0m
+[ 65%] [32mBuilding CXX object CMakeFiles/test_utils.dir/test/utils/file_utils_test.cpp.o[0m
+[ 68%] [32mBuilding CXX object CMakeFiles/test_utils.dir/test/utils/periodic_file_deleter_test.cpp.o[0m
+[ 72%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/test_rolling_recorder_action_server_handler[0m
+[ 72%] Built target test_rolling_recorder_action_server_handler
+[35m[1mScanning dependencies of target test_duration_recorder_action_server_handler[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/test_duration_recorder_action_server_handler.dir/test/duration_recorder_action_server_handler_test.cpp.o[0m
+[ 79%] [32mBuilding CXX object CMakeFiles/test_utils.dir/test/utils/rosbag_recorder.cpp.o[0m
+[ 82%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/test_utils[0m
+[ 82%] Built target test_utils
+[35m[1mScanning dependencies of target test_rolling_recorder[0m
+[ 86%] [32mBuilding CXX object CMakeFiles/test_rolling_recorder.dir/test/rolling_recorder_test.cpp.o[0m
+[ 89%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/test_duration_recorder_action_server_handler[0m
+[ 89%] Built target test_duration_recorder_action_server_handler
+[35m[1mScanning dependencies of target test_duration_recorder[0m
+[ 93%] [32mBuilding CXX object CMakeFiles/test_duration_recorder.dir/test/duration_recorder_test.cpp.o[0m
+[ 96%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/test_rolling_recorder[0m
+[ 96%] Built target test_rolling_recorder
+[100%] [32m[1mLinking CXX executable devel/lib/rosbag_cloud_recorders/test_duration_recorder[0m
+[100%] Built target test_duration_recorder
+[35m[1mScanning dependencies of target tests[0m
+[100%] Built target tests
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target _catkin_empty_exported_target
+[  0%] Built target topic_tools_generate_messages_cpp
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_eus
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_eus
+[  0%] Built target topic_tools_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_py
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[ 63%] Built target rosbag_cloud_recorders_lib
+[ 81%] Built target duration_recorder
+[100%] Built target rolling_recorder
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/pkgconfig/rosbag_cloud_recorders.pc
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig-version.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/package.xml
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/duration_recorder
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/duration_recorder" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/rolling_recorder
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/rolling_recorder" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/librosbag_cloud_recorders_lib.so
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/librosbag_cloud_recorders_lib.so" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder_action_server_handler.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/recorder.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/rosbag_recorder.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/s3_client_utils.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/file_utils.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/periodic_file_deleter.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder_action_server_handler.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/recorder_common_error_codes.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/rolling_recorder_sample_configuration.yaml
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/duration_recorder_sample_configuration.yaml
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder.launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder_sample.launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder_sample.launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder.launch

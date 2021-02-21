@@ -1,0 +1,7 @@
+CMake Error at /opt/ros/melodic/share/catkin/cmake/catkin_install_python.cmake:62 (message):
+  catkin_install_python() called with non-existing file
+  '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/aws_robomaker_test_framework/nodes/RoboMakerTestFramework.py'.
+Call Stack (most recent call first):
+  CMakeLists.txt:46 (catkin_install_python)
+
+
