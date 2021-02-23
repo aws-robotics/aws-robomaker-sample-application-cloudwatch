@@ -1,0 +1,2 @@
+- git: {local-name: src/aws-robomaker-simulation-ros-pkgs, uri: 'https://github.com/aws-robotics/aws-robomaker-simulation-ros-pkgs.git', version: master}
+- git: {local-name: src/rosbag-uploader-ros1, uri: 'https://github.com/aws-robotics/rosbag-uploader-ros1.git', version: master}

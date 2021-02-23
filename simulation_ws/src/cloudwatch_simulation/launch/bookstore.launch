@@ -1,0 +1,23 @@
+<launch>
+  <!-- 
+       A bookstore with a Turtlebot located initially near the service desk. 
+  -->
+
+  <!-- Always set GUI to false for AWS RoboMaker Simulation
+       Use gui:=true on roslaunch command-line to run with a gui.
+  -->
+  <arg name="gui" default="false"/>
+
+  <!-- World -->
+  <include file="$(find aws_robomaker_bookstore_world)/launch/bookstore.launch">
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- Spawn Robot -->
+  <include file="$(find turtlebot3_description_reduced_mesh)/launch/spawn_turtlebot.launch">
+    <!-- Override (x,y) position for near the service desk -->
+    <arg name="x_pos" default="-3.5"/>
+    <arg name="y_pos" default="5.5"/>
+    <arg name="z_pos" default="0.3"/>
+  </include>
+</launch>

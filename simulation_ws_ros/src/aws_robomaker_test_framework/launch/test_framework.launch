@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="node_config_file" default="$(find aws_robomaker_test_framework)/config/node_sample_configuration.yaml"/>
+    <arg name="s3_bucket" default="$(optenv TEST_OUTPUT_BUCKET_NAME your-s3-bucket-name)"/>
+    <arg name="output" default="screen"/>
+    
+    <include file="$(find s3_file_uploader)/launch/s3_file_uploader.launch">
+        <arg name="node_config_file" value="$(arg node_config_file)"/>
+        <arg name="s3_bucket" value="$(arg s3_bucket)"/>
+        <arg name="output" value="$(arg output)"/>
+    </include>
+  
+</launch>

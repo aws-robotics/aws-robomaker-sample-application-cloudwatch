@@ -1,0 +1,129 @@
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test R-Wno-long-long
+-- Performing Test R-Wno-long-long - Success
+-- Performing Test R-Wall
+-- Performing Test R-Wall - Success
+-- Performing Test R-Wextra
+-- Performing Test R-Wextra - Success
+-- Performing Test R-Wcast-align
+-- Performing Test R-Wcast-align - Success
+-- Performing Test R-Wcast-qual
+-- Performing Test R-Wcast-qual - Success
+-- Performing Test R-Wformat
+-- Performing Test R-Wformat - Success
+-- Performing Test R-Wwrite-strings
+-- Performing Test R-Wwrite-strings - Success
+-- Boost version: 1.65.1
+-- TARGET_ARCH not specified; inferring host OS to be platform compilation target
+-- Building AWS libraries as static objects
+-- Generating linux build config
+-- Building project version: 1.6.53
+-- Found AWS SDK for C++, Version: 1.6.53, Install Root:/opt/ros/melodic, Platform Prefix:, Platform Dependent Libraries: pthread;crypto;ssl;z;curl
+-- Using CATKIN_DEVEL_PREFIX: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_common/devel
+-- Using CMAKE_PREFIX_PATH: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- This workspace overlays: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python2
+-- Using Debian Python package layout
+-- Using empy: /usr/bin/empy
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_common/test_results
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+CMake Warning (dev) at /usr/src/googletest/CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googlemock/CMakeLists.txt:40 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googletest/CMakeLists.txt:47 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests-2.7
+-- catkin 0.7.26
+-- BUILD_SHARED_LIBS is on
+-- Building tests using catkin
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_common
+[35m[1mScanning dependencies of target s3_common[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/s3_common.dir/src/s3_upload_manager.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/s3_common.dir/src/s3_facade.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/s3_common.dir/src/utils.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library libs3_common.so[0m
+[35m[1mScanning dependencies of target gmock[0m
+[ 33%] Built target s3_common
+[ 41%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[ 50%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o[0m
+[ 58%] [32m[1mLinking CXX shared library libgmock.so[0m
+[ 58%] Built target gmock
+[35m[1mScanning dependencies of target test_s3_common[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/test_s3_common.dir/test/s3_facade_test.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/test_s3_common.dir/test/main_test.cpp.o[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/test_s3_common.dir/test/s3_upload_manager_test.cpp.o[0m
+[ 91%] [32mBuilding CXX object CMakeFiles/test_s3_common.dir/test/utils_test.cpp.o[0m
+[100%] [32m[1mLinking CXX executable devel/lib/s3_common/test_s3_common[0m
+[100%] Built target test_s3_common
+[35m[1mScanning dependencies of target tests[0m
+[100%] Built target tests
+Built target s3_common
+[100%] Built target s3_common
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/lib/libs3_common.so
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/lib/libs3_common.so" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include/s3_common
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include/s3_common/utils.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include/s3_common/s3_common_error_codes.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include/s3_common/s3_upload_manager.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/include/s3_common/s3_facade.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/share/s3_common/cmake/s3_commonConfig.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/share/s3_common/cmake/s3_commonConfigVersion.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/share/s3_common/cmake/s3_common-targets.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common/share/s3_common/cmake/s3_common-targets-noconfig.cmake

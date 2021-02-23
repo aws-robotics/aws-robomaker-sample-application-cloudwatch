@@ -1,0 +1,412 @@
+[0.050s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs': /usr/bin/cmake /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/rosbag-uploader-ros1/recorder_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs
+[0.187s] -- The C compiler identification is GNU 7.5.0
+[0.412s] -- The CXX compiler identification is GNU 7.5.0
+[0.428s] -- Check for working C compiler: /usr/bin/cc
+[0.726s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.727s] -- Detecting C compiler ABI info
+[0.828s] -- Detecting C compiler ABI info - done
+[0.844s] -- Detecting C compile features
+[1.559s] -- Detecting C compile features - done
+[1.572s] -- Check for working CXX compiler: /usr/bin/c++
+[1.757s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.758s] -- Detecting CXX compiler ABI info
+[2.050s] -- Detecting CXX compiler ABI info - done
+[2.065s] -- Detecting CXX compile features
+[2.823s] -- Detecting CXX compile features - done
+[2.827s] -- Using CATKIN_DEVEL_PREFIX: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel
+[2.828s] -- Using CMAKE_PREFIX_PATH: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+[2.828s] -- This workspace overlays: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+[2.850s] -- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+[2.851s] -- Using PYTHON_EXECUTABLE: /usr/bin/python2
+[2.851s] -- Using Debian Python package layout
+[2.852s] -- Using empy: /usr/bin/empy
+[3.078s] -- Using CATKIN_ENABLE_TESTING: ON
+[3.079s] -- Call enable_testing()
+[3.082s] -- Using CATKIN_TEST_RESULTS_DIR: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/test_results
+[3.109s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[3.109s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[3.130s] -- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+[3.131s] -- Looking for pthread.h
+[3.236s] -- Looking for pthread.h - found
+[3.237s] -- Looking for pthread_create
+[3.342s] -- Looking for pthread_create - not found
+[3.343s] -- Looking for pthread_create in pthreads
+[3.424s] -- Looking for pthread_create in pthreads - not found
+[3.424s] -- Looking for pthread_create in pthread
+[3.521s] -- Looking for pthread_create in pthread - found
+[3.524s] -- Found Threads: TRUE  
+[3.531s] -- Using Python nosetests: /usr/bin/nosetests-2.7
+[3.595s] -- catkin 0.7.26
+[3.596s] -- BUILD_SHARED_LIBS is on
+[3.793s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[3.868s] -- Generating .msg files for action recorder_msgs/DurationRecorder /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/rosbag-uploader-ros1/recorder_msgs/action/DurationRecorder.action
+[3.894s] Generating for action DurationRecorder
+[3.899s] -- Generating .msg files for action recorder_msgs/RollingRecorder /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/rosbag-uploader-ros1/recorder_msgs/action/RollingRecorder.action
+[3.926s] Generating for action RollingRecorder
+[4.218s] -- recorder_msgs: 16 messages, 0 services
+[4.461s] -- Configuring done
+[4.531s] -- Generating done
+[4.550s] -- Build files have been written to: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs
+[4.557s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs' returned '0': /usr/bin/cmake /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/src/rosbag-uploader-ros1/recorder_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs
+[4.561s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs -- -j2 -l2
+[4.664s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderFeedback[0m
+[4.670s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionResult[0m
+[4.763s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionResult
+[4.775s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderFeedback
+[4.796s] [35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[4.806s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderGoal[0m
+[4.861s] [  0%] Built target std_msgs_generate_messages_eus
+[4.880s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[4.889s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderGoal
+[4.916s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderFeedback[0m
+[4.919s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[4.936s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderGoal[0m
+[5.034s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderGoal
+[5.042s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderFeedback
+[5.064s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderResult[0m
+[5.073s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionGoal[0m
+[5.168s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderResult
+[5.181s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionGoal
+[5.209s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderAction[0m
+[5.213s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionFeedback[0m
+[5.316s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionFeedback
+[5.368s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionFeedback[0m
+[5.371s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderAction
+[5.421s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RecorderStatus[0m
+[5.544s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionFeedback
+[5.592s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RecorderStatus
+[5.607s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionGoal[0m
+[5.641s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionResult[0m
+[5.755s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionGoal
+[5.782s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RecorderResult[0m
+[5.783s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionResult
+[5.804s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_RollingRecorderAction[0m
+[5.934s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RecorderResult
+[5.955s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderAction
+[5.984s] [35m[1mScanning dependencies of target _recorder_msgs_generate_messages_check_deps_DurationRecorderResult[0m
+[6.018s] [35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[6.072s] [  0%] Built target std_msgs_generate_messages_py
+[6.137s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[6.156s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderResult
+[6.191s] [  0%] Built target actionlib_msgs_generate_messages_py
+[6.204s] [35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[6.253s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[6.265s] [  0%] Built target std_msgs_generate_messages_lisp
+[6.304s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[6.317s] [35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[6.360s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[6.383s] [  0%] Built target std_msgs_generate_messages_nodejs
+[6.419s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[6.428s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[6.464s] [35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[6.471s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[6.497s] [  0%] Built target std_msgs_generate_messages_cpp
+[6.510s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages_eus[0m
+[6.556s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages_py[0m
+[6.560s] [  1%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderResult.msg[0m
+[6.611s] [  2%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderResult[0m
+[6.798s] [  3%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderGoal.msg[0m
+[6.940s] [  4%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderGoal[0m
+[6.969s] [  6%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderGoal.msg[0m
+[7.216s] [  7%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderActionGoal.msg[0m
+[7.297s] [  8%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderGoal[0m
+[7.446s] [  9%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderAction.msg[0m
+[7.666s] [ 10%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderActionGoal[0m
+[7.685s] [ 12%] [34m[1mGenerating EusLisp code from recorder_msgs/RecorderStatus.msg[0m
+[7.888s] [ 13%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderActionGoal.msg[0m
+[7.964s] [ 14%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderAction[0m
+[8.109s] [ 15%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderFeedback.msg[0m
+[8.297s] [ 17%] [34m[1mGenerating Python from MSG recorder_msgs/RecorderStatus[0m
+[8.328s] [ 18%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderResult.msg[0m
+[8.556s] [ 19%] [34m[1mGenerating EusLisp code from recorder_msgs/RecorderResult.msg[0m
+[8.572s] [ 20%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderActionGoal[0m
+[8.785s] [ 21%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderActionFeedback.msg[0m
+[8.861s] [ 23%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderFeedback[0m
+[8.981s] [ 24%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderAction.msg[0m
+[9.198s] [ 25%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderResult[0m
+[9.256s] [ 26%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderFeedback.msg[0m
+[9.477s] [ 28%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderActionResult.msg[0m
+[9.621s] [ 29%] [34m[1mGenerating Python from MSG recorder_msgs/RecorderResult[0m
+[9.720s] [ 30%] [34m[1mGenerating EusLisp code from recorder_msgs/RollingRecorderActionFeedback.msg[0m
+[9.956s] [ 31%] [34m[1mGenerating EusLisp code from recorder_msgs/DurationRecorderActionResult.msg[0m
+[9.956s] [ 32%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderActionFeedback[0m
+[10.177s] [ 34%] [34m[1mGenerating EusLisp manifest code for recorder_msgs[0m
+[10.337s] [ 35%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderAction[0m
+[10.752s] [ 36%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderFeedback[0m
+[11.136s] [ 37%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderActionResult[0m
+[11.516s] [ 39%] [34m[1mGenerating Python from MSG recorder_msgs/RollingRecorderActionFeedback[0m
+[11.901s] [ 40%] [34m[1mGenerating Python from MSG recorder_msgs/DurationRecorderActionResult[0m
+[12.358s] [ 41%] [34m[1mGenerating Python msg __init__.py for recorder_msgs[0m
+[12.472s] [ 41%] Built target recorder_msgs_generate_messages_eus
+[12.545s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages_lisp[0m
+[12.596s] [ 42%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderResult.msg[0m
+[12.701s] [ 42%] Built target recorder_msgs_generate_messages_py
+[12.744s] [ 43%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderGoal.msg[0m
+[12.749s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages_nodejs[0m
+[12.824s] [ 45%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderResult.msg[0m
+[12.922s] [ 46%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderGoal.msg[0m
+[12.976s] [ 47%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderGoal.msg[0m
+[13.051s] [ 48%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderActionGoal.msg[0m
+[13.153s] [ 50%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderGoal.msg[0m
+[13.237s] [ 51%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderAction.msg[0m
+[13.324s] [ 52%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderActionGoal.msg[0m
+[13.390s] [ 53%] [34m[1mGenerating Lisp code from recorder_msgs/RecorderStatus.msg[0m
+[13.484s] [ 54%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderAction.msg[0m
+[13.556s] [ 56%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderActionGoal.msg[0m
+[13.669s] [ 57%] [34m[1mGenerating Javascript code from recorder_msgs/RecorderStatus.msg[0m
+[13.728s] [ 58%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderFeedback.msg[0m
+[13.793s] [ 59%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderActionGoal.msg[0m
+[13.807s] [ 60%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderResult.msg[0m
+[13.919s] [ 62%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderFeedback.msg[0m
+[13.931s] [ 63%] [34m[1mGenerating Lisp code from recorder_msgs/RecorderResult.msg[0m
+[14.051s] [ 64%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderActionFeedback.msg[0m
+[14.053s] [ 65%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderResult.msg[0m
+[14.159s] [ 67%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderAction.msg[0m
+[14.176s] [ 68%] [34m[1mGenerating Javascript code from recorder_msgs/RecorderResult.msg[0m
+[14.286s] [ 69%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderFeedback.msg[0m
+[14.298s] [ 70%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderActionFeedback.msg[0m
+[14.408s] [ 71%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderActionResult.msg[0m
+[14.421s] [ 73%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderAction.msg[0m
+[14.532s] [ 74%] [34m[1mGenerating Lisp code from recorder_msgs/RollingRecorderActionFeedback.msg[0m
+[14.568s] [ 75%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderFeedback.msg[0m
+[14.648s] [ 76%] [34m[1mGenerating Lisp code from recorder_msgs/DurationRecorderActionResult.msg[0m
+[14.662s] [ 78%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderActionResult.msg[0m
+[14.742s] [ 79%] [34m[1mGenerating Javascript code from recorder_msgs/RollingRecorderActionFeedback.msg[0m
+[14.793s] [ 79%] Built target recorder_msgs_generate_messages_lisp
+[14.822s] [ 80%] [34m[1mGenerating Javascript code from recorder_msgs/DurationRecorderActionResult.msg[0m
+[14.835s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages_cpp[0m
+[14.859s] [ 81%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderResult.msg[0m
+[14.949s] [ 81%] Built target recorder_msgs_generate_messages_nodejs
+[14.975s] [ 82%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderGoal.msg[0m
+[15.228s] [ 84%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderGoal.msg[0m
+[15.308s] [ 85%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderActionGoal.msg[0m
+[15.592s] [ 86%] [34m[1mGenerating C++ code from recorder_msgs/RecorderStatus.msg[0m
+[15.616s] [ 87%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderAction.msg[0m
+[15.833s] [ 89%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderActionGoal.msg[0m
+[15.901s] [ 90%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderFeedback.msg[0m
+[16.073s] [ 91%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderResult.msg[0m
+[16.148s] [ 92%] [34m[1mGenerating C++ code from recorder_msgs/RecorderResult.msg[0m
+[16.415s] [ 93%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderActionFeedback.msg[0m
+[16.425s] [ 95%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderAction.msg[0m
+[16.709s] [ 96%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderFeedback.msg[0m
+[16.798s] [ 97%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderActionResult.msg[0m
+[16.993s] [ 98%] [34m[1mGenerating C++ code from recorder_msgs/RollingRecorderActionFeedback.msg[0m
+[17.074s] [100%] [34m[1mGenerating C++ code from recorder_msgs/DurationRecorderActionResult.msg[0m
+[17.373s] [100%] Built target recorder_msgs_generate_messages_cpp
+[17.388s] [35m[1mScanning dependencies of target recorder_msgs_generate_messages[0m
+[17.410s] [100%] Built target recorder_msgs_generate_messages
+[17.454s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs -- -j2 -l2
+[17.520s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs --target tests -- -j2 -l2
+[17.606s] [35m[1mScanning dependencies of target tests[0m
+[17.620s] Built target tests
+[17.635s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs --target tests -- -j2 -l2
+[17.714s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs --target install -- -j2 -l2
+[17.855s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderFeedback
+[17.883s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionResult
+[17.921s] [  0%] Built target std_msgs_generate_messages_eus
+[17.932s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderGoal
+[17.950s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[18.021s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderFeedback
+[18.071s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderGoal
+[18.113s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderResult
+[18.176s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionGoal
+[18.207s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderAction
+[18.267s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionFeedback
+[18.284s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderActionFeedback
+[18.352s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RecorderStatus
+[18.419s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionGoal
+[18.450s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderActionResult
+[18.526s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RecorderResult
+[18.552s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_RollingRecorderAction
+[18.584s] [  0%] Built target std_msgs_generate_messages_py
+[18.613s] [  0%] Built target actionlib_msgs_generate_messages_py
+[18.652s] [  0%] Built target std_msgs_generate_messages_lisp
+[18.666s] [  0%] Built target _recorder_msgs_generate_messages_check_deps_DurationRecorderResult
+[18.687s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[18.729s] [  0%] Built target std_msgs_generate_messages_nodejs
+[18.731s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[18.783s] [  0%] Built target std_msgs_generate_messages_cpp
+[18.784s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[18.817s] [ 20%] Built target recorder_msgs_generate_messages_py
+[18.841s] [ 41%] Built target recorder_msgs_generate_messages_eus
+[18.888s] [ 60%] Built target recorder_msgs_generate_messages_nodejs
+[18.894s] [ 80%] Built target recorder_msgs_generate_messages_lisp
+[18.924s] [100%] Built target recorder_msgs_generate_messages_cpp
+[18.953s] [100%] Built target recorder_msgs_generate_messages
+[18.984s] [36mInstall the project...[0m
+[18.997s] -- Install configuration: ""
+[18.997s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/action/DurationRecorder.action
+[18.998s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/action/RollingRecorder.action
+[18.998s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderAction.msg
+[18.998s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderActionGoal.msg
+[18.999s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderActionResult.msg
+[18.999s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderActionFeedback.msg
+[18.999s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderGoal.msg
+[19.000s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderResult.msg
+[19.000s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/DurationRecorderFeedback.msg
+[19.000s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderAction.msg
+[19.001s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderActionGoal.msg
+[19.001s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderActionResult.msg
+[19.001s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderActionFeedback.msg
+[19.002s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderGoal.msg
+[19.002s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderResult.msg
+[19.002s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RollingRecorderFeedback.msg
+[19.003s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RecorderStatus.msg
+[19.003s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/msg/RecorderResult.msg
+[19.004s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/cmake/recorder_msgs-msg-paths.cmake
+[19.004s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs
+[19.004s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderResult.h
+[19.005s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderActionResult.h
+[19.005s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderFeedback.h
+[19.005s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderActionFeedback.h
+[19.006s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderResult.h
+[19.006s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderActionGoal.h
+[19.006s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderActionGoal.h
+[19.007s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderGoal.h
+[19.007s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderAction.h
+[19.007s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RecorderResult.h
+[19.008s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderGoal.h
+[19.008s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderAction.h
+[19.008s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderFeedback.h
+[19.008s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RollingRecorderActionResult.h
+[19.009s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/RecorderStatus.h
+[19.009s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/include/recorder_msgs/DurationRecorderActionFeedback.h
+[19.010s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs
+[19.010s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/manifest.l
+[19.010s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg
+[19.011s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderFeedback.l
+[19.011s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderActionFeedback.l
+[19.011s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RecorderStatus.l
+[19.012s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderResult.l
+[19.012s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderActionResult.l
+[19.012s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderFeedback.l
+[19.013s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderActionGoal.l
+[19.013s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderActionGoal.l
+[19.013s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderAction.l
+[19.013s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderGoal.l
+[19.014s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderResult.l
+[19.014s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderGoal.l
+[19.014s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RecorderResult.l
+[19.015s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderAction.l
+[19.015s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/DurationRecorderActionFeedback.l
+[19.015s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/roseus/ros/recorder_msgs/msg/RollingRecorderActionResult.l
+[19.016s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs
+[19.016s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg
+[19.016s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderActionGoal.lisp
+[19.017s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package.lisp
+[19.017s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderResult.lisp
+[19.017s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderActionResult.lisp
+[19.018s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderGoal.lisp
+[19.018s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderAction.lisp
+[19.018s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderFeedback.lisp
+[19.019s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderAction.lisp
+[19.019s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderActionResult.lisp
+[19.019s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderGoal.lisp
+[19.020s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderActionFeedback.lisp
+[19.020s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderResult.lisp
+[19.020s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RecorderResult.lisp
+[19.021s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderResult.lisp
+[19.021s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderFeedback.lisp
+[19.021s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderGoal.lisp
+[19.022s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderActionFeedback.lisp
+[19.022s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderActionResult.lisp
+[19.022s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderActionResult.lisp
+[19.023s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RecorderStatus.lisp
+[19.023s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RecorderResult.lisp
+[19.023s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderActionGoal.lisp
+[19.024s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderFeedback.lisp
+[19.024s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderActionGoal.lisp
+[19.024s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/DurationRecorderActionFeedback.lisp
+[19.025s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/recorder_msgs-msg.asd
+[19.025s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderFeedback.lisp
+[19.026s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderGoal.lisp
+[19.026s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RecorderStatus.lisp
+[19.026s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderActionFeedback.lisp
+[19.027s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_DurationRecorderAction.lisp
+[19.027s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderAction.lisp
+[19.027s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/RollingRecorderActionGoal.lisp
+[19.027s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/common-lisp/ros/recorder_msgs/msg/_package_RollingRecorderResult.lisp
+[19.027s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs
+[19.028s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/_index.js
+[19.028s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg
+[19.029s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RecorderResult.js
+[19.029s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderActionGoal.js
+[19.029s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderActionFeedback.js
+[19.030s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderGoal.js
+[19.030s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/_index.js
+[19.030s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderActionFeedback.js
+[19.030s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderAction.js
+[19.030s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderResult.js
+[19.031s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderGoal.js
+[19.031s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RecorderStatus.js
+[19.032s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderActionGoal.js
+[19.032s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderAction.js
+[19.033s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderActionResult.js
+[19.033s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderFeedback.js
+[19.033s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/DurationRecorderActionResult.js
+[19.033s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderResult.js
+[19.033s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/gennodejs/ros/recorder_msgs/msg/RollingRecorderFeedback.js
+[19.085s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/__init__.py ...
+[19.086s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderAction.py ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionFeedback.py ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionGoal.py ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionResult.py ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderFeedback.py ...
+[19.086s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderGoal.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderResult.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderResult.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderStatus.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderAction.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionFeedback.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionGoal.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionResult.py ...
+[19.087s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderFeedback.py ...
+[19.088s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderGoal.py ...
+[19.088s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderResult.py ...
+[19.088s] Compiling /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs/devel/lib/python2.7/dist-packages/recorder_msgs/msg/__init__.py ...
+[19.092s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs
+[19.093s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/__init__.pyc
+[19.094s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg
+[19.094s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionFeedback.pyc
+[19.095s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderFeedback.pyc
+[19.096s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderResult.pyc
+[19.096s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionResult.py
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionFeedback.py
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderAction.py
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderGoal.pyc
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionGoal.py
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/__init__.pyc
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderStatus.py
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderStatus.pyc
+[19.097s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderAction.py
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderFeedback.py
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionGoal.pyc
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderResult.pyc
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionResult.pyc
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderFeedback.pyc
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderResult.py
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionFeedback.pyc
+[19.098s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderAction.pyc
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderResult.pyc
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionResult.pyc
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RecorderResult.py
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderGoal.py
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderFeedback.py
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderResult.py
+[19.099s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/__init__.py
+[19.118s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionGoal.pyc
+[19.118s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderGoal.py
+[19.118s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionFeedback.py
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderAction.pyc
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_RollingRecorderActionResult.py
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderGoal.pyc
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/msg/_DurationRecorderActionGoal.py
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages/recorder_msgs/__init__.py
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig/recorder_msgs.pc
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/cmake/recorder_msgs-msg-extras.cmake
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/cmake/recorder_msgsConfig.cmake
+[19.119s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/cmake/recorder_msgsConfig-version.cmake
+[19.120s] -- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share/recorder_msgs/package.xml
+[19.120s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/recorder_msgs --target install -- -j2 -l2

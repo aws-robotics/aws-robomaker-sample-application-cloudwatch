@@ -1,0 +1,171 @@
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target _catkin_empty_exported_target
+[  0%] Built target topic_tools_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target actionlib_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target actionlib_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_eus
+[  0%] Built target topic_tools_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_py
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[ 63%] Built target rosbag_cloud_recorders_lib
+[ 81%] Built target duration_recorder
+[100%] Built target rolling_recorder
+[  6%] Built target gtest
+[ 17%] Built target gmock
+[ 17%] Built target file_uploader_msgs_generate_messages_py
+[ 17%] Built target file_uploader_msgs_generate_messages_eus
+[ 17%] Built target roscpp_generate_messages_lisp
+[ 17%] Built target actionlib_msgs_generate_messages_py
+[ 17%] Built target topic_tools_generate_messages_cpp
+[ 17%] Built target file_uploader_msgs_generate_messages_lisp
+[ 17%] Built target _catkin_empty_exported_target
+[ 17%] Built target std_msgs_generate_messages_py
+[ 17%] Built target std_msgs_generate_messages_nodejs
+[ 17%] Built target roscpp_generate_messages_nodejs
+[ 17%] Built target std_msgs_generate_messages_lisp
+[ 17%] Built target rosgraph_msgs_generate_messages_lisp
+[ 17%] Built target roscpp_generate_messages_cpp
+[ 17%] Built target std_msgs_generate_messages_cpp
+[ 17%] Built target actionlib_generate_messages_eus
+[ 17%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 17%] Built target actionlib_generate_messages_nodejs
+[ 17%] Built target actionlib_generate_messages_lisp
+[ 17%] Built target topic_tools_generate_messages_nodejs
+[ 17%] Built target rosgraph_msgs_generate_messages_eus
+[ 17%] Built target actionlib_generate_messages_py
+[ 17%] Built target actionlib_msgs_generate_messages_cpp
+[ 17%] Built target roscpp_generate_messages_eus
+[ 17%] Built target rosgraph_msgs_generate_messages_py
+[ 17%] Built target actionlib_msgs_generate_messages_eus
+[ 17%] Built target actionlib_msgs_generate_messages_lisp
+[ 17%] Built target recorder_msgs_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_lisp
+[ 17%] Built target recorder_msgs_generate_messages_nodejs
+[ 17%] Built target rosgraph_msgs_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_py
+[ 17%] Built target topic_tools_generate_messages_eus
+[ 17%] Built target topic_tools_generate_messages_lisp
+[ 17%] Built target actionlib_msgs_generate_messages_nodejs
+[ 17%] Built target topic_tools_generate_messages_py
+[ 17%] Built target roscpp_generate_messages_py
+[ 17%] Built target actionlib_generate_messages_cpp
+[ 17%] Built target recorder_msgs_generate_messages_eus
+[ 17%] Built target file_uploader_msgs_generate_messages_cpp
+[ 17%] Built target std_msgs_generate_messages_eus
+[ 17%] Built target file_uploader_msgs_generate_messages_nodejs
+[ 31%] Built target gmock_main
+[ 55%] Built target rosbag_cloud_recorders_lib
+[ 65%] Built target test_rolling_recorder_action_server_handler
+[ 79%] Built target test_utils
+[ 86%] Built target test_duration_recorder_action_server_handler
+[ 93%] Built target test_rolling_recorder
+[100%] Built target test_duration_recorder
+[100%] Built target tests
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target topic_tools_generate_messages_cpp
+[  0%] Built target _catkin_empty_exported_target
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_eus
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_lisp
+[  0%] Built target recorder_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_py
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target recorder_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[ 63%] Built target rosbag_cloud_recorders_lib
+[100%] Built target duration_recorder
+[100%] Built target rolling_recorder
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/pkgconfig/rosbag_cloud_recorders.pc
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig.cmake
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig-version.cmake
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/package.xml
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/duration_recorder
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/rolling_recorder
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/librosbag_cloud_recorders_lib.so
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder_action_server_handler.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/recorder.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/rosbag_recorder.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/s3_client_utils.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/file_utils.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/periodic_file_deleter.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder_action_server_handler.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/recorder_common_error_codes.h
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/rolling_recorder_sample_configuration.yaml
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/duration_recorder_sample_configuration.yaml
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder.launch
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder_sample.launch
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder_sample.launch
+-- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder.launch

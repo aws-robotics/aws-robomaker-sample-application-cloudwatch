@@ -1,0 +1,238 @@
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test R-Wno-long-long
+-- Performing Test R-Wno-long-long - Success
+-- Performing Test R-Wall
+-- Performing Test R-Wall - Success
+-- Performing Test R-Wextra
+-- Performing Test R-Wextra - Success
+-- Performing Test R-Wcast-align
+-- Performing Test R-Wcast-align - Success
+-- Performing Test R-Wcast-qual
+-- Performing Test R-Wcast-qual - Success
+-- Performing Test R-Wformat
+-- Performing Test R-Wformat - Success
+-- Performing Test R-Wwrite-strings
+-- Performing Test R-Wwrite-strings - Success
+-- Using CATKIN_DEVEL_PREFIX: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_file_uploader/devel
+-- Using CMAKE_PREFIX_PATH: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_common;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- This workspace overlays: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/aws_robomaker_test_framework;/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs;/opt/ros/melodic
+-- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python2
+-- Using Debian Python package layout
+-- Using empy: /usr/bin/empy
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_file_uploader/test_results
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests-2.7
+-- catkin 0.7.26
+-- BUILD_SHARED_LIBS is on
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- TARGET_ARCH not specified; inferring host OS to be platform compilation target
+-- Building AWS libraries as shared objects
+-- Generating linux build config
+-- Building project version: 1.6.53
+-- Found AWS SDK for C++, Version: 1.6.53, Install Root:/opt/ros/melodic, Platform Prefix:, Platform Dependent Libraries: pthread;crypto;ssl;z;curl
+-- Boost version: 1.65.1
+-- Building tests using catkin
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/s3_file_uploader
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_py[0m
+[  0%] Built target actionlib_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target actionlib_generate_messages_py
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[35m[1mScanning dependencies of target actionlib_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_cpp[0m
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target actionlib_generate_messages_eus[0m
+[  0%] Built target actionlib_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_cpp[0m
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_cpp
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target _catkin_empty_exported_target[0m
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _catkin_empty_exported_target
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_py
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[  0%] Built target actionlib_msgs_generate_messages_py
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_lisp[0m
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target file_uploader_msgs_generate_messages_py[0m
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[35m[1mScanning dependencies of target s3_file_uploader_lib[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/s3_file_uploader_lib.dir/src/s3_file_uploader.cpp.o[0m
+[ 50%] [32m[1mLinking CXX shared library devel/lib/libs3_file_uploader_lib.so[0m
+[ 50%] Built target s3_file_uploader_lib
+[35m[1mScanning dependencies of target s3_file_uploader[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/s3_file_uploader.dir/src/main.cpp.o[0m
+[100%] [32m[1mLinking CXX executable devel/lib/s3_file_uploader/s3_file_uploader[0m
+[100%] Built target s3_file_uploader
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target gmock_main[0m
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  7%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o[0m
+[ 15%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock-all.cc.o[0m
+[ 23%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[ 30%] [32m[1mLinking CXX shared library libgmock_main.so[0m
+[ 30%] Built target gmock_main
+[ 30%] Built target actionlib_msgs_generate_messages_eus
+[ 30%] Built target actionlib_msgs_generate_messages_cpp
+[ 30%] Built target rosgraph_msgs_generate_messages_eus
+[ 30%] Built target actionlib_generate_messages_py
+[ 30%] Built target actionlib_generate_messages_nodejs
+[ 30%] Built target std_msgs_generate_messages_eus
+[ 30%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 30%] Built target rosgraph_msgs_generate_messages_py
+[ 30%] Built target actionlib_generate_messages_lisp
+[ 30%] Built target file_uploader_msgs_generate_messages_cpp
+[ 30%] Built target actionlib_generate_messages_eus
+[ 30%] Built target actionlib_msgs_generate_messages_nodejs
+[ 30%] Built target std_msgs_generate_messages_cpp
+[ 30%] Built target roscpp_generate_messages_cpp
+[ 30%] Built target actionlib_generate_messages_cpp
+[ 30%] Built target rosgraph_msgs_generate_messages_lisp
+[ 30%] Built target std_msgs_generate_messages_lisp
+[ 30%] Built target std_msgs_generate_messages_nodejs
+[ 30%] Built target std_msgs_generate_messages_py
+[ 30%] Built target _catkin_empty_exported_target
+[ 30%] Built target rosgraph_msgs_generate_messages_cpp
+[ 30%] Built target roscpp_generate_messages_nodejs
+[ 30%] Built target roscpp_generate_messages_eus
+[ 30%] Built target roscpp_generate_messages_lisp
+[ 30%] Built target roscpp_generate_messages_py
+[ 30%] Built target actionlib_msgs_generate_messages_py
+[ 30%] Built target file_uploader_msgs_generate_messages_eus
+[ 30%] Built target file_uploader_msgs_generate_messages_lisp
+[ 30%] Built target file_uploader_msgs_generate_messages_py
+[35m[1mScanning dependencies of target gmock[0m
+[ 38%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o[0m
+[ 46%] [32mBuilding CXX object gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[ 53%] [32m[1mLinking CXX shared library libgmock.so[0m
+[ 53%] Built target gmock
+[ 69%] Built target s3_file_uploader_lib
+[35m[1mScanning dependencies of target test_s3_file_uploader[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/test_s3_file_uploader.dir/test/s3_file_uploader_test.cpp.o[0m
+[ 84%] [32m[1mLinking CXX executable devel/lib/s3_file_uploader/test_s3_file_uploader[0m
+[ 84%] Built target test_s3_file_uploader
+[35m[1mScanning dependencies of target test_action_server_handler[0m
+[ 92%] [32mBuilding CXX object CMakeFiles/test_action_server_handler.dir/test/s3_file_uploader_action_server_handler_test.cpp.o[0m
+[100%] [32m[1mLinking CXX executable devel/lib/s3_file_uploader/test_action_server_handler[0m
+[100%] Built target test_action_server_handler
+[35m[1mScanning dependencies of target tests[0m
+[100%] Built target tests
+[  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target actionlib_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target file_uploader_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _catkin_empty_exported_target
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target file_uploader_msgs_generate_messages_eus
+[  0%] Built target file_uploader_msgs_generate_messages_lisp
+[  0%] Built target file_uploader_msgs_generate_messages_py
+[ 50%] Built target s3_file_uploader_lib
+[100%] Built target s3_file_uploader
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/lib/pkgconfig/s3_file_uploader.pc
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/cmake/s3_file_uploaderConfig.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/cmake/s3_file_uploaderConfig-version.cmake
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/package.xml
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/lib/s3_file_uploader/s3_file_uploader
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/lib/s3_file_uploader/s3_file_uploader" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/lib/libs3_file_uploader_lib.so
+-- Set runtime path of "/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/lib/libs3_file_uploader_lib.so" to ""
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/launch/s3_file_uploader.launch
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/config
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/share/s3_file_uploader/config/node_sample_configuration.yaml
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/include
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/include/s3_file_uploader
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/include/s3_file_uploader/s3_file_uploader.h
+-- Installing: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/s3_file_uploader/include/s3_file_uploader/s3_file_uploader_action_server_handler.h

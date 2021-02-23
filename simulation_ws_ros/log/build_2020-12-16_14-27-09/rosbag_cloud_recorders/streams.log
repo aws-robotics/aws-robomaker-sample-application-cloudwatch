@@ -1,0 +1,177 @@
+[0.042s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders -- -j2 -l2
+[0.142s] [  0%] Built target file_uploader_msgs_generate_messages_py
+[0.165s] [  0%] Built target file_uploader_msgs_generate_messages_eus
+[0.199s] [  0%] Built target actionlib_msgs_generate_messages_py
+[0.212s] [  0%] Built target roscpp_generate_messages_lisp
+[0.256s] [  0%] Built target topic_tools_generate_messages_cpp
+[0.273s] [  0%] Built target _catkin_empty_exported_target
+[0.316s] [  0%] Built target std_msgs_generate_messages_py
+[0.318s] [  0%] Built target file_uploader_msgs_generate_messages_lisp
+[0.365s] [  0%] Built target roscpp_generate_messages_nodejs
+[0.379s] [  0%] Built target std_msgs_generate_messages_nodejs
+[0.430s] [  0%] Built target std_msgs_generate_messages_lisp
+[0.443s] [  0%] Built target rosgraph_msgs_generate_messages_lisp
+[0.482s] [  0%] Built target roscpp_generate_messages_cpp
+[0.499s] [  0%] Built target std_msgs_generate_messages_cpp
+[0.539s] [  0%] Built target actionlib_generate_messages_eus
+[0.557s] [  0%] Built target actionlib_generate_messages_lisp
+[0.601s] [  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[0.603s] [  0%] Built target actionlib_generate_messages_nodejs
+[0.653s] [  0%] Built target topic_tools_generate_messages_nodejs
+[0.657s] [  0%] Built target actionlib_generate_messages_py
+[0.707s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[0.716s] [  0%] Built target rosgraph_msgs_generate_messages_eus
+[0.761s] [  0%] Built target rosgraph_msgs_generate_messages_py
+[0.763s] [  0%] Built target roscpp_generate_messages_eus
+[0.809s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[0.815s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[0.857s] [  0%] Built target recorder_msgs_generate_messages_cpp
+[0.873s] [  0%] Built target recorder_msgs_generate_messages_lisp
+[0.917s] [  0%] Built target recorder_msgs_generate_messages_nodejs
+[0.920s] [  0%] Built target rosgraph_msgs_generate_messages_cpp
+[0.961s] [  0%] Built target topic_tools_generate_messages_eus
+[0.986s] [  0%] Built target recorder_msgs_generate_messages_py
+[1.016s] [  0%] Built target topic_tools_generate_messages_lisp
+[1.032s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[1.076s] [  0%] Built target topic_tools_generate_messages_py
+[1.079s] [  0%] Built target roscpp_generate_messages_py
+[1.129s] [  0%] Built target actionlib_generate_messages_cpp
+[1.143s] [  0%] Built target recorder_msgs_generate_messages_eus
+[1.186s] [  0%] Built target file_uploader_msgs_generate_messages_cpp
+[1.203s] [  0%] Built target std_msgs_generate_messages_eus
+[1.231s] [  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[1.300s] [ 63%] Built target rosbag_cloud_recorders_lib
+[1.361s] [ 81%] Built target rolling_recorder
+[1.380s] [100%] Built target duration_recorder
+[1.401s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders -- -j2 -l2
+[1.545s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders --target tests -- -j2 -l2
+[1.664s] [  6%] Built target gtest
+[1.685s] [ 17%] Built target gmock
+[1.698s] [ 17%] Built target file_uploader_msgs_generate_messages_py
+[1.717s] [ 17%] Built target file_uploader_msgs_generate_messages_eus
+[1.755s] [ 17%] Built target roscpp_generate_messages_lisp
+[1.758s] [ 17%] Built target actionlib_msgs_generate_messages_py
+[1.847s] [ 17%] Built target topic_tools_generate_messages_cpp
+[1.850s] [ 17%] Built target _catkin_empty_exported_target
+[1.950s] [ 17%] Built target std_msgs_generate_messages_py
+[1.959s] [ 17%] Built target file_uploader_msgs_generate_messages_lisp
+[1.991s] [ 17%] Built target std_msgs_generate_messages_nodejs
+[2.034s] [ 17%] Built target roscpp_generate_messages_nodejs
+[2.060s] [ 17%] Built target std_msgs_generate_messages_lisp
+[2.092s] [ 17%] Built target rosgraph_msgs_generate_messages_lisp
+[2.140s] [ 17%] Built target roscpp_generate_messages_cpp
+[2.182s] [ 17%] Built target std_msgs_generate_messages_cpp
+[2.203s] [ 17%] Built target actionlib_generate_messages_eus
+[2.247s] [ 17%] Built target actionlib_generate_messages_lisp
+[2.278s] [ 17%] Built target actionlib_generate_messages_nodejs
+[2.282s] [ 17%] Built target rosgraph_msgs_generate_messages_nodejs
+[2.328s] [ 17%] Built target actionlib_generate_messages_py
+[2.376s] [ 17%] Built target topic_tools_generate_messages_nodejs
+[2.378s] [ 17%] Built target rosgraph_msgs_generate_messages_eus
+[2.461s] [ 17%] Built target actionlib_msgs_generate_messages_cpp
+[2.469s] [ 17%] Built target roscpp_generate_messages_eus
+[2.526s] [ 17%] Built target rosgraph_msgs_generate_messages_py
+[2.572s] [ 17%] Built target actionlib_msgs_generate_messages_eus
+[2.618s] [ 17%] Built target actionlib_msgs_generate_messages_lisp
+[2.656s] [ 17%] Built target recorder_msgs_generate_messages_cpp
+[2.702s] [ 17%] Built target recorder_msgs_generate_messages_lisp
+[2.725s] [ 17%] Built target recorder_msgs_generate_messages_nodejs
+[2.820s] [ 17%] Built target rosgraph_msgs_generate_messages_cpp
+[2.839s] [ 17%] Built target recorder_msgs_generate_messages_py
+[2.870s] [ 17%] Built target topic_tools_generate_messages_lisp
+[2.903s] [ 17%] Built target topic_tools_generate_messages_eus
+[2.909s] [ 17%] Built target actionlib_msgs_generate_messages_nodejs
+[2.934s] [ 17%] Built target topic_tools_generate_messages_py
+[2.952s] [ 17%] Built target roscpp_generate_messages_py
+[2.975s] [ 17%] Built target actionlib_generate_messages_cpp
+[3.005s] [ 17%] Built target file_uploader_msgs_generate_messages_cpp
+[3.020s] [ 17%] Built target recorder_msgs_generate_messages_eus
+[3.040s] [ 17%] Built target std_msgs_generate_messages_eus
+[3.068s] [ 17%] Built target file_uploader_msgs_generate_messages_nodejs
+[3.101s] [ 31%] Built target gmock_main
+[3.138s] [ 55%] Built target rosbag_cloud_recorders_lib
+[3.200s] [ 72%] Built target test_utils
+[3.230s] [ 79%] Built target test_rolling_recorder_action_server_handler
+[3.281s] [ 86%] Built target test_duration_recorder_action_server_handler
+[3.298s] [ 93%] Built target test_rolling_recorder
+[3.346s] [100%] Built target test_duration_recorder
+[3.381s] [100%] Built target tests
+[3.405s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders --target tests -- -j2 -l2
+[3.559s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders --target install -- -j2 -l2
+[3.657s] [  0%] Built target file_uploader_msgs_generate_messages_py
+[3.659s] [  0%] Built target file_uploader_msgs_generate_messages_eus
+[3.688s] [  0%] Built target actionlib_msgs_generate_messages_py
+[3.702s] [  0%] Built target roscpp_generate_messages_lisp
+[3.726s] [  0%] Built target topic_tools_generate_messages_cpp
+[3.769s] [  0%] Built target file_uploader_msgs_generate_messages_lisp
+[3.775s] [  0%] Built target _catkin_empty_exported_target
+[3.813s] [  0%] Built target std_msgs_generate_messages_py
+[3.820s] [  0%] Built target std_msgs_generate_messages_nodejs
+[3.863s] [  0%] Built target roscpp_generate_messages_nodejs
+[3.897s] [  0%] Built target std_msgs_generate_messages_lisp
+[3.920s] [  0%] Built target rosgraph_msgs_generate_messages_lisp
+[3.963s] [  0%] Built target std_msgs_generate_messages_cpp
+[3.977s] [  0%] Built target roscpp_generate_messages_cpp
+[4.003s] [  0%] Built target actionlib_generate_messages_eus
+[4.035s] [  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[4.063s] [  0%] Built target actionlib_generate_messages_lisp
+[4.071s] [  0%] Built target actionlib_generate_messages_nodejs
+[4.114s] [  0%] Built target topic_tools_generate_messages_nodejs
+[4.118s] [  0%] Built target actionlib_generate_messages_py
+[4.144s] [  0%] Built target rosgraph_msgs_generate_messages_eus
+[4.173s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[4.193s] [  0%] Built target roscpp_generate_messages_eus
+[4.224s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[4.255s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[4.271s] [  0%] Built target rosgraph_msgs_generate_messages_py
+[4.288s] [  0%] Built target recorder_msgs_generate_messages_cpp
+[4.318s] [  0%] Built target recorder_msgs_generate_messages_nodejs
+[4.346s] [  0%] Built target recorder_msgs_generate_messages_lisp
+[4.373s] [  0%] Built target rosgraph_msgs_generate_messages_cpp
+[4.390s] [  0%] Built target recorder_msgs_generate_messages_py
+[4.423s] [  0%] Built target topic_tools_generate_messages_lisp
+[4.439s] [  0%] Built target topic_tools_generate_messages_eus
+[4.468s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[4.501s] [  0%] Built target roscpp_generate_messages_py
+[4.507s] [  0%] Built target topic_tools_generate_messages_py
+[4.548s] [  0%] Built target actionlib_generate_messages_cpp
+[4.567s] [  0%] Built target recorder_msgs_generate_messages_eus
+[4.600s] [  0%] Built target std_msgs_generate_messages_eus
+[4.614s] [  0%] Built target file_uploader_msgs_generate_messages_cpp
+[4.641s] [  0%] Built target file_uploader_msgs_generate_messages_nodejs
+[4.693s] [ 63%] Built target rosbag_cloud_recorders_lib
+[4.764s] [ 81%] Built target rolling_recorder
+[4.768s] [100%] Built target duration_recorder
+[4.799s] [36mInstall the project...[0m
+[4.812s] -- Install configuration: ""
+[4.813s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/pkgconfig/rosbag_cloud_recorders.pc
+[4.815s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig.cmake
+[4.815s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/cmake/rosbag_cloud_recordersConfig-version.cmake
+[4.815s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/package.xml
+[4.817s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/duration_recorder
+[4.819s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/rosbag_cloud_recorders/rolling_recorder
+[4.821s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/lib/librosbag_cloud_recorders_lib.so
+[4.821s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include
+[4.822s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders
+[4.822s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder
+[4.823s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder_action_server_handler.h
+[4.823s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/rolling_recorder/rolling_recorder.h
+[4.823s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils
+[4.824s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/recorder.h
+[4.825s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/rosbag_recorder.h
+[4.825s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/s3_client_utils.h
+[4.829s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/file_utils.h
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/utils/periodic_file_deleter.h
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder_action_server_handler.h
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/duration_recorder/duration_recorder.h
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/include/rosbag_cloud_recorders/recorder_common_error_codes.h
+[4.830s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config
+[4.839s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/rolling_recorder_sample_configuration.yaml
+[4.839s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/config/duration_recorder_sample_configuration.yaml
+[4.840s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch
+[4.840s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder.launch
+[4.840s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/rolling_recorder_sample.launch
+[4.840s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder_sample.launch
+[4.840s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/rosbag_cloud_recorders/share/rosbag_cloud_recorders/launch/duration_recorder.launch
+[4.840s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs:${CMAKE_PREFIX_PATH} PKG_CONFIG_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/x86_64-linux-gnu/pkgconfig:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig:${PKG_CONFIG_PATH} PYTHONPATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/lib/python2.7/dist-packages:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages:${PYTHONPATH} ROS_PACKAGE_PATH=/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/recorder_msgs/share:/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share:${ROS_PACKAGE_PATH} /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/rosbag_cloud_recorders --target install -- -j2 -l2

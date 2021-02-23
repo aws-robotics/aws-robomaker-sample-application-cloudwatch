@@ -1,0 +1,138 @@
+[0.043s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs -- -j2 -l2
+[0.220s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionResult
+[0.240s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesResult
+[0.343s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionGoal
+[0.392s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionFeedback
+[0.420s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[0.516s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesGoal
+[0.575s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesAction
+[0.628s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_S3Result
+[0.719s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesFeedback
+[0.730s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[0.773s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[0.779s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[0.839s] [ 19%] Built target file_uploader_msgs_generate_messages_nodejs
+[0.852s] [ 19%] Built target actionlib_msgs_generate_messages_py
+[0.874s] [ 38%] Built target file_uploader_msgs_generate_messages_cpp
+[0.918s] [ 59%] Built target file_uploader_msgs_generate_messages_eus
+[0.930s] [ 78%] Built target file_uploader_msgs_generate_messages_lisp
+[0.954s] [100%] Built target file_uploader_msgs_generate_messages_py
+[0.987s] [100%] Built target file_uploader_msgs_generate_messages
+[1.003s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs -- -j2 -l2
+[1.079s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs --target tests -- -j2 -l2
+[1.190s] Built target tests
+[1.204s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs --target tests -- -j2 -l2
+[1.300s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs --target install -- -j2 -l2
+[1.526s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionResult
+[1.581s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesResult
+[1.692s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionGoal
+[1.754s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[1.757s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesActionFeedback
+[1.857s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesGoal
+[1.904s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesAction
+[1.975s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_S3Result
+[2.014s] [  0%] Built target _file_uploader_msgs_generate_messages_check_deps_UploadFilesFeedback
+[2.021s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[2.064s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[2.096s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[2.097s] [  0%] Built target actionlib_msgs_generate_messages_py
+[2.140s] [ 19%] Built target file_uploader_msgs_generate_messages_nodejs
+[2.181s] [ 40%] Built target file_uploader_msgs_generate_messages_eus
+[2.181s] [ 59%] Built target file_uploader_msgs_generate_messages_cpp
+[2.206s] [ 78%] Built target file_uploader_msgs_generate_messages_lisp
+[2.247s] [100%] Built target file_uploader_msgs_generate_messages_py
+[2.276s] [100%] Built target file_uploader_msgs_generate_messages
+[2.307s] [36mInstall the project...[0m
+[2.321s] -- Install configuration: ""
+[2.321s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/action/UploadFiles.action
+[2.321s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesAction.msg
+[2.322s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesActionGoal.msg
+[2.322s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesActionResult.msg
+[2.322s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesActionFeedback.msg
+[2.322s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesGoal.msg
+[2.323s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesResult.msg
+[2.323s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/UploadFilesFeedback.msg
+[2.323s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/msg/S3Result.msg
+[2.324s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/cmake/file_uploader_msgs-msg-paths.cmake
+[2.324s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs
+[2.324s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesActionGoal.h
+[2.325s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesGoal.h
+[2.325s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/S3Result.h
+[2.325s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesActionResult.h
+[2.325s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesResult.h
+[2.325s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesActionFeedback.h
+[2.326s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesFeedback.h
+[2.326s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/include/file_uploader_msgs/UploadFilesAction.h
+[2.326s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs
+[2.326s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/manifest.l
+[2.327s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg
+[2.327s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesResult.l
+[2.327s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesActionGoal.l
+[2.327s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesActionFeedback.l
+[2.328s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesGoal.l
+[2.328s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/S3Result.l
+[2.328s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesAction.l
+[2.328s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesFeedback.l
+[2.328s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/roseus/ros/file_uploader_msgs/msg/UploadFilesActionResult.l
+[2.329s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs
+[2.329s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg
+[2.329s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesGoal.lisp
+[2.329s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesResult.lisp
+[2.330s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package.lisp
+[2.330s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesActionResult.lisp
+[2.330s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesGoal.lisp
+[2.330s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesActionFeedback.lisp
+[2.331s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesFeedback.lisp
+[2.331s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesAction.lisp
+[2.331s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesFeedback.lisp
+[2.331s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_S3Result.lisp
+[2.331s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesActionResult.lisp
+[2.332s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesActionFeedback.lisp
+[2.332s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesAction.lisp
+[2.332s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesResult.lisp
+[2.332s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/S3Result.lisp
+[2.333s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/file_uploader_msgs-msg.asd
+[2.333s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/_package_UploadFilesActionGoal.lisp
+[2.333s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/common-lisp/ros/file_uploader_msgs/msg/UploadFilesActionGoal.lisp
+[2.333s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs
+[2.334s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/_index.js
+[2.334s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg
+[2.334s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesActionResult.js
+[2.334s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesAction.js
+[2.335s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesActionFeedback.js
+[2.335s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/_index.js
+[2.335s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesResult.js
+[2.335s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesGoal.js
+[2.336s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/S3Result.js
+[2.336s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesActionGoal.js
+[2.336s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/gennodejs/ros/file_uploader_msgs/msg/UploadFilesFeedback.js
+[2.357s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs/devel/lib/python2.7/dist-packages/file_uploader_msgs ...
+[2.357s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs/devel/lib/python2.7/dist-packages/file_uploader_msgs/msg ...
+[2.359s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs
+[2.359s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/__init__.pyc
+[2.360s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg
+[2.360s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesGoal.py
+[2.360s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesAction.py
+[2.361s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_S3Result.py
+[2.361s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionFeedback.pyc
+[2.361s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionResult.py
+[2.361s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/__init__.pyc
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesFeedback.pyc
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesResult.pyc
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesFeedback.py
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionGoal.py
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionFeedback.py
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesResult.py
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionGoal.pyc
+[2.362s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesActionResult.pyc
+[2.365s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_S3Result.pyc
+[2.365s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesGoal.pyc
+[2.365s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/_UploadFilesAction.pyc
+[2.365s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/msg/__init__.py
+[2.365s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/python2.7/dist-packages/file_uploader_msgs/__init__.py
+[2.366s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/lib/pkgconfig/file_uploader_msgs.pc
+[2.366s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/cmake/file_uploader_msgs-msg-extras.cmake
+[2.366s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/cmake/file_uploader_msgsConfig.cmake
+[2.366s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/cmake/file_uploader_msgsConfig-version.cmake
+[2.366s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/file_uploader_msgs/share/file_uploader_msgs/package.xml
+[2.381s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/file_uploader_msgs --target install -- -j2 -l2

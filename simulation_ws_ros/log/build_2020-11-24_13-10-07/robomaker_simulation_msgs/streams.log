@@ -1,0 +1,125 @@
+[0.025s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs -- -j2 -l2
+[0.121s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_RemoveTags
+[0.123s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_AddTags
+[0.186s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_Tag
+[0.189s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_Cancel
+[0.215s] [  0%] Built target std_msgs_generate_messages_eus
+[0.244s] [  0%] Built target std_msgs_generate_messages_nodejs
+[0.255s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_ListTags
+[0.272s] [  0%] Built target std_msgs_generate_messages_lisp
+[0.284s] [  0%] Built target std_msgs_generate_messages_py
+[0.300s] [  0%] Built target std_msgs_generate_messages_cpp
+[0.313s] [ 21%] Built target robomaker_simulation_msgs_generate_messages_eus
+[0.332s] [ 39%] Built target robomaker_simulation_msgs_generate_messages_nodejs
+[0.343s] [ 57%] Built target robomaker_simulation_msgs_generate_messages_lisp
+[0.361s] [ 82%] Built target robomaker_simulation_msgs_generate_messages_py
+[0.368s] [100%] Built target robomaker_simulation_msgs_generate_messages_cpp
+[0.387s] [100%] Built target robomaker_simulation_msgs_generate_messages
+[0.397s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs -- -j2 -l2
+[0.436s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs --target tests -- -j2 -l2
+[0.494s] Built target tests
+[0.504s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs --target tests -- -j2 -l2
+[0.552s] Invoking command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs --target install -- -j2 -l2
+[0.646s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_AddTags
+[0.647s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_RemoveTags
+[0.714s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_Cancel
+[0.716s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_Tag
+[0.742s] [  0%] Built target std_msgs_generate_messages_eus
+[0.771s] [  0%] Built target std_msgs_generate_messages_nodejs
+[0.782s] [  0%] Built target _robomaker_simulation_msgs_generate_messages_check_deps_ListTags
+[0.800s] [  0%] Built target std_msgs_generate_messages_lisp
+[0.811s] [  0%] Built target std_msgs_generate_messages_py
+[0.828s] [  0%] Built target std_msgs_generate_messages_cpp
+[0.841s] [ 21%] Built target robomaker_simulation_msgs_generate_messages_eus
+[0.858s] [ 39%] Built target robomaker_simulation_msgs_generate_messages_nodejs
+[0.871s] [ 57%] Built target robomaker_simulation_msgs_generate_messages_lisp
+[0.887s] [ 82%] Built target robomaker_simulation_msgs_generate_messages_py
+[0.896s] [100%] Built target robomaker_simulation_msgs_generate_messages_cpp
+[0.914s] [100%] Built target robomaker_simulation_msgs_generate_messages
+[0.933s] [36mInstall the project...[0m
+[0.941s] -- Install configuration: ""
+[0.941s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/msg/Tag.msg
+[0.941s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/srv/Cancel.srv
+[0.942s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/srv/ListTags.srv
+[0.942s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/srv/AddTags.srv
+[0.942s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/srv/RemoveTags.srv
+[0.942s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/cmake/robomaker_simulation_msgs-msg-paths.cmake
+[0.942s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs
+[0.943s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/AddTagsResponse.h
+[0.943s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/RemoveTagsRequest.h
+[0.943s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/Cancel.h
+[0.943s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/AddTagsRequest.h
+[0.943s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/ListTagsResponse.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/RemoveTags.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/CancelResponse.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/CancelRequest.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/ListTags.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/Tag.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/AddTags.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/RemoveTagsResponse.h
+[0.944s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/include/robomaker_simulation_msgs/ListTagsRequest.h
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/srv
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/srv/Cancel.l
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/srv/RemoveTags.l
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/srv/ListTags.l
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/srv/AddTags.l
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/manifest.l
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/msg
+[0.945s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/roseus/ros/robomaker_simulation_msgs/msg/Tag.l
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/_package_AddTags.lisp
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/_package.lisp
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/Cancel.lisp
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/_package_Cancel.lisp
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/RemoveTags.lisp
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/robomaker_simulation_msgs-srv.asd
+[0.946s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/AddTags.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/_package_RemoveTags.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/_package_ListTags.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/srv/ListTags.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/msg
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/msg/_package.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/msg/Tag.lisp
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/msg/robomaker_simulation_msgs-msg.asd
+[0.947s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/common-lisp/ros/robomaker_simulation_msgs/msg/_package_Tag.lisp
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/_index.js
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv/Cancel.js
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv/_index.js
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv/RemoveTags.js
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv/ListTags.js
+[0.948s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/srv/AddTags.js
+[0.949s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/msg
+[0.949s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/msg/_index.js
+[0.949s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/gennodejs/ros/robomaker_simulation_msgs/msg/Tag.js
+[0.957s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs/devel/lib/python2.7/dist-packages/robomaker_simulation_msgs ...
+[0.957s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs/devel/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg ...
+[0.957s] Listing /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs/devel/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv ...
+[0.958s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/__init__.pyc
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_Cancel.pyc
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/__init__.pyc
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_Cancel.py
+[0.959s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_AddTags.py
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_AddTags.pyc
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_RemoveTags.py
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_ListTags.py
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/__init__.py
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_RemoveTags.pyc
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/srv/_ListTags.pyc
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg
+[0.960s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg/__init__.pyc
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg/_Tag.py
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg/__init__.py
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/msg/_Tag.pyc
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/python2.7/dist-packages/robomaker_simulation_msgs/__init__.py
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/lib/pkgconfig/robomaker_simulation_msgs.pc
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/cmake/robomaker_simulation_msgs-msg-extras.cmake
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/cmake/robomaker_simulation_msgsConfig.cmake
+[0.961s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/cmake/robomaker_simulation_msgsConfig-version.cmake
+[0.962s] -- Up-to-date: /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/install/robomaker_simulation_msgs/share/robomaker_simulation_msgs/package.xml
+[0.971s] Invoked command in '/home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs' returned '0': /usr/bin/cmake --build /home/ubuntu/environment/aws-robomaker-testcase-framework/simulation_ws/build/robomaker_simulation_msgs --target install -- -j2 -l2

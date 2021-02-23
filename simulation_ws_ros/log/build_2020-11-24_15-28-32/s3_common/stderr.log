@@ -1,0 +1,30 @@
+CMake Warning (dev) at /usr/src/googletest/CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googlemock/CMakeLists.txt:40 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googletest/CMakeLists.txt:47 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
