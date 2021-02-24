@@ -49,12 +49,12 @@
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					    "packageName": "cloudwatch_simulation",
-					    "launchFile": "worlds.launch",
-					    "simulationSoftwareSuite":{
+					    "launchFile": "worlds.launch"
+				},
+				"simulationSoftwareSuite":{
 					    "name":"Gazebo",
 					     "version":"9"
-			      	      }
-				}
+			      	}
 			}]
 			
 		}
