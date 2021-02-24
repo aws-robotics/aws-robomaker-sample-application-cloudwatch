@@ -48,8 +48,12 @@
 				"application": "arn:aws:robomaker:eu-west-1:853714891814:simulation-application/SimulationApplication-j5ROibzelK6A/1613309892486",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
-                    "packageName": "cloudwatch_simulation",
-                    "launchFile": "worlds.launch"
+					    "packageName": "cloudwatch_simulation",
+					    "launchFile": "worlds.launch",
+					    "simulationSoftwareSuite":{
+					    "name":"Gazebo",
+					     "version":"9"
+			      	      }
 				}
 			}]
 			
