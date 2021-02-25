@@ -50,11 +50,7 @@
 				"launchConfig": {
 					    "packageName": "cloudwatch_simulation",
 					    "launchFile": "test_world.launch"
-				},
-				"simulationSoftwareSuite":{
-					    "name":"Gazebo",
-					     "version":"9"
-			      	}
+				}
 			}]
 			
 		}
