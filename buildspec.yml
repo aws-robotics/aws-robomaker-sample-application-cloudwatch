@@ -16,7 +16,7 @@ phases:
        - apt-key add gazebo.key
        - echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
        - apt-get update
-     # - pip3 install -U setuptools pip
+       - pip3 install -U setuptools pip
        - pip3 install colcon-ros-bundle
        - pip3 install rsa awscli
   pre_build:
