@@ -37,7 +37,7 @@
 				"s3Prefix": "test"
 			},
 			"robotApplications": [{
-				"application": "arn:aws:robomaker:eu-west-1:853714891814:robot-application/RobotApplication-zyUL606zIQGK/1613309892525",
+				"application": "arn:aws:robomaker:eu-west-1:853714891814:robot-application/ros-melodic-robot-app/1614515859767",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					"launchFile": "await_commands.launch",
@@ -45,7 +45,7 @@
 				}
 			}],
 			"simulationApplications": [{
-				"application": "arn:aws:robomaker:eu-west-1:853714891814:simulation-application/SimulationApplication-j5ROibzelK6A/1613309892486",
+				"application": "arn:aws:robomaker:eu-west-1:853714891814:simulation-application/ros-melodic-sim-app/1614515907806",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					    "packageName": "cloudwatch_simulation",
