@@ -2,10 +2,10 @@
 	"scenarios": {
 	    "QuickNavBookStore": {
 	      "robotEnvironmentVariables": {
-	        "ROS_AWS_REGION": "us-west-2"
+	        "ROS_AWS_REGION": "eu-west-1"
 	      },
 	      "simEnvironmentVariables": {
-	        "ROS_AWS_REGION": "us-west-2",
+	        "ROS_AWS_REGION": "eu-west-1",
 	        "TURTLEBOT3_MODEL": "waffle_pi",
 	        "NAVIGATION_SUCCESS_COUNT": "1",
 	        "SIMULATION_WORLD": "bookstore"
@@ -13,10 +13,10 @@
 	    },
 	    "MultiNavBookStore": {
 	      "robotEnvironmentVariables": {
-	        "ROS_AWS_REGION": "us-west-2"
+	        "ROS_AWS_REGION": "eu-west-1"
 	      },
 	      "simEnvironmentVariables": {
-	        "ROS_AWS_REGION": "us-west-2",
+	        "ROS_AWS_REGION": "eu-west-1",
 	        "TURTLEBOT3_MODEL": "waffle_pi",
 	        "NAVIGATION_SUCCESS_COUNT": "3",
 	        "SIMULATION_WORLD": "bookstore"
