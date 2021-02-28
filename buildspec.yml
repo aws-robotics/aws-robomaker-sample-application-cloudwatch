@@ -6,7 +6,7 @@ env:
     CACHE_DIR: cache
     ROBOT_WS: robot_ws
     SIMULATION_WS: simulation_ws
-    ROS_VERSION: kinetic
+    ROS_VERSION: melodic
 phases: 
   install: 
     commands: 
