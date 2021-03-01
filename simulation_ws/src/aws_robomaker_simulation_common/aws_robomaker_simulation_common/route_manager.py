@@ -159,7 +159,7 @@ def main():
         rclpy.spin(route_manager)
     except KeyboardInterrupt:
         pass
-    except BaseException: # NOQA: B902
+    except BaseException:  # NOQA: B902
         print('Exception in route_manager:', file=sys.stderr)
         raise
     finally:
