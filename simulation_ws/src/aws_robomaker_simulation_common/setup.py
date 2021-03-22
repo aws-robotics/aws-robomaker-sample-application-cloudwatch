@@ -6,7 +6,7 @@ package_name = 'aws_robomaker_simulation_common'
 
 setup(
     name=package_name,
-    version='2.0.0',
+    version='2.1.1',
     python_requires='>=3.5.0',
     packages=[package_name],
     data_files=[
