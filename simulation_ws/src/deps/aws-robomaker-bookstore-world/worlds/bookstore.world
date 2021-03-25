@@ -2,24 +2,23 @@
 <sdf version="1.6">
   <world name="default">
     <!-- override the default position of the camera -->
-<!--
+
+    <!--
     <gui>
       <camera name='gzclient_camera'>
         <pose>-5.73 3.76 8.10 0 1.1316 -0.4398</pose>
       </camera>
     </gui>
--->
+    -->
+
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type="adiabatic" />
 
-<!--
-    <physics default="0" name="default_physics" type="ode">
-      <max_step_size>0.001</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+    <physics type="ode">
+      <real_time_update_rate>0</real_time_update_rate>
     </physics>
--->
+
     <plugin
      filename="ignition-gazebo-physics-system"
      name="ignition::gazebo::systems::Physics">

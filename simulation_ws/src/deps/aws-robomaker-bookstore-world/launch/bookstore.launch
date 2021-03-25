@@ -10,8 +10,6 @@
   </include>
 
   <!-- rosrun ros_ign_bridge parameter_bridge /clock@rosgraph_msgs/Clock[ignition.msgs.Clock -->
-  <!--
   <node pkg="ros_ign_bridge" type="parameter_bridge" name="bridge"
-    args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock" />
-  -->
+    args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock /model/turtlebot3_waffle_pi_1/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_2/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_3/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_4/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_5/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_6/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_7/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_8/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_9/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist /model/turtlebot3_waffle_pi_10/cmd_vel@geometry_msgs/Twist]ignition.msgs.Twist" />
 </launch>
