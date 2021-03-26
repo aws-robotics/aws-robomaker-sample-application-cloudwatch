@@ -129,4 +129,8 @@
     <arg name="val" value="10"/>
   </include>
 
+  <node pkg="cloudwatch_simulation"
+          type="spawn_performer.sh" name="spawn_performer"
+          output="screen"
+  />
 </launch>

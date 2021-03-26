@@ -17,3 +17,6 @@ install(FILES ${turtlebot3_description_DIR}/../rviz/model.rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
   RENAME turtlebot3_model.rviz
 )
+
+install(PROGRAMS scripts/spawn_performer.sh
+	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
