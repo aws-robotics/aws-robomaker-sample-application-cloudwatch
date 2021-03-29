@@ -17,7 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
   cloudwatch_metrics_collector
   cloudwatch_logger
   health_metric_collector
-  turtlebot3_description # required to install .rviz model
+  turtlebot3_description # required to install turtlebot3 .rviz model
+  turtlebot3_navigation # required to install navigation .rviz model
 )
 
 ################################################################################
@@ -91,7 +92,13 @@ install(FILES ${turtlebot3_description_DIR}/../rviz/model.rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
   RENAME turtlebot3_model.rviz
 )
+
+# Copy the rviz model for easier access in AWS RoboMaker RViz
+install(FILES ${turtlebot3_navigation_DIR}/../rviz/turtlebot3_navigation.rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
+  RENAME turtlebot3_navigation.rviz
+)
+
 ################################################################################
 # Test
 ################################################################################
-
