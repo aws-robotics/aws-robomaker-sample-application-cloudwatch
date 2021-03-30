@@ -12,8 +12,9 @@ package_name = 'cloudwatch_robot'
 class CopyRvizModelToPackageDir(install):
 
     def run(self):
-        rviz_file = get_package_share_directory('turtlebot3_navigation2')+'/rviz/tb3_navigation2.rviz'
-        dest_dir = 'rviz' #this is relative to cloudwatch_robot package directory
+        rviz_file = get_package_share_directory('turtlebot3_navigation2') \
+            +'/rviz/tb3_navigation2.rviz'
+        dest_dir = 'rviz'  # this is relative to cloudwatch_robot package directory
         if not os.path.isdir(dest_dir):
             os.mkdir(dest_dir)
         copyfile(rviz_file, dest_dir+'/turtlebot3_navigation.rviz')
