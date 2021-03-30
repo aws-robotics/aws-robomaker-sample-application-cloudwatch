@@ -9,11 +9,11 @@ from setuptools.command.install import install
 package_name = 'cloudwatch_robot'
 
 
-class CopyRvizModel(install):
+class CopyRvizModelToSrc(install):
 
     def run(self):
         src = get_package_share_directory('turtlebot3_navigation2')+'/rviz/tb3_navigation2.rviz'
-        dest_dir = '../../install/cloudwatch_robot/rviz'
+        dest_dir = 'rviz' #this is relative to cloudwatch_robot package directory
         os.mkdir(dest_dir)
         copyfile(src, dest_dir+'/turtlebot3_navigation.rviz')
         install.run(self)
@@ -25,7 +25,7 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     cmdclass={
-        'install': CopyRvizModel,
+        'install': CopyRvizModelToSrc,
     },
     data_files=[
         ('share/' + package_name + '/launch',
@@ -48,7 +48,8 @@ setup(
          ['config/health_metrics_config.yaml']),
         ('share/ament_index/resource_index/packages',
          ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml'])
+        ('share/' + package_name, ['package.xml']),
+        ('rviz/', ['rviz/turtlebot3_navigation.rviz'])
     ],
     install_requires=['setuptools'],
     zip_safe=True,
