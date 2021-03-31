@@ -26,6 +26,7 @@
   <depend>builtin_interfaces</depend>
   <depend>robot_state_publisher</depend>
   <depend>turtlebot3_description_reduced_mesh</depend>
+  <depend>turtlebot3_navigation2</depend>
 
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>

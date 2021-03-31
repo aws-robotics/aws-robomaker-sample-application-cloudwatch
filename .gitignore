@@ -7,5 +7,5 @@ simulation_ws/bundle
 simulation_ws/install
 simulation_ws/log
 deps/
-
+robot_ws/src/cloudwatch_robot/rviz
 .idea/
