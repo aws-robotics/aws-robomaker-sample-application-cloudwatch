@@ -51,7 +51,7 @@ setup(
         ('share/ament_index/resource_index/packages',
          ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('rviz/', ['rviz/turtlebot3_navigation.rviz'])
+        ('share/rviz/', ['rviz/turtlebot3_navigation.rviz'])
     ],
     install_requires=['setuptools'],
     zip_safe=True,
