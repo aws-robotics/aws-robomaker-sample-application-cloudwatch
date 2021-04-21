@@ -58,6 +58,7 @@ Follow links above for instructions on installing required software.
 ```bash
 sudo apt-get update
 rosdep update
+sudo apt install python3-vcstools
 ```
 
 ### Robot
