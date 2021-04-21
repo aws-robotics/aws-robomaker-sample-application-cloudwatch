@@ -11,6 +11,8 @@ _RoboMaker sample applications include third-party software licensed under open-
 
 - [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu) / [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) - Other versions may work, however they have not been tested
 - [Colcon](https://colcon.readthedocs.io/en/released/user/installation.html) - Used for building and bundling the application.
+- [vcs](https://github.com/dirk-thomas/vcstool#how-to-install-vcstool) - Used to pull in sample app dependencies
+- [rosdep](http://wiki.ros.org/rosdep) - rosdep is a command-line tool for installing system dependencies.
 
 ## AWS Setup
 
@@ -60,7 +62,6 @@ Follow links above for instructions on installing required software.
 ```bash
 sudo apt-get update
 rosdep update
-sudo apt install python3-vcstools
 ```
 
 ### Robot
