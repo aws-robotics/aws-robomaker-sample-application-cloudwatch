@@ -1,5 +1,7 @@
 # AWS RoboMaker Sample Application - CloudWatch Monitoring
 
+***This sample application is currently not supported on AWS RoboMaker in ROS2 (latest update: May 3, 2021)***
+  
 Monitor health and operational metrics for a fleet of robots in a simulated home using AWS CloudWatch Metrics and AWS CloudWatch Logs. Streamed metrics include speed, distance to nearest obstacle, distance to current goal, robot CPU utilization, and RAM usage.  
 
 It demonstrates how to emit metrics and logs to AWS CloudWatch to monitor your robots.
