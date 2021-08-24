@@ -29,22 +29,22 @@ jobs:
     - name: Checkout Branch
       uses: actions/checkout@v1
     - name: Scan using git-secrets
-      uses: aws-robotics/aws-robomaker-github-actions/git-secrets-scan-action@3.0.3
+      uses: aws-robotics/aws-robomaker-github-actions/git-secrets-scan-action@3.0.5
     - id: robot_ws_build
       name: Build and Bundle Robot Workspace
-      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@3.0.4
+      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@3.0.5
       with:
         ros-distro: ${{ matrix.distro }}
         workspace-dir: robot_ws
         generate-sources: true
-        colcon-bundle-retries: 3
+        retries: 3
     - id: simulation_ws_build
       name: Build and Bundle Simulation Workspace
-      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@3.0.4
+      uses: aws-robotics/aws-robomaker-github-actions/robomaker-sample-app-ci@3.0.5
       with:
         ros-distro: ${{ matrix.distro }}
         workspace-dir: simulation_ws
-        colcon-bundle-retries: 3
+        retries: 3
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1.5.4
       with:
