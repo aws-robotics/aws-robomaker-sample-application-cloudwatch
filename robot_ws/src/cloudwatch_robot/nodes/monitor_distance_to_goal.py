@@ -20,9 +20,8 @@ import time
 
 from nav_msgs.msg import Path
 import numpy as np
-from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
-from std_msgs.msg import Header
+from std_msgs.msg import Float32, Header
 
 
 class MonitorDistanceToGoal:
@@ -31,7 +30,7 @@ class MonitorDistanceToGoal:
         self.scan_sub = rospy.Subscriber(
             '/move_base/NavfnROS/plan', Path, callback=self.report_metric
         )
-        self.metrics_pub = rospy.Publisher('/metrics', MetricList, queue_size=1)
+        self.metric_pub = rospy.Publisher('/distance_to_goal', Float32, queue_size=1)
 
     def calc_path_distance(self, msg):
         points = [(p.pose.position.x, p.pose.position.y) for p in msg.poses]
@@ -40,29 +39,13 @@ class MonitorDistanceToGoal:
 
     def report_metric(self, msg):
         if not msg.poses:
-            rospy.logdebug('Path empty, not calculating distance')
+            rospy.loginfo('Path empty, not calculating distance')
             return
 
         distance = self.calc_path_distance(msg)
-        rospy.logdebug('Distance to goal: %s', distance)
+        rospy.loginfo('Distance to goal: %s', distance)
 
-        header = Header()
-        header.stamp = rospy.Time.from_sec(time.time())
-
-        dimensions = [
-            MetricDimension(name='robot_id', value='Turtlebot3'),
-            MetricDimension(name='category', value='RobotOperations'),
-        ]
-        metric = MetricData(
-            header=header,
-            metric_name='distance_to_goal',
-            unit=MetricData.UNIT_NONE,
-            value=distance,
-            time_stamp=rospy.Time.from_sec(time.time()),
-            dimensions=dimensions,
-        )
-
-        self.metrics_pub.publish(MetricList([metric]))
+        self.metric_pub.publish(distance)
 
 
 def main():

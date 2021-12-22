@@ -1,8 +1,10 @@
-# AWS RoboMaker Sample Application - CloudWatch Monitoring
+# AWS RoboMaker Sample Application - Navigation
 
-Monitor health and operational metrics for a fleet of robots in a simulated home using AWS CloudWatch Metrics and AWS CloudWatch Logs. Streamed metrics include speed, distance to nearest obstacle, distance to current goal, robot CPU utilization, and RAM usage.
-
-It demonstrates how to emit metrics and logs to AWS CloudWatch to monitor your robots.
+This sample application demonstrates how to setup navigation in a Gazebo world, and how to subscribe and publish metrics to monitor your robots, including
+- linear speed
+- angular speed
+- distance to nearest obstacle (closest lidar scan return)
+- distance to planned goal (bookstore only, requires its navigation system)
 
 _RoboMaker sample applications include third-party software licensed under open-source licenses and is provided for demonstration purposes only. Incorporation or use of RoboMaker sample applications in connection with your production workloads or a commercial products or devices may affect your legal rights or obligations under the applicable open-source licenses. Source code information can be found [here](https://github.com/aws-robotics/aws-robomaker-sample-application-cloudwatch)._
 
@@ -17,44 +19,6 @@ The following will be installed
 
 If ROS is detected, then ROS Installation will be skipped.
 - [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) - Other versions may work, however they have not been tested
-
-## AWS Setup
-
-### AWS Credentials
-You will need to create an AWS Account and configure the credentials to be able to communicate with AWS services. You may find [AWS Configuration and Credential Files](https://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html) helpful.
-
-### AWS Permissions
-To run this application you will need an IAM user with the following permissions:
-```
-   logs:PutLogEvents
-   logs:DescribeLogGroups
-   logs:DescribeLogStreams
-   logs:CreateLogStream
-   logs:CreateLogGroup
-```
-
-You can find instructions for creating a new IAM Policy [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start). In the JSON tab paste the following policy document:
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "CloudWatchRobotRole",
-      "Effect": "Allow",
-      "Action": [
-        "cloudwatch:PutMetricData",
-        "logs:PutLogEvents",
-        "logs:DescribeLogGroups",
-        "logs:DescribeLogStreams",
-        "logs:CreateLogStream",
-        "logs:CreateLogGroup"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
 
 ## Build
 
@@ -147,22 +111,6 @@ export TURTLEBOT3_MODEL=waffle_pi
 source simulation_ws/install/local_setup.sh
 roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
 ```
-
-### Monitoring with CloudWatch Logs
-Robot logs from ROS nodes are streamed into CloudWatch Logs to Log Group `robomaker_cloudwatch_monitoring_example`. See `cloudwatch_robot/config/cloudwatch_logs_config.yaml`.
-
-### Monitoring with CloudWatch Metrics
-Robot metrics from ROS nodes are reported into CloudWatch Metrics `robomaker_cloudwatch_monitoring_example`. Metric resolution is configured at 10 seconds. See `cloudwatch_robot/config/cloudwatch_metrics_config.yaml`.
-
-Operational metrics include:
-- linear speed
-- angular speed
-- distance to nearest obstacle (closest lidar scan return)
-- distance to planned goal (bookstore only, requires its navigation system)
-
-Health metrics include CPU and RAM usage.
-
-![CloudWatchMetrics01.png](docs/images/CloudWatchMetrics01.png)
 
 ## Using this sample with RoboMaker
 
@@ -270,16 +218,6 @@ rosrun map_server map_saver -f <path-to-file> /map:=/map2d
 # Move the generated map file to cloudwatch_simulation simulation workspace map directory
 mv <path-to-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
 ```
-
-## AWS ROS Packages used by this Sample
-
-- RoboMakerUtils-Common
-- RoboMakerUtils-ROS1
-- CloudWatch-Common
-- CloudWatchLogs-ROS1
-- CloudWatchMetrics-ROS1
-- HealthMetricsCollector-ROS1
-- MonitoringMessages-ROS1
 
 ## License
 

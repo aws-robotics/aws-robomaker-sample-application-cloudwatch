@@ -18,57 +18,33 @@
 import time
 
 from nav_msgs.msg import Odometry
-from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
+from geometry_msgs.msg import Twist
 import rospy
-from std_msgs.msg import Header
+from std_msgs.msg import Float32, Header
 
 
 class Monitor:
 
     def __init__(self, data_topic, data_msg, metric_topic, transform):
-        self.metrics_pub = rospy.Publisher(metric_topic, MetricList, queue_size=1)
+        self.metrics_pub = rospy.Publisher(metric_topic, Twist, queue_size=1)
         self.topic_sub = rospy.Subscriber(data_topic, data_msg, self.callback)
         self.transform = transform
 
     def callback(self, message):
-        self.metrics_pub.publish(self.transform(message))
+        twist = self.transform(message)
+        rospy.loginfo('Robot speed: %s', twist)
+        self.metrics_pub.publish(twist)
 
 
 def odom_to_speed(odom):
-    header = Header()
-    header.stamp = rospy.Time.from_sec(time.time())
-
-    dimensions = [
-        MetricDimension(name='robot_id', value='Turtlebot3'),
-        MetricDimension(name='category', value='RobotOperations'),
-    ]
-
-    linear_speed = MetricData(
-        header=header,
-        metric_name='linear_speed',
-        unit=MetricData.UNIT_NONE,
-        value=odom.twist.twist.linear.x,
-        time_stamp=rospy.Time.from_sec(time.time()),
-        dimensions=dimensions,
-    )
-
-    angular_speed = MetricData(
-        header=header,
-        metric_name='angular_speed',
-        unit=MetricData.UNIT_NONE,
-        value=odom.twist.twist.angular.z,
-        time_stamp=rospy.Time.from_sec(time.time()),
-        dimensions=dimensions,
-    )
-
-    return MetricList([linear_speed, angular_speed])
+    return odom.twist.twist
 
 
 def main():
     rospy.init_node('speed_monitor')
     monitor = Monitor(data_topic='/odom',
                       data_msg=Odometry,
-                      metric_topic='/metrics',
+                      metric_topic='/robot_speed',
                       transform=odom_to_speed)
     if (monitor):
         rospy.spin()

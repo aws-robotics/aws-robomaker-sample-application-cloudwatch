@@ -21,18 +21,6 @@
   <build_export_depend>message_runtime</build_export_depend>
   <exec_depend>message_runtime</exec_depend>
 
-  <!-- CloudWatch -->
-  <depend>cloudwatch_logger</depend>
-  <depend>cloudwatch_metrics_collector</depend>
-  <depend>cloudwatch_logs_common</depend>
-  <depend>cloudwatch_metrics_common</depend>
-  <depend>aws_common</depend>
-  <depend>aws_ros1_common</depend>
-  <depend>ros_monitoring_msgs</depend>
-  
-  <!-- HealthMetricCollector -->
-  <depend>health_metric_collector</depend>
-
   <!-- Turtlebot -->
   <depend>turtlebot3_msgs</depend>
   <depend>robot_state_publisher</depend>

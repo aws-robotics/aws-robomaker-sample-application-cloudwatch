@@ -14,9 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   nav_msgs
   message_generation
-  cloudwatch_metrics_collector
-  cloudwatch_logger
-  health_metric_collector
   turtlebot3_description # required to install turtlebot3 .rviz model
   turtlebot3_navigation # required to install navigation .rviz model
 )
@@ -55,9 +52,6 @@ catkin_package(
     geometry_msgs
     nav_msgs
     message_runtime
-    cloudwatch_metrics_collector
-    cloudwatch_logger
-    health_metric_collector
 )
 
 ################################################################################
@@ -79,12 +73,8 @@ catkin_install_python(PROGRAMS
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY launch config
+install(DIRECTORY launch
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
-
-install(DIRECTORY deploymentScripts
-  DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}
 )
 
 # Copy the rviz model for easier access in AWS RoboMaker RViz 

@@ -17,17 +17,16 @@
 
 import time
 
-from ros_monitoring_msgs.msg import MetricData, MetricDimension, MetricList
 import rospy
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import Header
+from std_msgs.msg import Float32, Header
 
 
 class MonitorNearestObstacle:
 
     def __init__(self):
         self.scan_sub = rospy.Subscriber('scan', LaserScan, callback=self.report_metric)
-        self.metrics_pub = rospy.Publisher('/metrics', MetricList, queue_size=1)
+        self.metrics_pub = rospy.Publisher('/min_obstacle_distance', Float32, queue_size=1)
 
     def filter_scan(self, msg):
         rospy.loginfo(
@@ -50,23 +49,7 @@ class MonitorNearestObstacle:
         min_distance = min(filtered_scan)
         rospy.loginfo('Nearest obstacle: %s', min_distance)
 
-        header = Header()
-        header.stamp = rospy.Time.from_sec(time.time())
-
-        dimensions = [
-            MetricDimension(name='robot_id', value='Turtlebot3'),
-            MetricDimension(name='category', value='RobotOperations'),
-        ]
-        metric = MetricData(
-            header=header,
-            metric_name='nearest_obstacle_distance',
-            unit=MetricData.UNIT_NONE,
-            value=min_distance,
-            time_stamp=rospy.Time.from_sec(time.time()),
-            dimensions=dimensions,
-        )
-
-        self.metrics_pub.publish(MetricList([metric]))
+        self.metrics_pub.publish(min_distance)
 
 
 def main():

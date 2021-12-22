@@ -1,5 +1,0 @@
-# metrics sampling interval in seconds
-interval: 5
-
-#Robot Id
-robot_id: Turtlebot3
