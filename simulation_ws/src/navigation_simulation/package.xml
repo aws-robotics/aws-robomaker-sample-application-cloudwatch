@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>cloudwatch_simulation</name>
-  <version>1.2.1</version>
+  <name>navigation_simulation</name>
+  <version>1.0.0</version>
   <description>
     AWS RoboMaker simulation package for launching a TurtleBot3 in a empty world or a small house.
   </description>

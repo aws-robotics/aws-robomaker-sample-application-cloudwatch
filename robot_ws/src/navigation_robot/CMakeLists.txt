@@ -2,7 +2,7 @@
 # Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 2.8.3)
-project(cloudwatch_robot)
+project(navigation_robot)
 
 ################################################################################
 # Find catkin packages and libraries for catkin and system dependencies

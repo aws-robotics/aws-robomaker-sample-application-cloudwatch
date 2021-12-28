@@ -64,7 +64,7 @@ cd ..
 
 map_output_path=$(dirname $(dirname $world_source_path))/maps/map
 
-roslaunch cloudwatch_simulation start_map_service.launch &
+roslaunch navigation_simulation start_map_service.launch &
 
 python << END
 import rospy

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(cloudwatch_simulation)
+project(navigation_simulation)
 
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros

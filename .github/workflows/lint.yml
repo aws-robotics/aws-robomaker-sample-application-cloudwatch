@@ -1,4 +1,4 @@
-name: "Lint cloudwatch-sample-application-ros1"
+name: "Lint navigation-sample-application-ros1"
 on:
   pull_request:
 
@@ -19,5 +19,5 @@ jobs:
           linter: ${{ matrix.linter }}
           package-name: |
             aws_robomaker_simulation_common
-            cloudwatch_simulation
-            cloudwatch_robot
+            navigation_simulation
+            navigation_robot

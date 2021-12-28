@@ -34,8 +34,8 @@
   </node>
 
   <!-- Enable navigation system -->
-  <include file="$(find cloudwatch_simulation)/launch/turtlebot3_navigation.launch">
-    <arg name="map_file" value="$(find cloudwatch_simulation)/maps/map.yaml"/>
+  <include file="$(find navigation_simulation)/launch/turtlebot3_navigation.launch">
+    <arg name="map_file" value="$(find navigation_simulation)/maps/map.yaml"/>
     <!-- Initial pose must match the starting position of the robot for an aligned map -->
     <arg name="initial_pose_x" value="$(arg x_pos)"/>
     <arg name="initial_pose_y" default="$(arg y_pos)"/>

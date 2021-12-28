@@ -11,7 +11,7 @@
   <include file="$(find turtlebot3_bringup)/launch/turtlebot3_robot.launch"/>
 
   <!-- Deploy await commands with monitoring enabled -->
-  <include file="$(find cloudwatch_robot)/launch/await_commands.launch">
+  <include file="$(find navigation_robot)/launch/await_commands.launch">
     <arg name="use_sim_time" value="false" />
   </include>
 

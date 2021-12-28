@@ -6,7 +6,7 @@
   <arg name="gui" default="false"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find cloudwatch_simulation)/worlds/map_plugin.world"/>
+    <arg name="world_name" value="$(find navigation_simulation)/worlds/map_plugin.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" default="$(arg gui)"/>

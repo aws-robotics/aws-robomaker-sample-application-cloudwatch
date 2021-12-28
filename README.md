@@ -6,7 +6,7 @@ This sample application demonstrates how to setup navigation in a Gazebo world, 
 - distance to nearest obstacle (closest lidar scan return)
 - distance to planned goal (bookstore only, requires its navigation system)
 
-_RoboMaker sample applications include third-party software licensed under open-source licenses and is provided for demonstration purposes only. Incorporation or use of RoboMaker sample applications in connection with your production workloads or a commercial products or devices may affect your legal rights or obligations under the applicable open-source licenses. Source code information can be found [here](https://github.com/aws-robotics/aws-robomaker-sample-application-cloudwatch)._
+_RoboMaker sample applications include third-party software licensed under open-source licenses and is provided for demonstration purposes only. Incorporation or use of RoboMaker sample applications in connection with your production workloads or a commercial products or devices may affect your legal rights or obligations under the applicable open-source licenses. Source code information can be found [here](https://github.com/aws-robotics/aws-robomaker-sample-application-navigation)._
 
 
 ## Installation
@@ -59,13 +59,13 @@ Launch the application with the following commands:
 - *Running Robot Application on a Robot*
     ```bash
     source robot_ws/install/local_setup.sh
-    roslaunch cloudwatch_robot deploy_rotate.launch
+    roslaunch navigation_robot deploy_rotate.launch
     ```
 
 - *Running Robot Application in a Simulation*
     ```bash
     source robot_ws/install/local_setup.sh
-    roslaunch cloudwatch_robot [command]
+    roslaunch navigation_robot [command]
     ```
     There are two robot launch commands:
     - `rotate.launch` - The robot starts rotating
@@ -75,7 +75,7 @@ Launch the application with the following commands:
 - *Running Simulation Application*
     ```bash
     source simulation_ws/install/local_setup.sh
-    roslaunch cloudwatch_simulation [command]
+    roslaunch navigation_simulation [command]
     ```
     There are three simulation launch commands for three different worlds:
     - `empty_world.launch` - Empty world with some balls surrounding the turtlebot at (0,0)
@@ -84,7 +84,7 @@ Launch the application with the following commands:
 
     Alternatively, to run turtlebot navigation to follow dynamic goals,
     ```bash
-    roslaunch cloudwatch_simulation [command] follow_route:=false dynamic_route:=true
+    roslaunch navigation_simulation [command] follow_route:=false dynamic_route:=true
     ``` 
 
 Note that when running robot applications on a robot, `use_sim_time` should be set to `false` (which is the default value in `deploy_rotate.launch` and `deploy_await_commands.launch`). When running robot applications along with simulation applications, `use_sim_time` should be set to `true` for both applications (which is the default value in `rotate.launch`, `await_commands.launch` and all the launch files in simulation workspace).
@@ -109,7 +109,7 @@ Launch the navigation application with the following commands:
 ```bash
 export TURTLEBOT3_MODEL=waffle_pi
 source simulation_ws/install/local_setup.sh
-roslaunch cloudwatch_simulation worldforge_turtlebot_navigation.launch
+roslaunch navigation_simulation worldforge_turtlebot_navigation.launch
 ```
 
 ## Using this sample with RoboMaker
@@ -204,8 +204,8 @@ cd simulation_ws
 colcon build
 source install/local_setup.sh
 
-# Start map service (for custom worlds, relocate your world file with the added plugin to src/cloudwatch_simulation/worlds/map_plugin.world before running this)
-roslaunch cloudwatch_simulation start_map_service.launch
+# Start map service (for custom worlds, relocate your world file with the added plugin to src/navigation_simulation/worlds/map_plugin.world before running this)
+roslaunch navigation_simulation start_map_service.launch
 
 # Generate map (start in a different terminal AFTER you see "[INFO] [*] occupancy map plugin started" message in previous terminal)
 rosservice call /gazebo_2Dmap_plugin/generate_map
@@ -215,8 +215,8 @@ rosrun map_server map_saver -f <path-to-file> /map:=/map2d
 ```
 
 ```bash
-# Move the generated map file to cloudwatch_simulation simulation workspace map directory
-mv <path-to-file> simulation_ws/src/cloudwatch_simulation/maps/map.yaml
+# Move the generated map file to navigation_simulation simulation workspace map directory
+mv <path-to-file> simulation_ws/src/navigation_simulation/maps/map.yaml
 ```
 
 ## License

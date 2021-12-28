@@ -1,0 +1,17 @@
+<launch>
+  <!-- 
+        Include this file to enable monitoring of operational metrics. 
+   
+        See rotate.launch for example <include> usage. 
+  -->
+
+  <!-- Monitor speed metrics -->
+  <node pkg="navigation_robot" type="monitor_speed.py" name="monitor_speed" output="screen"/>
+
+  <!-- Monitor distance to nearest obstacle metric -->
+  <node pkg="navigation_robot" type="monitor_obstacle_distance.py" name="monitor_obstacle_distance" output="screen"/>
+
+  <!-- Monitor distance to goal metric (does nothing if there isn't a planned goal) -->
+  <node pkg="navigation_robot" type="monitor_distance_to_goal.py" name="monitor_distance_to_goal" output="screen"/>
+
+</launch>

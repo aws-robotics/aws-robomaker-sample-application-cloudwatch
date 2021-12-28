@@ -37,7 +37,7 @@ def process_args(args, default_args):
                 else os.path.join(default_args[world_name][1], os.environ['WORLD_ID'], os.environ['WORLD_ID']+".world")
         except KeyError:
             raise KeyError("Please set WORLD_ID to your worldforge world as per the README instructions")
-        output_file = "simulation_ws/src/cloudwatch_simulation/worlds/map_plugin.world"
+        output_file = "simulation_ws/src/navigation_simulation/worlds/map_plugin.world"
 
     #custom config file, world file, output file
     else:
